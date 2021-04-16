@@ -1,1 +1,1 @@
-Vitamin D Web Application for CSIT321
+Vitamin D Web Application - CSIT321
