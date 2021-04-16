@@ -1,1 +1,1 @@
-Vitamin D Progressive Web Application - CSIT321 
+Vitamin D Progressive Web Application (PWA) - CSIT321 
