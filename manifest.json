@@ -1,0 +1,23 @@
+{
+  "name": "Vitamin D Assesment Tool",
+  "short_name": "Vitamin D Tool",
+  "start_url": "https://https://laughing-poincare-c8df19.netlify.app/",
+  "icons": [
+    {
+      "src": "icons/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+  
+}
