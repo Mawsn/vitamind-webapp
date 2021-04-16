@@ -9,4 +9,9 @@
 <body>
 Hello World
 </body>
+<script type="text/javascript">
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
+</script>
 </html>
