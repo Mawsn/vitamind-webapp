@@ -4,5 +4,9 @@ workbox.routing.registerRoute(
 	new workbox.strategies.CacheFirst()
 );
 self.addListener("fetch",e =>{
-	//COmment
+	e.respondWith(
+		fetch(e.request).catch(() =>{
+			return new Response("Hello")
+		})
+	);
 });
