@@ -69,8 +69,4 @@ nav .mainMenu li a:hover {
         color: rgb(229,189,63);
         font-size: 1.6rem;
     }
-    .icons i {
-        display: inline-block;
-        padding: 12px;
-    }
 }
