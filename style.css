@@ -23,9 +23,6 @@ nav .mainMenu li a {
     color: #fff;
     font-size: 1.4em;
 }
-nav .mainMenu li a:hover {
-    background: rgb(238,195,61);
-}
 nav .openMenu {
     font-size: 2rem;
     margin: 20px;
@@ -42,9 +39,11 @@ nav .logo {
     margin-top: 10px;
     margin-left: 10px;
     font-size: 32px; 
-
 }
-@media(max-width: 800px){
+nav .mainMenu li a:hover {
+    background: rgb(238,195,61);
+}
+@media(max-width: 1000px){
     nav .mainMenu {
         height: 100vh;
         position: fixed;
@@ -64,7 +63,6 @@ nav .logo {
         position: absolute;
         top: 20px;
         right: 20px;
-
     }
     nav .openMenu {
         display: block;
