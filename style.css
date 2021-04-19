@@ -29,12 +29,9 @@ nav .openMenu {
     display: none;
     cursor: pointer;
 }
-nav .mainMenu .closeMenu , .icons i {
-    font-size: 2rem;
+nav .mainMenu .closeMenu{
     display: none;
-    cursor: pointer;
 }
-
 nav .logo {
     margin-top: 10px;
     margin-left: 10px;
