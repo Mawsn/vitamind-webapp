@@ -1,6 +1,6 @@
 {
-  "name": "Vitamin D Assesment Tool",
-  "short_name": "Vitamin D Tool",
+  "name": "VitaTrack",
+  "short_name": "VitaTrack",
   "start_url": "https://vitamindtool.netlify.app/",
   "icons": [
     {
