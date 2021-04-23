@@ -4,7 +4,7 @@
   "start_url": "https://vitatrack.netlify.app/",
   "icons": [
     {
-      "src": "icons/logo-icon-192.png",
+      "src": "icons/test.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
