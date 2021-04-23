@@ -4,13 +4,13 @@
   "start_url": "https://vitamindtool.netlify.app/",
   "icons": [
     {
-      "src": "icons/logo-icon-standard.png",
+      "src": "icons/icon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "icons/logo-icon-standard.png",
+      "src": "icons/icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
