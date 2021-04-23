@@ -1,7 +1,7 @@
 {
   "name": "VitaTrack",
   "short_name": "VitaTrack",
-  "start_url": "https://vitamindtool.netlify.app/",
+  "start_url": "https://vitatrack.netlify.app/",
   "icons": [
     {
       "src": "icons/logo-icon-192.png",
