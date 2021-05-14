@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>VitaTrack - Vitamin D Assesment Tool</title>
-    <link rel="stylesheet" href="style.css">
-	<link rel="manifest" href="manifest.json">
-	<link rel="icon" href="icons/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>VitaTrack</title>
+    <link rel="icon" href="icons/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
-	<link rel="apple-touch-icon" sizes="256x256" href="icons/logo-icon-512.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="apple-touch-icon" sizes="256x256" href="icons/logo-icon-512.png">
 </head>
+
 <body>
-        <nav>
-            <div class="logo"><p>VitaTrack</p></div>
-            <div class="openMenu"><i class="fa fa-bars"></i></div>
-            <ul class="mainMenu">
-                <li><a href="tool.html">Assesment Tool</a></li>
-                <li><a  href="#">Login</a></li>
-                <li><a href="#">Signup</a></li>
-                <div class="closeMenu"><i class="fa fa-times"></i></div>
-            </ul>
-        </nav>
-    <script src="./app.js"></script>
+    <nav class="navbar navbar-light navbar-expand-md text-center">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><button class="btn btn-primary" type="button">Login</button></li>
+                    <li class="nav-item"><button class="btn btn-primary" type="button">Signup</button></li>
+                </ul>
+            </div>
+        </div>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
-<script type="text/javascript">
-	if('serviceWorker' in navigator){
-		navigator.serviceWorker.register('service_worker.js');
-	}
-</script>
+
 </html>

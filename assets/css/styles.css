@@ -1,0 +1,52 @@
+.nav-item {
+  padding-bottom: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+}
+
+#logo-landscape {
+  max-width: 220px;
+  display: inline-block;
+}
+
+.btn.btn-primary {
+  background: #f8b607;
+  border-radius: 32px;
+  font-family: Montserrat, sans-serif;
+  width: 100px;
+  border-color: rgba(255,255,255,0);
+}
+
+.navbar.navbar-light.navbar-expand-md {
+  background-color: #1686AB;
+}
+
+.btn.btn-primary {
+  color: black;
+  width: 170px;
+}
+
+.btn-primary:hover {
+  color: #000000;
+  background-color: #fec01d;
+  border-color: #fec01d;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: 50%/100% 100% no-repeat;
+}
+
+
+html {
+  background: url(../../assets/img/light_bg.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-size: cover;
+}
+
