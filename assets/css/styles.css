@@ -17,13 +17,23 @@
 }
 
 @media (max-width: 768px) {
-  .navbar.navbar-light.navbar-expand-md {
+  .navbar.navbar-light.navbar-expand-md.login-signup-navbar {
+    background-color: #1686AB;
+  }
+}
+
+.navbar.navbar-light.navbar-expand-md.login-signup-navbar {
+  background-color: #1686AB;
+}
+
+@media (max-width: 768px) {
+  .navbar.navbar-light.navbar-expand-md.homepage-navbar {
     background-color: #1686AB;
     display: none;
   }
 }
 
-.navbar.navbar-light.navbar-expand-md {
+.navbar.navbar-light.navbar-expand-md.homepage-navbar {
   background-color: #1686AB;
 }
 
@@ -125,5 +135,9 @@ body {
   #home-buttons-mobile {
     display: none;
   }
+}
+
+.navbar-toggler.nav-toggler-login-signup {
+  display: none;
 }
 
