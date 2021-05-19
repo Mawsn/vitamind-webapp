@@ -12,9 +12,15 @@
 .btn.btn-primary {
   background: #f8b607;
   border-radius: 32px;
-  font-family: Montserrat, sans-serif;
   width: 100px;
   border-color: rgba(255,255,255,0);
+}
+
+@media (max-width: 768px) {
+  .navbar.navbar-light.navbar-expand-md {
+    background-color: #1686AB;
+    display: none;
+  }
 }
 
 .navbar.navbar-light.navbar-expand-md {
@@ -42,12 +48,23 @@
 }
 
 body {
-  background: url(../../assets/img/light_bg.png) no-repeat center center fixed;
+  background: url(../../assets/img/mobile_bg.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   background-size: cover;
   font-family: 'Montserrat';
+}
+
+@media (min-width: 768px) {
+  body {
+    background: url(../../assets/img/light_bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-size: cover;
+    font-family: 'Montserrat';
+  }
 }
 
 #home-logo-standard {
@@ -60,11 +77,18 @@ body {
   width: 50%;
 }
 
+@media (max-width: 768px) {
+  #home-logo-standard {
+    display: block;
+    margin-top: 15%;
+  }
+}
+
 #home-info-text {
   display: none;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 768px) {
   #home-info-text {
     display: block;
     margin-left: auto;
@@ -76,16 +100,30 @@ body {
   }
 }
 
-html {
-  font-family: 'Montserrat';
-}
-
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #f8b607;
   border-color: #f8b607;
 }
 
-#login-button {
+@media (max-width: 768px) {
+  #home-buttons-mobile {
+    margin-top: 30%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #home-buttons-mobile button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 8%;
+  }
+}
+
+@media (min-width: 768px) {
+  #home-buttons-mobile {
+    display: none;
+  }
 }
 
