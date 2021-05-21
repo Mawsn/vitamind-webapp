@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
+<script type="text/javascript">
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
+</script>
 </head>
 
 <body>
@@ -33,10 +38,5 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
-<script type="text/javascript">
-    if('serviceWorker' in navigator){
-        navigator.serviceWorker.register('service_worker.js');
-    }
-</script>
 
 </html>
