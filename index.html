@@ -33,5 +33,10 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
+<script type="text/javascript">
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('service_worker.js');
+    }
+</script>
 
 </html>
