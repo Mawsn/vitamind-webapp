@@ -24,16 +24,22 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
-        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index.html&#39;;"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><button class="btn btn-primary" id="login-button" type="button">Home</button></li>
+                    <li class="nav-item"><button class="btn btn-primary" id="login-button" type="button" onclick="location.href=&#39;index.html&#39;;">Home</button></li>
                     <li class="nav-item"><button class="btn btn-primary" type="button">Signup</button></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <p>Login Page HERE</p>
+    <div class="onboarding-bubble">
+        <h1 class="onboarding-heading">Login to VitaTrack</h1>
+        <form class="login-form">
+            <p class="onboarding-subheading">Email:</p><input class="form-control login-fields" type="text">
+            <p class="onboarding-subheading">Password:</p><input class="form-control login-fields" type="password"><button class="btn btn-primary login-button" type="button" onclick="location.href=&#39;index.html&#39;;">Login</button>
+        </form>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

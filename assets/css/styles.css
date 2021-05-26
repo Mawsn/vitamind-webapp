@@ -16,7 +16,7 @@
   border-color: rgba(255,255,255,0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar.navbar-light.navbar-expand-md.login-signup-navbar {
     background-color: #1686AB;
   }
@@ -26,7 +26,7 @@
   background-color: #1686AB;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar.navbar-light.navbar-expand-md.homepage-navbar {
     background-color: #1686AB;
     display: none;
@@ -66,7 +66,7 @@ body {
   font-family: 'Montserrat';
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   body {
     background: url(../../assets/img/light_bg.png) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -87,7 +87,7 @@ body {
   width: 50%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #home-logo-standard {
     display: block;
     margin-top: 15%;
@@ -98,7 +98,7 @@ body {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   #home-info-text {
     display: block;
     margin-left: auto;
@@ -116,14 +116,14 @@ body {
   border-color: #f8b607;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #home-buttons-mobile {
     margin-top: 30%;
     text-align: center;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #home-buttons-mobile button {
     display: block;
     margin: 0 auto;
@@ -131,7 +131,7 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   #home-buttons-mobile {
     display: none;
   }
@@ -139,5 +139,53 @@ body {
 
 .navbar-toggler.nav-toggler-login-signup {
   display: none;
+}
+
+@media (max-width: 767px) {
+  .onboarding-bubble {
+    display: none;
+  }
+}
+
+.onboarding-bubble {
+  width: 60%;
+  height: 600px;
+  background-color: #DDDD;
+  opacity: 80%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+.onboarding-heading {
+  font-size: 32px;
+  text-align: center;
+  padding-top: 22px;
+  color: black;
+}
+
+.login-form {
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+  width: 50%;
+}
+
+.login-fields {
+  border-radius: 10px;
+  border: black 1px;
+}
+
+.onboarding-subheading {
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.btn.btn-primary.login-button {
+  margin: auto;
+  display: block;
+  margin-top: 180px;
+  font-size: 20px;
 }
 
