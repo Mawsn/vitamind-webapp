@@ -141,12 +141,6 @@ body {
   display: none;
 }
 
-@media (max-width: 767px) {
-  .onboarding-bubble {
-    display: none;
-  }
-}
-
 .onboarding-bubble {
   width: 60%;
   height: 600px;
@@ -156,6 +150,12 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
+}
+
+@media (max-width: 767px) {
+  .onboarding-bubble {
+    display: none;
+  }
 }
 
 .onboarding-heading {
@@ -187,5 +187,26 @@ body {
   display: block;
   margin-top: 180px;
   font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .btn.btn-primary.login-button {
+    margin: auto;
+    display: block;
+    margin-top: 100%;
+    font-size: 20px;
+  }
+}
+
+.login-form-mobile {
+  margin: auto;
+  margin-top: 100px;
+  width: 70%;
+}
+
+@media (min-width: 767px) {
+  .login-form-mobile {
+    display: none;
+  }
 }
 
