@@ -204,9 +204,3 @@ body {
   width: 70%;
 }
 
-@media (min-width: 767px) {
-  .login-form-mobile {
-    display: none;
-  }
-}
-
