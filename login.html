@@ -14,15 +14,15 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
-    <script type="text/javascript">
-    	if('serviceWorker' in navigator){
-    		navigator.serviceWorker.register('service_worker.js');
-    	}
-    </script>
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
+<script type="text/javascript">
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
+</script>
+</head>
 
-
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<body><script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
     <script type="text/javascript">
@@ -89,13 +89,8 @@
         // [END auth_signin_password]
       }
     </script>
-
-</head>
-
-<body>
-
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
-        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" alt="Img not available" onclick="location.href=&#39;index&#39;;"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><button class="btn btn-primary" id="login-button" type="button" onclick="location.href=&#39;index&#39;;">Home</button></li>
@@ -107,8 +102,8 @@
     <div class="onboarding-bubble">
         <h1 class="onboarding-heading">Login to VitaTrack</h1>
         <form class="login-form">
-            <p class="onboarding-subheading">Email:</p><input class="form-control login-fields" type="text" id="emailField" placeholder="Email">
-            <p class="onboarding-subheading">Password:</p><input class="form-control login-fields" type="password" id="passField" placeholder="Password"><button class="btn btn-primary login-button" type="button" id="loginForm" onclick="signInWithEmailPassword()">Login</button>
+            <p class="onboarding-subheading">Email:</p><input class="form-control login-fields" type="text">
+            <p class="onboarding-subheading">Password:</p><input class="form-control login-fields" type="password" id="passField"><button class="btn btn-primary login-button" type="button" onclick="location.href=&#39;index&#39;;">Login</button>
         </form>
     </div>
     <form class="login-form-mobile">
