@@ -154,15 +154,21 @@ body {
 
 @media (max-width: 767px) {
   .onboarding-bubble {
-    display: none;
+    background-color: transparent;
   }
 }
 
-.onboarding-heading {
+.login-heading {
   font-size: 32px;
   text-align: center;
   padding-top: 22px;
   color: black;
+}
+
+@media (max-width: 767px) {
+  .login-heading {
+    display: none;
+  }
 }
 
 .login-form {
@@ -172,7 +178,16 @@ body {
   width: 50%;
 }
 
-.login-fields {
+@media (max-width: 767px) {
+  .login-form {
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    width: 110%;
+  }
+}
+
+.login-signup-fields {
   border-radius: 10px;
   border: black 1px;
 }
@@ -182,7 +197,7 @@ body {
   font-size: 20px;
 }
 
-.btn.btn-primary.login-button {
+.btn.btn-primary.login-signup-button {
   margin: auto;
   display: block;
   margin-top: 180px;
@@ -190,10 +205,10 @@ body {
 }
 
 @media (max-width: 767px) {
-  .btn.btn-primary.login-button {
+  .btn.btn-primary.login-signup-button {
     margin: auto;
     display: block;
-    margin-top: 100%;
+    margin-top: 90%;
     font-size: 20px;
   }
 }
