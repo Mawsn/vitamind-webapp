@@ -200,7 +200,7 @@ body {
 .btn.btn-primary.login-signup-button {
   margin: auto;
   display: block;
-  margin-top: 180px;
+  margin-top: 170px;
   font-size: 20px;
 }
 
@@ -208,7 +208,7 @@ body {
   .btn.btn-primary.login-signup-button {
     margin: auto;
     display: block;
-    margin-top: 90%;
+    margin-top: 70%;
     font-size: 20px;
   }
 }
@@ -224,5 +224,12 @@ body {
     width: 70%;
     display: block;
   }
+}
+
+#loginErrorDiv {
+  margin: auto;
+  padding-top: 10px;
+  width: auto;
+  height: 20px;
 }
 
