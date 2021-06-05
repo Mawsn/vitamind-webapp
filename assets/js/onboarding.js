@@ -107,11 +107,43 @@ function signinWithGoogle(){
 	    var credential = result.credential;
 	    var token = credential.accessToken;
 	    var user = result.user;
-	    alert(user.email);
 	    window.location.assign("home.html");
 
   	}).catch((error) => {
 	    var errorCode = error.code;
+	    var errorMessage = error.message;
+	    var email = error.email;
+	    var credential = error.credential;
+  	});
+}
+
+function signinWithMicrosoft(){
+	var provider = new firebase.auth.OAuthProvider('microsoft.com');
+	firebase.auth().signInWithPopup(provider)
+ 	.then((result) => {
+    	var credential = result.credential;
+    	var accessToken = credential.accessToken;
+    	var idToken = credential.idToken;
+    	//alert(JSON.stringify(result, null, 4));
+    	window.location.assign("home.html");
+  	})
+  	.catch((error) => {
+    	alert(error);
+  	});
+}
+
+function signinWithFacebook(){
+	var provider = new firebase.auth.FacebookAuthProvider();
+	firebase.auth().signInWithPopup(provider)
+ 	.then((result) => {
+    	var credential = result.credential;
+    	var user = result.user;
+    	var accessToken = credential.accessToken;
+    	alert(JSON.stringify(result, null, 4));
+    	window.location.assign("home.html");
+  	})
+  	.catch((error) => {
+    	var errorCode = error.code;
 	    var errorMessage = error.message;
 	    var email = error.email;
 	    var credential = error.credential;
