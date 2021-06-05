@@ -20,53 +20,11 @@
 		navigator.serviceWorker.register('service_worker.js');
 	}
 </script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
 </head>
 
-<body><script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-	<!-- Add Firebase products that you want to use -->
-	<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
-	<script type="text/javascript">
-	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	  const firebaseConfig = {
-		apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
-		authDomain: "vitatrack-75bda.firebaseapp.com",
-		projectId: "vitatrack-75bda",
-		storageBucket: "vitatrack-75bda.appspot.com",
-		messagingSenderId: "252880004411",
-		appId: "1:252880004411:web:671a716ffcb35a2e58431e",
-		measurementId: "G-SZZ8S3SJDS"
-	  };
-
-	  firebase.initializeApp(firebaseConfig);
-
-	  function createUser() {
-		var dis = document.getElementById("signupErrorDiv");
-		var email = document.getElementById("emailField").value;
-		var password = document.getElementById("passField").value;
-
-		if (email == ""){
-		  dis.innerHTML = "No email was entered";
-		  return;
-		}
-		if (password == ""){
-		  dis.innerHTML = "No password was entered";
-		  return;
-		}
-
-		firebase.auth().createUserWithEmailAndPassword(email, password)
-		.then((userCredential) => {
-		  var user = userCredential.user;
-		})
-		.catch((error) => {
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  console.log("Error "+errorCode +": "+errorMessage);
-
-		  dis.innerHTML = errorMessage;
-
-		});
-	  }
-	</script>
+<body>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -87,6 +45,7 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/onboarding.js"></script>
 </body>
 
 </html>
