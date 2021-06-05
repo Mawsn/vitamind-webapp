@@ -263,6 +263,10 @@ body {
   background-color: #962EFC;
 }
 
+#emailButton {
+  background-color: gray;
+}
+
 .btn.btn-primary.altAuthButtons {
   margin: auto;
   display: block;
@@ -275,9 +279,5 @@ body {
   width: 40%;
   background: black;
   margin-top: 50px;
-}
-
-#emailButton {
-  background-color: gray;
 }
 
