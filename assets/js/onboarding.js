@@ -128,7 +128,7 @@ function signinWithMicrosoft(){
     	window.location.assign("home.html");
   	})
   	.catch((error) => {
-    	alert(error);
+    	alert(error.message);
   	});
 }
 
@@ -147,5 +147,6 @@ function signinWithFacebook(){
 	    var errorMessage = error.message;
 	    var email = error.email;
 	    var credential = error.credential;
+	    alert(errorMessage);
   	});
 }
