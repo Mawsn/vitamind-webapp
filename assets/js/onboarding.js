@@ -12,24 +12,19 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function signInWithEmailPassword() {
-  //var email = "test@example.com";
-//  var password = "hunter2";
-var email = document.getElementById("emailField").value;
-var password = document.getElementById("passField").value;
-var dis = document.getElementById("loginErrorDiv");
 
-if (email == ""){
-    //...change some div to no email entered
-    //console.log("No email was entered");
-    dis.innerHTML = "Please enter an email address";
-    return;
-}
-if (password == ""){
-    //...
-    //console.log("No password was entered");
-    dis.innerHTML = "Please enter a password";
-    return;
-}
+	var email = document.getElementById("emailField").value;
+	var password = document.getElementById("passField").value;
+	var dis = document.getElementById("loginErrorDiv");
+
+	if (email == ""){
+	    dis.innerHTML = "Please enter an email address";
+	    return;
+	}
+	if (password == ""){
+	    dis.innerHTML = "Please enter a password";
+	    return;
+	}
 
   // [START auth_signin_password]
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -37,8 +32,7 @@ if (password == ""){
       // Signed in
       var user = userCredential.user;
       console.log("Signed in");
-      // ...
-      window.location.assign("home.html"); //change this to actual web home page
+      window.location.assign("home.html");
   })
   .catch((error) => {
   	var errorCode = error.code;
@@ -48,31 +42,26 @@ if (password == ""){
   	console.log("Error "+errorCode +": "+errorMessage);
   	switch(errorCode){
   		case "auth/user-not-found":
-          //console.log("User not found"); //change this into showing error in div
           dis.innerHTML = "User not found";
+          dis.innerHTML = "User not found. <b><a onclick=\"location.href='signup.html';\">Signup?</a></b>";
+
           break;
           case "auth/user-disabled":
-          //console.log("User has been disabled");
           dis.innerHTML = "User has been disabled";
           break;
           case "auth/invalid-email":
-          //console.log("User has invalid Email");
           dis.innerHTML = "User has invalid Email";
           break;
           case "auth/wrong-password":
-          //console.log("Email or password is incorrect");
           dis.innerHTML = "The password you entered is incorrect. <b><a onclick=\"forgotPassword()\">Forgotten Password?</a></b>";
           break;
           default:
           console.log(errorCode + ": " + errorMessage);
       }
   });
-  // [END auth_signin_password]
 }
 function forgotPassword(){
-	var emailAddress = document.getElementById("emailField").value;
-
-  //should really take to some other screen instead where this can be completed
+  var emailAddress = document.getElementById("emailField").value;
 
   firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
   	var dis = document.getElementById("loginErrorDiv");
