@@ -43,7 +43,7 @@ function signInWithEmailPassword() {
   	switch(errorCode){
   		case "auth/user-not-found":
           dis.innerHTML = "User not found";
-          dis.innerHTML = "User not found. <b><a onclick=\"location.href='signup.html';\">Signup?</a></b>";
+          dis.innerHTML = "User not found. <b><a onclick=\"location.href='signup-options.html';\">Signup?</a></b>";
 
           break;
           case "auth/user-disabled":
@@ -102,11 +102,13 @@ function createUser() {
 function signinWithGoogle(){
 	console.log("Signin with Google");
 	var provider = new firebase.auth.GoogleAuthProvider();
+	
 	firebase.auth().signInWithPopup(provider)
   	.then((result) => {
 	    var credential = result.credential;
 	    var token = credential.accessToken;
 	    var user = result.user;
+	    window.location.assign("home.html");
 
   	}).catch((error) => {
 	    var errorCode = error.code;

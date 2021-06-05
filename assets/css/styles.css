@@ -250,3 +250,34 @@ body {
   margin-left: 10px;
 }
 
+#googleButton {
+  margin-top: 50px;
+  background-color: #4285F4;
+}
+
+#facebookButton {
+  background-color: #3B5998;
+}
+
+#microsoftButton {
+  background-color: #962EFC;
+}
+
+.btn.btn-primary.altAuthButtons {
+  margin: auto;
+  display: block;
+  font-size: 20px;
+  color: white;
+  margin-top: 40px;
+}
+
+.dividing-line {
+  width: 40%;
+  background: black;
+  margin-top: 50px;
+}
+
+#emailButton {
+  background-color: gray;
+}
+
