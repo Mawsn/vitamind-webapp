@@ -107,7 +107,7 @@ function signinWithGoogle(){
 	    var credential = result.credential;
 	    var token = credential.accessToken;
 	    var user = result.user;
-	    alert(user);
+	    alert(user.email);
 	    window.location.assign("home.html");
 
   	}).catch((error) => {
