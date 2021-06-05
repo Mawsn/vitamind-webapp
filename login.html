@@ -74,6 +74,7 @@ function signInWithEmailPassword() {
       var errorCode = error.code;
       var errorMessage = error.message;
 
+      dis.innerHTML = errorMessage;
       console.log("Error "+errorCode +": "+errorMessage);
       switch(errorCode){
         case "auth/user-not-found":
@@ -128,7 +129,7 @@ function forgotPassword(){
         <form class="login-form">
             <p class="onboarding-subheading">Email:</p><input class="form-control login-signup-fields" type="text" id="emailField">
             <p class="onboarding-subheading">Password:</p><input class="form-control login-signup-fields" type="password" id="passField">
-            <div id="loginErrorDiv" class="login-error"></div><button class="btn btn-primary login-signup-button" id="loginForm" type="button" onclick="signInWithEmailPassword()">Login</button>
+            <div id="loginErrorDiv"></div><button class="btn btn-primary login-signup-button" id="loginForm" type="button" onclick="signInWithEmailPassword()">Login</button>
         </form>
     </div>
     <script src="assets/js/jquery.min.js"></script>

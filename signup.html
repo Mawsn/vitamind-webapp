@@ -23,46 +23,50 @@
 </head>
 
 <body><script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
-    <script type="text/javascript">
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
-        authDomain: "vitatrack-75bda.firebaseapp.com",
-        projectId: "vitatrack-75bda",
-        storageBucket: "vitatrack-75bda.appspot.com",
-        messagingSenderId: "252880004411",
-        appId: "1:252880004411:web:671a716ffcb35a2e58431e",
-        measurementId: "G-SZZ8S3SJDS"
-      };
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+	<script type="text/javascript">
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+		apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
+		authDomain: "vitatrack-75bda.firebaseapp.com",
+		projectId: "vitatrack-75bda",
+		storageBucket: "vitatrack-75bda.appspot.com",
+		messagingSenderId: "252880004411",
+		appId: "1:252880004411:web:671a716ffcb35a2e58431e",
+		measurementId: "G-SZZ8S3SJDS"
+	  };
 
-      firebase.initializeApp(firebaseConfig);
+	  firebase.initializeApp(firebaseConfig);
 
-      function createUser() {
-        var email = document.getElementById("emailField").value;
-        var password = document.getElementById("passField").value;
+	  function createUser() {
+		var dis = document.getElementById("signupErrorDiv");
+		var email = document.getElementById("emailField").value;
+		var password = document.getElementById("passField").value;
 
-        if (email == ""){
-          console.log("No email was entered");
-          return;
-        }
-        if (password == ""){
-          console.log("No password was entered");
-          return;
-        }
+		if (email == ""){
+		  dis.innerHTML = "No email was entered";
+		  return;
+		}
+		if (password == ""){
+		  dis.innerHTML = "No password was entered";
+		  return;
+		}
 
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          var user = userCredential.user;
-        })
-        .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log("Error "+errorCode +": "+errorMessage);
-        });
-      }
-    </script>
+		firebase.auth().createUserWithEmailAndPassword(email, password)
+		.then((userCredential) => {
+		  var user = userCredential.user;
+		})
+		.catch((error) => {
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  console.log("Error "+errorCode +": "+errorMessage);
+
+		  dis.innerHTML = errorMessage;
+
+		});
+	  }
+	</script>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -77,7 +81,8 @@
         <h1 class="login-heading">Signup to VitaTrack</h1>
         <form class="login-form">
             <p class="onboarding-subheading">Email:</p><input class="form-control login-signup-fields" type="text" id="emailField">
-            <p class="onboarding-subheading">Password:</p><input class="form-control login-signup-fields" type="password" id="passField"><button class="btn btn-primary login-signup-button" id="loginForm" type="button" onclick="createUser()">Signup</button>
+            <p class="onboarding-subheading">Password:</p><input class="form-control login-signup-fields" type="password" id="passField">
+            <div id="signupErrorDiv"></div><button class="btn btn-primary login-signup-button" id="loginForm" type="button" onclick="createUser()">Signup</button>
         </form>
     </div>
     <script src="assets/js/jquery.min.js"></script>

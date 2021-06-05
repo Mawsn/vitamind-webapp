@@ -232,6 +232,13 @@ body {
   height: 20px;
 }
 
+#signupErrorDiv {
+  margin: auto;
+  padding-top: 10px;
+  width: auto;
+  height: 20px;
+}
+
 .nav-item.profile-image-nav {
   display: flex;
   flex-wrap: wrap;
