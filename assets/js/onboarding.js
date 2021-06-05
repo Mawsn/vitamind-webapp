@@ -139,7 +139,6 @@ function signinWithFacebook(){
     	var credential = result.credential;
     	var user = result.user;
     	var accessToken = credential.accessToken;
-    	alert(JSON.stringify(result, null, 4));
     	window.location.assign("home.html");
   	})
   	.catch((error) => {
