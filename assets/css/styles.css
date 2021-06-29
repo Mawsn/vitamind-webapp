@@ -150,6 +150,7 @@ body {
   font-size: 20px;
   color: white;
   margin-top: 40px;
+  border-radius: 9px;
 }
 
 #googleButton {
