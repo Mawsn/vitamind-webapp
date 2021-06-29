@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>VitaTrack</title>
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo-icon-512.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
 <script type="text/javascript">
@@ -26,13 +22,11 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
-        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;"><button data-toggle="collapse" class="navbar-toggler nav-toggler-login-signup" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><button class="btn btn-primary" id="login-button" type="button" onclick="location.href=&#39;index.html&#39;;">Home</button></li>
-                    <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;login-options.html&#39;;">Login</button></li>
-                </ul>
-            </div>
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
+            <ul class="navbar-nav ms-auto navbar-button-container">
+                <li class="nav-item"><button class="btn btn-primary" id="login-button" type="button" onclick="location.href=&#39;index&#39;;">Home</button></li>
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;signup-options.html&#39;;">Login</button></li>
+            </ul>
         </div>
     </nav>
     <div class="onboarding-bubble">
@@ -43,7 +37,6 @@
             <div id="signupErrorDiv"></div><button class="btn btn-primary login-signup-button" id="loginForm" type="button" onclick="createUser()">Signup</button>
         </form>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/onboarding.js"></script>
 </body>
