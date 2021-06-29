@@ -221,3 +221,17 @@ body {
   font-size: 20px;
 }
 
+#loginErrorDiv {
+  margin: auto;
+  padding-top: 10px;
+  width: auto;
+  height: 20px;
+}
+
+#signupErrorDiv {
+  margin: auto;
+  padding-top: 10px;
+  width: auto;
+  height: 20px;
+}
+
