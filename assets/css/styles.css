@@ -252,15 +252,27 @@ body {
 
 #googleButton {
   margin-top: 50px;
-  background-color: #4285F4;
+  background-color: #5796ff;
+  background-image: url(../../assets/img/google.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
 }
 
 #facebookButton {
   background-color: #3B5998;
+  background-image: url(../../assets/img/facebook-logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
 }
 
 #microsoftButton {
   background-color: #962EFC;
+  background-image: url(../../assets/img/microsoft-logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
 }
 
 #emailButton {
