@@ -249,21 +249,31 @@ body {
   width: initial;
 }
 
-.skin-types {
-  background-color: #1686AB;
-  border: 5px solid white;
+.skin-tone-option-row {
   margin: auto;
-  width: 40%;
-  color: white;
-}
-
-.skin-types td {
-  padding: 15px;
-  font-size: 22px;
+  display: table;
+  align-items: center;
+  background: #1686ab;
+  /*width: 35%;*/
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .skin-tone-image {
-  max-width: 10%;
-  margin-right: 100px;
+  width: 15%;
+  margin: 10px;
+  /*margin-right: 10%;*/
+}
+
+.skin-tone-text-heading {
+  color: white;
+  font-size: 24px;
+  /*text-align: left;*/
+  margin: 0px;
+}
+
+.skin-tone-text {
+  /*text-align: left;*/
+  color: white;
 }
 
