@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>VitaTrack</title>
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo-icon-512.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
 <script type="text/javascript">
@@ -24,8 +20,50 @@
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
 </head>
 
-<body>
-    <script src="assets/js/jquery.min.js"></script>
+<body class="white-background">
+    <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
+            <ul class="navbar-nav ms-auto navbar-button-container"></ul>
+        </div>
+    </nav><button class="btn btn-primary" id="camera-detection-button" type="button">Camera Detection</button><table class ="skin-types">
+  <tr class ="skin-types">
+    <td class ="skin-types">
+        <img src="assets/img/Skin%20Types/tone-1.png" class="skin-tone-image">
+        White/Pale/Freckled
+    </td>
+  </tr>
+  <tr class ="skin-types">
+    <td class ="skin-types">
+        <img src="assets/img/Skin%20Types/tone-2.png" class="skin-tone-image">
+        White/Pale with a beige tint
+    </td>
+  </tr>
+    <tr class ="skin-types">
+    <td class ="skin-types">
+        <img src="assets/img/Skin%20Types/tone-3.png" class="skin-tone-image">
+        White-olive skin
+    </td>
+  </tr>
+    <tr class ="skin-types">
+    <td class ="skin-types">
+        <img src="assets/img/Skin%20Types/tone-4.png" class="skin-tone-image">
+        Light to moderate brown
+    </td>
+  </tr>
+    <tr class ="skin-types">
+    <td class ="skin-types">
+        <img src="assets/img/Skin%20Types/tone-5.png" class="skin-tone-image">
+        Medium to dark brown
+    </td>
+  </tr>
+    <tr class ="skin-types">
+    <td class ="skin-types">
+        <img src="assets/img/Skin%20Types/tone-6.png" class="skin-tone-image">
+        Dark brown to black
+    </td>
+  </tr>
+</table>
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/onboarding.js"></script>
 </body>
