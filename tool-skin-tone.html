@@ -26,7 +26,7 @@
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container"></ul>
         </div>
-    </nav><button class="btn btn-primary" id="camera-detection-button" type="button">Camera Detection</button>
+    </nav><button class="btn btn-primary" id="camera-detection-button" type="button" onclick="file.click();">Camera Detection</button><input type="file" id="file" accept="image/*" name="image" onchange="setPic(event)" capture="camera" style="display: none;">
     <div class="skin-tone-container">
         <div class="skin-tone-option-row"><img class="skin-tone-image" src="assets/img/Skin%20Types/tone-1.png">
             <div>
@@ -64,8 +64,10 @@
                 <p class="skin-tone-text">Never Burns<br>Dark Brown Hair and Eyes<br></p>
             </div>
         </div>
-    </div>
+    </div><img id="output" style="display: none;">
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/image-processing.js"></script>
     <script src="assets/js/onboarding.js"></script>
 </body>
 
