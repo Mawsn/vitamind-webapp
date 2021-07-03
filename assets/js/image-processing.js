@@ -7,8 +7,8 @@ function init() {
 	$input = document.querySelector('#file');
 	$img = document.querySelector('#output');
 
-	navigator.mediaDevices.getUserMedia({video: true})
-	.catch(error => console.error('getUserMedia() error:', error));
+	//navigator.mediaDevices.getUserMedia({video: true})
+	//.catch(error => console.error('getUserMedia() error:', error));
 }
 
 
