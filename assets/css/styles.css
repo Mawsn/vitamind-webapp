@@ -251,9 +251,7 @@ body {
 .skin-tone-option-row {
   margin: auto;
   display: table;
-  align-items: center;
   background: #1686ab;
-  /*width: 35%;*/
   text-align: center;
   margin-bottom: 10px;
 }
@@ -261,18 +259,15 @@ body {
 .skin-tone-image {
   width: 15%;
   margin: 10px;
-  /*margin-right: 10%;*/
 }
 
 .skin-tone-text-heading {
   color: white;
   font-size: 24px;
-  /*text-align: left;*/
   margin: 0px;
 }
 
 .skin-tone-text {
-  /*text-align: left;*/
   color: white;
 }
 
