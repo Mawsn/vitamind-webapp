@@ -29,6 +29,10 @@ function getSwatches() {
 	//console.dir(colorArr);
 	console.log(colorArr.length);
 	console.dir(colorArr)
+    
+    document.getElementById("skin-tone-sample").style.backgroundColor = "rgb("+colorArr[0][0]+","+colorArr[0][1]+","+colorArr[0][2]+")";
+
+    
 	alert("Skin Tone Code = " + "rgb("+colorArr[0][0]+","+colorArr[0][1]+","+colorArr[0][2]+")");
 	//For each of the 5 colours, set each of the swatches to the corresponding colour 
 	for(var i = 0; i < colorArr.length; i++) {
