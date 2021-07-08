@@ -31,7 +31,7 @@ function signInWithEmailPassword() {
   .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
-      console.log("Signed in");
+      console.log("Signed in:" + user);
       window.location.assign("home.html");
   })
   .catch((error) => {
@@ -89,6 +89,7 @@ function createUser() {
 	firebase.auth().createUserWithEmailAndPassword(email, password)
 	.then((userCredential) => {
 		var user = userCredential.user;
+		console.log("Signed up:" + user);
 		window.location.assign("home.html");
 	})
 	.catch((error) => {
