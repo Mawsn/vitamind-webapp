@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>VitaTrack</title>
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo-icon-512.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
 <script type="text/javascript">
@@ -25,9 +22,11 @@
 </head>
 
 <body>
-    <script src="assets/js/jquery.min.js"></script>
+    <h1 id="welcomeBanner">User email address:&nbsp;</h1><button class="btn btn-primary" id="getUserDetailsTest" type="button" onclick="getUserDetails()">Get User Details</button><button class="btn btn-primary" id="logoutTest" type="button" onclick="firebase.auth().signOut()">Logout Test</button>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/onboarding.js"></script>
+    <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/image-processing.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

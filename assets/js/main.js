@@ -10,6 +10,10 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+//State change detector, helps to track which user is logged in 
+firebase.auth().onAuthStateChanged((user) => {
+    if(user) var uid = user.uid;
+});
 
 function signInWithEmailPassword() {
 
@@ -31,7 +35,7 @@ function signInWithEmailPassword() {
   .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
-      console.log("Signed in:" + user);
+      //alert(JSON.stringify(user, null, 4));
       window.location.assign("home.html");
   })
   .catch((error) => {
@@ -151,3 +155,16 @@ function signinWithFacebook(){
 	    alert(errorMessage);
   	});
 }
+
+
+
+
+
+function getUserDetails(){
+  const user = firebase.auth().currentUser;
+  alert(JSON.stringify(user, null, 4));
+  console.log(firebase.auth());
+   
+}
+
+

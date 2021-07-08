@@ -302,3 +302,19 @@ body {
   margin: auto 40px auto auto;
 }
 
+#getUserDetailsTest {
+  margin: auto;
+  display: block;
+  margin-top: 10%;
+}
+
+#welcomeBanner {
+  text-align: center;
+}
+
+#logoutTest {
+  margin: auto;
+  display: block;
+  margin-top: 10%;
+}
+
