@@ -89,6 +89,7 @@ function createUser() {
 	firebase.auth().createUserWithEmailAndPassword(email, password)
 	.then((userCredential) => {
 		var user = userCredential.user;
+		window.location.assign("home.html");
 	})
 	.catch((error) => {
 		var errorCode = error.code;
