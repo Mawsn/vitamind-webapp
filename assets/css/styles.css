@@ -291,8 +291,16 @@ body {
   width: 100%;
 }
 
-.progress-text-container {
-  margin-right: 40px;
+@media (max-width: 767px) {
+  .progress-text-container {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 767px) {
+  .progress-text-container {
+    margin-right: 40px;
+  }
 }
 
 .progress-heading {
