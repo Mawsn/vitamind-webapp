@@ -339,3 +339,10 @@ body {
   cursor: pointer;
 }
 
+.menu-container {
+  padding: 100px;
+  background: #2797bc;
+  display: none;
+  text-align: center;
+}
+
