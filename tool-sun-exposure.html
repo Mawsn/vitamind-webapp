@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>VitaTrack</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo-icon-512.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo-icon-512.png">
+<script type="text/javascript">
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+</head>
+
+<body class="white-background">
+    <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
+            <ul class="navbar-nav ms-auto navbar-button-container">
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;signup-options.html&#39;;">Product Scanner</button></li>
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;signup-options.html&#39;;">History</button></li>
+                <li class="nav-item"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobile-menu" id="mobile-menu-icon" onclick="expandMenu()">
+<path d="M6.25 8.75C6.25 8.05964 6.80964 7.5 7.5 7.5H32.5C33.1904 7.5 33.75 8.05964 33.75 8.75V8.75C33.75 9.44036 33.1904 10 32.5 10H7.5C6.80964 10 6.25 9.44036 6.25 8.75V8.75Z" fill="#F8B607"/>
+<path d="M6.25 20C6.25 19.3096 6.80964 18.75 7.5 18.75H32.5C33.1904 18.75 33.75 19.3096 33.75 20V20C33.75 20.6904 33.1904 21.25 32.5 21.25H7.5C6.80964 21.25 6.25 20.6904 6.25 20V20Z" fill="#F8B607"/>
+<path d="M6.25 31.25C6.25 30.5596 6.80964 30 7.5 30H32.5C33.1904 30 33.75 30.5596 33.75 31.25V31.25C33.75 31.9404 33.1904 32.5 32.5 32.5H7.5C6.80964 32.5 6.25 31.9404 6.25 31.25V31.25Z" fill="#F8B607"/>
+</svg>
+</li>
+                <li class="nav-item"><img id="profile-image" src="assets/img/profile-pic.png"></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="menu-fragment">
+        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
+    </div>
+    <div class="progress-container">
+        <div class="progress-ring-container"><svg width="80" height="80" viewBox="0 0 205 205" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-ring" preserveAspectRatio="xMidYMin">
+<path d="M205 102.5C205 159.109 159.109 205 102.5 205C45.8908 205 0 159.109 0 102.5C0 45.8908 45.8908 0 102.5 0C159.109 0 205 45.8908 205 102.5ZM20.5 102.5C20.5 147.787 57.2127 184.5 102.5 184.5C147.787 184.5 184.5 147.787 184.5 102.5C184.5 57.2127 147.787 20.5 102.5 20.5C57.2127 20.5 20.5 57.2127 20.5 102.5Z" fill="#C4C4C4"/>
+<path d="M102.5 5C102.5 2.23858 104.74 -0.0127225 107.498 0.121903C127.379 1.09226 146.587 7.83418 162.748 19.5758C178.909 31.3173 191.257 47.5023 198.323 66.1096C199.303 68.6912 197.854 71.5175 195.228 72.3708L185.242 75.6155C182.616 76.4689 179.809 75.0246 178.798 72.4552C173.09 57.9611 163.356 45.3572 150.698 36.1606C138.04 26.964 123.045 21.6014 107.497 20.6524C104.741 20.4841 102.5 18.2614 102.5 15.5L102.5 5Z" fill="#F8B607"/>
+<path d="M71.7001 92.6V115H69.3961V94.648H64.1161V92.6H71.7001ZM93.8136 115.16C92.1923 115.16 90.731 114.797 89.4296 114.072C88.1283 113.325 87.1043 112.301 86.3576 111C85.611 109.699 85.2376 108.227 85.2376 106.584C85.2376 104.941 85.611 103.469 86.3576 102.168C87.1043 100.867 88.1283 99.8533 89.4296 99.128C90.731 98.4027 92.1923 98.04 93.8136 98.04C95.435 98.04 96.8963 98.4027 98.1976 99.128C99.499 99.8533 100.512 100.867 101.238 102.168C101.984 103.469 102.358 104.941 102.358 106.584C102.358 108.227 101.984 109.699 101.238 111C100.512 112.301 99.499 113.325 98.1976 114.072C96.8963 114.797 95.435 115.16 93.8136 115.16ZM93.8136 113.144C95.0083 113.144 96.075 112.877 97.0136 112.344C97.9736 111.789 98.7203 111.011 99.2536 110.008C99.787 109.005 100.054 107.864 100.054 106.584C100.054 105.304 99.787 104.163 99.2536 103.16C98.7203 102.157 97.9736 101.389 97.0136 100.856C96.075 100.301 95.0083 100.024 93.8136 100.024C92.619 100.024 91.5416 100.301 90.5816 100.856C89.643 101.389 88.8963 102.157 88.3416 103.16C87.8083 104.163 87.5416 105.304 87.5416 106.584C87.5416 107.864 87.8083 109.005 88.3416 110.008C88.8963 111.011 89.643 111.789 90.5816 112.344C91.5416 112.877 92.619 113.144 93.8136 113.144ZM112.564 93.016C111.583 93.016 110.836 93.2827 110.324 93.816C109.833 94.3493 109.588 95.1387 109.588 96.184V98.168H114.772V100.088H109.652V115H107.38V100.088H104.372V98.168H107.38V96.088C107.38 94.552 107.817 93.336 108.692 92.44C109.588 91.544 110.847 91.096 112.468 91.096C113.108 91.096 113.727 91.192 114.324 91.384C114.921 91.5547 115.423 91.8107 115.828 92.152L115.06 93.848C114.399 93.2933 113.567 93.016 112.564 93.016ZM130.599 101.784C133.842 101.784 136.199 102.371 137.671 103.544C139.164 104.696 139.911 106.317 139.911 108.408C139.911 109.709 139.602 110.872 138.983 111.896C138.386 112.92 137.479 113.731 136.263 114.328C135.047 114.904 133.554 115.192 131.783 115.192C130.183 115.192 128.658 114.936 127.207 114.424C125.778 113.891 124.626 113.187 123.751 112.312L124.871 110.488C125.618 111.256 126.599 111.885 127.815 112.376C129.031 112.845 130.343 113.08 131.751 113.08C133.607 113.08 135.036 112.664 136.039 111.832C137.063 111 137.575 109.891 137.575 108.504C137.575 106.968 136.999 105.805 135.847 105.016C134.716 104.227 132.796 103.832 130.087 103.832H125.319L126.471 92.6H138.727V94.648H128.487L127.719 101.784H130.599Z" fill="black"/>
+</svg>
+</div>
+        <div class="progress-text-container">
+            <h1 class="progress-heading"><strong>Sun Exposure</strong></h1>
+            <p class="progress-subtext">Next: Results</p>
+        </div>
+    </div><div onload="getSeason()">
+    <h5 class="div-center">Please Select the Body Parts Covered from the Sun</h5>
+</div>
+<div onload="getSeason()"> <!-- style="text-align: center;" -->
+    <!-- Form needs to be implemented into this -->
+    <!-- <canvas class="center" id="myCanvas" height="650"></canvas> -->
+    <img src="assets/img/tool-figure/figure.png" usemap="#figureMap" draggable="false" class="tool-figure" id="figure"> 
+    
+    <img src="assets/img/tool-figure/figure_hat.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="headImg" usemap="#figureMap"> 
+    <img src="assets/img/tool-figure/figure_long_sleeve.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="longShirtImg" usemap="#figureMap">
+    <img src="assets/img/tool-figure/figure_shirt.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="shirtImg" usemap="#figureMap">
+    <img src="assets/img/tool-figure/figure_singlet.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="singletImg" usemap="#figureMap"> 
+    <img src="assets/img/tool-figure/figure_pants.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="pantsImg" usemap="#figureMap"> 
+    <img src="assets/img/tool-figure/figure_hands.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="handsImg" usemap="#figureMap"> 
+    
+    <map name="figureMap"> <!-- This makes the figure interactive -->
+        <area shape="poly" coords="103,117, 103,110, 100,105, 97,93, 93,87, 91,81, 91,76, 95,76, 95,63, 102,51, 114,45, 125,45, 138,51, 144,63, 144,76, 148,76, 148,81, 146,87, 143,93, 139,105, 136,110, 136,117" onclick="headFunction()" type="button">
+
+        <area shape="poly" coords="103,118, 136,118, 142,129, 162,136, 162,215, 161,250, 166,295, 73,295, 78,250, 76,215, 76,136, 98,128" onclick="torsoFunction()" type="button">
+        
+        <area shape="poly" coords="76,215, 74,224, 50,224, 55,163, 64,143, 76,136" onclick="upArmFunction()" type="button">
+        <area shape="poly" coords="162,215, 164,224, 189,224, 183,163, 176,143, 162,136" onclick="upArmFunction()" type="button">
+        
+        <area shape="poly" coords="74,225, 53,317, 31,317, 50,225" onclick="armFunction()" type="button">
+        <area shape="poly" coords="165,225, 186,317, 207,317, 190,225" onclick="armFunction()" type="button">
+        
+        <area shape="poly" coords="32,317, 53,317, 53,331, 49,360, 40,367, 32,369, 28,369, 21,363, 12,342, 12,339, 24,323" onclick="handsFunction()" type="button">
+        <area shape="poly" coords="208,317, 186,317, 186,331, 189,360, 197,367, 206,369, 210,369, 218,363, 226,342, 226,339, 215,323" onclick="handsFunction()" type="button">
+
+        <area shape="poly" coords="70,418, 111,418, 111,443, 106,547, 108,568, 100,579, 84,594, 61,588, 82,560, 84,542, 70,440" onclick="legsFunction()" type="button">
+        <area shape="poly" coords="120,418, 161,418, 160,440, 147,542, 148,560, 169,588, 146,594, 130,579, 123,568, 125,547, 120,443" onclick="legsFunction()" type="button">
+    </map>
+    <form style="visibility:hidden;" id="exposureForm" method="post">
+        <input type="checkbox" id="headForm" name="head">
+        <input type="checkbox" id="torsoForm" name="torso">
+        <input type="checkbox" id="upperArmForm" name="upper">
+        <input type="checkbox" id="lowerArmForm" name="arm">
+        <input type="checkbox" id="handsForm" name="hands">
+        <input type="checkbox" id="legsForm" name="legs">
+    </form>
+</div>
+    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button">Previous</button><button class="btn btn-primary" id="next-button" type="button">Next</button></div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/image-processing.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/skin-tone.js"></script>
+    <script src="assets/js/tool-calculations.js"></script>
+    <script src="assets/js/tool.js"></script>
+    <script src="assets/js/weather.js"></script>
+</body>
+
+</html>

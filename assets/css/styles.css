@@ -15,7 +15,6 @@ body {
     background-size: cover;
     background-size: cover;
     font-family: 'Montserrat';
-    /*min-width: fit-content;*/
   }
 }
 
@@ -363,5 +362,43 @@ body {
     max-width: 60px;
     display: none;
   }
+}
+
+.navigation-buttons-container {
+  margin: auto;
+  text-align: center;
+}
+
+#previous-button {
+  margin-right: 15px;
+  background-color: white;
+  border-color: #f8b607;
+  border-width: 2px;
+  margin: 10px;
+}
+
+#next-button {
+  margin: 10px;
+}
+
+/* Flynn's Code */
+
+.tool-figure {
+  position: relative;
+  margin-left: -120px;
+  left: 50%;
+  margin-right: auto;
+}
+
+.tool-figure-layer {
+  position: absolute;
+  margin-left: -120px;
+  left: 50%;
+  margin-right: auto;
+}
+
+.div-center {
+  text-align: center;
+  margin-top: 10px;
 }
 
