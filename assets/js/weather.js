@@ -1,6 +1,7 @@
 function getLocation(){
   if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
+    console.log("Got Location")
   } else {
     console.log("Geolocation not supported by browser")
   }
@@ -27,7 +28,8 @@ lon = 150.89314939999997; */ //uncomment this if you would like a preview of wea
 getLocation();
 console.log("2:"+lat);
 console.log("2:"+lon);
-var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
+//var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
+var link = "https://api.openweathermap.org/data/2.5/onecall?lat=-34.4250728&lon=150.89314939999997&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f";
 xhttp.open("GET", link, true);
 xhttp.send();
 
