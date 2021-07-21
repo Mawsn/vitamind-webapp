@@ -292,32 +292,6 @@ body {
   margin: auto;
 }
 
-.progress-container {
-  margin-top: 10px;
-  display: inline-flex;
-  text-align: right;
-  position: relative;
-  width: 100%;
-}
-
-.progress-text-container {
-  margin-right: 40px;
-}
-
-@media (max-width: 767px) {
-  .progress-text-container {
-    margin-right: 10px;
-  }
-}
-
-.progress-heading {
-  font-size: 24px;
-}
-
-.progress-ring-container {
-  margin: auto 40px auto auto;
-}
-
 #getUserDetailsTest {
   margin: auto;
   display: block;
@@ -400,5 +374,94 @@ body {
 .div-center {
   text-align: center;
   margin-top: 10px;
+}
+
+.progress-container {
+  margin-top: 20px;
+  display: inline-flex;
+  text-align: right;
+  position: relative;
+  width: 100%;
+  right: 50px;
+  justify-content: flex-end;
+}
+
+.progress-heading {
+  font-size: 24px;
+}
+
+.progressBar {
+  right: 20px;
+  height: 60px;
+  width: 60px;
+  position: relative;
+}
+
+.progressBar .innerCircle {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  height: 54px;
+  width: 54px;
+  margin: -27px 0 0 -27px;
+  background: #ffffff;
+  border-radius: 100%;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.progressBar .bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #dde6f0;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 60px, 60px, 30px);
+}
+
+.circle .bar .progressCircle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #f8b607;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 30px, 60px, 0px);
+}
+
+.circle .left .progressCircle {
+  z-index: 1;
+  animation: left 1s linear both;
+}
+
+@keyframes left {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.circle .right {
+  z-index: 3;
+  transform: rotate(180deg);
+}
+
+.circle .right .progressCircle {
+  z-index: 3;
+  animation: right 0.5s linear both;
+  animation-delay: 1s;
+}
+
+@keyframes right {
+  100% {
+    transform: rotate(108deg);
+  }
+}
+
+.progressBar .toolStep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  font-size: 11px;
 }
 
