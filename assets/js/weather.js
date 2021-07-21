@@ -1,20 +1,20 @@
 function getLocation(){
   if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
-    console.log("Got Location")
   } else {
     console.log("Geolocation not supported by browser")
   }
 }
 
-var lat;
-var lon;
 function showPosition(position){
   //x.innerHTML = "Latitude: " + position.coords.latitude + "Longitiude: " + position.coords.longitude;
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
+  var lat = position.coords.latitude;
+  var lon = position.coords.longitude;
   console.log("1:"+lat);
   console.log("1:"+lon);
+  var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
+  xhttp.open("GET", link, true);
+  xhttp.send();
 }
 
 var xhttp = new XMLHttpRequest();
@@ -23,15 +23,14 @@ xhttp.onreadystatechange = function(){
   readyStateChangeHandler(xhttp);
 }
 
-/*lat = -34.4250728;
-lon = 150.89314939999997; */ //uncomment this if you would like a preview of weather chart
 getLocation();
-console.log("2:"+lat);
+/*
+console.log("2:"+lat); //this is called first
 console.log("2:"+lon);
-//var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
-var link = "https://api.openweathermap.org/data/2.5/onecall?lat=-34.4250728&lon=150.89314939999997&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f";
+var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
+//var link = "https://api.openweathermap.org/data/2.5/onecall?lat=-34.4250728&lon=150.89314939999997&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f";
 xhttp.open("GET", link, true);
-xhttp.send();
+xhttp.send(); */
 
 function readyStateChangeHandler(xhttp){
   if (xhttp.readyState == 4) { //ready
