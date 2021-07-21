@@ -7,11 +7,8 @@ function getLocation(){
 }
 
 function showPosition(position){
-  //x.innerHTML = "Latitude: " + position.coords.latitude + "Longitiude: " + position.coords.longitude;
   var lat = position.coords.latitude;
   var lon = position.coords.longitude;
-  console.log("1:"+lat);
-  console.log("1:"+lon);
   var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
   xhttp.open("GET", link, true);
   xhttp.send();
@@ -24,13 +21,6 @@ xhttp.onreadystatechange = function(){
 }
 
 getLocation();
-/*
-console.log("2:"+lat); //this is called first
-console.log("2:"+lon);
-var link = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f"; //Requires api key
-//var link = "https://api.openweathermap.org/data/2.5/onecall?lat=-34.4250728&lon=150.89314939999997&exclude=hourly&units=metric&appid=1c62774a9150725e072ade4d16c1040f";
-xhttp.open("GET", link, true);
-xhttp.send(); */
 
 function readyStateChangeHandler(xhttp){
   if (xhttp.readyState == 4) { //ready
