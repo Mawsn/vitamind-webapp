@@ -25,7 +25,7 @@ function authStateListener() {
       // User is signed out
       // ...
       //alert("Not signed in");
-        window.location.assign("login-options.html");
+        //window.location.assign("login-options.html");
     }
   });
   // [END auth_state_listener]
