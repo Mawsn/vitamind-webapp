@@ -5,10 +5,11 @@ let inputMinutes = sessionStorage.getItem("inputMinutes"); //For winter can only
 let chartSelect = sessionStorage.getItem("exposureChart");//Should be selected based on geolocation and season
 var minutes = 0;
 
+/*
 if (chartSelect == null){ //temporary
     chartSelect = "summerChart";
     console.log("Temporary condition defaulting chart to summer: tool-calculations Line 8");
-}
+} */
 
 //gets sun exposure data
 var exposureRef = db.collection("exposureChart").doc(chartSelect);

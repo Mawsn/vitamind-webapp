@@ -28,12 +28,13 @@ function getSeason(){
             navigator.geolocation.getCurrentPosition(showPosition);
             if (lat <= -26 && lat >= -29){ //Brisbane
                 console.log("Brisbane");
-                sessionStorage.setItem("exposureChart", "winterAChart");
+                sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
             } else if (lat >= -36 && lat < -26){ //Sydney Perth
                 console.log("Sydney");
-                sessionStorage.setItem("exposureChart", "winterBChart");
+                sessionStorage.setItem("exposureChart", "winterSydneyChart");
             } else if (lat < -36) { //Not sufficient sunlight, only use oral intake
-                
+                //set some variable
+                //move to results screen
             }
         } else {
             console.log("Geolocation not supported by browser")
