@@ -474,3 +474,61 @@ body {
   margin-bottom: 50px;
 }
 
+.btn.exposure-btn {
+  background: #f8b607;
+  border-radius: 32px;
+  border-color: rgba(255,255,255,0);
+  color: black;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.time-data {
+  background: #1686AB;
+  width: 50%;
+  height: 350px;
+  border-radius: 25px;
+  margin: auto;
+  position: relative;
+}
+
+.form-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  text-align: left;
+}
+
+.time-input {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.result-overall {
+  height: 200px;
+  width: 200px;
+  background-color: #f8b607;
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+}
+
+.letter-grade {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 144px;
+  font-weight: bold;
+  color: #ffffff;
+}
+

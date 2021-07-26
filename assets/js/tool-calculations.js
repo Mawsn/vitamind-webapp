@@ -1,16 +1,25 @@
 let db = firebase.firestore();
-let type = "Type_2";
-let sunExposure = "5";
-let inputMinutes = 3;
+let type = sessionStorage.getItem("skin-tone-value");
+let sunExposure = sessionStorage.getItem("skinExposurePerc");
+let inputMinutes = sessionStorage.getItem("inputMinutes"); //For winter can only use time between 11am and 1pm
+let chartSelect = sessionStorage.getItem("exposureChart");//Should be selected based on geolocation and season
 var minutes = 0;
 
+if (chartSelect == null){ //temporary
+    chartSelect = "summerChart";
+    console.log("Temporary condition defaulting chart to summer: tool-calculations Line 8");
+}
+
 //gets sun exposure data
-var exposureRef = db.collection("exposureChart").doc("summerChart");
+var exposureRef = db.collection("exposureChart").doc(chartSelect);
 exposureRef.get().then((doc) => {
     if (doc.exists){
         var chart = doc.data();
+        console.log(type);
+        console.log("Exposure Percentage: "+sunExposure);
         minutes = chart[type][sunExposure];
-        console.log(minutes);
+        console.log("Recommended Minutes: "+minutes);
+        console.log("Input Minutes: "+inputMinutes);
     } else {
         console.log("Document doesn't exist");
     }
@@ -18,15 +27,19 @@ exposureRef.get().then((doc) => {
     console.log("Error getting doc", error);
 });
 
-function test(){//calculations
-    if (inputMinutes >= minutes){
-        alert("Sun Exposure: Grade A " + inputMinutes +" " + minutes);
+function calGrade(){//calculations
+    var inputMinutes = sessionStorage.getItem("inputMinutes");
+    if (inputMinutes >= minutes){ //meets requirements for sun exposure
+        sessionStorage.setItem("sunGrade", "A");
+        sessionStorage.setItem("recommendedMinutes", minutes);
     } else if (inputMinutes < minutes){
         var temp = minutes/2;
-        if (inputMinutes >= temp){
-            alert("Sun Exposure: Grade B " + inputMinutes +" "+ temp);
-        } else {
-            alert("Sun Exposure: Grade C "+ inputMinutes+" "+ temp);
+        if (inputMinutes >= temp){ //Doesn't meet requirements for sun exposure but not bad
+            sessionStorage.setItem("sunGrade", "B");
+            sessionStorage.setItem("recommendedMinutes", minutes);
+        } else { //below 50% recommended exposure
+            sessionStorage.setItem("sunGrade", "C");
+            sessionStorage.setItem("recommendedMinutes", minutes);
         }
     }
 }

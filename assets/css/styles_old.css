@@ -1,0 +1,476 @@
+body {
+  background: url(../../assets/img/light_bg.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-size: cover;
+  font-family: 'Montserrat';
+}
+
+@media (max-width: 767px) {
+  body {
+    background: url(../../assets/img/mobile_bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-size: cover;
+    font-family: 'Montserrat';
+  }
+}
+
+.white-background {
+  background: white;
+}
+
+.btn.btn-primary {
+  background: #f8b607;
+  border-radius: 32px;
+  border-color: rgba(255,255,255,0);
+  color: black;
+  width: 170px;
+}
+
+#logo-landscape {
+  max-width: 220px;
+  display: inline-block;
+}
+
+.nav-item {
+  padding-right: 10px;
+  margin: auto;
+}
+
+.homepage-navbar, .login-signup-navbar {
+  background-color: #1686AB;
+}
+
+@media (max-width: 767px) {
+  .homepage-navbar {
+    display: none;
+  }
+}
+
+#home-logo-standard {
+  max-width: 300px;
+  display: block;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+  #home-logo-standard {
+    margin-top: 15%;
+  }
+}
+
+#home-buttons-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #home-buttons-mobile {
+    display: block;
+    margin-top: 30%;
+  }
+}
+
+#home-buttons-mobile button {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 8%;
+}
+
+#home-info-text {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+}
+
+@media (max-width: 767px) {
+  #home-info-text {
+    display: none;
+  }
+}
+
+#guest-button {
+  margin: auto;
+  display: block;
+  box-shadow: 0px 8px 10px rgb(0,94,198);
+}
+
+@media (max-width: 767px) {
+  #guest-button {
+    display: none;
+  }
+}
+
+.navbar-button-container svg {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .navbar-button-container svg {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-button-container button {
+    display: none;
+  }
+}
+
+.onboarding-bubble {
+  width: 60%;
+  height: 600px;
+  background-color: #DDDD;
+  opacity: 80%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+@media (max-width: 767px) {
+  .onboarding-bubble {
+    background-color: transparent;
+  }
+}
+
+.login-heading {
+  font-size: 32px;
+  text-align: center;
+  padding-top: 22px;
+  color: black;
+}
+
+@media (max-width: 767px) {
+  .login-heading {
+    display: none;
+  }
+}
+
+.btn.btn-primary.altAuthButtons {
+  margin: auto;
+  display: block;
+  font-size: 20px;
+  color: white;
+  margin-top: 40px;
+  border-radius: 9px;
+}
+
+#googleButton {
+  margin-top: 51px;
+  background-color: #5796ff;
+  background-image: url(../../assets/img/google.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+}
+
+#facebookButton {
+  background-color: #3B5998;
+  background-image: url(../../assets/img/facebook-logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+}
+
+#microsoftButton {
+  background-color: #962EFC;
+  background-image: url(../../assets/img/microsoft-logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+}
+
+#emailButton {
+  background-color: gray;
+}
+
+.dividing-line {
+  width: 40%;
+  background-color: black;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.login-form {
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+  .login-form {
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    width: 110%;
+  }
+}
+
+.onboarding-subheading {
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.login-signup-fields {
+  border-radius: 10px;
+  border: black 1px;
+}
+
+.btn.btn-primary.login-signup-button {
+  margin: auto;
+  display: block;
+  margin-top: 170px;
+  font-size: 20px;
+}
+
+#loginErrorDiv {
+  margin: auto;
+  padding-top: 10px;
+  width: auto;
+  height: 20px;
+}
+
+#signupErrorDiv {
+  margin: auto;
+  padding-top: 10px;
+  width: auto;
+  height: 20px;
+}
+
+#camera-detection-button {
+  margin: auto;
+  display: block;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: initial;
+}
+
+.skin-tone-option-row {
+  margin: auto;
+  display: table;
+  background: #2797bc;
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.skin-tone-image {
+  width: 15%;
+  margin: 10px;
+}
+
+.skin-tone-text-heading {
+  color: white;
+  font-size: 24px;
+  margin: 0px;
+}
+
+.skin-tone-text {
+  color: white;
+}
+
+.skin-tone-container {
+  margin: 10px;
+}
+
+#skin-tone-sample {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+}
+
+#getUserDetailsTest {
+  margin: auto;
+  display: block;
+  margin-top: 10%;
+}
+
+#welcomeBanner {
+  text-align: center;
+}
+
+#logoutTest {
+  margin: auto;
+  display: block;
+  margin-top: 10%;
+}
+
+.mobile-menu {
+  cursor: pointer;
+}
+
+#menu-fragment {
+  background: #2797bc;
+  display: none;
+  text-align: center;
+}
+
+.mobile-menu-button {
+  margin: 8px;
+}
+
+#menu-button-container {
+  display: inline-grid;
+}
+
+#profile-image {
+  max-width: 60px;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  #profile-image {
+    max-width: 60px;
+    display: none;
+  }
+}
+
+.navigation-buttons-container {
+  margin: auto;
+  text-align: center;
+}
+
+#previous-button {
+  margin-right: 15px;
+  background-color: white;
+  border-color: #f8b607;
+  border-width: 2px;
+  margin: 10px;
+}
+
+#next-button {
+  margin: 10px;
+}
+
+/* Flynn's Code */
+
+.tool-figure {
+  position: relative;
+  margin-left: -120px;
+  left: 50%;
+  margin-right: auto;
+}
+
+.tool-figure-layer {
+  position: absolute;
+  margin-left: -120px;
+  left: 50%;
+  margin-right: auto;
+}
+
+.div-center {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.progress-container {
+  margin-top: 20px;
+  display: inline-flex;
+  text-align: right;
+  position: relative;
+  width: 100%;
+  right: 50px;
+  justify-content: flex-end;
+}
+
+.progress-heading {
+  font-size: 24px;
+}
+
+.progressBar {
+  right: 20px;
+  height: 60px;
+  width: 60px;
+  position: relative;
+}
+
+.progressBar .innerCircle {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  height: 54px;
+  width: 54px;
+  margin: -27px 0 0 -27px;
+  background: #ffffff;
+  border-radius: 100%;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.progressBar .bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #dde6f0;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 60px, 60px, 30px);
+}
+
+.circle .bar .progressCircle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #f8b607;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 30px, 60px, 0px);
+}
+
+.circle .left .progressCircle {
+  z-index: 1;
+  animation: left 1s linear both;
+}
+
+@keyframes left {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.circle .right {
+  z-index: 3;
+  transform: rotate(180deg);
+}
+
+.circle .right .progressCircle {
+  z-index: 3;
+  animation: right 0.5s linear both;
+  animation-delay: 1s;
+}
+
+@keyframes right {
+  100% {
+    transform: rotate(108deg);
+  }
+}
+
+.progressBar .toolStep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  font-size: 11px;
+}
+
+#weather_display {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+

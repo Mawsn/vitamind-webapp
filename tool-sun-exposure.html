@@ -22,7 +22,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
 </head>
 
-<body class="white-background">
+<body class="white-background" onload="authStateListener();">
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
@@ -97,17 +97,11 @@
         <input type="checkbox" id="legsForm" name="legs">
     </form>
 </div>
-    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="setSessionData()">Next</button><button class="btn btn-primary" type="button" onclick="getSessionData()">Temp Get Button</button></div>
+    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="setSessionData();location.href=&#39;tool-sun-exposure-2.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/color-thief.min.js"></script>
-    <script src="assets/js/image-processing.js"></script>
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
-    <script src="assets/js/skin-tone.js"></script>
-    <script src="assets/js/tool-calculations.js"></script>
-    <script src="assets/js/tool.js"></script>
-    <script src="assets/js/weather.js"></script>
+    <script src="assets/js/sun-exposure-tool.js"></script>
 </body>
 
 </html>
