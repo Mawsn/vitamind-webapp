@@ -13,26 +13,24 @@ function showPosition(position){
 function getSeason(){
     var date = new Date();
     var month = date.getMonth();
-    console.log("Any errors from here are likely within sun-exposure-tool.js in getSeason()");
     
     if ((month >= 8 && month <= 11) || (month == 0 || month == 1)){
         console.log("Summer");
         sessionStorage.setItem("exposureChart", "summerChart");
     } else {
-        console.log("Winter: Uncomment Lines for season later: tools.js line 24-27");
         /*document.getElementById("mornLabel").style.visibility = "hidden";
         document.getElementById("afternoonLabel").style.visibility = "hidden";
         document.getElementById("morningMinutes").style.visibility = "hidden";
         document.getElementById("afternoonMinutes").style.visibility = "hidden"; */
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(showPosition);
-            if (lat <= -26 && lat >= -29){ //Brisbane
+            if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
                 console.log("Brisbane");
                 sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
-            } else if (lat >= -36 && lat < -26){ //Sydney Perth
+            } else if (lat < -30.0888 && lat >= -34.2080){ //Sydney Perth
                 console.log("Sydney");
                 sessionStorage.setItem("exposureChart", "winterSydneyChart");
-            } else if (lat < -36) { //Not sufficient sunlight, only use oral intake
+            } else if (lat < -34.2080) { //Not sufficient sunlight, only use oral intake
                 //set some variable
                 //move to results screen
             }

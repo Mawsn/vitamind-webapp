@@ -54,16 +54,14 @@
             <p class="progress-subtext">Next: Results</p>
         </div>
     </div>
-    <h5 class="div-center">Please enter the minutes you were exposed to the sun for each time</h5><div class="div-center time-data">
-    <form class="form-center">
-    <p class="skin-tone-text-heading" id="mornLabel">9:00am - 11:00am</p>
-    <input type="number" name="morning" class="time-input" id="morningMinutes" placeholder="Estimated Minutes"><br/><br/>
-    <p class="skin-tone-text-heading" id="lunchLabel">11:00am - 1:00pm</p>
-    <input type="number" name="morning" class="time-input" id="lunchMinutes" placeholder="Estimated Minutes"><br/><br/>
-    <p class="skin-tone-text-heading" id="afternoonLabel">1:00pm - 3:00pm</p>
-    <input type="number" name="morning" class="time-input" id="afternoonMinutes" placeholder="Estimated Minutes">
-    </form>
-</div>
+    <h5 class="div-center">Please enter the minutes you were exposed to the sun for each time</h5>
+    <div class="div-center time-data">
+        <form class="form-center">
+            <p id="mornLabel" class="skin-tone-text-heading minutes-exposure-heading">9:00am - 11:00am<input class="form-control time-input" type="number" id="morningMinutes" placeholder="Estimated Minutes"></p>
+            <p id="lunchLabel" class="skin-tone-text-heading minutes-exposure-heading">11:00am - 1:00pm<br><input class="form-control time-input" type="number" id="lunchMinutes" placeholder="Estimated Minutes"></p>
+            <p id="afternoonLabel" class="skin-tone-text-heading minutes-exposure-heading">1:00pm - 3:00pm<br><input class="form-control time-input" type="number" id="eveningMinutes" placeholder="Estimated Minutes"></p>
+        </form>
+    </div>
     <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="setMinutesData();calGrade();location.href=&#39;result-temp.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>

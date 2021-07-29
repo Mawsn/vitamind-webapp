@@ -495,13 +495,27 @@ body {
   position: relative;
 }
 
+@media (max-width: 767px) {
+  .time-data {
+    width: 90%;
+    border-radius: 10px;
+  }
+}
+
 .form-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  text-align: left;
+  position: relative;
+  max-width: 65%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+@media (max-width: 767px) {
+  .form-center {
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+    padding-top: 30px;
+  }
 }
 
 .time-input {
@@ -510,6 +524,11 @@ body {
   border-color: black;
   border-radius: 10px;
   width: 100%;
+  margin-bottom: 5%;
+}
+
+.minutes-exposure-heading {
+  text-align: left;
 }
 
 .result-overall {
