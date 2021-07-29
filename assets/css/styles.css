@@ -551,3 +551,67 @@ body {
   color: #ffffff;
 }
 
+.profile-bubble {
+  height: 600px;
+  background-color: #DDDD;
+  opacity: 80%;
+  border-radius: 20px;
+  width: 40%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+@media (max-width: 767px) {
+  .profile-bubble {
+    width: 90%;
+  }
+}
+
+#my-profile-heading {
+  font-size: 28px;
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+@media (max-width: 767px) {
+  #my-profile-heading {
+    margin-left: 15px;
+  }
+}
+
+#profile-hr {
+  max-width: 90%;
+  margin: auto;
+  margin-top: 25px;
+  border-top: 1px solid #000000;
+}
+
+#my-profile-subheading {
+  font-size: 22px;
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+.profile-subsection-heading {
+  margin-left: 30px;
+  padding-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile-input-fields {
+  width: 80%;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+
+.profile-buttons {
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+#account-settings-button {
+  margin-top: 140px;
+}
+
