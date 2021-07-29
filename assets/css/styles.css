@@ -615,3 +615,35 @@ body {
   margin-top: 140px;
 }
 
+.results-head {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.results-container {
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 20px;
+  margin-bottom: 10%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #9fa8b0;
+  border-radius: 30px;
+}
+
+.results_table {
+  margin: 10px auto;
+  text-align: left;
+  width: 80%;
+}
+
+@media (max-width: 767px) {
+  .results_table {
+    margin: 5%;
+    text-align: left;
+    width: 90%;
+  }
+}
+
