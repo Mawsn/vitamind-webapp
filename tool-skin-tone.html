@@ -56,7 +56,7 @@
             <h1 class="progress-heading"><strong>Skin Tone</strong></h1>
             <p class="progress-subtext">Next: Food Intake</p>
         </div>
-    </div><button class="btn btn-primary" id="camera-detection-button" type="button" onclick="file.click();alert(&quot;Note: To ensure detection accuracy, please ensure you upload an image that predominantly features your skin and is neutrally lit. This can be achieved using your device&#39;s camera flash.&quot;);">Camera Detection</button><input type="file" id="file" accept="image/*" name="image" onchange="setPic(event)" capture="camera" style="display: none;">
+    </div><button class="btn btn-primary" id="camera-detection-button" type="button" onclick="alert(&quot;Note: To ensure detection accuracy, please ensure you upload an image that predominantly features your skin and is neutrally lit. This can be achieved using your device&#39;s camera flash.&quot;);file.click();">Camera Detection</button><input type="file" id="file" accept="image/*" name="image" onchange="setPic(event)" capture="camera" style="display: none;">
     <div class="skin-tone-container">
         <div class="skin-tone-option-row" onclick="location.href=&#39;tool-sun-exposure.html&#39;;sessionStorage.setItem(&quot;skin-tone-value&quot;,&quot;Type_1&quot;);"><img class="skin-tone-image" src="assets/img/Skin%20Types/tone-1.png">
             <div>
