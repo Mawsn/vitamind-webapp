@@ -647,3 +647,7 @@ body {
   }
 }
 
+#output {
+  display: none;
+}
+
