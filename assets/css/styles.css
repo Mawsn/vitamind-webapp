@@ -676,7 +676,7 @@ body {
 .dietary-input-fields {
   width: 60%;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid black;
   margin: auto;
   height: 50px;
 }
