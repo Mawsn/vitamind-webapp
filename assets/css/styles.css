@@ -652,3 +652,57 @@ body {
   display: none;
 }
 
+.dietary-bubble {
+  background-color: #C4C4C4;
+  opacity: 80%;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+}
+
+@media (max-width: 767px) {
+  .dietary-bubble {
+    width: 95%;
+  }
+}
+
+.dietary_form {
+  width: 100%;
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.dietary-input-fields {
+  width: 60%;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: auto;
+  height: 50px;
+}
+
+@media (max-width: 767px) {
+  .dietary-input-fields {
+    width: 90%;
+  }
+}
+
+#dietary-top-input {
+  margin-bottom: 5%;
+}
+
+.dietary-add-button {
+  height: 40px;
+  width: 40px;
+  background-color: #f8b607;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 20.5%;
+}
+
+@media (max-width: 767px) {
+  .dietary-add-button {
+    margin-left: 3%;
+  }
+}
+
