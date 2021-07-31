@@ -60,16 +60,19 @@
             <p class="progress-subtext">Next: Supplement Intake<br></p>
         </div>
     </div>
-    <div class="dietary-bubble">
-        <form class="dietary_form"><input class="form-control dietary-input-fields" type="text" id="dietary-top-input" placeholder="Food Product"><input class="form-control dietary-input-fields" type="text" placeholder="Servings Per Week"></form>
+    <div id="dietary-parent-container">
+        <div id="dietary-bubble-0" class="dietary-bubble">
+            <form class="dietary_form"><input class="form-control dietary-input-fields" type="text" id="dietary-top-input" placeholder="Food Product"><input class="form-control dietary-input-fields" type="text" placeholder="Servings Per Week"></form>
+        </div>
     </div>
-    <div class="dietary-add-button" style="cursor: pointer;">
+    <div class="dietary-add-button" style="cursor: pointer;" onclick="addFood();">
         <p style="text-align: center;padding-top:3px;font-size:22px;font-weight:bold;">+</p>
     </div>
     <div class="navigation-buttons-container" style="cursor: pointer;"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="location.href=&#39;tool-sun-exposure.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary.js"></script>
     <script src="assets/js/image-processing.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/main.js"></script>
