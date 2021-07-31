@@ -185,19 +185,19 @@ function setSessionData(){
 }
 
 function setMinutesData(){
-   // sessionStorage.setItem("sunMorningMinutes", document.getElementById("morningMinutes").value);
-    
-   // sessionStorage.setItem("sunLunchMinutes", document.getElementById("lunchMinutes").value);
-    
-   // sessionStorage.setItem("sunAfternoonMinutes", document.getElementById("afternoonMinutes").value);
     var inputMinutes = 0;
+    var inputType = sessionStorage.getItem("exposure-measurement");
     if (chartSelect == "summerChart"){
         var morn = Number(document.getElementById("morningMinutes").value);
         var lunch = Number(document.getElementById("lunchMinutes").value);
         var afternoon = Number(document.getElementById("afternoonMinutes").value);
         inputMinutes = morn + lunch + afternoon;
+        
     } else {
         inputMinutes = Number(document.getElementById("lunchMinutes").value);
+    }
+    if (inputType == "weekly"){
+        inputMinutes = Math.round(inputMinutes / 7); //Divided into daily units
     }
     sessionStorage.setItem("inputMinutes", inputMinutes);
     

@@ -1,5 +1,5 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+/*const firebaseConfig = {
   apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
   authDomain: "vitatrack-75bda.firebaseapp.com",
   projectId: "vitatrack-75bda",
@@ -9,7 +9,7 @@ const firebaseConfig = {
   measurementId: "G-SZZ8S3SJDS"
 };
 
-firebase.initializeApp(firebaseConfig); 
+firebase.initializeApp(firebaseConfig); */
 
 function authStateListener() {
   // [START auth_state_listener]

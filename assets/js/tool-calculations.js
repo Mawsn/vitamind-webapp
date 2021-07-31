@@ -30,6 +30,7 @@ exposureRef.get().then((doc) => {
 
 function calGrade(){//calculations
     var inputMinutes = sessionStorage.getItem("inputMinutes");
+    
     if (inputMinutes >= minutes){ //meets requirements for sun exposure
         sessionStorage.setItem("sunGrade", "A");
         sessionStorage.setItem("recommendedMinutes", minutes);
