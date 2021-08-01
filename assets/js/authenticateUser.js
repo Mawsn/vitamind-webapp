@@ -20,7 +20,6 @@ function authStateListener() {
         var uid = user.uid;
       // ...
         console.log("UID: "+uid);
-        getSeason();
     } else {
       // User is signed out
       // ...

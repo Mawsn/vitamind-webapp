@@ -431,10 +431,54 @@ body {
 
 .circle .left .progressCircle {
   z-index: 1;
-  animation: left 1s linear both;
+  animation: left 0.4s linear both;
 }
 
 @keyframes left {
+  100% {
+    transform: rotate(72deg);
+  }
+}
+
+.circle .left .progressCircle2 {
+  z-index: 1;
+  animation: left2 0.8s linear both;
+}
+
+@keyframes left2 {
+  100% {
+    transform: rotate(144deg);
+  }
+}
+
+.circle .left .progressCircle3 {
+  z-index: 1;
+  animation: left3 1s linear both;
+}
+
+@keyframes left3 {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.circle .left .progressCircle4 {
+  z-index: 1;
+  animation: left4 1s linear both;
+}
+
+@keyframes left4 {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.circle .left .progressCircle5 {
+  z-index: 1;
+  animation: left5 1s linear both;
+}
+
+@keyframes left5 {
   100% {
     transform: rotate(180deg);
   }
@@ -445,15 +489,39 @@ body {
   transform: rotate(180deg);
 }
 
-.circle .right .progressCircle {
+.circle .right .progressCircle3 {
   z-index: 3;
-  animation: right 0.5s linear both;
+  animation: right3 0.2s linear both;
   animation-delay: 1s;
 }
 
-@keyframes right {
+@keyframes right3 {
+  100% {
+    transform: rotate(36deg);
+  }
+}
+
+.circle .right .progressCircle4 {
+  z-index: 3;
+  animation: right4 0.6s linear both;
+  animation-delay: 1s;
+}
+
+@keyframes right4 {
   100% {
     transform: rotate(108deg);
+  }
+}
+
+.circle .right .progressCircle5 {
+  z-index: 3;
+  animation: right5 1s linear both;
+  animation-delay: 1s;
+}
+
+@keyframes right5 {
+  100% {
+    transform: rotate(180deg);
   }
 }
 

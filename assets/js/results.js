@@ -12,15 +12,60 @@ inputTime.innerHTML = "Total Daily Time Exposed to Sun: "+sessionStorage.getItem
 var recommendedTime = document.getElementById("recommendedTime");
 recommendedTime.innerHTML = "Recommended Minimum Sun Exposure: "+sessionStorage.getItem("recommendedMinutes")+" minutes.";
 
+var likelyhood = document.getElementById("deficiencyLikelyhood");
+if (sessionStorage.getItem("sunGrade") == "A"){
+    likelyhood.innerHTML = "Unlikely to be insufficient";
+} else if (sessionStorage.getItem("sunGrade") == "B"){
+    likelyhood.innerHTML = "Moderately likely to be insufficient";
+} else if (sessionStorage.getItem("sunGrade") == "C"){
+    likelyhood.innerHTML = "Highly likely to be insufficient";
+}
+
+
+var inputMin = Number(sessionStorage.getItem("inputMinutes"));
+var recommendedMin = Number(sessionStorage.getItem("recommendedMinutes"));
+
+if (inputMin < recommendedMin){
+    var minutesRequired = recommendedMin - inputMin;
+    document.getElementById("requiredMinutes").innerHTML = "Additional: "+minutesRequired + " minute/s required";
+} else {
+    document.getElementById("requiredMinutes").innerHTML = "Required minutes reached";
+}
+
 firebase.auth().onAuthStateChanged((user) =>{
     if (user !== null){
+        var userRef = db.collection("users").doc(user.uid);
+        userRef.get().then((doc) => {
+           if (doc.exists){
+               console.log("User doc exists");
+               var userData = doc.data();
+               var prevResult = userData["results"][userData["results"].length-1];
+               console.log(prevResult);
+               var date = prevResult["date"].toDate();
+
+               document.getElementById("prevDate").innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();;
+               
+               document.getElementById("prevGrade").innerHTML = prevResult["letterGrade"];
+               
+               document.getElementById("prevLikelyhood").innerHTML = prevResult["deficiencyChance"];
+               
+               document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
+           } else {
+               console.log("No previous history");
+               document.getElementById("prevResultsHeading").remove();
+               document.getElementById("prevResultsTable").remove();
+           }
+        }).catch((error) => {
+            console.log("Error getting document: ", error);
+        });
+        
+        
         var resultData = {
             date: firebase.firestore.Timestamp.fromDate(new Date()),
-            exposureMinutes: sessionStorage.getItem("inputMinutes"),
-            recommendedMinutes: sessionStorage.getItem("recommendedMinutes"),
-            skinTone: sessionStorage.getItem("skin-tone-value")
+            letterGrade: sessionStorage.getItem("sunGrade"),
+            deficiencyChance: likelyhood.innerHTML,
+            minutesRequired: document.getElementById("requiredMinutes").innerHTML
         }
-        var userRef = db.collection("users").doc(user.uid);
 
         userRef.get().then((doc) => {
            if (doc.exists){

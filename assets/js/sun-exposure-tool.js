@@ -13,6 +13,7 @@ function showPosition(position){
 function getSeason(){
     var date = new Date();
     var month = date.getMonth();
+    console.log("Getting Season");
     
     if ((month >= 8 && month <= 11) || (month == 0 || month == 1)){
         console.log("Summer");
@@ -33,6 +34,9 @@ function getSeason(){
             } else if (lat < -34.2080) { //Not sufficient sunlight, only use oral intake
                 //set some variable
                 //move to results screen
+                console.log("UV levels too low, sunlight not sufficient");
+                console.log("Setting to summer for testing purposes: sun-exposure-tools.js: 38-39");
+                sessionStorage.setItem("exposureChart", "summerChart");
             }
         } else {
             console.log("Geolocation not supported by browser")

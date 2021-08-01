@@ -27,7 +27,7 @@
 
 <body style="background: var(--bs-light);">
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
-        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index.html&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
                 <li class="nav-item"><button class="btn btn-primary" type="button" onclick="">Product Scanner</button></li>
                 <li class="nav-item"><button class="btn btn-primary" type="button" onclick="">History</button></li>
@@ -41,6 +41,22 @@
             </ul>
         </div>
     </nav>
+    <div class="progress-container">
+        <div class="progressBar"><div class="innerCircle"></div>
+<div class="toolStep">5 of 5</div>
+<div class="circle">
+    <div class="bar left">
+        <div class="progressCircle progressCircle5"></div>
+    </div>
+    <div class="bar right">
+        <div class="progressCircle progressCircle5"></div>
+    </div>
+</div></div>
+        <div class="progress-text-container">
+            <h1 class="progress-heading"><strong>Sun Exposure</strong></h1>
+            <p class="progress-subtext">Next: Results</p>
+        </div>
+    </div>
     <div id="menu-fragment">
         <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
     </div>
@@ -62,7 +78,7 @@
                     <tbody>
                         <tr>
                             <td class="results_format_head">Likelyhood of Deficiency: <br></td>
-                            <td class="results_format"></td>
+                            <td id="deficiencyLikelyhood" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Oral Intake:</td>
@@ -74,15 +90,15 @@
                         </tr>
                         <tr class="bottom-row">
                             <td class="results_format_head">Sun Exposure:</td>
-                            <td class="results_format">% required</td>
+                            <td id="requiredMinutes" class="results_format">% required</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <h1 class="results-head">Recent History</h1>
-    <div class="results-container">
+    <h1 id="prevResultsHeading" class="results-head">Recent History</h1>
+    <div id="prevResultsTable" class="results-container">
         <div>
             <div class="table-responsive">
                 <table class="table results_table">
@@ -92,15 +108,15 @@
                     <tbody>
                         <tr>
                             <td class="results_format_head">Date: <br></td>
-                            <td class="results_format"></td>
+                            <td id="prevDate" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Letter Grading: <br></td>
-                            <td class="results_format"></td>
+                            <td id="prevGrade" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Likelyhood of Deficiency: <br></td>
-                            <td class="results_format"></td>
+                            <td id="prevLikelyhood" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Oral Intake:</td>
@@ -112,7 +128,7 @@
                         </tr>
                         <tr class="bottom-row">
                             <td class="results_format_head">Sun Exposure:</td>
-                            <td class="results_format">% required</td>
+                            <td id="prevRequiredMinutes" class="results_format">% required</td>
                         </tr>
                     </tbody>
                 </table>
