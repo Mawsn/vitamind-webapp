@@ -383,7 +383,7 @@ body {
   text-align: right;
   position: relative;
   width: 100%;
-  right: 50px;
+  right: 2%;
   justify-content: flex-end;
 }
 
@@ -773,5 +773,87 @@ body {
   .dietary-add-button {
     margin-left: 3%;
   }
+}
+
+.supplement-main-heading {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  font-size: 30px;
+}
+
+.supplement-yes-no-div {
+  height: 80px;
+  width: 80px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.tick-icon {
+  margin: auto;
+  text-align: center;
+  margin-top: 10%;
+  font-size: 40px;
+}
+
+.supplement-yes-no-parent-div {
+  margin: auto;
+  text-align: center;
+}
+
+.supplement-form {
+  /*display: none;*/
+  background-color: #1686ab;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .supplement-form {
+    width: 95%;
+  }
+}
+
+.supplement-sub-heading {
+  margin-left: 20%;
+  padding-top: 20px;
+  font-size: 20px;
+  color: white;
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .supplement-sub-heading {
+    margin-left: 5%;
+  }
+}
+
+.supplement-input-fields {
+  width: 60%;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: auto;
+  height: 50px;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .supplement-input-fields {
+    width: 90%;
+  }
+}
+
+#last-supplement-input-fields {
+  margin-top: 20px;
 }
 
