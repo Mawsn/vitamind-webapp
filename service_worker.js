@@ -5,6 +5,6 @@ workbox.routing.registerRoute(
 	new workbox.strategies.CacheFirst()
 );
 
-self.addEventListener('install', (e) => {
-  alert("[Service Worker] Install");
+window.addEventListener('appinstalled', function() {
+  console.log('Thank you for installing our app!');
 });
