@@ -941,3 +941,29 @@ body {
   }
 }
 
+.user-home-bubble {
+  width: 90%;
+  background: #b4b4b4;
+  height: 200px;
+  margin: auto;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.user-home-intro {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.user-home-heading {
+  font-weight: bold;
+  font-size: 32px;
+  padding-top: 20px;
+}
+
+.user-home-intro-subtext {
+  padding-top: 30px;
+  color: #7d8285;
+}
+
