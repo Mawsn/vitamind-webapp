@@ -942,18 +942,24 @@ body {
 }
 
 .user-home-bubble {
-  width: 90%;
+  width: 80%;
+  max-width: 1000px;
   background: #b4b4b4;
-  height: 200px;
   margin: auto;
   border-radius: 20px;
   margin-top: 40px;
 }
 
+@media (max-width: 767px) {
+  .user-home-bubble {
+    width: 95%;
+  }
+}
+
 .user-home-intro {
-  width: 50%;
   margin: auto;
   text-align: center;
+  width: 90%;
 }
 
 .user-home-heading {
@@ -965,5 +971,6 @@ body {
 .user-home-intro-subtext {
   padding-top: 30px;
   color: #7d8285;
+  padding-bottom: 30px;
 }
 
