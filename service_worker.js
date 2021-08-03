@@ -6,5 +6,5 @@ workbox.routing.registerRoute(
 );*/
 
 self.addEventListener('install', (e) => {
-  alert('[Service Worker] Install');
+  alert("[Service Worker] Install");
 });
