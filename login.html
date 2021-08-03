@@ -17,20 +17,9 @@
 <link rel="apple-touch-icon" sizes="167x167" href="167.png">
 
 <script type="text/javascript">
-	if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service_worker.js', { scope: '/' })
-        .then((registration) => {
-            const data = {
-                type: 'CACHE_URLS',
-                payload: [
-                    location.href,
-                    ...performance.getEntriesByType('resource').map((r) => r.name)
-                ]
-            };
-            registration.installing.postMessage(data);
-        })
-        .catch((err) => console.log('SW registration FAIL:', err));
-}
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
 </script>
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
