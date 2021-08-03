@@ -46,13 +46,13 @@
     </div>
     <div class="progress-container">
         <div class="progressBar"><div class="innerCircle"></div>
-<div class="toolStep">4 of 5</div>
+<div class="toolStep">3 of 5</div>
 <div class="circle">
     <div class="bar left">
-        <div class="progressCircle"></div>
+        <div class="progressCircle progressCircle3"></div>
     </div>
     <div class="bar right">
-        <div class="progressCircle"></div>
+        <div class="progressCircle progressCircle3"></div>
     </div>
 </div></div>
         <div class="progress-text-container">
@@ -71,25 +71,13 @@
     </div>
     <div class="supplement-form">
         <p class="supplement-sub-heading">How often?</p><select class="supplement-input-fields">
-            <optgroup label="This is a group">
-                <option value="12" selected="">This is item 1</option>
-                <option value="13">This is item 2</option>
-                <option value="14">This is item 3</option>
-            </optgroup>
+            <option value="never" selected="">Never</option>
+            <option value="daily">Every Day</option>
+            <option value="mostDays">Most Days</option>
+            <option value="weekly">1 Per Week</option>
+            <option value="less">Less</option>
         </select>
-        <p class="supplement-sub-heading">Brand and Dose</p><select class="supplement-input-fields">
-            <optgroup label="This is a group">
-                <option value="12" selected="">This is item 1</option>
-                <option value="13">This is item 2</option>
-                <option value="14">This is item 3</option>
-            </optgroup>
-        </select><select id="last-supplement-input-fields" class="supplement-input-fields">
-            <optgroup label="This is a group">
-                <option value="12" selected="">This is item 1</option>
-                <option value="13">This is item 2</option>
-                <option value="14">This is item 3</option>
-            </optgroup>
-        </select>
+        <p class="supplement-sub-heading">Brand and Dose (if known)</p><input type="text" class="supplement-input-fields" placeholder="Brand"><input type="number" id="last-supplement-input-fields" class="supplement-input-fields" placeholder="Dosage">
     </div>
     <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="location.href=&#39;tool-supplement-3.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -101,6 +89,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
     <script src="assets/js/skin-tone.js"></script>
+    <script src="assets/js/supplement.js"></script>
     <script src="assets/js/tool-calculations.js"></script>
     <script src="assets/js/weather.js"></script>
 </body>

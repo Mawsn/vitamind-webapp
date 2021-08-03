@@ -12,20 +12,92 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 //State change detector, helps to track which user is logged in 
 firebase.auth().onAuthStateChanged((user) => {
-    if(user) var uid = user.uid;
+    if(user){ //if logged in
+        //console.log(user.email);
+        if(user.email == null){//guest user
+            console.log("GUEST USER");
+            console.log("Will need to delete anonymous users afterward");
+        } else {
+            console.log(user.email);
+        }
+        if ( window.location.pathname == '/' || window.location.pathname == '/index.html'){ //if on landing page and logged in, redirect to homepage
+            // Index (home) page
+            window.location.assign("home.html");
+        } else {
+            // Other page
+            console.log(window.location.pathname);
+        }
+    } else {
+        //signed out
+        console.log("SIGNED OUT");
+        var path = window.location.pathname;
+        switch (path){
+            case '/':
+                break;
+            case '/index.html':
+                break;
+            case '/login.html':
+                break;
+            case '/login-options.html':
+                break;
+            case '/signup.html':
+                break;
+            case '/signup-options.html':
+                break;
+            default:
+                window.location.assign("index.html");
+        }
+    }
 });
 
-function signInWithEmailPassword() {
+function guestSignIn(){
+    firebase.auth().signInAnonymously()
+      .then(() => {
+        // Signed in..
+        window.location.assign("tool-skin-tone.html");
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode +": " + errorMessage);
+      });
+}
 
+
+var eInput = document.getElementById("emailField");
+eInput.addEventListener("keyup", function(event){
+    if (event.keyCode === 13){
+        if (window.location.pathname == '/login.html'){
+            document.getElementById("loginForm").click();
+        }
+    }
+}); 
+var pInput = document.getElementById("passField");
+pInput.addEventListener("keyup", function(event){
+    if (event.keyCode === 13){
+        if (window.location.pathname == '/login.html'){
+            document.getElementById("loginForm").click();
+        }
+    }
+}); 
+
+
+function signInWithEmailPassword() {
+    var loadAnim = document.getElementById("loadAnim");
+    loadAnim.style.visibility = "visible";
+    
+    
 	var email = document.getElementById("emailField").value;
 	var password = document.getElementById("passField").value;
 	var dis = document.getElementById("loginErrorDiv");
 
 	if (email == ""){
+        loadAnim.style.visibility = "hidden";
 	    dis.innerHTML = "Please enter an email address";
 	    return;
 	}
 	if (password == ""){
+        loadAnim.style.visibility = "hidden";
 	    dis.innerHTML = "Please enter a password";
 	    return;
 	}
@@ -36,6 +108,7 @@ function signInWithEmailPassword() {
       // Signed in
       var user = userCredential.user;
       //alert(JSON.stringify(user, null, 4));
+      loadAnim.style.visibility = "hidden";
       window.location.assign("home.html");
   })
   .catch((error) => {
@@ -45,22 +118,27 @@ function signInWithEmailPassword() {
   	dis.innerHTML = errorMessage;
   	console.log("Error "+errorCode +": "+errorMessage);
   	switch(errorCode){
-  		case "auth/user-not-found":
-          dis.innerHTML = "User not found";
-          dis.innerHTML = "User not found. <b><a onclick=\"location.href='signup-options.html';\">Signup?</a></b>";
+        case "auth/user-not-found":
+            dis.innerHTML = "User not found";
+            dis.innerHTML = "User not found. <b><a onclick=\"location.href='signup-options.html';\">Signup?</a></b>";
+            loadAnim.style.visibility = "hidden";
 
-          break;
+             break;
           case "auth/user-disabled":
-          dis.innerHTML = "User has been disabled";
-          break;
+            dis.innerHTML = "User has been disabled";
+            loadAnim.style.visibility = "hidden";
+            break;
           case "auth/invalid-email":
-          dis.innerHTML = "User has invalid Email";
-          break;
+             dis.innerHTML = "User has invalid Email";
+             loadAnim.style.visibility = "hidden";
+             break;
           case "auth/wrong-password":
-          dis.innerHTML = "The password you entered is incorrect. <b><a onclick=\"forgotPassword()\">Forgotten Password?</a></b>";
-          break;
+            dis.innerHTML = "The password you entered is incorrect. <b><a onclick=\"forgotPassword()\">Forgotten Password?</a></b>";
+            loadAnim.style.visibility = "hidden";
+            break;
           default:
           console.log(errorCode + ": " + errorMessage);
+            loadAnim.style.visibility = "hidden";
       }
   });
 }
@@ -77,16 +155,21 @@ function forgotPassword(){
 }
 
 function createUser() {
+    var loadAnim = document.getElementById("loadAnim");
+    loadAnim.style.visibility = "visible";
+    
 	var dis = document.getElementById("signupErrorDiv");
 	var email = document.getElementById("emailField").value;
 	var password = document.getElementById("passField").value;
 
 	if (email == ""){
 		dis.innerHTML = "No email was entered";
+        loadAnim.style.visibility = "hidden";
 		return;
 	}
 	if (password == ""){
 		dis.innerHTML = "No password was entered";
+        loadAnim.style.visibility = "hidden";
 		return;
 	}
 
@@ -94,13 +177,14 @@ function createUser() {
 	.then((userCredential) => {
 		var user = userCredential.user;
 		console.log("Signed up:" + user);
+        loadAnim.style.visibility = "hidden";
 		window.location.assign("home.html");
 	})
 	.catch((error) => {
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		console.log("Error "+errorCode +": "+errorMessage);
-
+        loadAnim.style.visibility = "hidden";
 		dis.innerHTML = errorMessage;
 
 	});
@@ -157,9 +241,6 @@ function signinWithFacebook(){
 }
 
 
-
-
-
 function getUserDetails(){
   const user = firebase.auth().currentUser;
   alert(JSON.stringify(user, null, 4));
@@ -167,4 +248,13 @@ function getUserDetails(){
    
 }
 
-
+function signout(){
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    console.log("signed out");
+    window.location.assign("index.html");
+  }).catch((error) => {
+    // An error happened.
+    console.log(error);
+  });
+}

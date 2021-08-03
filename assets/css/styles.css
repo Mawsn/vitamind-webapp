@@ -207,6 +207,7 @@ body {
   margin: auto;
   margin-top: 100px;
   width: 50%;
+  position: relative;
 }
 
 @media (max-width: 767px) {
@@ -765,7 +766,7 @@ body {
   width: 40px;
   background-color: #f8b607;
   border-radius: 50%;
-  margin-top: 10px;
+  margin-top: -1px;
   margin-left: 20.5%;
 }
 
@@ -783,11 +784,11 @@ body {
 }
 
 .supplement-yes-no-div {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   background-color: #ffffff;
   border-radius: 50%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   display: inline-block;
   margin-top: 30px;
   margin-left: 40px;
@@ -808,7 +809,6 @@ body {
 }
 
 .supplement-form {
-  /*display: none;*/
   background-color: #1686ab;
   border-radius: 20px;
   width: 60%;
@@ -855,5 +855,89 @@ body {
 
 #last-supplement-input-fields {
   margin-top: 20px;
+}
+
+.dietary-remove-button {
+  height: 40px;
+  width: 40px;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #f8b607;
+  border-radius: 50%;
+  margin-top: -40px;
+  margin-left: 28%;
+}
+
+@media (max-width: 767px) {
+  .dietary-remove-button {
+    margin-left: 17%;
+  }
+}
+
+#age-bubble {
+  background-color: #1686ab;
+  opacity: 80%;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.age_Form {
+  width: 100%;
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#age_Input_Field {
+  width: 60%;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: auto;
+  height: 50px;
+}
+
+#vitD_supplement-yes: {
+  background-color: #61AB0E;
+}
+
+#vitD_supplement-no:hover {
+  background-color: #FF0000;
+}
+
+#vitD_supplement-yes:hover {
+  background-color: #61AB0E;
+}
+
+#vitD_supplement-no {
+  background-color: #DDDD;
+}
+
+#vitD_supplement-yes {
+  background-color: #DDDD;
+}
+
+.loader {
+  border: 6px solid #ffffff;
+  border-radius: 50%;
+  border-top: 6px solid #f8b607;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-left: -20px;
+  left: 50%;
+  margin-top: 50px;
+  position: absolute;
+  visibility: hidden;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
