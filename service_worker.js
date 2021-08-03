@@ -5,6 +5,39 @@ workbox.routing.registerRoute(
 	new workbox.strategies.CacheFirst()
 );*/
 
-self.addEventListener("fetch", event => {
-    console.log("You fetched " + event.url);
+let cache_name = "VitaCache";
+self.addEventListener("install", event => {
+    console.log("Installing VitaTrack Offline...");
+    event.waitUntil(
+        caches
+            .open(cache_name)
+            .then(cache => {
+                return cache.addAll(ASSETS);
+            })
+            .catch(err => console.log(err))
+    );
 });
+
+const ASSETS = [
+    "/assets/css/styles.css",
+    "/assets/img/logo-standard-white.png",
+    
+];
+self.addEventListener("fetch", event => {
+    if (event.request.url === "https://www.vitatrack.app/") {
+        // or whatever your app's URL is
+        event.respondWith(
+            fetch(event.request).catch(err =>
+                self.cache.open(cache_name).then(cache => cache.match("/offline.html"))
+            )
+        );
+    } else {
+        event.respondWith(
+            fetch(event.request).catch(err =>
+                caches.match(event.request).then(response => response)
+            )
+        );
+    }
+});
+
+
