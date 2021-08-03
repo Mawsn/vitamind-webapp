@@ -21,7 +21,7 @@ self.addEventListener("install", event => {
 const ASSETS = [
     "/assets/css/styles.css",
     "/assets/img/logo-standard-white.png",
-    
+    "/index.html"
 ];
 self.addEventListener("fetch", event => {
     if (event.request.url === "https://www.vitatrack.app/") {
