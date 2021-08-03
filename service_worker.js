@@ -24,4 +24,4 @@ if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.
     });
 }
 
-window.alert(isInstalled);
+console.log(isInstalled + " app");
