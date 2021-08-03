@@ -26,9 +26,6 @@
 </head>
 
 <body class="white-background">
-    <div id="menu-fragment">
-        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
-    </div>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
@@ -44,20 +41,28 @@
             </ul>
         </div>
     </nav>
+    <div id="menu-fragment">
+        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
+    </div>
     <div class="progress-container">
         <div class="progressBar"><div class="innerCircle"></div>
 <div class="toolStep">2 of 5</div>
 <div class="circle">
     <div class="bar left">
-        <div class="progressCircle"></div>
+        <div class="progressCircle progressCircle2"></div>
     </div>
     <div class="bar right">
-        <div class="progressCircle"></div>
+        <div class="progressCircle progressCircle2"></div>
     </div>
 </div></div>
         <div class="progress-text-container">
-            <h1 class="progress-heading"><strong>Dietary &amp; Age</strong></h1>
+            <h1 class="progress-heading"><strong>Dietary</strong></h1>
             <p class="progress-subtext">Next: Supplement Intake<br></p>
+        </div>
+    </div>
+    <div id="age-parent-container">
+        <div id="age-bubble">
+            <form class="age_Form"><input class="form-control" type="number" id="age_Input_Field" placeholder="Enter Age"></form>
         </div>
     </div>
     <div id="dietary-parent-container">
@@ -95,6 +100,9 @@ milk - Glass (250ml)</option>
     </div>
     <div class="dietary-add-button" style="cursor: pointer;" onclick="addFood();">
         <p style="text-align: center;padding-top:3px;font-size:22px;font-weight:bold;">+</p>
+    </div>
+    <div class="dietary-remove-button" style="cursor: pointer;" onclick="removeFood();">
+        <p style="text-align: center;padding-top: 3px;font-size: 22px;font-weight: bold;margin-top: -8.25%;">-</p>
     </div>
     <div class="navigation-buttons-container" style="cursor: pointer;"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="location.href=&#39;tool-supplement-1.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

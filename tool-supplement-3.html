@@ -62,12 +62,12 @@
     </div>
     <h1 class="supplement-main-heading">Do you take a multi-vitamin supplement?<br></h1>
     <div class="supplement-yes-no-parent-div">
-        <div class="supplement-yes-no-div">
-            <p class="tick-icon">✔️</p>
-        </div>
-        <div class="supplement-yes-no-div">
-            <p class="tick-icon">❌</p>
-        </div>
+        <div id="vitD_supplement-yes" class="supplement-yes-no-div" style="cursor: pointer;" onclick="vitaminYes();"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="margin: auto;font-size: 50px;margin-top: 5px;">
+                <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg></div>
+        <div id="vitD_supplement-no" class="supplement-yes-no-div" style="cursor: pointer;" onclick="vitaminNo();"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="margin: auto;font-size: 50px;margin-top: 5px;">
+                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg></div>
     </div>
     <div class="supplement-form">
         <p class="supplement-sub-heading">How often?</p><select class="supplement-input-fields">
