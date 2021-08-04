@@ -7,6 +7,8 @@ function addFood()
 
 	clone.id = "dietary-bubble-" + ++x;
 
+	
+
 	original.parentNode.appendChild(clone);
 }
 

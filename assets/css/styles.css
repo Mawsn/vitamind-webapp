@@ -355,6 +355,9 @@ body {
 
 #next-button {
   margin: 10px;
+  border-style: solid;
+  border-color: #f8b607;
+  border-width: 2px;
 }
 
 /* Flynn's Code */
@@ -788,7 +791,6 @@ body {
   width: 60px;
   background-color: #ffffff;
   border-radius: 50%;
-  /*border: 1px solid black;*/
   display: inline-block;
   margin-top: 30px;
   margin-left: 40px;
@@ -883,6 +885,12 @@ body {
   margin-bottom: 20px;
 }
 
+@media (max-width: 767px) {
+  #age-bubble {
+    width: 95%;
+  }
+}
+
 .age_Form {
   width: 100%;
   margin: auto;
@@ -896,6 +904,12 @@ body {
   border: 2px solid black;
   margin: auto;
   height: 50px;
+}
+
+@media (max-width: 767px) {
+  #age_Input_Field {
+    width: 90%;
+  }
 }
 
 #vitD_supplement-yes: {
@@ -972,5 +986,50 @@ body {
   padding-top: 30px;
   color: #7d8285;
   padding-bottom: 30px;
+}
+
+.dietary-remove-button-new {
+  height: 40px;
+  width: 40px;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #f8b607;
+  border-radius: 50%;
+  margin-left: 90%;
+}
+
+#next-button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
+}
+
+#previous-button:hover {
+  background-color: #ffeec7;
+  color: var(--bs-dark);
+  border-color: #ffeec7;
+}
+
+.dietary-add-button:hover {
+  background-color: #efaf34;
+}
+
+.dietary-remove-button:hover {
+  background-color: #ffeec7;
+  /*border-color: #ffeec7;*/
+}
+
+.skin-tone-option-row:hover {
+  background-color: #1289b0;
+}
+
+#camera-detection-button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
+}
+
+.exposure-btn:hover {
+  background-color: #efaf34;
 }
 
