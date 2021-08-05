@@ -21,6 +21,7 @@ self.addEventListener("install", event => {
 const ASSETS = [
 	"/index.html",
 	"/home.html",
+	/*
 	"/signup-options.html",
 	"/signup.html",
 	"/login-options.html",
@@ -32,7 +33,7 @@ const ASSETS = [
 	"/tool-supplement-3.html",
 	"/tool-sun-exposure.html",
 	"/tool-sun-exposure-2.html",
-	/*
+	
 	"/result-breakdown.html",
 	"/assets/bootstrap/css/bootstrap.min.css",
 	"/assets/bootstrap/js/bootstrap.min.js",
