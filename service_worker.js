@@ -35,7 +35,7 @@ const ASSETS = [
 	"/tool-supplement-3.html",
 	"/tool-sun-exposure.html",
 	"/tool-sun-exposure-2.html",
-	
+	/*
 	"/result-breakdown.html",
 	"/assets/bootstrap/css/bootstrap.min.css",
 	"/assets/bootstrap/js/bootstrap.min.js",
@@ -67,7 +67,7 @@ const ASSETS = [
     "/assets/img/tool-figure/figure_long_sleeve.png",
     "/assets/img/tool-figure/figure_pants.png",
     "/assets/img/tool-figure/figure_shirt.png",
-    "/assets/img/tool-figure/figure_singlet.png"
+    "/assets/img/tool-figure/figure_singlet.png"*/
     
 ];
 self.addEventListener("fetch", event => {
