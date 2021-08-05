@@ -41,6 +41,7 @@ const ASSETS = [
     "/assets/js/dietary.js",
     "/assets/js/image-processing.js",
     "/assets/js/jquery.min.js",
+    /*
     "/assets/js/jquery-3.6.0.min.js",
     "/assets/js/main.js",
     "/assets/js/mobile-menu.js",
@@ -63,7 +64,7 @@ const ASSETS = [
     "/assets/img/tool-figure/figure_long_sleeve.png",
     "/assets/img/tool-figure/figure_pants.png",
     "/assets/img/tool-figure/figure_shirt.png",
-    "/assets/img/tool-figure/figure_singlet.png"
+    "/assets/img/tool-figure/figure_singlet.png"*/
     
 ];
 self.addEventListener("fetch", event => {
