@@ -24,11 +24,12 @@ const ASSETS = [
 	
 	"/signup-options.html",
 	"/signup.html",
-	/*
+
 	"/login-options.html",
 	"/login.html",
+
 	"/tool-skin-tone.html",
-	"/tool-dietary-tone.html",
+	"/tool-dietary.html",
 	"/tool-supplement-1.html",
 	"/tool-supplement-2.html",
 	"/tool-supplement-3.html",
@@ -66,7 +67,7 @@ const ASSETS = [
     "/assets/img/tool-figure/figure_long_sleeve.png",
     "/assets/img/tool-figure/figure_pants.png",
     "/assets/img/tool-figure/figure_shirt.png",
-    "/assets/img/tool-figure/figure_singlet.png"*/
+    "/assets/img/tool-figure/figure_singlet.png"
     
 ];
 self.addEventListener("fetch", event => {
