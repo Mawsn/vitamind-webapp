@@ -63,7 +63,7 @@ const ASSETS = [
     "/assets/img/tool-figure/figure_long_sleeve.png",
     "/assets/img/tool-figure/figure_pants.png",
     "/assets/img/tool-figure/figure_shirt.png",
-    "/assets/img/tool-figure/figure_singlet.png",
+    "/assets/img/tool-figure/figure_singlet.png"
     
 ];
 self.addEventListener("fetch", event => {
