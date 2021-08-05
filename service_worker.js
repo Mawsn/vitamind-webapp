@@ -43,7 +43,7 @@ const ASSETS = [
     "/assets/js/authenticateUser.js",
     "/assets/js/color-thief.min.js",
     "/assets/js/dietary.js",
-    	/*
+
     "/assets/js/image-processing.js",
     "/assets/js/jquery.min.js",
     "/assets/js/jquery-3.6.0.min.js",
@@ -55,6 +55,7 @@ const ASSETS = [
     "/assets/js/supplement.js",
     "/assets/js/tool-calculations.js",
     "/assets/js/weather.js",
+    /*
     "/assets/img/logo-standard-white.png",
     "/assets/img/Skin Types/tone-1.png",
     "/assets/img/Skin Types/tone-2.png",
