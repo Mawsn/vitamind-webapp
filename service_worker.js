@@ -32,6 +32,7 @@ const ASSETS = [
 	"/tool-supplement-3.html",
 	"/tool-sun-exposure.html",
 	"/tool-sun-exposure-2.html",
+	/*
 	"/result-breakdown.html",
 	"/assets/bootstrap/css/bootstrap.min.css",
 	"/assets/bootstrap/js/bootstrap.min.js",
@@ -41,7 +42,6 @@ const ASSETS = [
     "/assets/js/dietary.js",
     "/assets/js/image-processing.js",
     "/assets/js/jquery.min.js",
-    /*
     "/assets/js/jquery-3.6.0.min.js",
     "/assets/js/main.js",
     "/assets/js/mobile-menu.js",
