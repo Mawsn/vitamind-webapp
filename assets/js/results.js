@@ -33,7 +33,16 @@ if (inputMin < recommendedMin){
 }
 
 firebase.auth().onAuthStateChanged((user) =>{
-    if (user !== null){
+    if (user.isAnonymous){
+        var doneButton = document.getElementById("done-button");
+        doneButton.innerHTML = "Done";
+        doneButton.onclick = function(){
+            guestConfirmation();
+        }
+        console.log("GUEST");
+        document.getElementById("prevResultsHeading").remove();
+               document.getElementById("prevResultsTable").remove();
+    } else if (user !== null){
         var userRef = db.collection("users").doc(user.uid);
         userRef.get().then((doc) => {
            if (doc.exists){
@@ -67,26 +76,38 @@ firebase.auth().onAuthStateChanged((user) =>{
             minutesRequired: document.getElementById("requiredMinutes").innerHTML
         }
 
-        userRef.get().then((doc) => {
-           if (doc.exists){
-               console.log("User doc exists");
-               userRef.update({
-                    results: firebase.firestore.FieldValue.arrayUnion(resultData)
-                });
-           } else {
-               console.log("Creating new doc");
-               db.collection("users").doc(user.uid).set({
-                   dob: firebase.firestore.Timestamp.fromDate(new Date("December 13, 1999")),
-                   results: [resultData]
-               });
-           }
-        }).catch((error) => {
-            console.log("Error getting document: ", error);
-        });
+        if (!user.isAnonymous){
+            userRef.get().then((doc) => {
+                if (doc.exists){
+                   console.log("User doc exists");
+                   userRef.update({
+                        results: firebase.firestore.FieldValue.arrayUnion(resultData)
+                    });
+                } else {
+                    console.log("Creating new doc");
+                    db.collection("users").doc(user.uid).set({
+                        dob: firebase.firestore.Timestamp.fromDate(new Date("December 13, 1999")),
+                        results: [resultData]
+                    });
+                }
+            }).catch((error) => {
+                console.log("Error getting document: ", error);
+            });
+        }
     } else {
         console.log("Not logged in");
     }
 });
+
+function guestConfirmation(){
+    if (confirm("Are you sure you want to leave this page? All data will be lost.")){
+       // signout();
+        deleteUser();
+       // window.location.assign("index.html");
+    } else {
+        console.log("Cancel");
+    }
+}
 
 function goBack(){
     window.history.back();

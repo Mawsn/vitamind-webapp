@@ -13,19 +13,19 @@ firebase.initializeApp(firebaseConfig);
 //State change detector, helps to track which user is logged in 
 firebase.auth().onAuthStateChanged((user) => {
     if(user){ //if logged in
-        //console.log(user.email);
-        if(user.email == null){//guest user
+        
+        if(!user.isAnonymous){//guest user
+            console.log(user.email);
+            if ( window.location.pathname == '/' || window.location.pathname == '/index.html'){ //if on landing page and logged in, redirect to homepage
+                // Index (home) page
+                window.location.assign("home.html");
+            } else {
+                // Other page
+                console.log(window.location.pathname);
+            }
+        } else {
             console.log("GUEST USER");
             console.log("Will need to delete anonymous users afterward");
-        } else {
-            console.log(user.email);
-        }
-        if ( window.location.pathname == '/' || window.location.pathname == '/index.html'){ //if on landing page and logged in, redirect to homepage
-            // Index (home) page
-            window.location.assign("home.html");
-        } else {
-            // Other page
-            console.log(window.location.pathname);
         }
     } else {
         //signed out
@@ -257,4 +257,13 @@ function signout(){
     // An error happened.
     console.log(error);
   });
+}
+
+function deleteUser(){
+    const user = firebase.auth().currentUser;
+    user.delete().then(() => {
+        window.location.assign("index.html");
+    }).catch((error) =>{
+        console.log(error);
+    })
 }
