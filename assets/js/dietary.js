@@ -25,6 +25,11 @@ function removeFood()
 	}
 }
 
+function saveData(){
+    var age = document.getElementById('age_Input_Field');
+    sessionStorage.setItem('age', age);
+}
+
 function goBack(){
     window.history.back();
 }

@@ -3,7 +3,44 @@ var grade = document.getElementById("overallGrade");
         //sessionStorage.setItem("inputMinutes", inputMinutes);
         //sessionStorage.setItem("recommendedMinutes", minutes);
 
-grade.innerHTML = sessionStorage.getItem("sunGrade");
+//grade.innerHTML = sessionStorage.getItem("sunGrade");
+var sunGrade = sessionStorage.getItem("sunGrade");
+var dietGrade = sessionStorage.getItem("dietGrade");
+console.log("SUN: "+ sunGrade + " DIET: "+dietGrade);
+if (dietGrade == 'A'){
+    if (sunGrade == 'A'){ //A & A
+        grade.innerHTML = 'A';
+        
+    } else if (sunGrade == 'B'){ //A & B
+        grade.innerHTML = 'B'; //Currently defaulting to lowest value as overall
+        
+    } else if (sunGrade == 'C'){ //A & C
+        grade.innerHTML = 'B';
+    }
+    
+} else if (dietGrade == 'B'){
+    if (sunGrade == 'A'){ //B & A
+        grade.innerHTML = 'B'; //Currently defaulting to lowest value as overall
+        
+    } else if (sunGrade == 'B'){ //B & B
+        grade.innerHTML = 'B'; 
+        
+    } else if (sunGrade == 'C'){ //B & C
+        grade.innerHTML = 'C'; //Currently defaulting to lowest value as overall
+    }
+    
+} else if (dietGrade == 'C'){
+    if (sunGrade == 'A'){ //C & A
+        grade.innerHTML = 'B';
+        
+    } else if (sunGrade == 'B'){ //C & B
+        grade.innerHTML = 'C'; //Currently defaulting to lowest value as overall
+        
+    } else if (sunGrade == 'C'){ //C & C
+        grade.innerHTML = 'C';
+    }
+}
+
 
 var inputTime = document.getElementById("givenTime");
 inputTime.innerHTML = "Total Daily Time Exposed to Sun: "+sessionStorage.getItem("inputMinutes")+" minutes.";

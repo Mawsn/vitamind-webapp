@@ -725,8 +725,7 @@ body {
 }
 
 .dietary-bubble {
-  background-color: #1686ab;
-  opacity: 80%;
+  background-color: #1686AB;
   border-radius: 20px;
   width: 60%;
   margin: auto;
@@ -878,7 +877,6 @@ body {
 
 #age-bubble {
   background-color: #1686ab;
-  opacity: 80%;
   border-radius: 20px;
   width: 60%;
   margin: auto;
@@ -912,11 +910,15 @@ body {
   }
 }
 
-#vitD_supplement-yes: {
-  background-color: #61AB0E;
+#vitD_supplement-no:hover {
+  background-color: #FF0000;
 }
 
-#vitD_supplement-no:hover {
+#bone_supplement-no:hover {
+  background-color: #FF0000;
+}
+
+#multVit_supplement-no:hover {
   background-color: #FF0000;
 }
 
@@ -924,11 +926,15 @@ body {
   background-color: #61AB0E;
 }
 
-#vitD_supplement-no {
-  background-color: #DDDD;
+#bone_supplement-yes:hover {
+  background-color: #61AB0E;
 }
 
-#vitD_supplement-yes {
+#multVit_supplement-yes:hover {
+  background-color: #61AB0E;
+}
+
+.supplement-yes-no-div {
   background-color: #DDDD;
 }
 
@@ -1031,5 +1037,17 @@ body {
 
 .exposure-btn:hover {
   background-color: #efaf34;
+}
+
+#supplement-input-fields-one {
+  margin-top: 20px;
+}
+
+#supplement-input-fields-two {
+  margin-top: 20px;
+}
+
+#supplement-input-fields-three {
+  margin-top: 20px;
 }
 
