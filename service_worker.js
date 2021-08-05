@@ -21,13 +21,10 @@ self.addEventListener("install", event => {
 const ASSETS = [
 	"/index.html",
 	"/home.html",
-	
 	"/signup-options.html",
 	"/signup.html",
-
 	"/login-options.html",
 	"/login.html",
-
 	"/tool-skin-tone.html",
 	"/tool-dietary.html",
 	"/tool-supplement-1.html",
@@ -35,7 +32,6 @@ const ASSETS = [
 	"/tool-supplement-3.html",
 	"/tool-sun-exposure.html",
 	"/tool-sun-exposure-2.html",
-	
 	"/result-breakdown.html",
 	"/assets/bootstrap/css/bootstrap.min.css",
 	"/assets/bootstrap/js/bootstrap.min.js",
@@ -43,7 +39,6 @@ const ASSETS = [
     "/assets/js/authenticateUser.js",
     "/assets/js/color-thief.min.js",
     "/assets/js/dietary.js",
-
     "/assets/js/image-processing.js",
     "/assets/js/jquery.min.js",
     "/assets/js/jquery-3.6.0.min.js",
@@ -55,7 +50,6 @@ const ASSETS = [
     "/assets/js/supplement.js",
     "/assets/js/tool-calculations.js",
     "/assets/js/weather.js",
-    /*
     "/assets/img/logo-standard-white.png",
     "/assets/img/Skin Types/tone-1.png",
     "/assets/img/Skin Types/tone-2.png",
@@ -69,7 +63,7 @@ const ASSETS = [
     "/assets/img/tool-figure/figure_long_sleeve.png",
     "/assets/img/tool-figure/figure_pants.png",
     "/assets/img/tool-figure/figure_shirt.png",
-    "/assets/img/tool-figure/figure_singlet.png"*/
+    "/assets/img/tool-figure/figure_singlet.png"
     
 ];
 self.addEventListener("fetch", event => {
