@@ -1,1 +1,2 @@
-Vitamin D Progressive Web Application (PWA) - CSIT321 
+VitaTrack Progressive Web Application Source Code - CSIT321
+Live version available at: https://vitatrack.app/
