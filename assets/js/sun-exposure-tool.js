@@ -3,7 +3,7 @@ function goBack(){
 }
 
 //window.onload=getSeason();
-var lat;
+//var lat;
 //function getLocation(){}
 
 function showPosition(position){
@@ -24,7 +24,10 @@ function getSeason(){
         document.getElementById("morningMinutes").style.visibility = "hidden";
         document.getElementById("afternoonMinutes").style.visibility = "hidden";
         if (navigator.geolocation){
-            navigator.geolocation.getCurrentPosition((showPosition) => {
+            navigator.geolocation.getCurrentPosition((position) => {
+              console.log("HERE");
+              var lat = position.coords.latitude;
+              console.log(lat);
               if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
                   console.log("Brisbane");
                   sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
