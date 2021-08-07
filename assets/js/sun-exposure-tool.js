@@ -5,15 +5,14 @@ function goBack(){
 //window.onload=getSeason();
 //var lat;
 //function getLocation(){}
-
+/*
 function showPosition(position){
   lat = position.coords.latitude;
-}
+} */
 
 function getSeason(){
     var date = new Date();
     var month = date.getMonth();
-    console.log("Getting Season: "+month);
 
     if ((month >= 8 && month <= 11) || (month == 0 || month == 1)){
         console.log("Summer");
@@ -25,9 +24,7 @@ function getSeason(){
         document.getElementById("afternoonMinutes").style.visibility = "hidden";
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition((position) => {
-              console.log("HERE");
               var lat = position.coords.latitude;
-              console.log(lat);
               if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
                   console.log("Brisbane");
                   sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
