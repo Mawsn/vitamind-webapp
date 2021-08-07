@@ -562,7 +562,7 @@ body {
 .time-data {
   background: #1686AB;
   width: 50%;
-  height: 350px;
+  /*height: 500%;*/
   border-radius: 25px;
   margin: auto;
   position: relative;
@@ -602,6 +602,7 @@ body {
 
 .minutes-exposure-heading {
   text-align: left;
+  padding-bottom: 10px;
 }
 
 .result-overall {

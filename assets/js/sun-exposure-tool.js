@@ -18,10 +18,10 @@ function getSeason(){
         console.log("Summer");
         sessionStorage.setItem("exposureChart", "summerChart");
     } else {
-        document.getElementById("mornLabel").style.visibility = "hidden";
-        document.getElementById("afternoonLabel").style.visibility = "hidden";
-        document.getElementById("morningMinutes").style.visibility = "hidden";
-        document.getElementById("afternoonMinutes").style.visibility = "hidden";
+        document.getElementById("mornLabel").remove();//.style.visibility = "hidden";
+        document.getElementById("afternoonLabel").remove();//.style.visibility = "hidden";
+        document.getElementById("morningMinutes").remove();//.style.visibility = "hidden";
+        document.getElementById("afternoonMinutes").remove();//.style.visibility = "hidden";
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition((position) => {
               var lat = position.coords.latitude;
