@@ -24,23 +24,22 @@ function getSeason(){
         document.getElementById("morningMinutes").style.visibility = "hidden";
         document.getElementById("afternoonMinutes").style.visibility = "hidden";
         if (navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(showPosition).then(
-              function(){
-                if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
-                    console.log("Brisbane");
-                    sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
-                } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
-                    console.log("Sydney");
-                    sessionStorage.setItem("exposureChart", "winterSydneyChart");
-                } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
-                    //set some variable
-                    //move to results screen
-                    console.log("UV levels too low, sunlight not sufficient");
-                    console.log("Setting to summer for testing purposes: sun-exposure-tools.js: 38-39");
-                    sessionStorage.setItem("exposureChart", "summerChart");
-                }
+            navigator.geolocation.getCurrentPosition((showPosition) => {
+              if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
+                  console.log("Brisbane");
+                  sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
+              } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
+                  console.log("Sydney");
+                  sessionStorage.setItem("exposureChart", "winterSydneyChart");
+              } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
+                  //set some variable
+                  //move to results screen
+                  console.log("UV levels too low, sunlight not sufficient");
+                  console.log("Setting to summer for testing purposes: sun-exposure-tools.js: 38-39");
+                  sessionStorage.setItem("exposureChart", "summerChart");
               }
-            );
+            });
+
         } else {
             console.log("Geolocation not supported by browser")
         }
