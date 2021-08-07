@@ -13,7 +13,7 @@ function showPosition(position){
 function getSeason(){
     var date = new Date();
     var month = date.getMonth();
-    console.log("Getting Season");
+    console.log("Getting Season: "+month);
 
     if ((month >= 8 && month <= 11) || (month == 0 || month == 1)){
         console.log("Summer");
