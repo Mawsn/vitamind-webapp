@@ -55,7 +55,7 @@ function displayWeather(weatherObj){
   var dayArray = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
   var displayDiv = document.getElementById("weather_display");
-  displayDiv.style.textAlign = "center";
+  //displayDiv.style.textAlign = "center";
   var sr = "http://openweathermap.org/img/wn/"+weatherObj.daily[0].weather[0].icon+"@2x.png";
 
   var row = displayDiv.insertRow(0);
