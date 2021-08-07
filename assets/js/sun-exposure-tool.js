@@ -14,24 +14,24 @@ function getSeason(){
     var date = new Date();
     var month = date.getMonth();
     console.log("Getting Season");
-    
+
     if ((month >= 8 && month <= 11) || (month == 0 || month == 1)){
         console.log("Summer");
         sessionStorage.setItem("exposureChart", "summerChart");
     } else {
-        /*document.getElementById("mornLabel").style.visibility = "hidden";
+        document.getElementById("mornLabel").style.visibility = "hidden";
         document.getElementById("afternoonLabel").style.visibility = "hidden";
         document.getElementById("morningMinutes").style.visibility = "hidden";
-        document.getElementById("afternoonMinutes").style.visibility = "hidden"; */
+        document.getElementById("afternoonMinutes").style.visibility = "hidden";
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(showPosition);
             if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
                 console.log("Brisbane");
                 sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
-            } else if (lat < -30.0888 && lat >= -34.2080){ //Sydney Perth
+            } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
                 console.log("Sydney");
                 sessionStorage.setItem("exposureChart", "winterSydneyChart");
-            } else if (lat < -34.2080) { //Not sufficient sunlight, only use oral intake
+            } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
                 //set some variable
                 //move to results screen
                 console.log("UV levels too low, sunlight not sufficient");
@@ -42,7 +42,7 @@ function getSeason(){
             console.log("Geolocation not supported by browser")
         }
     }
-    
+
 }
 
 function headFunction(){
@@ -52,13 +52,13 @@ function headFunction(){
     } else {
         checkbox.checked = true;
     }
-    
+
     var headImg = document.getElementById("headImg");
     if (headImg.style.visibility == 'hidden'){
         headImg.style.visibility = 'visible';
     } else {
         headImg.style.visibility = 'hidden';
-    } 
+    }
 }
 function torsoFunction(){
     var armImg = document.getElementById("longShirtImg");
@@ -70,7 +70,7 @@ function torsoFunction(){
         upArmFunction();
         return;
     }
-    
+
     var checkbox = document.getElementById("torsoForm");
     if (checkbox.checked == true){
         checkbox.checked = false;
@@ -82,7 +82,7 @@ function torsoFunction(){
         torsoImg.style.visibility = 'visible';
     } else {
         torsoImg.style.visibility = 'hidden';
-    } 
+    }
 }
 function upArmFunction(){
     var armImg = document.getElementById("longShirtImg");
@@ -90,7 +90,7 @@ function upArmFunction(){
         armFunction();
         return;
     }
-    
+
     var checkbox = document.getElementById("upperArmForm");
     var checkbox2 = document.getElementById("torsoForm");
     if (checkbox.checked == true){
@@ -107,7 +107,7 @@ function upArmFunction(){
         upArmImg.style.visibility = 'visible';
     } else {
         upArmImg.style.visibility = 'hidden';
-    } 
+    }
 }
 function armFunction(){
     var checkbox = document.getElementById("lowerArmForm");
@@ -131,7 +131,7 @@ function armFunction(){
         armImg.style.visibility = 'visible';
     } else {
         armImg.style.visibility = 'hidden';
-    } 
+    }
 }
 function handsFunction(){
     var checkbox = document.getElementById("handsForm");
@@ -140,13 +140,13 @@ function handsFunction(){
     } else {
         checkbox.checked = true;
     }
-    
+
     var handsImg = document.getElementById("handsImg");
     if (handsImg.style.visibility == 'hidden'){
         handsImg.style.visibility = 'visible';
     } else {
         handsImg.style.visibility = 'hidden';
-    } 
+    }
 }
 function legsFunction(){
     var checkbox = document.getElementById("legsForm");
@@ -160,7 +160,7 @@ function legsFunction(){
         legsImg.style.visibility = 'visible';
     } else {
         legsImg.style.visibility = 'hidden';
-    } 
+    }
 }
 
 function setSessionData(){
@@ -196,7 +196,7 @@ function setMinutesData(){
         var lunch = Number(document.getElementById("lunchMinutes").value);
         var afternoon = Number(document.getElementById("afternoonMinutes").value);
         inputMinutes = morn + lunch + afternoon;
-        
+
     } else {
         inputMinutes = Number(document.getElementById("lunchMinutes").value);
     }
@@ -204,5 +204,5 @@ function setMinutesData(){
         inputMinutes = Math.round(inputMinutes / 7); //Divided into daily units
     }
     sessionStorage.setItem("inputMinutes", inputMinutes);
-    
+
 }
