@@ -562,10 +562,10 @@ body {
 .time-data {
   background: #1686AB;
   width: 50%;
-  /*height: 500%;*/
   border-radius: 25px;
   margin: auto;
   position: relative;
+  padding-bottom: 20px;
 }
 
 @media (max-width: 767px) {
@@ -602,7 +602,6 @@ body {
 
 .minutes-exposure-heading {
   text-align: left;
-  padding-bottom: 10px;
 }
 
 .result-overall {
@@ -969,6 +968,7 @@ body {
   margin: auto;
   border-radius: 20px;
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 767px) {
@@ -993,6 +993,7 @@ body {
   padding-top: 30px;
   color: #7d8285;
   padding-bottom: 30px;
+  text-align: center;
 }
 
 .dietary-remove-button-new {
@@ -1050,5 +1051,39 @@ body {
 
 #supplement-input-fields-three {
   margin-top: 20px;
+}
+
+.current-location-button {
+  background: #f8b607;
+  border-radius: 32px;
+  border-color: rgba(255,255,255,0);
+  color: black;
+  width: 200px;
+}
+
+.location-heading {
+  padding-top: 20px;
+  color: white;
+  font-size: 28px;
+}
+
+.location-bubble {
+  background-color: #1686ab;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 767px) {
+  .location-bubble {
+    width: 90%;
+  }
+}
+
+.location-button {
+  margin: 5px;
 }
 

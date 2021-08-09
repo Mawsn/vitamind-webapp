@@ -31,40 +31,58 @@ function nextPage(pageno){
 	var dosageOne;
 	var dosageTwo;
 	var dosageThree;
+    
 	
 	if (pageno == 1) {
 		dosageOne = document.getElementById("supplement-input-fields-one").value;
+        
+        
 
-		if(dosageOne == '' || dosageOne == ' ') {
+		if(dosageOne == '' || dosageOne == ' ' || dosageOne == null) {
 			//alert("Invalid dosage amount.");
             dosageOne = 0;
 		}
 		//else {
-			sessionStorage.setItem("dosageOne", dosageOne);
-			location.href='tool-supplement-2.html';
+        sessionStorage.setItem("dosageOne", dosageOne);
+        if (sessionStorage.getItem("vitDSupplement") == null){
+            alert("Please select the Yes or No button to continue");
+        } else {
+            location.href='tool-supplement-2.html';
+        }
+        
 		//} 
 		
 	} 
 	else if (pageno == 2) {
 		dosageTwo = document.getElementById("supplement-input-fields-two").value;
-		if(dosageTwo == '' || dosageTwo == ' ') {
+		if(dosageTwo == '' || dosageTwo == ' ' || dosageOne == null) {
 			//alert("Invalid dosage amount.");
             dosageOne = 0;
 		}
 		//else {
-			sessionStorage.setItem("dosageTwo", dosageTwo);
-			location.href='tool-supplement-3.html';
+        sessionStorage.setItem("dosageTwo", dosageTwo);
+        if (sessionStorage.getItem("boneSupplement") == null){
+            alert("Please select the Yes or No button to continue");
+        } else {
+            location.href='tool-supplement-3.html';
+        }
+			
 		//}
 	}
 	else if (pageno == 3) {
 		dosageThree = document.getElementById("supplement-input-fields-three").value;
-		if(dosageThree == '' || dosageThree == ' ') {
+		if(dosageThree == '' || dosageThree == ' ' || dosageOne == null) {
 			//alert("Invalid dosage amount.");
             dosageOne = 0;
 		}
 		//else {
-			sessionStorage.setItem("dosageThree", dosageThree);
-			location.href='tool-sun-exposure.html';
+        sessionStorage.setItem("dosageThree", dosageThree);
+        if (sessionStorage.getItem("multiVitSupplement") == null){
+            alert("Please select the Yes or No button to continue");
+        } else {
+            location.href='tool-sun-exposure.html';
+        }
+        
 		//}
 	}
 }

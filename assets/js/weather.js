@@ -55,7 +55,7 @@ function displayWeather(weatherObj){
   var dayArray = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
   var displayDiv = document.getElementById("weather_display");
-  //displayDiv.style.textAlign = "center";
+  displayDiv.style.textAlign = "center";
   var sr = "http://openweathermap.org/img/wn/"+weatherObj.daily[0].weather[0].icon+"@2x.png";
 
   var row = displayDiv.insertRow(0);
@@ -88,3 +88,44 @@ function displayWeather(weatherObj){
   //displayDiv.innerHTML = "<h3>"+weatherObj.current.temp+"</h3>";
   //displayDiv.innerHTML += "<h5>"+weatherObj.daily[0].uvi+"</h5>";
 }
+
+firebase.auth().onAuthStateChanged((user) =>{
+    if (user !== null){
+        var userRef = db.collection("users").doc(user.uid);
+        userRef.get().then((doc) => {
+           if (doc.exists){
+               console.log("User doc exists");
+               var userData = doc.data();
+               var prevResult = userData["results"][userData["results"].length-1];
+               console.log(prevResult);
+               var date = prevResult["date"].toDate();
+
+               document.getElementById("prevDate").innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();;
+               
+               document.getElementById("prevGrade").innerHTML = prevResult["letterGrade"];
+               
+               document.getElementById("prevLikelyhood").innerHTML = prevResult["deficiencyChance"];
+               
+               document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
+               
+               document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
+               
+               document.getElementById("prevOralIntake").innerHTML = prevResult["dietIntake"]+"ug";
+               
+               document.getElementById("prevSuppIntake").innerHTML = prevResult["suppIntake"]+"ug";
+               
+               document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
+           } else {
+               console.log("No previous history");
+               //document.getElementById("prevResultsHeading").remove();
+               document.getElementById("prevTable").remove;
+               document.getElementById("homeResultContainer").innerHTML = "There is no current status for us to display.";
+               
+           }
+        }).catch((error) => {
+            console.log("Error getting document: ", error);
+        });
+    } else {
+        console.log("Not logged in");
+    }
+});
