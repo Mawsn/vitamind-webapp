@@ -58,36 +58,64 @@ function displayWeather(weatherObj){
   displayDiv.style.textAlign = "center";
   //var sr = "http://openweathermap.org/img/wn/"+weatherObj.daily[0].weather[0].icon+"@2x.png";
 
-  var row = displayDiv.insertRow(0);
+    if ($(window).width() < 576){
+        var row = displayDiv.insertRow(0);
 
-  for (var i = 0; i < 7; i++){
-    var cell = row.insertCell(i);
-    cell.innerHTML = "<b>" + dayArray[day++] + "</b>";
-    if (day >= 7){
-      day = 0;
-    }
-  }
+        for (var i = 0; i < 4; i++){
+            var cell = row.insertCell(i);
+            cell.innerHTML = "<b>" + dayArray[day++] + "</b>";
+            if (day >= 7){
+              day = 0;
+            }
+        }
 
-  row = displayDiv.insertRow(1);
-  for (var i = 0; i < 7; i++){
-    var cell = row.insertCell(i);
-     // weather_icons/01d.png
-    cell.innerHTML = "<img src='assets/img/weather_icons/"+weatherObj.daily[i].weather[0].icon+".png' draggable='false' class='weather_img'>";
-      /*cell.innerHTML = "<img src='http://openweathermap.org/img/wn/"+weatherObj.daily[i].weather[0].icon+"@2x.png' draggable='false' class='weather_img'>";*/
-  }
+        row = displayDiv.insertRow(1);
+        for (var i = 0; i < 4; i++){
+            var cell = row.insertCell(i);
+             // weather_icons/01d.png
+            cell.innerHTML = "<img src='assets/img/weather_icons/"+weatherObj.daily[i].weather[0].icon+".png' draggable='false' class='weather_img'>";
+              /*cell.innerHTML = "<img src='http://openweathermap.org/img/wn/"+weatherObj.daily[i].weather[0].icon+"@2x.png' draggable='false' class='weather_img'>";*/
+        }
 
-  row = displayDiv.insertRow(2);
-  for (var i = 0; i < 7; i++){
-    var cell = row.insertCell(i);
-    cell.innerHTML = weatherObj.daily[i].temp.min.toFixed(1) + "\t<b>" + weatherObj.daily[i].temp.max.toFixed(1) +"</b>";
-  }
-  row = displayDiv.insertRow(3);
-  for (var i = 0; i < 7; i++){
-    var cell = row.insertCell(i);
-    cell.innerHTML = "UVI: " + weatherObj.daily[i].uvi;
-  }
-    if ($(window).width() < 500){
-        alert('less than 500');
+        row = displayDiv.insertRow(2);
+        for (var i = 0; i < 4; i++){
+            var cell = row.insertCell(i);
+            cell.innerHTML = weatherObj.daily[i].temp.min.toFixed(1) + "\t<b>" + weatherObj.daily[i].temp.max.toFixed(1) +"</b>";
+        }
+        row = displayDiv.insertRow(3);
+        for (var i = 0; i < 4; i++){
+            var cell = row.insertCell(i);
+            cell.innerHTML = "UVI: " + weatherObj.daily[i].uvi;
+        }
+    } else {
+        var row = displayDiv.insertRow(0);
+
+        for (var i = 0; i < 7; i++){
+            var cell = row.insertCell(i);
+            cell.innerHTML = "<b>" + dayArray[day++] + "</b>";
+            if (day >= 7){
+              day = 0;
+            }
+        }
+
+        row = displayDiv.insertRow(1);
+        for (var i = 0; i < 7; i++){
+            var cell = row.insertCell(i);
+             // weather_icons/01d.png
+            cell.innerHTML = "<img src='assets/img/weather_icons/"+weatherObj.daily[i].weather[0].icon+".png' draggable='false' class='weather_img'>";
+              /*cell.innerHTML = "<img src='http://openweathermap.org/img/wn/"+weatherObj.daily[i].weather[0].icon+"@2x.png' draggable='false' class='weather_img'>";*/
+        }
+
+        row = displayDiv.insertRow(2);
+        for (var i = 0; i < 7; i++){
+            var cell = row.insertCell(i);
+            cell.innerHTML = weatherObj.daily[i].temp.min.toFixed(1) + "\t<b>" + weatherObj.daily[i].temp.max.toFixed(1) +"</b>";
+        }
+        row = displayDiv.insertRow(3);
+        for (var i = 0; i < 7; i++){
+            var cell = row.insertCell(i);
+            cell.innerHTML = "UVI: " + weatherObj.daily[i].uvi;
+        }
     }
 
   //displayDiv.innerHTML = "<h3>"+weatherObj.current.temp+"</h3>";
