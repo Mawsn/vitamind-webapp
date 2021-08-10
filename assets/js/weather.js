@@ -56,7 +56,7 @@ function displayWeather(weatherObj){
 
   var displayDiv = document.getElementById("weather_display");
   displayDiv.style.textAlign = "center";
-  var sr = "http://openweathermap.org/img/wn/"+weatherObj.daily[0].weather[0].icon+"@2x.png";
+  //var sr = "http://openweathermap.org/img/wn/"+weatherObj.daily[0].weather[0].icon+"@2x.png";
 
   var row = displayDiv.insertRow(0);
 
@@ -72,7 +72,7 @@ function displayWeather(weatherObj){
   for (var i = 0; i < 7; i++){
     var cell = row.insertCell(i);
      // weather_icons/01d.png
-    cell.innerHTML = "<img src='weather_icons/"+weatherObj.daily[i].weather[0].icon+".png' draggable='false' class='weather_img'>";
+    cell.innerHTML = "<img src='assets/img/weather_icons/"+weatherObj.daily[i].weather[0].icon+".png' draggable='false' class='weather_img'>";
       /*cell.innerHTML = "<img src='http://openweathermap.org/img/wn/"+weatherObj.daily[i].weather[0].icon+"@2x.png' draggable='false' class='weather_img'>";*/
   }
 
