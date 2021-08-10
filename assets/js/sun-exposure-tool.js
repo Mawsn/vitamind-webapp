@@ -9,19 +9,21 @@ function goBack(){
 function showPosition(position){
   lat = position.coords.latitude;
 } */
-var lat;
+//var lat;
 function detectLocation(){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition((position) => {
-          lat = position.coords.latitude;
+          var lat = position.coords.latitude;
           if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
               console.log("Brisbane");
               sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
               sessionStorage.setItem("insufficientUV", false);
+              window.location.assign('tool-sun-exposure.html');
           } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
               console.log("Sydney");
               sessionStorage.setItem("exposureChart", "winterSydneyChart");
               sessionStorage.setItem("insufficientUV", false);
+              window.location.assign('tool-sun-exposure.html');
           } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
               //set some variable
               //move to results screen
@@ -31,10 +33,48 @@ function detectLocation(){
               window.location.assign("result-breakdown.html");
               //sessionStorage.setItem("exposureChart", "summerChart");
           }
+        }, (error) => {
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                    alert("Location request was denied. Please use one of the general locations below.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("There was an error detecting your location. Please use one of the general locations below.");
+                    break;
+                case error.TIMEOUT:
+                    alert("There was an error detecting your location. Please use one of the general locations below.");
+                    console.log("Geolocation timeout");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("There was an error detecting your location. Please use one of the general locations below.");
+                    break;
+            }
         });
 
     } else {
-        console.log("Geolocation not supported by browser")
+        alert("Geolocation not supported by browser. Please use one of the general locations below.");
+    }
+}
+
+function generalLocation(lat){
+    if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
+        console.log("Brisbane");
+        sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
+        sessionStorage.setItem("insufficientUV", false);
+        window.location.assign('tool-sun-exposure.html');
+    } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
+        console.log("Sydney");
+        sessionStorage.setItem("exposureChart", "winterSydneyChart");
+        sessionStorage.setItem("insufficientUV", false);
+        window.location.assign('tool-sun-exposure.html');
+    } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
+        //set some variable
+        //move to results screen
+        console.log("UV levels too low, sunlight not sufficient");
+        console.log("Setting to summer for testing purposes: sun-exposure-tools.js: 38-39");
+        sessionStorage.setItem("insufficientUV", true);
+        window.location.assign("result-breakdown.html");
+        //sessionStorage.setItem("exposureChart", "summerChart");
     }
 }
 
@@ -47,7 +87,10 @@ function getSeason(){
         console.log("Summer");
         sessionStorage.setItem("exposureChart", "summerChart");
         sessionStorage.setItem("insufficientUV", false);
+        window.location.assign('tool-sun-exposure.html');
     } else {
+        window.location.assign("tool-location.html");
+        /*
         if (window.location.pathname == '/tool-exposure-minutes.html'){
             document.getElementById("mornLabel").remove();//.style.visibility = "hidden";
             document.getElementById("afternoonLabel").remove();//.style.visibility = "hidden";
@@ -115,8 +158,8 @@ function getSeason(){
 
         } else {
             console.log("Geolocation not supported by browser")
-        }
-    }
+        } */
+    } 
 
 }
 

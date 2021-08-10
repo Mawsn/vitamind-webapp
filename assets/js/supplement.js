@@ -80,7 +80,8 @@ function nextPage(pageno){
         if (sessionStorage.getItem("multiVitSupplement") == null){
             alert("Please select the Yes or No button to continue");
         } else {
-            location.href='tool-sun-exposure.html';
+            getSeason();
+            //location.href='tool-sun-exposure.html';
         }
         
 		//}
