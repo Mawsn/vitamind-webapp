@@ -86,6 +86,9 @@ function displayWeather(weatherObj){
     var cell = row.insertCell(i);
     cell.innerHTML = "UVI: " + weatherObj.daily[i].uvi;
   }
+    if ($(window).width() < 500){
+        alert('less than 500');
+    }
 
   //displayDiv.innerHTML = "<h3>"+weatherObj.current.temp+"</h3>";
   //displayDiv.innerHTML += "<h5>"+weatherObj.daily[0].uvi+"</h5>";

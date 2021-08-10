@@ -1096,7 +1096,7 @@ body {
 @media (max-width: 767px) {
   .weather_img {
     object-fit: contain;
-	max-width: 100%;
+    max-width: 100%;
   }
 }
 
