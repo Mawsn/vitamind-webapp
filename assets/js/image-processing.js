@@ -71,6 +71,6 @@ function associateUserTone(red,green,blue){
 	alert("Distance of: " + distance + ", skin matches closest with Tone " + tone);
 	sessionStorage.setItem("skin-tone-value","Type_" + tone);
 	document.getElementById('file').value= null;
-	location.href='tool-sun-exposure.html';
+	location.href='tool-dietary.html';
 
 }
