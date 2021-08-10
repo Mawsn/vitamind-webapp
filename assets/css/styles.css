@@ -1090,5 +1090,13 @@ body {
 .weather_img {
   height: 100px;
   width: 100px;
+  padding: 10px;
+}
+
+@media (max-width: 767px) {
+  .weather_img {
+    height: 50%;
+    width: 50%;
+  }
 }
 
