@@ -71,7 +71,9 @@ function displayWeather(weatherObj){
   row = displayDiv.insertRow(1);
   for (var i = 0; i < 7; i++){
     var cell = row.insertCell(i);
-    cell.innerHTML = "<img src='http://openweathermap.org/img/wn/"+weatherObj.daily[i].weather[0].icon+"@2x.png' draggable='false' class='weather_img'>";
+     // weather_icons/01d.png
+    cell.innerHTML = "<img src='weather_icons/"+weatherObj.daily[i].weather[0].icon+".png' draggable='false' class='weather_img'>";
+      /*cell.innerHTML = "<img src='http://openweathermap.org/img/wn/"+weatherObj.daily[i].weather[0].icon+"@2x.png' draggable='false' class='weather_img'>";*/
   }
 
   row = displayDiv.insertRow(2);
