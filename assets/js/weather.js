@@ -108,13 +108,21 @@ firebase.auth().onAuthStateChanged((user) =>{
                
                document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
                
-               document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
+               //document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
+               if (prevResult["sunGrade"] == null){
+                    var resultsTable = document.getElementById("prevTable");
+                    resultsTable.deleteRow(5);
+                    resultsTable.deleteRow(7);
+               } else {
+                   document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
+                   document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
+               }
                
                document.getElementById("prevOralIntake").innerHTML = prevResult["dietIntake"]+"ug";
                
                document.getElementById("prevSuppIntake").innerHTML = prevResult["suppIntake"]+"ug";
                
-               document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
+               //document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
            } else {
                console.log("No previous history");
                //document.getElementById("prevResultsHeading").remove();

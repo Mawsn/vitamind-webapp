@@ -18,7 +18,7 @@ if (insufficientUV == 'true'){
     var recommendedTime = document.getElementById("recommendedTime").remove();
 
     var resultsTable = document.getElementById("resultsTable");
-    resultsTable.deleteRow(2);
+    resultsTable.deleteRow(3);
     resultsTable.deleteRow(5);
     
 } else {
@@ -69,15 +69,6 @@ if (insufficientUV == 'true'){
     var recommendedTime = document.getElementById("recommendedTime");
     recommendedTime.innerHTML = "Recommended Minimum Sun Exposure: "+sessionStorage.getItem("recommendedMinutes")+" minutes.";
 
-    var likelyhood = document.getElementById("deficiencyLikelyhood");
-    if (sessionStorage.getItem("sunGrade") == "A"){
-        likelyhood.innerHTML = "Unlikely to be insufficient";
-    } else if (sessionStorage.getItem("sunGrade") == "B"){
-        likelyhood.innerHTML = "Moderately likely to be insufficient";
-    } else if (sessionStorage.getItem("sunGrade") == "C"){
-        likelyhood.innerHTML = "Highly likely to be insufficient";
-    }
-
     //Sun Exposure Minute Data
     var inputMin = Number(sessionStorage.getItem("inputMinutes"));
     var recommendedMin = Number(sessionStorage.getItem("recommendedMinutes"));
@@ -88,6 +79,15 @@ if (insufficientUV == 'true'){
     } else {
         document.getElementById("requiredMinutes").innerHTML = "Required minutes reached";
     }
+}
+
+var likelyhood = document.getElementById("deficiencyLikelyhood");
+if (grade.innerHTML == "A"){
+    likelyhood.innerHTML = "Unlikely to be insufficient";
+} else if (grade.innerHTML == "B"){
+    likelyhood.innerHTML = "Moderately likely to be insufficient";
+} else if (grade.innerHTML == "C"){
+    likelyhood.innerHTML = "Highly likely to be insufficient";
 }
 
 //Supplement Data
@@ -125,13 +125,21 @@ firebase.auth().onAuthStateChanged((user) =>{
                
                document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
                
-               document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
+               if (prevResult["sunGrade"] == null){
+                    var resultsTable = document.getElementById("prevResultContainer");
+                    resultsTable.deleteRow(5);
+                    resultsTable.deleteRow(7);
+               } else {
+                   document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
+                   document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
+               }
                
                document.getElementById("prevOralIntake").innerHTML = prevResult["dietIntake"]+"ug";
                
                document.getElementById("prevSuppIntake").innerHTML = prevResult["suppIntake"]+"ug";
                
-               document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
+        
+               
            } else {
                console.log("No previous history");
                document.getElementById("prevResultsHeading").remove();
@@ -141,8 +149,29 @@ firebase.auth().onAuthStateChanged((user) =>{
             console.log("Error getting document: ", error);
         });
         
-
-        var resultData = {
+        var resultData;
+        if (insufficientUV == 'false'){
+            resultData = {
+                date: firebase.firestore.Timestamp.fromDate(new Date()),
+                letterGrade: document.getElementById("overallGrade").innerHTML,
+                deficiencyChance: likelyhood.innerHTML,
+                dietGrade: sessionStorage.getItem("dietGrade"),
+                sunGrade: sessionStorage.getItem("sunGrade"),
+                dietIntake: oralIntake.toFixed(2),
+                suppIntake: suppDose,
+                minutesRequired: document.getElementById("requiredMinutes").innerHTML
+            }
+        } else {
+            resultData = {
+                date: firebase.firestore.Timestamp.fromDate(new Date()),
+                letterGrade: document.getElementById("overallGrade").innerHTML,
+                deficiencyChance: likelyhood.innerHTML,
+                dietGrade: sessionStorage.getItem("dietGrade"),
+                dietIntake: oralIntake.toFixed(2),
+                suppIntake: suppDose
+            }
+        }
+        /*var resultData = {
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             letterGrade: document.getElementById("overallGrade").innerHTML,
             deficiencyChance: likelyhood.innerHTML,
@@ -151,7 +180,7 @@ firebase.auth().onAuthStateChanged((user) =>{
             dietIntake: oralIntake.toFixed(2),
             suppIntake: suppDose,
             minutesRequired: document.getElementById("requiredMinutes").innerHTML
-        }
+        } */
 
         if (!user.isAnonymous){
             userRef.get().then((doc) => {
