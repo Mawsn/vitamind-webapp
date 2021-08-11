@@ -745,7 +745,15 @@ body {
   padding-bottom: 5%;
 }
 
-.dietary-input-fields {
+.dietary-top-input-fields {
+  width: 60%;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: auto;
+  height: 50px;
+}
+
+.dietary-bottom-input-fields {
   width: 60%;
   border-radius: 10px;
   border: 2px solid black;
@@ -754,12 +762,18 @@ body {
 }
 
 @media (max-width: 767px) {
-  .dietary-input-fields {
+  .dietary-top-input-fields {
     width: 90%;
   }
 }
 
-#dietary-top-input {
+@media (max-width: 767px) {
+  .dietary-bottom-input-fields {
+    width: 90%;
+  }
+}
+
+.dietary-top-input-fields {
   margin-bottom: 5%;
 }
 
@@ -1024,7 +1038,6 @@ body {
 
 .dietary-remove-button:hover {
   background-color: #ffeec7;
-  /*border-color: #ffeec7;*/
 }
 
 .skin-tone-option-row:hover {
@@ -1098,5 +1111,17 @@ body {
     object-fit: contain;
     max-width: 100%;
   }
+}
+
+.dietary-table {
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.dietary-table-inputs {
+  border-radius: 10px;
+  border: 1px solid black;
 }
 

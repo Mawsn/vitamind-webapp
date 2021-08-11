@@ -1,11 +1,21 @@
-var x = 0;
+var dietary_bubble_counter = 0;
+var select_tag_counter = 0;
+var input_tag_counter = 0;
+
+
 function addFood()
 {
-	var original = document.getElementById('dietary-bubble-' + x);
+	var original = document.getElementById('dietary-bubble-' + dietary_bubble_counter);
 
 	var clone = original.cloneNode(true);
 
-	clone.id = "dietary-bubble-" + ++x;
+	clone.id = "dietary-bubble-" + ++dietary_bubble_counter;
+
+	clone.getElementsByTagName('select')[0].id = "dietary-top-input-" + ++select_tag_counter;
+	clone.getElementsByTagName('input')[0].id = "dietary-bottom-input-" + ++input_tag_counter;
+
+	// to reset the value of this input field
+	clone.getElementsByTagName('input')[0].value = "";
 
 	original.parentNode.appendChild(clone);
 }
@@ -14,12 +24,19 @@ function addFood()
 
 function removeFood()
 {
-	if(x > 0)
+	if(dietary_bubble_counter > 0 && select_tag_counter > 0 && input_tag_counter > 0)
 	{
-		let element_removed = $("#dietary-bubble-" + x);
+		let select_removed = $("#dietary-top-input-" + select_tag_counter);
+		$(select_removed).remove();
+		--select_tag_counter;
 
+		let input_removed = $("#dietary-bottom-input-" + input_tag_counter);
+		$(input_removed).remove();
+		--input_tag_counter;
+
+		let element_removed = $("#dietary-bubble-" + dietary_bubble_counter);
 		$(element_removed).remove();
-		--x;
+		--dietary_bubble_counter;
 	}
 }
 
@@ -42,11 +59,87 @@ var vitDPerServe_fromFirestore;		// this variable will store the retrieved vitam
 var db;
 var groupOfDietaryProductsRef;
 
-function checkSelectedOption(option_value)
+// arrays
+var vitDPerServe_values_array = [];
+var servingsPerWeek_userInput_values_array = [];
+
+var product_groupName_array = [];
+var mapValue_array = [];
+
+
+function getFirestoreData(temp_loop_counter)
 {
 	// code needed to retrieve data from firestore
 	db = firebase.firestore();
-	
+
+	// after all the if statements, the value for product_groupName is stored
+	groupOfDietaryProductsRef = db.collection("groupOfDietaryProducts").doc(product_groupName_array[temp_loop_counter]);
+	groupOfDietaryProductsRef.get()
+	.then((doc) =>
+	{
+		if (doc.exists)
+		{
+			var data_from_doc = doc.data();
+
+			// retrieve the requried data from firestore
+			name_fromFirestore = data_from_doc[mapValue_array[temp_loop_counter]]["name"];
+			servingSize_fromFirestore = data_from_doc[mapValue_array[temp_loop_counter]]["servingSize"];
+			vitDPerServe_fromFirestore = data_from_doc[mapValue_array[temp_loop_counter]]["vitaminD_perServe"];
+
+			// push retrieved vitamin D per serve value inside the array
+			vitDPerServe_values_array.push(vitDPerServe_fromFirestore);
+			console.log("Value inside array: " + vitDPerServe_values_array[temp_loop_counter] + ", for loop number: " + temp_loop_counter);
+
+
+			checkServingsPerWeek(document.getElementById('dietary-bottom-input-' + temp_loop_counter).value);
+
+			console.log(document.getElementById('dietary-top-input-' + temp_loop_counter).value + ", " + document.getElementById('dietary-bottom-input-' + temp_loop_counter).value);
+
+			console.log("Loop number: " + temp_loop_counter);
+			console.log("vitDPerServe_fromFirestore value: " + vitDPerServe_values_array[temp_loop_counter]);
+			console.log("servingsPerWeek_userInput value: " + servingsPerWeek_userInput_values_array[temp_loop_counter]);
+
+			dietaryCalculations(temp_loop_counter);
+
+			total_vitD = total_vitD + vitD_fromDietaryIntake;
+
+			if(temp_loop_counter == dietary_bubble_counter)
+			{
+				console.log("total_vitD value: " + total_vitD);
+
+				setDietaryIntake_sessionData();
+
+				// testing
+				console.log("session storage 'dietaryIntake_result' value: " + sessionStorage.getItem("dietaryIntake_result"));
+
+				// reset the total_vitD value
+				total_vitD = 0;
+				//reset the array
+				for(let count = 0; count <= temp_loop_counter; count++)
+				{
+					vitDPerServe_values_array.pop();
+					servingsPerWeek_userInput_values_array.pop();
+					product_groupName_array.pop();
+					mapValue_array.pop();
+				}
+			}
+			
+		}
+		else
+		{
+			console.log("Document does not exist");
+		}
+	})
+	.catch((error) =>
+	{
+		console.log("Error in retrieving", error);
+	});
+}
+
+
+
+function checkSelectedOption(option_value, temp_loop_counter)
+{
 	// for fats
 	if(option_value > 2 && option_value <= 4)
 	{
@@ -203,54 +296,12 @@ function checkSelectedOption(option_value)
 		}
 	}
 
+    // insert values into array
+	product_groupName_array.push(product_groupName);
+    mapValue_array.push(mapValue);
 
-	// after all the if statements, the value for product_groupName is stored
-	groupOfDietaryProductsRef = db.collection("groupOfDietaryProducts").doc(product_groupName);
-	groupOfDietaryProductsRef.get().then((doc) =>
-	{
-		if (doc.exists)
-		{
-			var data_from_doc = doc.data();
 
-			// checking in console
-			// console.log("The value of product_groupName: " + product_groupName);
-			// console.log("The value of mapValue: " + mapValue);
-
-			// retrieve the requried data from firestore
-			name_fromFirestore = data_from_doc[mapValue]["name"];
-			servingSize_fromFirestore = data_from_doc[mapValue]["servingSize"];
-			vitDPerServe_fromFirestore = data_from_doc[mapValue]["vitaminD_perServe"];
-
-			// checking in console
-			console.log("Retrieved data of name from firestore: "+ name_fromFirestore);
-			console.log("Retrieved data of servingSize from firestore: "+ servingSize_fromFirestore);
-			console.log("Retrieved data of vitaminD_perServe from firestore: "+ vitDPerServe_fromFirestore);
-		
-			
-			// check if this part of the field is entered
-			if(option_value > 1 && option_value < 24)
-			{
-				dietary_top_field_bool = true;
-			}
-			else
-			{
-				dietary_top_field_bool = false;
-			}
-
-			// check if the form is complete
-			if(dietary_top_field_bool == true && dietary_bottom_field_bool == true)
-			{
-				dietaryCalculations();
-			}
-		}
-		else
-		{
-			console.log("Document does not exist");
-		}
-	}).catch((error) =>
-	{
-		console.log("Error in retrieving", error);
-	});
+	getFirestoreData(temp_loop_counter);
 }
 
 
@@ -259,68 +310,30 @@ var servingsPerWeek_userInput;
 
 function checkServingsPerWeek(entered_value)
 {
-	servingsPerWeek_userInput = entered_value
+	servingsPerWeek_userInput = entered_value;
 
-	// checking
-	console.log("Servings Per Week Entered by User: " + servingsPerWeek_userInput);
-
-	// check if this part of the field is entered
-	if(entered_value != 0)
-	{
-		dietary_bottom_field_bool = true;
-	}
-	else
-	{
-		dietary_bottom_field_bool = false;
-	}
-
-
-	// check if the form is complete
-	if(dietary_top_field_bool == true && dietary_bottom_field_bool == true)
-	{
-		dietaryCalculations();
-	}
+	servingsPerWeek_userInput_values_array.push(servingsPerWeek_userInput);
 }
 
 // this function will perform the dietary calculations
 var vitD_fromDietaryIntake;
 var dietaryIntakeCalculation_bool;
 
-function dietaryCalculations()
+function dietaryCalculations(temp_loop_counter)
 {
-	if(dietary_top_field_bool == true && dietary_top_field_bool == true)
-	{
-		dietaryIntakeCalculation_bool = true;
+	// correct formula
+	vitD_fromDietaryIntake = servingsPerWeek_userInput_values_array[temp_loop_counter] * vitDPerServe_values_array[temp_loop_counter];
 
-		// this formula is wrong
-		// vitD_fromDietaryIntake = servingsPerWeek_userInput * (vitDPerServe_fromFirestore / servingSize_fromFirestore);
+	// checking
+	console.log("Calculated vitamin D from dietary intake: " + vitD_fromDietaryIntake + ", Loop counter: " + temp_loop_counter);
 
-		// correct formula
-		vitD_fromDietaryIntake = servingsPerWeek_userInput * vitDPerServe_fromFirestore;
-	
-		// checking
-		console.log("Calculated vitamin D from dietary intake: " + vitD_fromDietaryIntake);
-
-		// call this function for setting item on session storage
-		setDietaryIntake_sessionData();
-
-		// checking
-		console.log("CHECK SESSION STORAGE: " + sessionStorage.getItem("dietaryIntake_result"));
-	}
-	else
-	{
-		dietaryIntakeCalculation_bool = false;
-	}
 }
 
 // for session storage
 function setDietaryIntake_sessionData()
 {
 	// set the result of the dietary calculations
-	if(dietaryIntakeCalculation_bool == true)
-	{
-		sessionStorage.setItem("dietaryIntake_result", vitD_fromDietaryIntake);
-	}
+	sessionStorage.setItem("dietaryIntake_result", total_vitD);
 }
 
 function saveData(){
@@ -342,3 +355,21 @@ function saveData(){
         alert("Please enter your age");
     }
 }
+
+
+// function for test button
+var total_vitD = 0;
+function testButton()
+{
+	for(let loop_counter = 0; loop_counter <= dietary_bubble_counter; loop_counter++)
+	{
+		console.log("TESTING FIRST: " + document.getElementById('dietary-top-input-' + loop_counter).value);
+		checkSelectedOption(document.getElementById('dietary-top-input-' + loop_counter).value, loop_counter);
+	}
+
+
+	// check loop
+	console.log("TEST LOOP: testButton()");
+	
+}
+

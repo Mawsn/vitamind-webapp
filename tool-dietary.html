@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/style%20from%20VitaTrack_Rafat_02.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="152x152" href="152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
@@ -68,7 +69,7 @@
     </div>
     <div id="dietary-parent-container">
         <div id="dietary-bubble-0" class="dietary-bubble">
-            <form class="dietary_form"><select class="form-select dietary-input-fields" id="dietary-top-input" onchange="checkSelectedOption(this.value)">
+            <form class="dietary_form"><select class="form-select dietary-top-input-fields" id="dietary-top-input-0">
 
         <option value="1" selected select disabled>Select Food Item</option>
         <option value="2" select disabled>-- Fat --</option>
@@ -96,7 +97,7 @@ milk - Glass (250ml)</option>
 		<option value="23">Dark Chocolate - 4 to 6 squares (25g)</option>
 
 
-</select><input class="form-control dietary-input-fields" type="number" id="dietary-bottom-input" placeholder="Servings Per Week" onchange="checkServingsPerWeek(this.value);"></form>
+</select><input class="form-control dietary-bottom-input-fields" type="number" id="dietary-bottom-input-0" placeholder="Servings Per Week"></form>
         </div>
     </div>
     <div class="dietary-add-button" style="cursor: pointer;" onclick="addFood();">
@@ -105,10 +106,11 @@ milk - Glass (250ml)</option>
     <div class="dietary-remove-button" style="cursor: pointer;" onclick="removeFood();">
         <p style="text-align: center;padding-top: 3px;font-size: 22px;font-weight: bold;margin-top: -8.25%;">-</p>
     </div>
-    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="saveData();">Next</button></div>
+    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="testButton();location.href=&#39;tool-supplement-1.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary-old.js"></script>
     <script src="assets/js/dietary.js"></script>
     <script src="assets/js/image-processing.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
