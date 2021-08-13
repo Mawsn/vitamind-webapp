@@ -65,7 +65,7 @@
     <div class="result-overall" style="text-align: center;margin-top: 50px;">
         <p id="overallGrade" class="text-center letter-grade">A</p>
     </div>
-    <p id="givenTime" class="text-center" onload="showResults();">Total Daily Time Exposed To the Sun: 0</p>
+    <p id="deficiencyLikelyhood" class="text-center" onload="showResults();">Total Daily Time Exposed To the Sun: 0</p>
     <p id="recommendedTime" class="text-center"><br>Recommended Minimum Sun Exposure: 0<br><br></p>
     <div>
         <h1 class="results-head">Breakdown</h1>
@@ -79,10 +79,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="results_format_head">Likelyhood of Deficiency: <br></td>
-                            <td id="deficiencyLikelyhood" class="results_format"></td>
-                        </tr>
-                        <tr>
                             <td class="results_format_head">Dietary Intake Grade: <br></td>
                             <td id="dietGradeLabel" class="results_format"></td>
                         </tr>
@@ -95,12 +91,12 @@
                             <td id="oralIntakeLabel" class="results_format">ug</td>
                         </tr>
                         <tr>
-                            <td class="results_format_head">Supplement Intake:</td>
-                            <td id="suppIntakeLabel" class="results_format">ug</td>
+                            <td class="results_format_head">Total Time Exposed to Sun:</td>
+                            <td id="givenTime" class="results_format">0 minutes</td>
                         </tr>
                         <tr class="bottom-row">
-                            <td class="results_format_head">Sun Exposure:</td>
-                            <td id="requiredMinutes" class="results_format">% required</td>
+                            <td class="results_format_head">Required Sun Exposure:</td>
+                            <td id="requiredMinutes" class="results_format">0 minutes required</td>
                         </tr>
                     </tbody>
                 </table>

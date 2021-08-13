@@ -341,13 +341,14 @@ function saveData(){
     if (age != ''){
         sessionStorage.setItem('age', age);
         
-        var foodItem = document.getElementById("dietary-top-input").selectedIndex;
-        var servingField = Number(document.getElementById("dietary-bottom-input").value);
+        var foodItem = document.getElementById("dietary-top-input-0").selectedIndex;
+        var servingField = Number(document.getElementById("dietary-bottom-input-0").value);
         if (foodItem == 0 && servingField != 0){
             alert("You have entered servings per week, but not selected a food item. Please enter a value to continue");
         } else if (foodItem != 0 && servingField == 0){
             alert("You have selected a food item, but not entered your amount of servings. Please enter a value to continue");
         } else {
+            testButton();
             window.location.assign("tool-supplement-1.html");
         }
         

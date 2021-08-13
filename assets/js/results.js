@@ -18,8 +18,8 @@ if (insufficientUV == 'true'){
     var recommendedTime = document.getElementById("recommendedTime").remove();
 
     var resultsTable = document.getElementById("resultsTable");
-    resultsTable.deleteRow(3);
-    resultsTable.deleteRow(5);
+    resultsTable.deleteRow(2);
+    resultsTable.deleteRow(4);
     
 } else {
     var sunGrade = sessionStorage.getItem("sunGrade");
@@ -32,7 +32,7 @@ if (insufficientUV == 'true'){
             grade.innerHTML = 'A';
 
         } else if (sunGrade == 'B'){ //A & B
-            grade.innerHTML = 'B'; //Currently defaulting to lowest value as overall
+            grade.innerHTML = 'B'; ////Sun has more weight than diet
 
         } else if (sunGrade == 'C'){ //A & C
             grade.innerHTML = 'B';
@@ -40,13 +40,13 @@ if (insufficientUV == 'true'){
 
     } else if (dietGrade == 'B'){
         if (sunGrade == 'A'){ //B & A
-            grade.innerHTML = 'B'; //Currently defaulting to lowest value as overall
+            grade.innerHTML = 'A'; //Sun has more weight than diet
 
         } else if (sunGrade == 'B'){ //B & B
             grade.innerHTML = 'B'; 
 
         } else if (sunGrade == 'C'){ //B & C
-            grade.innerHTML = 'C'; //Currently defaulting to lowest value as overall
+            grade.innerHTML = 'C'; //Sun has more weight than diet
         }
 
     } else if (dietGrade == 'C'){
@@ -54,7 +54,7 @@ if (insufficientUV == 'true'){
             grade.innerHTML = 'B';
 
         } else if (sunGrade == 'B'){ //C & B
-            grade.innerHTML = 'C'; //Currently defaulting to lowest value as overall
+            grade.innerHTML = 'B'; //Sun has more weight than diet
 
         } else if (sunGrade == 'C'){ //C & C
             grade.innerHTML = 'C';
@@ -63,7 +63,7 @@ if (insufficientUV == 'true'){
 
 
     var inputTime = document.getElementById("givenTime");
-    inputTime.innerHTML = "Total Daily Time Exposed to Sun: "+sessionStorage.getItem("inputMinutes")+" minutes.";
+    inputTime.innerHTML = sessionStorage.getItem("inputMinutes")+" minutes.";
     //console.log("THIS: "+sessionStorage.getItem("inputMinutes"));
 
     var recommendedTime = document.getElementById("recommendedTime");
@@ -94,7 +94,7 @@ if (grade.innerHTML == "A"){
 var oralIntake = Number(sessionStorage.getItem("dietaryIntake_result"));
 document.getElementById("oralIntakeLabel").innerHTML = oralIntake.toFixed(2)+"ug";
 var suppDose = Number(sessionStorage.getItem("totalSupplementDosage"));
-document.getElementById("suppIntakeLabel").innerHTML = suppDose+"ug";
+//document.getElementById("suppIntakeLabel").innerHTML = suppDose+"ug";
 
 
 firebase.auth().onAuthStateChanged((user) =>{

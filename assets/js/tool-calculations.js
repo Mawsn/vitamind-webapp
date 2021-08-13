@@ -19,26 +19,35 @@ var suppAdd = 0.0; //unit is ug
 var oralIntake = Number(sessionStorage.getItem("dietaryIntake_result")); //unit is ug
 if (vitDSupp == 'true'){
     let dosage = Number(sessionStorage.getItem("dosageOne"));
+    let freq = Number(sessionStorage.getItem("vitDFrequency"));
     if (dosage == 0){
-        suppAdd += 25;
+        var dos = 25 * freq;
+        suppAdd += dos;
     } else {
-        suppAdd += dosage;
+        var dos = dosage * freq;
+        suppAdd += dos;
     }
 }
 if (boneSupp == 'true'){
     let dosage = Number(sessionStorage.getItem("dosageTwo"));
+    let freq = Number(sessionStorage.getItem("boneFrequency"));
     if (dosage == 0){
-        suppAdd += 12.5;
+        var dos = 12.5 * freq;
+        suppAdd += dos;
     } else {
-        suppAdd += dosage;
+        var dos = dosage * freq;
+        suppAdd += dos;
     }
 }
 if (multiVitSupp == 'true'){
     let dosage = Number(sessionStorage.getItem("dosageThree"));
+    let freq = Number(sessionStorage.getItem("multiVitFrequency"));
     if (dosage == 0){
-        suppAdd += 5;
+        var dos = 5 * freq;
+        suppAdd += dos;
     } else {
-        suppAdd += dosage;
+        var dos = dosage * freq;
+        suppAdd += dos;
     }
 }
 sessionStorage.setItem("totalSupplementDosage",suppAdd);
@@ -122,9 +131,19 @@ function calGrade(){//calculations
 }
 
 function leaveTool(pageRef){
+    const user = firebase.auth().currentUser;
+    
     var leave = confirm("Are you sure you want to leave this page?\nAll progress will be lost.");
     if (leave){
         sessionStorage.clear();
-        window.location.assign(pageRef);
+        if (user.isAnonymous){
+            if (pageRef == 'home.html'){
+                deleteUser();
+            } else {
+                //if different page
+            }
+        } else {
+            window.location.assign(pageRef);
+        }
     } 
 }

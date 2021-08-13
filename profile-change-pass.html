@@ -27,60 +27,40 @@
 <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
 </head>
 
-<body class="white-background" onload="getMultiVit();">
+<body>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
-        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="leaveTool(&#39;home.html&#39;);">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;index&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
-                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="leaveTool(&#39;about.html&#39;);">About Us<br></button></li>
-                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="">History</button></li>
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;signup-options.html&#39;;">Product Scanner</button></li>
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;signup-options.html&#39;;">History</button></li>
                 <li class="nav-item"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobile-menu" id="mobile-menu-icon" onclick="expandMenu()">
 <path d="M6.25 8.75C6.25 8.05964 6.80964 7.5 7.5 7.5H32.5C33.1904 7.5 33.75 8.05964 33.75 8.75V8.75C33.75 9.44036 33.1904 10 32.5 10H7.5C6.80964 10 6.25 9.44036 6.25 8.75V8.75Z" fill="#F8B607"/>
 <path d="M6.25 20C6.25 19.3096 6.80964 18.75 7.5 18.75H32.5C33.1904 18.75 33.75 19.3096 33.75 20V20C33.75 20.6904 33.1904 21.25 32.5 21.25H7.5C6.80964 21.25 6.25 20.6904 6.25 20V20Z" fill="#F8B607"/>
 <path d="M6.25 31.25C6.25 30.5596 6.80964 30 7.5 30H32.5C33.1904 30 33.75 30.5596 33.75 31.25V31.25C33.75 31.9404 33.1904 32.5 32.5 32.5H7.5C6.80964 32.5 6.25 31.9404 6.25 31.25V31.25Z" fill="#F8B607"/>
 </svg>
 </li>
-                <li class="nav-item"><img id="profile-image" src="assets/img/profile-pic.png" onclick="leaveTool(&#39;profile.html&#39;);"></li>
+                <li class="nav-item"><img id="profile-image" src="assets/img/profile-pic.png" onclick="location.href=&#39;My Profile.html&#39;;"></li>
             </ul>
         </div>
     </nav>
     <div id="menu-fragment">
         <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
     </div>
-    <div class="progress-container">
-        <div class="progressBar"><div class="innerCircle"></div>
-<div class="toolStep">3 of 5</div>
-<div class="circle">
-    <div class="bar left">
-        <div class="progressCircle progressCircle3"></div>
-    </div>
-    <div class="bar right">
-        <div class="progressCircle progressCircle3"></div>
-    </div>
-</div></div>
-        <div class="progress-text-container">
-            <h1 class="progress-heading"><strong>Supplement Intake</strong></h1>
-            <p class="progress-subtext">Next: Sun Exposure</p>
+    <div style="margin-top: 50px;"></div><input type="file" id="file" accept="image/*" name="image" onchange="setPic(event)" capture="camera" style="display: none;">
+    <div class="profile-bubble">
+        <h1 class="my-profile-heading">My Profile</h1>
+        <hr id="profile-hr">
+        <h1 id="my-profile-subheading">Change Password</h1>
+        <div class="profile-sub-section">
+            <div id="loadAnim" class="loader"></div>
+            <form>
+                <div class="form-spacing"><span class="profile-subsection-heading">Current Password:</span><input class="form-control profile-input-fields" type="password" id="oldPass"></div>
+                <div class="form-spacing"><span class="profile-subsection-heading">New Password:</span><input class="form-control profile-input-fields" type="password" id="newPass"></div>
+                <div class="form-spacing"><span class="profile-subsection-heading">Confirm Password:</span><input class="form-control profile-input-fields" type="password" id="confirmNewPass"></div>
+            </form>
         </div>
+        <div><button class="btn btn-primary profile-buttons" type="button" onclick="changePassword();">Confirm</button><button class="btn btn-primary profile-buttons" type="button" onclick="location.href=&#39;My Profile.html&#39;;">Cancel</button></div>
     </div>
-    <h1 class="supplement-main-heading">Do you take a multi-vitamin supplement?<br></h1>
-    <div class="supplement-yes-no-parent-div">
-        <div id="multVit_supplement-yes" class="supplement-yes-no-div" style="cursor: pointer;" onclick="multiVitaminYes(); checkSupplementForm_multivit();"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="margin: auto;font-size: 50px;margin-top: 5px;">
-                <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg></div>
-        <div id="multVit_supplement-no" class="supplement-yes-no-div" style="cursor: pointer;" onclick="multiVitaminNo(); checkSupplementForm_multivit();"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="margin: auto;font-size: 50px;margin-top: 5px;">
-                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg></div>
-    </div>
-    <div class="supplement-form">
-        <p class="supplement-sub-heading">How often?</p><select id="multiVit-supplement-frequency" class="supplement-input-fields">
-            <option value="7">Every Day</option>
-            <option value="3.5">Most Days</option>
-            <option value="1">1 Per Week</option>
-            <option value="0.142857143">Once a fortnight</option>
-        </select>
-        <p class="supplement-sub-heading">Brand and Dose (if known)</p><input type="text" class="supplement-input-fields" placeholder="Brand"><input type="number" id="supplement-input-fields-three" class="supplement-input-fields" placeholder="Dosage">
-    </div>
-    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="calDietary();nextPage(3);">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
@@ -91,7 +71,6 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
     <script src="assets/js/skin-tone.js"></script>
-    <script src="assets/js/sun-exposure-tool.js"></script>
     <script src="assets/js/supplement.js"></script>
     <script src="assets/js/tool-calculations.js"></script>
 </body>

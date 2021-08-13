@@ -43,6 +43,10 @@ function nextPage(pageno){
             dosageOne = 0;
 		}
 		//else {
+        var freq = document.getElementById("vitd-supplement-frequency");
+        var freqVal = freq.options[freq.selectedIndex].value;
+        sessionStorage.setItem("vitDFrequency", freqVal);
+        
         sessionStorage.setItem("dosageOne", dosageOne);
         if (sessionStorage.getItem("vitDSupplement") == null){
             alert("Please select the Yes or No button to continue");
@@ -60,6 +64,10 @@ function nextPage(pageno){
             dosageOne = 0;
 		}
 		//else {
+        var freq = document.getElementById("bone-supplement-frequency");
+        var freqVal = freq.options[freq.selectedIndex].value;
+        sessionStorage.setItem("boneFrequency", freqVal);
+        
         sessionStorage.setItem("dosageTwo", dosageTwo);
         if (sessionStorage.getItem("boneSupplement") == null){
             alert("Please select the Yes or No button to continue");
@@ -76,6 +84,10 @@ function nextPage(pageno){
             dosageOne = 0;
 		}
 		//else {
+        var freq = document.getElementById("multiVit-supplement-frequency");
+        var freqVal = freq.options[freq.selectedIndex].value;
+        sessionStorage.setItem("multiVitFrequency", freqVal);
+        
         sessionStorage.setItem("dosageThree", dosageThree);
         if (sessionStorage.getItem("multiVitSupplement") == null){
             alert("Please select the Yes or No button to continue");
@@ -95,6 +107,7 @@ function getVit(){
     } else if (vitDSupplement === 'false'){
         vitaminNo();
     }
+    checkSupplementForm_vitD();
 }
 
 function getBone(){
@@ -104,6 +117,7 @@ function getBone(){
     } else if (boneSupplement === 'false'){
         boneNo();
     }
+    checkSupplementForm_bone();
 }
 
 function getMultiVit(){
@@ -114,6 +128,7 @@ function getMultiVit(){
     } else if (multiVitSupplement === 'false'){
         multiVitaminNo();
     }
+    checkSupplementForm_multivit();
 }
     
 function vitaminYes(){
