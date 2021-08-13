@@ -50,6 +50,29 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
+firebase.firestore().enablePersistence().then(()=>{
+        console.log("Firestore: Offline Data Enabled");
+    }).catch((err) => {
+        if (err.code == 'failed-precondition'){
+            //Multiple tabs open, persistence can only be enabled
+            // in one tab at a a time.
+            console.log("Session open in multiple tabs. Offline data cannot be enabled");
+        } else if (err.code == 'unimplemented'){
+            //Current Browser does not support all features required to enable persistence
+            alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
+        } else {
+            console.log(err.code);
+        }
+});
+
+function getProfile(){
+    //const user = firebase.auth().currentUser;
+    var emailField = document.getElementById('emailField');
+    firebase.auth().onAuthStateChanged((user) => {
+        emailField.value = user.email;
+    });
+}
+
 function guestSignIn(){
     firebase.auth().signInAnonymously()
       .then(() => {
@@ -142,6 +165,62 @@ function signInWithEmailPassword() {
       }
   });
 }
+
+
+function changePassword(){
+    var loadAnim = document.getElementById("loadAnim");
+    loadAnim.style.visibility = "visible";
+    
+    var oldPass = document.getElementById("oldPass").value;
+    var newPass = document.getElementById("newPass").value;
+    var confirmNewPass = document.getElementById("newPass").value;
+    if (newPass != ""){
+        if (newPass == confirmNewPass){
+            console.log("PASSWORD MATCHING NOT WORKING");
+            const user = firebase.auth().currentUser;
+            const cred = firebase.auth.EmailAuthProvider.credential(user.email, oldPass)
+            
+            user.reauthenticateWithCredential(cred).then(() => {
+
+                user.updatePassword(confirmNewPass).then(() => {
+                    loadAnim.style.visibility = "hidden";
+                    alert("Successfully changed password");
+                    window.location.assign('profile.html');
+                }).catch((error) => {
+                    //error in changing password
+                    loadAnim.style.visibility = "hidden";
+                    console.log(error.message)
+                });
+
+            }).catch((error) => {
+                //error reauthenticating
+                loadAnim.style.visibility = "hidden";
+                console.log(error.message)
+            });
+                
+            //console.log(user.email);
+            
+        } else {
+            loadAnim.style.visibility = "hidden";
+           // alert("")
+            alert("New passwords do not match. Change this from an alert");
+            //change styling of confirm input, change placeholder to inform that does not match
+        }
+    } else {
+        loadAnim.style.visibility = "hidden";
+        alert("No password entered. Change this from an alert");
+    }
+}
+
+function showPass(fieldId){ //Not currently being used
+    var field = document.getElementById(fieldId);
+    if (field.type === "password"){
+        field.type = "text";
+    } else {
+        field.type = "password";
+    }
+}
+
 function forgotPassword(){
   var emailAddress = document.getElementById("emailField").value;
 
