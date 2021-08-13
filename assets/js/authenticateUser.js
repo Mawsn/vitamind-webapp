@@ -20,6 +20,8 @@ function authStateListener() {
         var uid = user.uid;
       // ...
         console.log("UID: "+uid);
+        
+        //console.log("Guest?: "+ user.isAnonymous);
     } else {
       // User is signed out
       // ...

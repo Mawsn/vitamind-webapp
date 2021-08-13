@@ -347,3 +347,14 @@ function deleteUser(){
     })
 }
 
+//Used to determine whether the logged in user is a guest, if so, the history and profile button will be hidden
+function checkGuest(){
+	firebase.auth().onAuthStateChanged((user) => {
+    if(user.isAnonymous) {
+    	//alert("Guest?: "+ user.isAnonymous);
+    	document.getElementsByClassName("navbar-button-container")[0].style.display = "none"; 	
+    } 
+  });
+}
+
+
