@@ -14,7 +14,7 @@ function detectLocation(){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition((position) => {
           var lat = position.coords.latitude;
-          if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
+          if (lat <= -12 && lat >= -30.0888){ //Brisbane //was -26.4013 to 
               console.log("Brisbane");
               sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
               sessionStorage.setItem("insufficientUV", false);
@@ -57,7 +57,7 @@ function detectLocation(){
 }
 
 function generalLocation(lat){
-    if (lat <= -26.4013 && lat >= -30.0888){ //Brisbane
+    if (lat <= -12 && lat >= -30.0888){ //Brisbane //was -26.4013 to -30.0888
         console.log("Brisbane");
         sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
         sessionStorage.setItem("insufficientUV", false);

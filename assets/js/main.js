@@ -338,13 +338,44 @@ function signout(){
   });
 }
 
+function clickedDelete(){
+    var delAccount = confirm("Are you sure you want to delete your account? All data for the account will be lost.");
+    if (delAccount){
+        const user = firebase.auth().currentUser;
+        //remove firestore data then call deleteUser()
+        db.collection("users").doc(user.uid).delete().then(() => {
+            deleteUser();
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            alert("An error occurred while trying to delete the account. Please try again");
+            console.error("Error removing document: ", error);
+        });
+    }
+}
+
 function deleteUser(){
     const user = firebase.auth().currentUser;
     user.delete().then(() => {
         window.location.assign("index.html");
     }).catch((error) =>{
         console.log(error);
+        document.getElementById("confirmDeleteDiv").style.visibility = "visible";
+        document.getElementById("confirm-delete-background").style.visibility = "visible";
+        //alert("To continue you must enter your password");
     })
+}
+function confirmDelete(){
+    const user = firebase.auth().currentUser;
+    var pass = document.getElementById("confirmPass").value;
+    const cred = firebase.auth.EmailAuthProvider.credential(user.email, pass);
+    user.reauthenticateWithCredential(cred).then(() => {
+        document.getElementById("confirmDeleteDiv").style.visibility = "hidden";
+        document.getElementById("confirm-delete-background").style.visibility = "hidden";
+        window.location.assign("index.html");
+    }).catch((error) => {
+        alert("There was an error confirming your identity. Please try again");
+        console.log(error.message)
+    });
 }
 
 //Used to determine whether the logged in user is a guest, if so, the history and profile button will be hidden

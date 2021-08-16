@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/style%20from%20VitaTrack_Rafat_02.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="152x152" href="152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
@@ -62,6 +61,13 @@
             <p class="progress-subtext">Next: Supplement Intake<br></p>
         </div>
     </div>
+    <div id="checkbox-container">
+        <div id="checkbox-bubble">
+            <p id="checkbox-paragraph" style="color: rgb(255,255,255);font-size: 20px;">Would you like to see a more detailed dietary intake form?</p>
+            <div class="form-check" id="form-checkbox-1"><input class="form-check-input" type="checkbox" id="formCheck-1" onclick="goToDetailedForm();"><label class="form-check-label" for="formCheck-1" style="color: rgb(255,255,255);font-size: 16px;">Yes</label></div>
+            <div class="form-check" id="form-checkbox-2"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2" style="color: rgb(255,255,255);">No</label></div>
+        </div>
+    </div>
     <div id="age-parent-container">
         <div id="age-bubble">
             <form class="age_Form"><input class="form-control" type="number" id="age_Input_Field" placeholder="Enter Age"></form>
@@ -69,7 +75,8 @@
     </div>
     <div id="dietary-parent-container">
         <div id="dietary-bubble-0" class="dietary-bubble">
-            <form class="dietary_form"><select class="form-select dietary-top-input-fields" id="dietary-top-input-0">
+            <form class="dietary_form">
+                <h5 id="select-food-item-heading" class="diet-div-center" style="color: rgb(255,255,255);">Please select a food item that you have consumed in the past week:</h5><select class="form-select dietary-top-input-fields" id="dietary-top-input-0">
 
         <option value="1" selected select disabled>Select Food Item</option>
         <option value="2" select disabled>-- Fat --</option>
@@ -97,7 +104,9 @@ milk - Glass (250ml)</option>
 		<option value="23">Dark Chocolate - 4 to 6 squares (25g)</option>
 
 
-</select><input class="form-control dietary-bottom-input-fields" type="number" id="dietary-bottom-input-0" placeholder="Servings Per Week"></form>
+</select>
+                <h5 id="enter-serving-number-heading" class="diet-div-center" style="color: rgb(255,255,255);">Please enter a serving amount for the selected food item:</h5><input class="form-control dietary-bottom-input-fields" type="number" id="dietary-bottom-input-0" placeholder="Servings Per Week">
+            </form>
         </div>
     </div>
     <div class="dietary-add-button" style="cursor: pointer;" onclick="addFood();">
@@ -110,6 +119,7 @@ milk - Glass (250ml)</option>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary-firestore.js"></script>
     <script src="assets/js/dietary-old.js"></script>
     <script src="assets/js/dietary.js"></script>
     <script src="assets/js/image-processing.js"></script>

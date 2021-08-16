@@ -280,6 +280,12 @@ body {
   margin: 0px;
 }
 
+.delete-confirm-heading {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
 .skin-tone-text {
   color: white;
 }
@@ -353,6 +359,22 @@ body {
   margin: 10px;
 }
 
+#cancel-delete-button {
+  margin-right: 15px;
+  background-color: white;
+  border-color: #f8b607;
+  border-width: 2px;
+  margin: 10px;
+  margin-top: 30px;
+}
+
+#confirm-delete-button {
+  margin-right: 15px;
+  border-width: 2px;
+  margin: 10px;
+  margin-top: 30px;
+}
+
 #next-button {
   margin: 10px;
   border-style: solid;
@@ -379,6 +401,20 @@ body {
 .div-center {
   text-align: center;
   margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .diet-div-center {
+    width: 95% !important;
+  }
+}
+
+.diet-div-center {
+  text-align: center;
+  margin-top: 10px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .progress-container {
@@ -625,13 +661,14 @@ body {
 }
 
 .profile-bubble {
-  height: 600px;
   background-color: #DDDD;
   opacity: 80%;
   border-radius: 20px;
   width: 40%;
   margin: auto;
   margin-top: 5%;
+  padding-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 @media (max-width: 767px) {
@@ -678,10 +715,28 @@ body {
   margin-left: 30px;
 }
 
+.del-confirm-field {
+  width: 90%;
+  border-radius: 10px;
+  height: 35px;
+}
+
 .profile-buttons {
   margin: auto;
   display: block;
   margin-top: 20px;
+  height: 40px;
+  width: 175px !important;
+}
+
+.delete-button {
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+  background: white !important;
+  border-color: #ff0000 !important;
+  border-width: 2px;
+  color: #ff0000 !important;
 }
 
 #account-settings-button {
@@ -730,6 +785,8 @@ body {
   width: 60%;
   margin: auto;
   margin-bottom: 20px;
+  padding-bottom: 0.5%;
+  padding-top: 1%;
 }
 
 @media (max-width: 767px) {
@@ -741,7 +798,7 @@ body {
 .dietary_form {
   width: 100%;
   margin: auto;
-  padding-top: 5%;
+  padding-top: 3%;
   padding-bottom: 5%;
 }
 
@@ -821,6 +878,7 @@ body {
 .supplement-yes-no-parent-div {
   margin: auto;
   text-align: center;
+  padding-bottom: 40px;
 }
 
 .supplement-form {
@@ -1114,13 +1172,14 @@ body {
 }
 
 .dietary-table {
-  max-width: 90%;
   margin: auto;
   text-align: center;
   color: white;
+  padding-bottom: 2%;
+  overflow-x: auto;
 }
 
-.dietary-table-inputs {
+.dietary-table-number-inputs {
   border-radius: 10px;
   border: 1px solid black;
 }
@@ -1133,5 +1192,82 @@ body {
 .visible-pass {
   margin-left: 41%;
   width: 5px;
+}
+
+.confirm-delete-form {
+  background-color: #1686ab;
+  border-style: solid;
+  border-color: #f8b607;
+  width: 50%;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  z-index: 2;
+  padding: 30px;
+  border-width: 1px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .confirm-delete-form {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+#confirm-delete-background {
+  background: #000000;
+  opacity: 45%;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+#checkbox-bubble {
+  background-color: #1686ab;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#checkbox-paragraph {
+  padding-bottom: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+}
+
+#form-checkbox-1 {
+  margin-top: -6%;
+  margin-left: 12%;
+  padding-bottom: 5%;
+}
+
+#form-checkbox-2 {
+  margin-top: -5%;
+  margin-left: 12%;
+  padding-bottom: 5%;
+}
+
+@media (max-width: 767px) {
+  #checkbox-bubble {
+    width: 95%;
+  }
+}
+
+#milk-product-2-serving-input-field {
+  margin-top: 15%;
+}
+
+#milk-product-3-serving-input-field {
+  margin-top: 20%;
+}
+
+#milk-product-4-serving-input-field {
+  margin-top: 5%;
 }
 

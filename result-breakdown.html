@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/style%20from%20VitaTrack_Rafat_02.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="152x152" href="152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
@@ -43,6 +42,9 @@
             </ul>
         </div>
     </nav>
+    <div id="menu-fragment">
+        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
+    </div>
     <div class="progress-container">
         <div class="progressBar"><div class="innerCircle"></div>
 <div class="toolStep">5 of 5</div>
@@ -59,13 +61,10 @@
             <p class="progress-subtext">Next: Results</p>
         </div>
     </div>
-    <div id="menu-fragment">
-        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
-    </div>
     <div class="result-overall" style="text-align: center;margin-top: 50px;">
         <p id="overallGrade" class="text-center letter-grade">A</p>
     </div>
-    <p id="deficiencyLikelyhood" class="text-center" onload="showResults();">Total Daily Time Exposed To the Sun: 0</p>
+    <p id="deficiencyLikelihood" class="text-center" onload="showResults();">Likelihood of deficiency</p>
     <p id="recommendedTime" class="text-center"><br>Recommended Minimum Sun Exposure: 0<br><br></p>
     <div>
         <h1 class="results-head">Breakdown</h1>
@@ -121,8 +120,8 @@
                             <td id="prevGrade" class="results_format"></td>
                         </tr>
                         <tr>
-                            <td class="results_format_head">Likelyhood of Deficiency: <br></td>
-                            <td id="prevLikelyhood" class="results_format"></td>
+                            <td class="results_format_head">Likelihood of Deficiency: <br></td>
+                            <td id="prevLikelihood" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Dietary Intake Grade: <br></td>
@@ -153,6 +152,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary-firestore.js"></script>
     <script src="assets/js/dietary-old.js"></script>
     <script src="assets/js/dietary.js"></script>
     <script src="assets/js/image-processing.js"></script>

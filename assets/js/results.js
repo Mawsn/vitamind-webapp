@@ -81,13 +81,13 @@ if (insufficientUV == 'true'){
     }
 }
 
-var likelyhood = document.getElementById("deficiencyLikelyhood");
+var likelihood = document.getElementById("deficiencyLikelihood");
 if (grade.innerHTML == "A"){
-    likelyhood.innerHTML = "Unlikely to be insufficient";
+    likelihood.innerHTML = "Unlikely to be insufficient";
 } else if (grade.innerHTML == "B"){
-    likelyhood.innerHTML = "Moderately likely to be insufficient";
+    likelihood.innerHTML = "Moderately likely to be insufficient";
 } else if (grade.innerHTML == "C"){
-    likelyhood.innerHTML = "Highly likely to be insufficient";
+    likelihood.innerHTML = "Highly likely to be insufficient";
 }
 
 //Supplement Data
@@ -121,7 +121,7 @@ firebase.auth().onAuthStateChanged((user) =>{
                
                document.getElementById("prevGrade").innerHTML = prevResult["letterGrade"];
                
-               document.getElementById("prevLikelyhood").innerHTML = prevResult["deficiencyChance"];
+               document.getElementById("prevLikelihood").innerHTML = prevResult["deficiencyChance"];
                
                document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
                
@@ -154,7 +154,7 @@ firebase.auth().onAuthStateChanged((user) =>{
             resultData = {
                 date: firebase.firestore.Timestamp.fromDate(new Date()),
                 letterGrade: document.getElementById("overallGrade").innerHTML,
-                deficiencyChance: likelyhood.innerHTML,
+                deficiencyChance: likelihood.innerHTML,
                 dietGrade: sessionStorage.getItem("dietGrade"),
                 sunGrade: sessionStorage.getItem("sunGrade"),
                 dietIntake: oralIntake.toFixed(2),
@@ -165,7 +165,7 @@ firebase.auth().onAuthStateChanged((user) =>{
             resultData = {
                 date: firebase.firestore.Timestamp.fromDate(new Date()),
                 letterGrade: document.getElementById("overallGrade").innerHTML,
-                deficiencyChance: likelyhood.innerHTML,
+                deficiencyChance: likelihood.innerHTML,
                 dietGrade: sessionStorage.getItem("dietGrade"),
                 dietIntake: oralIntake.toFixed(2),
                 suppIntake: suppDose
@@ -174,7 +174,7 @@ firebase.auth().onAuthStateChanged((user) =>{
         /*var resultData = {
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             letterGrade: document.getElementById("overallGrade").innerHTML,
-            deficiencyChance: likelyhood.innerHTML,
+            deficiencyChance: likelihood.innerHTML,
             dietGrade: sessionStorage.getItem("dietGrade"),
             sunGrade: sessionStorage.getItem("sunGrade"),
             dietIntake: oralIntake.toFixed(2),

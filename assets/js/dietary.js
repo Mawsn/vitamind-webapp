@@ -45,263 +45,262 @@ function goBack(){
 }
 
 
-// variables to store boolean values used to check whether the form is complete
-var dietary_top_field_bool;
-var dietary_bottom_field_bool;
-
-var product_groupName;	// this variable will store the name of the document from firestore
-var mapValue;			// this variable will store the name of the map present in the document
-
-var name_fromFirestore;
-var servingSize_fromFirestore;		// this variable will store the retrieved servingSize value from the firestore
-var vitDPerServe_fromFirestore;		// this variable will store the retrieved vitaminD_perServe value from firestore
-
-var db;
-var groupOfDietaryProductsRef;
-
-// arrays
-var vitDPerServe_values_array = [];
-var servingsPerWeek_userInput_values_array = [];
-
-var product_groupName_array = [];
-var mapValue_array = [];
-
-
-function getFirestoreData(temp_loop_counter)
+// functions for check box
+function goToDetailedForm()
 {
-	// code needed to retrieve data from firestore
-	db = firebase.firestore();
+    window.location.assign("tool-dietary-detailed-form.html");
+}
 
-	// after all the if statements, the value for product_groupName is stored
-	groupOfDietaryProductsRef = db.collection("groupOfDietaryProducts").doc(product_groupName_array[temp_loop_counter]);
-	groupOfDietaryProductsRef.get()
-	.then((doc) =>
-	{
-		if (doc.exists)
-		{
-			var data_from_doc = doc.data();
-
-			// retrieve the requried data from firestore
-			name_fromFirestore = data_from_doc[mapValue_array[temp_loop_counter]]["name"];
-			servingSize_fromFirestore = data_from_doc[mapValue_array[temp_loop_counter]]["servingSize"];
-			vitDPerServe_fromFirestore = data_from_doc[mapValue_array[temp_loop_counter]]["vitaminD_perServe"];
-
-			// push retrieved vitamin D per serve value inside the array
-			vitDPerServe_values_array.push(vitDPerServe_fromFirestore);
-			console.log("Value inside array: " + vitDPerServe_values_array[temp_loop_counter] + ", for loop number: " + temp_loop_counter);
-
-
-			checkServingsPerWeek(document.getElementById('dietary-bottom-input-' + temp_loop_counter).value);
-
-			console.log(document.getElementById('dietary-top-input-' + temp_loop_counter).value + ", " + document.getElementById('dietary-bottom-input-' + temp_loop_counter).value);
-
-			console.log("Loop number: " + temp_loop_counter);
-			console.log("vitDPerServe_fromFirestore value: " + vitDPerServe_values_array[temp_loop_counter]);
-			console.log("servingsPerWeek_userInput value: " + servingsPerWeek_userInput_values_array[temp_loop_counter]);
-
-			dietaryCalculations(temp_loop_counter);
-
-			total_vitD = total_vitD + vitD_fromDietaryIntake;
-
-			if(temp_loop_counter == dietary_bubble_counter)
-			{
-				console.log("total_vitD value: " + total_vitD);
-
-				setDietaryIntake_sessionData();
-
-				// testing
-				console.log("session storage 'dietaryIntake_result' value: " + sessionStorage.getItem("dietaryIntake_result"));
-
-				// reset the total_vitD value
-				total_vitD = 0;
-				//reset the array
-				for(let count = 0; count <= temp_loop_counter; count++)
-				{
-					vitDPerServe_values_array.pop();
-					servingsPerWeek_userInput_values_array.pop();
-					product_groupName_array.pop();
-					mapValue_array.pop();
-				}
-			}
-			
-		}
-		else
-		{
-			console.log("Document does not exist");
-		}
-	})
-	.catch((error) =>
-	{
-		console.log("Error in retrieving", error);
-	});
+function goToSimpleForm()
+{
+    window.location.assign("tool-dietary.html");
 }
 
 
 
-function checkSelectedOption(option_value, temp_loop_counter)
+// An array of objects for the available products and their details
+var productObj_array = [
+    {
+        // the group of dietary products that belong to fats start from here
+        product_name: "butter",
+        serving_size: 5,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.03,
+        group_of_dietary_product: "fats"
+    },
+    {
+        product_name: "margarine",
+        serving_size: 5,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.6,
+        group_of_dietary_product: "fats"
+    },
+    {
+        // the group of dietary products that belong to eggs start from here
+        product_name: "egg",
+        serving_size: 50,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.9,
+        group_of_dietary_product: "eggs"
+    },
+    {
+        // the group of dietary products that belong to milk and milk based beverages start from here
+        product_name: "full cream cow's milk",
+        serving_size: 250,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.13,
+        group_of_dietary_product: "milk and milk based beverages"
+    },
+    {
+        product_name: "milk based coffee on full cream latte, cappuccino etc",
+        serving_size: 250,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.13,
+        group_of_dietary_product: "milk and milk based beverages"
+    },
+    {
+        product_name: "other full cream milk based beverages chai latte, milkshake, iced coffee",
+        serving_size: 250,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.13,
+        group_of_dietary_product: "milk and milk based beverages"
+    },
+    {
+        product_name: "milo made on full cream milk",
+        serving_size: 250,
+        serving_unit: "g",
+        vitaminD_per_serve: 2.72,
+        group_of_dietary_product: "milk and milk based beverages"
+    },
+    {
+        // the group of dietary products that belong to sea food start from here
+        product_name: "tuna",
+        serving_size: 70,
+        serving_unit: "g",
+        vitaminD_per_serve: 1.5,
+        group_of_dietary_product: "sea food"
+    },
+    {
+        product_name: "salmon",
+        serving_size: 100,
+        serving_unit: "g",
+        vitaminD_per_serve: 5.24,
+        group_of_dietary_product: "sea food"
+    },
+    {
+        product_name: "barramundi",
+        serving_size: 100,
+        serving_unit: "g",
+        vitaminD_per_serve: 3.94,
+        group_of_dietary_product: "sea food"
+    },
+    {
+        product_name: "sardines",
+        serving_size: 125,
+        serving_unit: "g",
+        vitaminD_per_serve: 5.6,
+        group_of_dietary_product: "sea food"
+    },
+    {
+        // the group of dietary products that belong to meat start from here
+        product_name: "pork",
+        serving_size: 100,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.6,
+        group_of_dietary_product: "meat"
+    },
+    {
+        product_name: "chicken",
+        serving_size: 100,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.37,
+        group_of_dietary_product: "meat"
+    },
+    {
+        product_name: "beef",
+        serving_size: 100,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.7,
+        group_of_dietary_product: "meat"
+    },
+    {
+        product_name: "lamb",
+        serving_size: 100,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.44,
+        group_of_dietary_product: "meat"
+    },
+    {
+        // the group of dietary products that belong to chocolate start from here
+        product_name: "dark chocolate",
+        serving_size: 25,
+        serving_unit: "g",
+        vitaminD_per_serve: 0.8,
+        group_of_dietary_product: "chocolate"
+    }
+]
+
+
+
+// arrays
+
+
+
+// this function will check which dietary product the user has selected from the array of objects
+var selected_product_array_index;
+
+function checkSelectedOption(option_value)
 {
-	// for fats
+    // for fats
 	if(option_value > 2 && option_value <= 4)
 	{
-		// checking
-		console.log("fats");
-
-		product_groupName = "fats";
-
 		// check which fat product the user has selected
 		if(option_value == 3)
 		{
-			// set map value
-			mapValue = "product_1";
+			selected_product_array_index = 0;
 		}
 
 		if(option_value == 4)
 		{
-			// set map value
-			mapValue = "product_2";
+			selected_product_array_index = 1;
 		}
 	}
 
-	// for eggs
+    // for eggs
 	if(option_value == 6)
 	{
-		// checking
-		console.log("eggs");
-
-		product_groupName = "eggs";
-
-		// check which fat product the user has selected
+		// check which eggs product the user has selected
 		if(option_value == 6)
 		{
-			// set map value
-			mapValue = "product_1";
+			selected_product_array_index = 2;
 		}
 	}
 
-	// for milk based products
+    // for milk based products
 	if(option_value > 7 && option_value <= 11)
 	{
-		// checking
-		console.log("milk products");
-
-		product_groupName = "milk_and_milkBasedBeverages";
-
-		// check which fat product the user has selected
+		// check which milk based product the user has selected
 		if(option_value == 8)
 		{
-			// set map value
-			mapValue = "product_1";
+			selected_product_array_index = 3;
 		}
 
 		if(option_value == 9)
 		{
-			// set map value
-			mapValue = "product_2";
+			selected_product_array_index = 4;
 		}
 
 		if(option_value == 10)
 		{
-			// set map value
-			mapValue = "product_3";
+			selected_product_array_index = 5;
 		}
 
 		if(option_value == 11)
 		{
-			// set map value
-			mapValue = "product_4";
+			selected_product_array_index = 6;
 		}
 	}
-	
-	// for sea food
+
+    // for sea food
 	if(option_value > 12 && option_value <= 16)
 	{
-		// checking
-		console.log("sea food");
-
-		product_groupName = "seaFood";
-
-		// check which fat product the user has selected
+		// check which sea food product the user has selected
 		if(option_value == 13)
 		{
-			// set map value
-			mapValue = "product_1";
+			selected_product_array_index = 7;
 		}
 
 		if(option_value == 14)
 		{
-			// set map value
-			mapValue = "product_2";
+			selected_product_array_index = 8;
 		}
 
 		if(option_value == 15)
 		{
-			// set map value
-			mapValue = "product_3";
+			selected_product_array_index = 9;
 		}
 
 		if(option_value == 16)
 		{
-			// set map value
-			mapValue = "product_4";
+			selected_product_array_index = 10;
 		}
 	}
 
-	// for meat
+    // for meat
 	if(option_value > 17 && option_value <= 21)
 	{
-		// checking
-		console.log("meat");
-
-		product_groupName = "meat";
-
-		// check which fat product the user has selected
+		// check which meat product the user has selected
 		if(option_value == 18)
 		{
-			// set map value
-			mapValue = "product_1";
+            selected_product_array_index = 11;
 		}
 
 		if(option_value == 19)
 		{
-			// set map value
-			mapValue = "product_2";
+			selected_product_array_index = 12;
 		}
 
 		if(option_value == 20)
 		{
-			// set map value
-			mapValue = "product_3";
+			selected_product_array_index = 13;
 		}
 
 		if(option_value == 21)
 		{
-			// set map value
-			mapValue = "product_4";
+			selected_product_array_index = 14;
 		}
 	}
 
-	// for dark chocolate
+    // for dark chocolate
 	if(option_value > 22 && option_value <= 23)
 	{
-		// checking
-		console.log("chocolate");
-
-		product_groupName = "chocolate";
-
-		// check which fat product the user has selected
+		// check which dark chocolate product the user has selected
 		if(option_value == 23)
 		{
-			// set map value
-			mapValue = "product_1";
+			selected_product_array_index = 15;
 		}
 	}
-
-    // insert values into array
-	product_groupName_array.push(product_groupName);
-    mapValue_array.push(mapValue);
-
-
-	getFirestoreData(temp_loop_counter);
+    
 }
 
 
@@ -311,30 +310,34 @@ var servingsPerWeek_userInput;
 function checkServingsPerWeek(entered_value)
 {
 	servingsPerWeek_userInput = entered_value;
-
-	servingsPerWeek_userInput_values_array.push(servingsPerWeek_userInput);
 }
+
 
 // this function will perform the dietary calculations
 var vitD_fromDietaryIntake;
-var dietaryIntakeCalculation_bool;
+var total_vitD_calculated = 0;
 
-function dietaryCalculations(temp_loop_counter)
+function dietaryCalculations()
 {
-	// correct formula
-	vitD_fromDietaryIntake = servingsPerWeek_userInput_values_array[temp_loop_counter] * vitDPerServe_values_array[temp_loop_counter];
+    for(let loop_counter = 0; loop_counter <= dietary_bubble_counter; loop_counter++)
+    {
+        checkSelectedOption(document.getElementById('dietary-top-input-' + loop_counter).value);
+        checkServingsPerWeek(document.getElementById('dietary-bottom-input-' + loop_counter).value);
+        
+        // correct formula
+	    vitD_fromDietaryIntake = servingsPerWeek_userInput * productObj_array[selected_product_array_index].vitaminD_per_serve;
+    
+        total_vitD_calculated = total_vitD_calculated + vitD_fromDietaryIntake;
+    }
 
-	// checking
-	console.log("Calculated vitamin D from dietary intake: " + vitD_fromDietaryIntake + ", Loop counter: " + temp_loop_counter);
+    setDietaryIntake_sessionData();
 
+    // reset values
+    total_vitD_calculated = 0;
+
+    console.log("Value stored in session storage: " + sessionStorage.getItem("dietaryIntake_result"))
 }
 
-// for session storage
-function setDietaryIntake_sessionData()
-{
-	// set the result of the dietary calculations
-	sessionStorage.setItem("dietaryIntake_result", total_vitD);
-}
 
 function saveData(){
     var age = document.getElementById('age_Input_Field').value;
@@ -347,8 +350,14 @@ function saveData(){
             alert("You have entered servings per week, but not selected a food item. Please enter a value to continue");
         } else if (foodItem != 0 && servingField == 0){
             alert("You have selected a food item, but not entered your amount of servings. Please enter a value to continue");
+        } else if (foodItem == 0 && servingField == 0){
+            var emptyDietary = confirm("You have not entered any data for your dietary consumption. Are you sure you want to continue?");
+            if (emptyDietary){
+                sessionStorage.setItem("dietaryIntake_result", 0.0);
+                window.location.assign("tool-supplement-1.html");
+            }
         } else {
-            testButton();
+            dietaryCalculations();
             window.location.assign("tool-supplement-1.html");
         }
         
@@ -358,19 +367,9 @@ function saveData(){
 }
 
 
-// function for test button
-var total_vitD = 0;
-function testButton()
+// for session storage
+function setDietaryIntake_sessionData()
 {
-	for(let loop_counter = 0; loop_counter <= dietary_bubble_counter; loop_counter++)
-	{
-		console.log("TESTING FIRST: " + document.getElementById('dietary-top-input-' + loop_counter).value);
-		checkSelectedOption(document.getElementById('dietary-top-input-' + loop_counter).value, loop_counter);
-	}
-
-
-	// check loop
-	console.log("TEST LOOP: testButton()");
-	
+	// set the result of the dietary calculations
+	sessionStorage.setItem("dietaryIntake_result", total_vitD_calculated);
 }
-

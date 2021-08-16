@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/style%20from%20VitaTrack_Rafat_02.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="apple-touch-icon" sizes="152x152" href="152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
@@ -43,18 +42,23 @@
             </ul>
         </div>
     </nav>
+    <div id="confirm-delete-background" style="visibility:hidden;"></div>
+    <div id="confirmDeleteDiv" class="confirm-delete-form" style="visibility:hidden;">
+        <p class="delete-confirm-heading">Enter you password to confirm action.</p><input type="password" id="confirmPass" class="del-confirm-field"><button class="btn btn-primary" id="cancel-delete-button" type="button" onclick="document.getElementById(&quot;confirmDeleteDiv&quot;).style.visibility = &quot;hidden&quot;;         document.getElementById(&quot;confirm-delete-background&quot;).style.visibility = &quot;hidden&quot;;">Cancel</button><button class="btn btn-primary" id="confirm-delete-button" type="button" onclick="confirmDelete();">Confirm</button>
+    </div>
     <div class="profile-bubble">
         <h1 id="my-profile-heading" class="my-profile-heading">My Profile</h1>
         <hr id="profile-hr">
         <h1 id="my-profile-subheading">General Information</h1>
         <div>
             <h1 class="profile-subsection-heading">Email:</h1><input type="text" id="emailField" class="profile-input-fields" readonly="readonly">
-            <h1 class="profile-subsection-heading">Date of Birth:</h1><input type="text" class="profile-input-fields" readonly="readonly"><button class="btn btn-primary profile-buttons" id="account-settings-button" type="button" onclick="location.href=&#39;profile-change-pass.html&#39;;">Edit Account</button><button class="btn btn-primary profile-buttons" type="button" onclick="signout();">Sign Out</button>
+            <h1 class="profile-subsection-heading">Date of Birth:</h1><input type="text" class="profile-input-fields" readonly="readonly"><button class="btn btn-primary profile-buttons" id="account-settings-button" type="button" onclick="location.href=&#39;profile-change-pass.html&#39;;">Change Password</button><button class="btn btn-primary profile-buttons" type="button" onclick="signout();">Sign Out</button><button class="btn btn-primary delete-button" type="button" onclick="clickedDelete();">Delete Account</button>
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary-firestore.js"></script>
     <script src="assets/js/dietary-old.js"></script>
     <script src="assets/js/dietary.js"></script>
     <script src="assets/js/image-processing.js"></script>

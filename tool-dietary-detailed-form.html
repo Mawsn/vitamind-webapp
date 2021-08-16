@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>VitaTrack</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo-icon-512.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="apple-touch-icon" sizes="152x152" href="152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="180.png">
+<link rel="apple-touch-icon" sizes="120x120" href="120.png">
+<link rel="apple-touch-icon" sizes="167x167" href="167.png">
+
+<script type="text/javascript">
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+</head>
+
+<body class="white-background" onload="checkGuest();">
+    <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="leaveTool(&#39;home.html&#39;);">
+            <ul class="navbar-nav ms-auto navbar-button-container">
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="leaveTool(&#39;about.html&#39;);">About Us<br></button></li>
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="">History</button></li>
+                <li class="nav-item"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobile-menu" id="mobile-menu-icon" onclick="expandMenu()">
+<path d="M6.25 8.75C6.25 8.05964 6.80964 7.5 7.5 7.5H32.5C33.1904 7.5 33.75 8.05964 33.75 8.75V8.75C33.75 9.44036 33.1904 10 32.5 10H7.5C6.80964 10 6.25 9.44036 6.25 8.75V8.75Z" fill="#F8B607"/>
+<path d="M6.25 20C6.25 19.3096 6.80964 18.75 7.5 18.75H32.5C33.1904 18.75 33.75 19.3096 33.75 20V20C33.75 20.6904 33.1904 21.25 32.5 21.25H7.5C6.80964 21.25 6.25 20.6904 6.25 20V20Z" fill="#F8B607"/>
+<path d="M6.25 31.25C6.25 30.5596 6.80964 30 7.5 30H32.5C33.1904 30 33.75 30.5596 33.75 31.25V31.25C33.75 31.9404 33.1904 32.5 32.5 32.5H7.5C6.80964 32.5 6.25 31.9404 6.25 31.25V31.25Z" fill="#F8B607"/>
+</svg>
+</li>
+                <li class="nav-item"><img id="profile-image" src="assets/img/profile-pic.png" onclick="leaveTool(&#39;profile.html&#39;);"></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="menu-fragment">
+        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
+    </div>
+    <div class="progress-container">
+        <div class="progressBar"><div class="innerCircle"></div>
+<div class="toolStep">2 of 5</div>
+<div class="circle">
+    <div class="bar left">
+        <div class="progressCircle progressCircle2"></div>
+    </div>
+    <div class="bar right">
+        <div class="progressCircle progressCircle2"></div>
+    </div>
+</div></div>
+        <div class="progress-text-container">
+            <h1 class="progress-heading"><strong>Dietary</strong></h1>
+            <p class="progress-subtext">Next: Supplement Intake<br></p>
+        </div>
+    </div>
+    <div id="checkbox-container">
+        <div id="checkbox-bubble">
+            <p id="checkbox-paragraph" style="color: rgb(255,255,255);font-size: 20px;">Would you like to see a more detailed dietary intake form?</p>
+            <div class="form-check" id="form-checkbox-1"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1" style="color: rgb(255,255,255);font-size: 16px;">Yes</label></div>
+            <div class="form-check" id="form-checkbox-2"><input class="form-check-input" type="checkbox" id="formCheck-2" onclick="goToSimpleForm();"><label class="form-check-label" for="formCheck-2" style="color: rgb(255,255,255);font-size: 16px;">No</label></div>
+        </div>
+    </div>
+    <div id="age-parent-container">
+        <div id="age-bubble">
+            <form class="age_Form"><input class="form-control" type="number" id="age_Input_Field" placeholder="Enter Age"></form>
+        </div>
+    </div>
+    <div class="dietary-bubble">
+        <div class="table-responsive dietary-table">
+            <table class="table">
+                <thead style="color: white">
+                    <tr>
+                        <th>Food Item</th>
+                        <th>Servings Per Week</th>
+                    </tr>
+                </thead>
+                <tbody style="color: white">
+                    <tr>
+                        <td>Butter</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Margarine</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Egg</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Full cream cow's milk</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td><br>Milk&nbsp;based&nbsp;coffee&nbsp;on&nbsp;full&nbsp;<br>cream&nbsp;latte,&nbsp;cappuccino<br><br></td>
+                        <td><input type="number" id="milk-product-2-serving-input-field" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td><br>Other&nbsp;full&nbsp;cream&nbsp;milk&nbsp;based&nbsp;<br>beverages&nbsp;chai&nbsp;latte,&nbsp;milkshake,&nbsp;<br>iced&nbsp;coffee<br><br></td>
+                        <td><input type="number" id="milk-product-3-serving-input-field" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Milo&nbsp;made&nbsp;on&nbsp;full<br>cream&nbsp;milk<br></td>
+                        <td><input type="number" id="milk-product-4-serving-input-field" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Tuna</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Salmon</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Barramundi</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Sardines</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Pork</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Chicken</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Beef</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr>
+                        <td>Lamb</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                    <tr id="last-row-from-table">
+                        <td>Dark Chocolate</td>
+                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="saveData();">Next</button></div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/authenticateUser.js"></script>
+    <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary-firestore.js"></script>
+    <script src="assets/js/dietary-old.js"></script>
+    <script src="assets/js/dietary.js"></script>
+    <script src="assets/js/image-processing.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/skin-tone.js"></script>
+    <script src="assets/js/supplement.js"></script>
+    <script src="assets/js/tool-calculations.js"></script>
+</body>
+
+</html>
