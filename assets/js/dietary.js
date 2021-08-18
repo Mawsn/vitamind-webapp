@@ -41,7 +41,7 @@ function removeFood()
 }
 
 function goBack(){
-    window.history.back();
+    window.location.assign("tool-skin-tone.html");
 }
 
 
@@ -179,10 +179,6 @@ var productObj_array = [
         group_of_dietary_product: "chocolate"
     }
 ]
-
-
-
-// arrays
 
 
 
@@ -325,10 +321,11 @@ function dietaryCalculations()
         checkServingsPerWeek(document.getElementById('dietary-bottom-input-' + loop_counter).value);
         
         // correct formula
-	    vitD_fromDietaryIntake = servingsPerWeek_userInput * productObj_array[selected_product_array_index].vitaminD_per_serve;
+        vitD_fromDietaryIntake = servingsPerWeek_userInput * productObj_array[selected_product_array_index].vitaminD_per_serve;
     
         total_vitD_calculated = total_vitD_calculated + vitD_fromDietaryIntake;
     }
+    
 
     setDietaryIntake_sessionData();
 
@@ -336,16 +333,17 @@ function dietaryCalculations()
     total_vitD_calculated = 0;
 
     console.log("Value stored in session storage: " + sessionStorage.getItem("dietaryIntake_result"))
+    
 }
 
-
+// for simplified form
 function saveData(){
     var age = document.getElementById('age_Input_Field').value;
     if (age != ''){
         sessionStorage.setItem('age', age);
-        
-        var foodItem = document.getElementById("dietary-top-input-0").selectedIndex;
-        var servingField = Number(document.getElementById("dietary-bottom-input-0").value);
+
+        let foodItem = document.getElementById("dietary-top-input-0").selectedIndex;
+        let servingField = Number(document.getElementById("dietary-bottom-input-0").value);
         if (foodItem == 0 && servingField != 0){
             alert("You have entered servings per week, but not selected a food item. Please enter a value to continue");
         } else if (foodItem != 0 && servingField == 0){
@@ -358,7 +356,7 @@ function saveData(){
             }
         } else {
             dietaryCalculations();
-            window.location.assign("tool-supplement-1.html");
+            //window.location.assign("tool-supplement-1.html");
         }
         
     } else {
@@ -366,8 +364,26 @@ function saveData(){
     }
 }
 
+// for detailed form
+function saveData_detailedForm(){
+    var age = document.getElementById('age_Input_Field').value;
 
-// for session storage
+    if (age != '')
+    {
+        sessionStorage.setItem('age', age);
+
+        
+        dietaryCalculations_forDetailedForm();
+        //window.location.assign("tool-supplement-1.html");
+    } 
+    else 
+    {
+        alert("Please enter your age");
+    }
+}
+
+
+// for session storage for the simplified form
 function setDietaryIntake_sessionData()
 {
 	// set the result of the dietary calculations
@@ -375,30 +391,31 @@ function setDietaryIntake_sessionData()
 }
 
 
-
 // for detailed form
-
 function dietaryCalculations_forDetailedForm()
 {
+    let temp_servings_per_week;
+
     for(let loop_counter = 0; loop_counter <= 15; loop_counter++)
     {
-        // this is for butter table row
-        if(loop_counter == 0)
-		{
-            console.log(document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value);
-		}
+        if((document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value) == '')
+        {
+            document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value = 0;
 
-        // this is for margarine table row
-		if(loop_counter == 1)
-		{
-		}
-
-
-
-
-
-
-        //checkServingsPerWeek(document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value);
+            temp_servings_per_week = 0;
+            total_vitD_calculated = total_vitD_calculated + (temp_servings_per_week * productObj_array[loop_counter].vitaminD_per_serve);
+        }
+        else
+        {
+            temp_servings_per_week = document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value;
+            total_vitD_calculated = total_vitD_calculated + (temp_servings_per_week * productObj_array[loop_counter].vitaminD_per_serve);
+        }
     }
 
+    setDietaryIntake_sessionData();
+
+    // reset values
+    total_vitD_calculated = 0;
+
+    console.log("Value stored in session storage: " + sessionStorage.getItem("dietaryIntake_result"))
 }
