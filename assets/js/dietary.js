@@ -356,7 +356,7 @@ function saveData(){
             }
         } else {
             dietaryCalculations();
-            //window.location.assign("tool-supplement-1.html");
+            window.location.assign("tool-supplement-1.html");
         }
         
     } else {
@@ -374,7 +374,7 @@ function saveData_detailedForm(){
 
         
         dietaryCalculations_forDetailedForm();
-        //window.location.assign("tool-supplement-1.html");
+        window.location.assign("tool-supplement-1.html");
     } 
     else 
     {
