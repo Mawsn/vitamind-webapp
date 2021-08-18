@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
 <link rel="apple-touch-icon" sizes="120x120" href="120.png">
 <link rel="apple-touch-icon" sizes="167x167" href="167.png">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <script type="text/javascript">
 	if('serviceWorker' in navigator){
 		navigator.serviceWorker.register('service_worker.js');
@@ -61,22 +61,21 @@
             <p class="progress-subtext">Next: Supplement Intake<br></p>
         </div>
     </div>
-    <div id="checkbox-container">
-        <div id="checkbox-bubble">
-            <p id="checkbox-paragraph" style="color: rgb(255,255,255);font-size: 20px;">Would you like to see a more detailed dietary intake form?</p>
-            <div class="form-check" id="form-checkbox-1"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1" style="color: rgb(255,255,255);font-size: 16px;">Yes</label></div>
-            <div class="form-check" id="form-checkbox-2"><input class="form-check-input" type="checkbox" id="formCheck-2" onclick="goToSimpleForm();"><label class="form-check-label" for="formCheck-2" style="color: rgb(255,255,255);font-size: 16px;">No</label></div>
-        </div>
+    <h1 id="dietary-intake-heading">Would you like to view a detailed dietary intake form?<br></h1>
+    <div class="dietary-intake-yes-no-parent-div">
+        <div id="dietary_intake_form-no" class="dietary-intake-form-yes-no-div" style="cursor: pointer;" onclick="goToSimpleForm();"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="margin: auto;font-size: 50px;margin-top: 5px;">
+                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg></div>
     </div>
     <div id="age-parent-container">
         <div id="age-bubble">
             <form class="age_Form"><input class="form-control" type="number" id="age_Input_Field" placeholder="Enter Age"></form>
         </div>
     </div>
-    <div class="dietary-bubble">
+    <div id="dietary-bubble-detailed-form-div" class="dietary-bubble">
         <div class="table-responsive dietary-table">
             <table class="table">
-                <thead style="color: white">
+                <thead style="color: white;">
                     <tr>
                         <th>Food Item</th>
                         <th>Servings Per Week</th>
@@ -85,75 +84,75 @@
                 <tbody style="color: white">
                     <tr>
                         <td>Butter</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-0" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Margarine</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-1" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Egg</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-2" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Full cream cow's milk</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-3" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td><br>Milk&nbsp;based&nbsp;coffee&nbsp;on&nbsp;full&nbsp;<br>cream&nbsp;latte,&nbsp;cappuccino<br><br></td>
-                        <td><input type="number" id="milk-product-2-serving-input-field" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-4" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
-                        <td><br>Other&nbsp;full&nbsp;cream&nbsp;milk&nbsp;based&nbsp;<br>beverages&nbsp;chai&nbsp;latte,&nbsp;milkshake,&nbsp;<br>iced&nbsp;coffee<br><br></td>
-                        <td><input type="number" id="milk-product-3-serving-input-field" class="dietary-table-number-inputs"></td>
+                        <td><br>Other&nbsp;full&nbsp;cream&nbsp;milk&nbsp;based&nbsp;<br>beverages&nbsp;chai&nbsp;latte,<br>milkshake,&nbsp;iced&nbsp;coffee<br><br></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-5" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Milo&nbsp;made&nbsp;on&nbsp;full<br>cream&nbsp;milk<br></td>
-                        <td><input type="number" id="milk-product-4-serving-input-field" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-6" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Tuna</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-7" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Salmon</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-8" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Barramundi</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-9" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Sardines</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-10" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Pork</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-11" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Chicken</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-12" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Beef</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-13" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr>
                         <td>Lamb</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-14" class="dietary-table-number-inputs"></td>
                     </tr>
                     <tr id="last-row-from-table">
                         <td>Dark Chocolate</td>
-                        <td><input type="number" class="dietary-table-number-inputs"></td>
+                        <td><input type="number" id="dietary-detailed-form-servings-input-15" class="dietary-table-number-inputs"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="saveData();">Next</button></div>
+    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="dietaryCalculations_forDetailedForm();">Next</button></div>
+    <div class="dietary-intake-page-end-space"></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
     <script src="assets/js/dietary-firestore.js"></script>
     <script src="assets/js/dietary-old.js"></script>

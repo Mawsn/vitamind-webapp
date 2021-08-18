@@ -45,7 +45,7 @@ function goBack(){
 }
 
 
-// functions for check box
+// functions for check and 'X' button
 function goToDetailedForm()
 {
     window.location.assign("tool-dietary-detailed-form.html");
@@ -304,7 +304,7 @@ function checkSelectedOption(option_value)
 }
 
 
-// this funciton is for the servings per week input field
+// this function is for the servings per week input field
 var servingsPerWeek_userInput;
 
 function checkServingsPerWeek(entered_value)
@@ -372,4 +372,33 @@ function setDietaryIntake_sessionData()
 {
 	// set the result of the dietary calculations
 	sessionStorage.setItem("dietaryIntake_result", total_vitD_calculated);
+}
+
+
+
+// for detailed form
+
+function dietaryCalculations_forDetailedForm()
+{
+    for(let loop_counter = 0; loop_counter <= 15; loop_counter++)
+    {
+        // this is for butter table row
+        if(loop_counter == 0)
+		{
+            console.log(document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value);
+		}
+
+        // this is for margarine table row
+		if(loop_counter == 1)
+		{
+		}
+
+
+
+
+
+
+        //checkServingsPerWeek(document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value);
+    }
+
 }

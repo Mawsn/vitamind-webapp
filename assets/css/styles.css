@@ -575,7 +575,6 @@ body {
 }
 
 #weather_display {
-  border: 1px solid black;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
@@ -856,6 +855,18 @@ body {
   font-size: 30px;
 }
 
+.dietary-intake-form-yes-no-div {
+  height: 60px;
+  width: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
 .supplement-yes-no-div {
   height: 60px;
   width: 60px;
@@ -982,28 +993,48 @@ body {
   }
 }
 
+#dietary_intake_form-no:hover {
+  background-color: #FF0000;
+  color: #ffffff;
+}
+
 #vitD_supplement-no:hover {
   background-color: #FF0000;
+  color: #ffffff;
 }
 
 #bone_supplement-no:hover {
   background-color: #FF0000;
+  color: #ffffff;
 }
 
 #multVit_supplement-no:hover {
   background-color: #FF0000;
+  color: #ffffff;
+}
+
+#dietary_intake_form-yes:hover {
+  background-color: #61AB0E;
+  color: #ffffff;
 }
 
 #vitD_supplement-yes:hover {
   background-color: #61AB0E;
+  color: #ffffff;
 }
 
 #bone_supplement-yes:hover {
   background-color: #61AB0E;
+  color: #ffffff;
 }
 
 #multVit_supplement-yes:hover {
   background-color: #61AB0E;
+  color: #ffffff;
+}
+
+.dietary-intake-form-yes-no-div {
+  background-color: #DDDD;
 }
 
 .supplement-yes-no-div {
@@ -1092,10 +1123,12 @@ body {
 
 .dietary-add-button:hover {
   background-color: #efaf34;
+  color: #ffffff;
 }
 
 .dietary-remove-button:hover {
   background-color: #ffeec7;
+  border-color: #ffeec7;
 }
 
 .skin-tone-option-row:hover {
@@ -1182,6 +1215,7 @@ body {
 .dietary-table-number-inputs {
   border-radius: 10px;
   border: 1px solid black;
+  padding: .3rem .75rem;
 }
 
 .form-spacing {
@@ -1259,15 +1293,54 @@ body {
   }
 }
 
-#milk-product-2-serving-input-field {
-  margin-top: 15%;
+#dietary-detailed-form-servings-input-4 {
+  margin-top: auto;
 }
 
-#milk-product-3-serving-input-field {
+#dietary-detailed-form-servings-input-5 {
   margin-top: 20%;
 }
 
-#milk-product-4-serving-input-field {
+#dietary-detailed-form-servings-input-6 {
+  margin-top: 5%;
+}
+
+@media (max-width: 992px) {
+  .dietary-table-number-inputs {
+    width: 80%;
+  }
+}
+
+@media (max-width: 360px) {
+  table {
+    width: 30%;
+  }
+}
+
+#dietary-bubble-detailed-form-div {
+  font-size: 18px;
+}
+
+@media (max-width: 360px) {
+  #dietary-bubble-detailed-form-div {
+    font-size: 15px;
+  }
+}
+
+#dietary-intake-heading {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  font-size: 30px;
+}
+
+.dietary-intake-yes-no-parent-div {
+  margin: auto;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.dietary-intake-page-end-space {
   margin-top: 5%;
 }
 

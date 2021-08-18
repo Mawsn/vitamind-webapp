@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
 <link rel="apple-touch-icon" sizes="120x120" href="120.png">
 <link rel="apple-touch-icon" sizes="167x167" href="167.png">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <script type="text/javascript">
 	if('serviceWorker' in navigator){
 		navigator.serviceWorker.register('service_worker.js');
@@ -64,7 +64,7 @@
     <div class="result-overall" style="text-align: center;margin-top: 50px;">
         <p id="overallGrade" class="text-center letter-grade">A</p>
     </div>
-    <p id="deficiencyLikelihood" class="text-center" onload="showResults();">Likelihood of deficiency</p>
+    <p id="deficiencyLikelihood" class="text-center" onload="showResults();" style="font-size: 24px;font-weight: bold;">Likelihood of deficiency</p>
     <p id="recommendedTime" class="text-center"><br>Recommended Minimum Sun Exposure: 0<br><br></p>
     <div>
         <h1 class="results-head">Breakdown</h1>
@@ -150,7 +150,6 @@
     </div>
     <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="">Export</button><button class="btn btn-primary" id="done-button" type="button" onclick="homeClicked();">Home</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/authenticateUser.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
     <script src="assets/js/dietary-firestore.js"></script>
     <script src="assets/js/dietary-old.js"></script>
