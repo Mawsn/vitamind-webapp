@@ -25,5 +25,5 @@ function exportPDF(){
 	
 
 
-	doc.save('table.pdf')
+	doc.save('VitaTrack Tool Result.pdf')
 }
