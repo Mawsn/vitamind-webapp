@@ -12,7 +12,7 @@ function exportPDF(){
 	var doc = new jsPDF()
 	var img = new Image();
 	img.src = 'https://vitatrack.app/assets/img/logo-standard.png';
-	doc.addImage(img, 'png', 75, 0, 57.5, 75);
+	doc.addImage(img, 'png', 75, 10, 57.5, 75);
 	doc.text("Result Breakdown", 82, 100);
   	doc.autoTable({
   		margin: {top: 110},
