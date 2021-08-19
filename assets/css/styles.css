@@ -1344,3 +1344,43 @@ body {
   margin-top: 5%;
 }
 
+#history-dropdown-button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding: 6px 12px;
+  height: 38px;
+  background: rgb(255,255,255);
+  margin-top: 20px;
+}
+
+.history-heading {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
+  margin-top: 10px;
+}
+
+.history-entry-container {
+  width: 70%;
+  max-width: 1000px;
+  text-align: center;
+  background: #dddddddd;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .history-entry-container {
+    width: 95%;
+  }
+}
+
+.history-result-main-heading {
+  font-size: 28px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+

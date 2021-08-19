@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>VitaTrack</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo-icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/logo-icon-512.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="apple-touch-icon" sizes="152x152" href="152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="180.png">
+<link rel="apple-touch-icon" sizes="120x120" href="120.png">
+<link rel="apple-touch-icon" sizes="167x167" href="167.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<script type="text/javascript">
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('service_worker.js');
+	}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="leaveTool(&#39;home.html&#39;);">
+            <ul class="navbar-nav ms-auto navbar-button-container">
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="leaveTool(&#39;about.html&#39;);">About Us<br></button></li>
+                <li class="nav-item"><button class="btn btn-primary" type="button" onclick="">History</button></li>
+                <li class="nav-item"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="mobile-menu" id="mobile-menu-icon" onclick="expandMenu()">
+<path d="M6.25 8.75C6.25 8.05964 6.80964 7.5 7.5 7.5H32.5C33.1904 7.5 33.75 8.05964 33.75 8.75V8.75C33.75 9.44036 33.1904 10 32.5 10H7.5C6.80964 10 6.25 9.44036 6.25 8.75V8.75Z" fill="#F8B607"/>
+<path d="M6.25 20C6.25 19.3096 6.80964 18.75 7.5 18.75H32.5C33.1904 18.75 33.75 19.3096 33.75 20V20C33.75 20.6904 33.1904 21.25 32.5 21.25H7.5C6.80964 21.25 6.25 20.6904 6.25 20V20Z" fill="#F8B607"/>
+<path d="M6.25 31.25C6.25 30.5596 6.80964 30 7.5 30H32.5C33.1904 30 33.75 30.5596 33.75 31.25V31.25C33.75 31.9404 33.1904 32.5 32.5 32.5H7.5C6.80964 32.5 6.25 31.9404 6.25 31.25V31.25Z" fill="#F8B607"/>
+</svg>
+</li>
+                <li class="nav-item"><img id="profile-image" src="assets/img/profile-pic.png" onclick="leaveTool(&#39;profile.html&#39;);"></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="menu-fragment">
+        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button">Profile</button><button class="btn btn-primary mobile-menu-button" type="button">Product Scanner</button><button class="btn btn-primary mobile-menu-button" type="button">History</button></div>
+    </div>
+    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" id="history-dropdown-button" type="button">Previous entries</button>
+        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+    </div>
+    <div style="width: 800px;margin: auto;margin-top: 40px;transform: perspective(0px);"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;January&quot;,&quot;February&quot;,&quot;March&quot;,&quot;April&quot;,&quot;May&quot;,&quot;June&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:&quot;#4e73df&quot;,&quot;borderColor&quot;:&quot;#4e73df&quot;,&quot;data&quot;:[&quot;4500&quot;,&quot;5300&quot;,&quot;6250&quot;,&quot;7800&quot;,&quot;9800&quot;,&quot;15000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;bold&quot;:false,&quot;italic&quot;:false,&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;}}}"></canvas></div>
+    <div class="history-entry-container">
+        <h1 class="history-result-main-heading">Result Breakdown<br></h1>
+        <div>
+            <div class="table-responsive">
+                <table class="table results_table" id="resultsTable">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="results_format_head">Date: <br></td>
+                            <td id="dietGradeLabel" class="results_format"></td>
+                        </tr>
+                        <tr>
+                            <td class="results_format_head">Overall Grade:<br></td>
+                            <td id="dietGradeLabel-1" class="results_format"></td>
+                        </tr>
+                        <tr>
+                            <td class="results_format_head">Dietary Intake Grade: <br></td>
+                            <td id="dietGradeLabel" class="results_format"></td>
+                        </tr>
+                        <tr>
+                            <td class="results_format_head">Sun Exposure Grade: <br></td>
+                            <td id="sunGradeLabel" class="results_format"></td>
+                        </tr>
+                        <tr>
+                            <td class="results_format_head">Oral Intake:</td>
+                            <td id="oralIntakeLabel" class="results_format">ug</td>
+                        </tr>
+                        <tr>
+                            <td class="results_format_head">Total Time Exposed to Sun:</td>
+                            <td id="givenTime" class="results_format">0 minutes</td>
+                        </tr>
+                        <tr class="bottom-row">
+                            <td class="results_format_head">Required Sun Exposure:</td>
+                            <td id="requiredMinutes" class="results_format">0 minutes required</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/dietary-firestore.js"></script>
+    <script src="assets/js/dietary-old.js"></script>
+    <script src="assets/js/dietary.js"></script>
+    <script src="assets/js/image-processing.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/skin-tone.js"></script>
+    <script src="assets/js/supplement.js"></script>
+    <script src="assets/js/tool-calculations.js"></script>
+</body>
+
+</html>
