@@ -79,6 +79,7 @@ function generalLocation(lat){
 }
 
 
+/*
 function getSeason(){
     var date = new Date();
     var month = date.getMonth();
@@ -94,7 +95,7 @@ function getSeason(){
 
     }
 
-}
+} */
 
 function displayedTimes(){
     var season = sessionStorage.getItem("exposureChart");
