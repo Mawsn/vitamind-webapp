@@ -82,8 +82,9 @@ function generalLocation(lat){
 function getSeason(){
     var date = new Date();
     var month = date.getMonth();
-
-    if ((month >= 8 && month <= 11) || (month == 0 || month == 1)){
+    
+    //Summer is classified as months between October and March, otherwise Winter
+    if ((month >= 9 && month <= 11) || (month >= 0 && month =< 2)){
         console.log("Summer");
         sessionStorage.setItem("exposureChart", "summerChart");
         sessionStorage.setItem("insufficientUV", false);
