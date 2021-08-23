@@ -1402,6 +1402,12 @@ body {
   padding: 30px;
 }
 
+@media (max-width: 767px) {
+  .popup-export-bubble {
+    max-width: 90%;
+  }
+}
+
 .export-menu-button {
   margin: auto;
   text-align: center;
