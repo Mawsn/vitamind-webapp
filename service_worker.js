@@ -19,6 +19,8 @@ self.addEventListener("install", event => {
 });
 
 const ASSETS = [
+	"/profile.html",
+	"/profile-change-pass.html",
 	"/index.html",
 	"/home.html",
 	"/signup-options.html",
@@ -27,11 +29,14 @@ const ASSETS = [
 	"/login.html",
 	"/tool-skin-tone.html",
 	"/tool-dietary.html",
+	"/tool-dietary-detailed-form.html",
 	"/tool-supplement-1.html",
 	"/tool-supplement-2.html",
 	"/tool-supplement-3.html",
 	"/tool-sun-exposure.html",
 	"/tool-sun-exposure-2.html",
+	"/tool-exposure-minutes.html",
+	"/tool-location.html",
 	"/result-breakdown.html",
 	"/assets/bootstrap/css/bootstrap.min.css",
 	"/assets/bootstrap/js/bootstrap.min.js",
