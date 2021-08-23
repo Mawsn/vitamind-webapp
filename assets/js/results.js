@@ -11,7 +11,7 @@ if (insufficientUV == 'true'){
     var dietGrade = sessionStorage.getItem("dietGrade");
     document.getElementById("dietGradeLabel").innerHTML = dietGrade;
     grade.innerHTML = dietGrade;
-    
+
     var inputTime = document.getElementById("givenTime");
     inputTime.innerHTML = "You are located in an area which does not receive enough Ultra Violet exposure during winter. Sun exposure data is not required.";
 
@@ -20,7 +20,7 @@ if (insufficientUV == 'true'){
     var resultsTable = document.getElementById("resultsTable");
     resultsTable.deleteRow(2);
     resultsTable.deleteRow(4);
-    
+
 } else {
     var sunGrade = sessionStorage.getItem("sunGrade");
     document.getElementById("sunGradeLabel").innerHTML = sunGrade;
@@ -43,7 +43,7 @@ if (insufficientUV == 'true'){
             grade.innerHTML = 'A'; //Sun has more weight than diet
 
         } else if (sunGrade == 'B'){ //B & B
-            grade.innerHTML = 'B'; 
+            grade.innerHTML = 'B';
 
         } else if (sunGrade == 'C'){ //B & C
             grade.innerHTML = 'C'; //Sun has more weight than diet
@@ -118,13 +118,13 @@ firebase.auth().onAuthStateChanged((user) =>{
                var date = prevResult["date"].toDate();
 
                document.getElementById("prevDate").innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();;
-               
+
                document.getElementById("prevGrade").innerHTML = prevResult["letterGrade"];
-               
+
                document.getElementById("prevLikelihood").innerHTML = prevResult["deficiencyChance"];
-               
+
                document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
-               
+
                if (prevResult["sunGrade"] == null){
                     var resultsTable = document.getElementById("prevResultContainer");
                     resultsTable.deleteRow(5);
@@ -133,13 +133,13 @@ firebase.auth().onAuthStateChanged((user) =>{
                    document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
                    document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
                }
-               
+
                document.getElementById("prevOralIntake").innerHTML = prevResult["dietIntake"]+"ug";
-               
+
                document.getElementById("prevSuppIntake").innerHTML = prevResult["suppIntake"]+"ug";
-               
-        
-               
+
+
+
            } else {
                console.log("No previous history");
                document.getElementById("prevResultsHeading").remove();
@@ -148,7 +148,7 @@ firebase.auth().onAuthStateChanged((user) =>{
         }).catch((error) => {
             console.log("Error getting document: ", error);
         });
-        
+
         var resultData;
         if (insufficientUV == 'false'){
             resultData = {
@@ -191,9 +191,9 @@ firebase.auth().onAuthStateChanged((user) =>{
                     });
                 } else {
                     console.log("Creating new doc");
-                    console.log("results.js line 167 is where default birthday is set");
+                    //console.log("results.js line 167 is where default birthday is set");
                     db.collection("users").doc(user.uid).set({
-                        dob: firebase.firestore.Timestamp.fromDate(new Date("December 13, 1999")),
+                        //dob: firebase.firestore.Timestamp.fromDate(new Date("December 13, 1999")),
                         results: [resultData]
                     });
                 }
