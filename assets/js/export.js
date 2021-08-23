@@ -1,14 +1,11 @@
+let dietGrade = document.getElementById("dietGradeLabel").innerHTML;
+let sunGrade = document.getElementById("sunGradeLabel").innerHTML;
+let oralLabel = document.getElementById("oralIntakeLabel").innerHTML;
+let totalSunTime = document.getElementById("givenTime").innerHTML;
+let requiredMinutes = document.getElementById("requiredMinutes").innerHTML;
+
 function exportPDF(){
-
-
-	var dietGrade = document.getElementById("dietGradeLabel").innerHTML;
-	var sunGrade = document.getElementById("sunGradeLabel").innerHTML;
-	var oralLabel = document.getElementById("oralIntakeLabel").innerHTML;
-	var totalSunTime = document.getElementById("givenTime").innerHTML;
-	var requiredMinutes = document.getElementById("requiredMinutes").innerHTML;
-
-
-
+    //PDF export 
 	var doc = new jsPDF()
 	var img = new Image();
 	img.src = 'https://vitatrack.app/assets/img/logo-standard.png';
@@ -23,7 +20,36 @@ function exportPDF(){
   		],
 	})
 	
-
-
 	doc.save('VitaTrack Tool Result.pdf')
+}
+function exportCSV(){
+    //CSV export
+    var outData = "";
+    var date = new Date().toISOString().slice(0, 10); 
+    let csvHeader = ['Date', 'Dietary Intake Grade', 'Sun Exposure Grade','Weekly Oral Intake','Total Time Exposed to Sun','Required Sun Exposure'];
+    let csvData = [date, dietGrade, sunGrade, oralLabel,totalSunTime,requiredMinutes];
+    
+    
+    csvHeader.forEach(function(row) {  
+        outData += row + ","; 
+    }); 
+    outData += "\n"
+    
+    csvData.forEach(function(row) {  
+        outData += row + ","; 
+    });
+    
+    let hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(outData);  
+    hiddenElement.target = '_blank'; 
+    hiddenElement.download = "VitatrackData.csv";
+    hiddenElement.click();
+}
+
+function openExportMenu(){
+    document.getElementById('popup-export-menu').style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function closeExportMenu(){
+    document.getElementById('popup-export-menu').style.display = 'none';
 }

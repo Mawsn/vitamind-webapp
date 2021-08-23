@@ -29,6 +29,11 @@
 </head>
 
 <body style="background: var(--bs-light);">
+    <div id="popup-export-menu" class="popup-export-menu">
+        <div class="popup-export-bubble">
+            <h1 class="export-menu-heading">Export Options</h1><button class="btn btn-primary export-menu-button" type="button" onclick="exportPDF()">Export as PDF</button><button class="btn btn-primary export-menu-button" type="button" onclick="exportCSV()">Export as CSV</button><button class="btn btn-primary export-menu-button" id="export-done-button" type="button" onclick="closeExportMenu()">Done</button>
+        </div>
+    </div>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;home.html&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
@@ -150,7 +155,7 @@
             </div>
         </div>
     </div>
-    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="exportPDF()">Export</button><button class="btn btn-primary" id="done-button" type="button" onclick="homeClicked();">Home</button></div>
+    <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="openExportMenu()">Export</button><button class="btn btn-primary" id="done-button" type="button" onclick="homeClicked();">Home</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
