@@ -1,10 +1,9 @@
-let dietGrade = document.getElementById("dietGradeLabel").innerHTML;
-let sunGrade = document.getElementById("sunGradeLabel").innerHTML;
-let oralLabel = document.getElementById("oralIntakeLabel").innerHTML;
-let totalSunTime = document.getElementById("givenTime").innerHTML;
-let requiredMinutes = document.getElementById("requiredMinutes").innerHTML;
-
 function exportPDF(){
+    let dietGradeExport = document.getElementById("dietGradeLabel").innerHTML;
+    let sunGradeExport = document.getElementById("sunGradeLabel").innerHTML;
+    let oralLabelExport = document.getElementById("oralIntakeLabel").innerHTML;
+    let totalSunTimeExport = document.getElementById("givenTime").innerHTML;
+    let requiredMinutesExport = document.getElementById("requiredMinutes").innerHTML;
     //PDF export 
 	var doc = new jsPDF()
 	var img = new Image();
@@ -16,18 +15,23 @@ function exportPDF(){
   		head: [['Date', 'Dietary Intake Grade', 'Sun Exposure Grade','Weekly Oral Intake','Total Time Exposed to Sun','Required Sun Exposure']],
   		body: [
 
-    		[new Date().toISOString().slice(0, 10), dietGrade, sunGrade, oralLabel,totalSunTime,requiredMinutes],
+    		[new Date().toISOString().slice(0, 10), dietGradeExport, sunGradeExport, oralLabelExport,totalSunTimeExport,requiredMinutesExport],
   		],
 	})
 	
 	doc.save('VitaTrack Tool Result.pdf')
 }
 function exportCSV(){
+    let dietGradeExport = document.getElementById("dietGradeLabel").innerHTML;
+    let sunGradeExport = document.getElementById("sunGradeLabel").innerHTML;
+    let oralLabelExport = document.getElementById("oralIntakeLabel").innerHTML;
+    let totalSunTimeExport = document.getElementById("givenTime").innerHTML;
+    let requiredMinutesExport = document.getElementById("requiredMinutes").innerHTML;
     //CSV export
     var outData = "";
     var date = new Date().toISOString().slice(0, 10); 
     let csvHeader = ['Date', 'Dietary Intake Grade', 'Sun Exposure Grade','Weekly Oral Intake','Total Time Exposed to Sun','Required Sun Exposure'];
-    let csvData = [date, dietGrade, sunGrade, oralLabel,totalSunTime,requiredMinutes];
+    let csvData = [date, dietGradeExport, sunGradeExport, oralLabelExport,totalSunTimeExport,requiredMinutesExport];
     
     
     csvHeader.forEach(function(row) {  
