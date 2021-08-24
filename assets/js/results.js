@@ -19,7 +19,7 @@ if (insufficientUV == 'true'){
 
     var resultsTable = document.getElementById("resultsTable");
     resultsTable.deleteRow(2);
-    resultsTable.deleteRow(4);
+    resultsTable.deleteRow(3);
     
 } else {
     var sunGrade = sessionStorage.getItem("sunGrade");
@@ -92,7 +92,7 @@ if (grade.innerHTML == "A"){
 
 //Supplement Data
 var oralIntake = Number(sessionStorage.getItem("dietaryIntake_result"));
-document.getElementById("oralIntakeLabel").innerHTML = oralIntake.toFixed(2)+"ug";
+//document.getElementById("oralIntakeLabel").innerHTML = oralIntake.toFixed(2)+"ug";
 var suppDose = Number(sessionStorage.getItem("totalSupplementDosage"));
 //document.getElementById("suppIntakeLabel").innerHTML = suppDose+"ug";
 
@@ -134,9 +134,9 @@ firebase.auth().onAuthStateChanged((user) =>{
                    document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
                }
                
-               document.getElementById("prevOralIntake").innerHTML = prevResult["dietIntake"]+"ug";
+               document.getElementById("prevOralIntake").innerHTML = Number(prevResult["dietIntake"]).toFixed(2)+"ug";
                
-               document.getElementById("prevSuppIntake").innerHTML = prevResult["suppIntake"]+"ug";
+               document.getElementById("prevSuppIntake").innerHTML = Number(prevResult["suppIntake"]).toFixed(2)+"ug";
                
         
                

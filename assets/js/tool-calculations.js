@@ -1,123 +1,113 @@
-db = firebase.firestore(); //let db = firebase.firestore();
+db = firebase.firestore(); //let db = firebase.firestore(); //Connects the database to firestore
+
+//Gets already entered data to perform some calculations
 let type = sessionStorage.getItem("skin-tone-value");
 let sunExposure = sessionStorage.getItem("skinExposurePerc");
-let inputMinutes = sessionStorage.getItem("inputMinutes"); //For winter can only use time between 11am and 1pm
-let chartSelect = sessionStorage.getItem("exposureChart");//Should be selected based on geolocation and season
+let inputMinutes = sessionStorage.getItem("inputMinutes");
+let chartSelect = sessionStorage.getItem("exposureChart");
 var minutes = 0;
 
-/*
-if (chartSelect == null){ //temporary
-    chartSelect = "summerChart";
-    console.log("Temporary condition defaulting chart to summer: tool-calculations Line 8");
-} */
-
 //Dietary Calculation
-let vitDSupp = sessionStorage.getItem("vitDSupplement");
-let boneSupp = sessionStorage.getItem("boneSupplement");
-let multiVitSupp = sessionStorage.getItem("multiVitSupplement"); 
+let vitDSupp = sessionStorage.getItem("vitDSupplement"); //Gets if user uses Vitamin D supplement
+let boneSupp = sessionStorage.getItem("boneSupplement"); //Gets if user uses Bone Supplement
+let multiVitSupp = sessionStorage.getItem("multiVitSupplement"); //Gets if user uses Multi-vitamin supplement
 var suppAdd = 0.0; //unit is ug
 var oralIntake = Number(sessionStorage.getItem("dietaryIntake_result")); //unit is ug
-if (vitDSupp == 'true'){
+//Adds supplement intake to calculations
+if (vitDSupp == 'true'){ //if user does use supplements
     let dosage = Number(sessionStorage.getItem("dosageOne"));
     let freq = Number(sessionStorage.getItem("vitDFrequency"));
-    if (dosage == 0){
+    if (dosage == 0){ //If the user did not provide dosage input, use default
         var dos = 25 * freq;
-        suppAdd += dos;
-    } else {
+        suppAdd += dos; //add dosage to overall supplement intake
+    } else { //otherwise use entered dosage amount
         var dos = dosage * freq;
         suppAdd += dos;
     }
 }
-if (boneSupp == 'true'){
+//Adds supplement intake to calculations
+if (boneSupp == 'true'){ //if user does use supplements
     let dosage = Number(sessionStorage.getItem("dosageTwo"));
     let freq = Number(sessionStorage.getItem("boneFrequency"));
-    if (dosage == 0){
+    if (dosage == 0){ //If the user did not provide dosage input, use default
         var dos = 12.5 * freq;
-        suppAdd += dos;
-    } else {
+        suppAdd += dos; //add dosage to overall supplement intake
+    } else { //otherwise use entered dosage amount
         var dos = dosage * freq;
         suppAdd += dos;
     }
 }
-if (multiVitSupp == 'true'){
+//Adds supplement intake to calculations
+if (multiVitSupp == 'true'){ //if user does use supplements
     let dosage = Number(sessionStorage.getItem("dosageThree"));
     let freq = Number(sessionStorage.getItem("multiVitFrequency"));
-    if (dosage == 0){
+    if (dosage == 0){ //If the user did not provide dosage input, use default
         var dos = 5 * freq;
-        suppAdd += dos;
-    } else {
+        suppAdd += dos; //add dosage to overall supplement intake
+    } else { //otherwise use entered dosage amount
         var dos = dosage * freq;
         suppAdd += dos;
     }
 }
-sessionStorage.setItem("totalSupplementDosage",suppAdd);
+//Save total supplement intake amount
+sessionStorage.setItem("totalSupplementDosage", suppAdd);
 
 function calDietary(){
-    let age = Number(sessionStorage.getItem("age"));
+    let age = Number(sessionStorage.getItem("age")); //Get user's age
     var total = suppAdd + (oralIntake/7); //once all diet data input is ready, must divide weekly intake by 7 to get daily intake
-    if (age < 50){
+    if (age < 50){ //If user is less than 50 years old
         //recommended daily intake 5ug
-        if (total >= 5){
-            //alert("A");
+        if (total >= 5){ //If greater than or equal to 5ug, grade is A
             sessionStorage.setItem("dietGrade", "A");
-        } else if (total >= 2.5 && total < 5){
-            //alert("B");
+        } else if (total >= 2.5 && total < 5){ //If greater than or equal to 2.5ug but less 5ug, grade is B
             sessionStorage.setItem("dietGrade", "B");
-        } else if (total < 2.5){
-            //alert("C");
+        } else if (total < 2.5){ //If less than 2.5ug, grade is C
             sessionStorage.setItem("dietGrade", "C");
         }
-            
-    } else if (age >= 51 && age <= 70){
+
+    } else if (age >= 51 && age <= 70){ //If user is older than 50 years old but younger than 70 years old
         //recommended daily intake 10ug
-        if (total >= 10){
+        if (total >= 10){ //If greater than or equal to 10ug, grade is A
             sessionStorage.setItem("dietGrade", "A");
-        } else if (total >= 5 && total < 10){
+        } else if (total >= 5 && total < 10){ //If greater than or equal to 5ug but less 10ug, grade is B
             sessionStorage.setItem("dietGrade", "B");
-        } else if (total < 5){
+        } else if (total < 5){ //If less than 5ug, grade is C
             sessionStorage.setItem("dietGrade", "C");
         }
-        
-    } else if (age > 70){
+
+    } else if (age > 70){ //If user is older than 70
         //recommended daily intake 15ug
-        if (total >= 15){
+        if (total >= 15){ //If greater than or equal to 15ug, grade is A
             sessionStorage.setItem("dietGrade", "A");
-        } else if (total >= 7.5 && total < 15){
+        } else if (total >= 7.5 && total < 15){ //If greater than or equal to 7.5ug but less 15ug, grade is B
             sessionStorage.setItem("dietGrade", "B");
-        } else if (total < 7.5){
+        } else if (total < 7.5){ //If less than 7.5ug, grade is C
             sessionStorage.setItem("dietGrade", "C");
         }
-        
+
     }
-    
-    //Here should check season and location and if not correct skip to results
-    
 }
 
 
 //gets sun exposure data
 var exposureRef = db.collection("exposureChart").doc(chartSelect);
-exposureRef.get().then((doc) => {
-    if (doc.exists){
+exposureRef.get().then((doc) => { //Tries getting data related to recommended UV exposure
+    if (doc.exists){ //If data for chart is found
         var chart = doc.data();
-        console.log(type);
-        console.log("Exposure Percentage: "+sunExposure);
-        minutes = chart[type][sunExposure];
-        console.log("Recommended Minutes: "+minutes);
-        console.log("Input Minutes: "+inputMinutes);
+        minutes = chart[type][sunExposure]; //Gets recommened Minutes for sun exposure
     } else {
-        console.log("Document doesn't exist");
+        console.log("Document doesn't exist. Invalid data may have been entered");
     }
 }).catch((error) => {
     console.log("Error getting doc", error);
 });
 
-function calGrade(){//calculations
-    var inputMinutes = sessionStorage.getItem("inputMinutes");
-    
+function calGrade(){ //Calculates the sun grade for the user
+    var inputMinutes = sessionStorage.getItem("inputMinutes"); //Gets the total minutes the user entered
+
     if (inputMinutes >= minutes){ //meets requirements for sun exposure
-        sessionStorage.setItem("sunGrade", "A");
-        sessionStorage.setItem("recommendedMinutes", minutes);
+        sessionStorage.setItem("sunGrade", "A"); //Set grade to A
+        sessionStorage.setItem("recommendedMinutes", minutes); //Save recommended minutes user should be in the sun
     } else if (inputMinutes < minutes){
         var temp = minutes/2;
         if (inputMinutes >= temp){ //Doesn't meet requirements for sun exposure but not bad
@@ -130,20 +120,19 @@ function calGrade(){//calculations
     }
 }
 
+//Called if the user tries to leave the tool early to confirm if they want to leave
 function leaveTool(pageRef){
     const user = firebase.auth().currentUser;
-    
+
     var leave = confirm("Are you sure you want to leave this page?\nAll progress will be lost.");
     if (leave){
         sessionStorage.clear();
-        if (user.isAnonymous){
+        if (user.isAnonymous){ //If it is a guest user, return them to the landing screen and delete their account
             if (pageRef == 'home.html'){
                 deleteUser();
-            } else {
-                //if different page
             }
         } else {
             window.location.assign(pageRef);
         }
-    } 
+    }
 }
