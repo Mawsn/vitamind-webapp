@@ -1,40 +1,27 @@
-function goBack(){
+function goBack(){ //Allows usre to move back in the tool
     window.history.back();
 }
 
-//window.onload=getSeason();
-//var lat;
-//function getLocation(){}
-/*
-function showPosition(position){
-  lat = position.coords.latitude;
-} */
-//var lat;
+//Used to find latitude in winter months
+//Called if user chooses to use current location
 function detectLocation(){
     if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition((position) => { //If position was successfully retrieved
           var lat = position.coords.latitude;
-          if (lat <= -12 && lat >= -30.0888){ //Brisbane //was -26.4013 to 
-              console.log("Brisbane");
+          if (lat <= -12 && lat >= -30.0888){ //Sets weather chart to Brisbane
               sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
               sessionStorage.setItem("insufficientUV", false);
               window.location.assign('tool-sun-exposure.html');
-          } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
-              console.log("Sydney");
+          } else if (lat < -30.0888 && lat >= -34.92){ //Sets weather chart to Sydney / Perth
               sessionStorage.setItem("exposureChart", "winterSydneyChart");
               sessionStorage.setItem("insufficientUV", false);
               window.location.assign('tool-sun-exposure.html');
           } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
-              //set some variable
-              //move to results screen
-              console.log("UV levels too low, sunlight not sufficient");
-              console.log("Setting to summer for testing purposes: sun-exposure-tools.js: 38-39");
               sessionStorage.setItem("insufficientUV", true);
               window.location.assign("result-breakdown.html");
-              //sessionStorage.setItem("exposureChart", "summerChart");
           }
-        }, (error) => {
-            switch(error.code){
+        }, (error) => { //Error occured while trying to get location
+            switch(error.code){ //Alert the user of the error
                 case error.PERMISSION_DENIED:
                     alert("Location request was denied. Please use one of the general locations below.");
                     break;
@@ -51,220 +38,205 @@ function detectLocation(){
             }
         });
 
-    } else {
+    } else { //If Geolocation is not supported by the browser the user is in
         alert("Geolocation not supported by browser. Please use one of the general locations below.");
     }
 }
 
-function generalLocation(lat){
-    if (lat <= -12 && lat >= -30.0888){ //Brisbane //was -26.4013 to -30.0888
-        console.log("Brisbane");
+//If user selects a general location
+function generalLocation(lat){ 
+    if (lat <= -12 && lat >= -30.0888){ //Sets weather chart to Brisbane
         sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
         sessionStorage.setItem("insufficientUV", false);
         window.location.assign('tool-sun-exposure.html');
-    } else if (lat < -30.0888 && lat >= -34.92){ //Sydney Perth
-        console.log("Sydney");
+    } else if (lat < -30.0888 && lat >= -34.92){ //Sets weather chart to Sydney / Perth
         sessionStorage.setItem("exposureChart", "winterSydneyChart");
         sessionStorage.setItem("insufficientUV", false);
         window.location.assign('tool-sun-exposure.html');
     } else if (lat < -34.92) { //Not sufficient sunlight, only use oral intake
-        //set some variable
-        //move to results screen
-        console.log("UV levels too low, sunlight not sufficient");
-        console.log("Setting to summer for testing purposes: sun-exposure-tools.js: 38-39");
         sessionStorage.setItem("insufficientUV", true);
         window.location.assign("result-breakdown.html");
-        //sessionStorage.setItem("exposureChart", "summerChart");
     }
 }
 
-
-/*
-function getSeason(){
-    var date = new Date();
-    var month = date.getMonth();
-    
-    //Summer is classified as months between October and March, otherwise Winter
-    if ((month >= 9 && month <= 11) || (month >= 0 && month =< 2)){
-        console.log("Summer");
-        sessionStorage.setItem("exposureChart", "summerChart");
-        sessionStorage.setItem("insufficientUV", false);
-        window.location.assign('tool-sun-exposure.html');
-    } else {
-        window.location.assign("tool-location.html");
-
-    }
-
-} */
-
+//Removes irrelevant inputs if not required
 function displayedTimes(){
     var season = sessionStorage.getItem("exposureChart");
-    if (season != "summerChart"){
-        document.getElementById("mornLabel").remove();//.style.visibility = "hidden";
-        document.getElementById("afternoonLabel").remove();//.style.visibility = "hidden";
-        document.getElementById("morningMinutes").remove();//.style.visibility = "hidden";
-        document.getElementById("afternoonMinutes").remove();//.style.visibility = "hidden";
+    //If not summer
+    if (season != "summerChart"){ //Only 11AM - 1PM input needs to be shown
+        document.getElementById("mornLabel").remove();
+        document.getElementById("afternoonLabel").remove();
+        document.getElementById("morningMinutes").remove();
+        document.getElementById("afternoonMinutes").remove();
     }
 }
 
+//Called if the head on the figure is clicked 
 function headFunction(){
     var checkbox = document.getElementById("headForm");
-    if (checkbox.checked == true){
+    if (checkbox.checked == true){ //If user unselects the head
         checkbox.checked = false;
-    } else {
+    } else { //If user selects the head
         checkbox.checked = true;
     }
 
     var headImg = document.getElementById("headImg");
-    if (headImg.style.visibility == 'hidden'){
+    if (headImg.style.visibility == 'hidden'){ //If head is selected show the hat
         headImg.style.visibility = 'visible';
-    } else {
+    } else { //If head is unselected hide the hat
         headImg.style.visibility = 'hidden';
     }
 }
+//Called if the head on the figure is clicked 
 function torsoFunction(){
     var armImg = document.getElementById("longShirtImg");
     var upArmImg = document.getElementById("shirtImg");
-    if (armImg.style.visibility == 'visible'){
+    if (armImg.style.visibility == 'visible'){ //Unselects the longsleeve shirt if user deselects it
         armFunction();
         return;
-    } else if (upArmImg.style.visibility == 'visible'){
-        upArmFunction();
+    } else if (upArmImg.style.visibility == 'visible'){ //Unselects the tshirt if user deselects it
+        upArmFunction(); 
         return;
     }
 
     var checkbox = document.getElementById("torsoForm");
-    if (checkbox.checked == true){
+    if (checkbox.checked == true){ //If user unselects the torso
         checkbox.checked = false;
-    } else {
+    } else { //If user selects the torso
         checkbox.checked = true;
     }
     var torsoImg = document.getElementById("singletImg");
-    if (torsoImg.style.visibility == 'hidden'){
+    if (torsoImg.style.visibility == 'hidden'){ //If torso is selected show the singlet
         torsoImg.style.visibility = 'visible';
-    } else {
+    } else { //If torso is unselected hide the singlet
         torsoImg.style.visibility = 'hidden';
     }
 }
+//Called if the tshirt on the figure is clicked 
 function upArmFunction(){
-    var armImg = document.getElementById("longShirtImg");
-    if (armImg.style.visibility == 'visible'){
+    var armImg = document.getElementById("longShirtImg"); 
+    if (armImg.style.visibility == 'visible'){ //Unselects the longsleeve shirt if user deselects it
         armFunction();
         return;
     }
 
     var checkbox = document.getElementById("upperArmForm");
     var checkbox2 = document.getElementById("torsoForm");
-    if (checkbox.checked == true){
-        checkbox.checked = false;
-        checkbox2.checked = false;
-    } else {
+    if (checkbox.checked == true){ //If user unselects the tshirt
+        checkbox.checked = false; 
+        checkbox2.checked = false; //Additionally deselects the torso
+    } else { //If user selects the tshirt
         checkbox.checked = true;
-        checkbox2.checked = true;
+        checkbox2.checked = true; //Additionally selects the torso
     }
     var upArmImg = document.getElementById("shirtImg");
     var torsoImg = document.getElementById("singletImg");
-    if (upArmImg.style.visibility == 'hidden'){
+    if (upArmImg.style.visibility == 'hidden'){ //If user selects tshirt, show tshirt image and also hide the single
         torsoImg.style.visibility = 'hidden';
         upArmImg.style.visibility = 'visible';
-    } else {
+    } else { //if user deselects the tshirt
         upArmImg.style.visibility = 'hidden';
     }
 }
+//Called if the longsleeve shirt on the figure is clicked 
 function armFunction(){
     var checkbox = document.getElementById("lowerArmForm");
     var checkbox2 = document.getElementById("upperArmForm");
     var checkbox3 = document.getElementById("torsoForm");
-    if (checkbox.checked == true){
+    if (checkbox.checked == true){ //If user unselects the longsleeve shirt
         checkbox.checked = false;
-        checkbox2.checked = false;
+        checkbox2.checked = false; //Additionally deselects the torso and tshirt
         checkbox3.checked = false;
-    } else {
+    } else { //If user selects the longsleeve shirt
         checkbox.checked = true;
-        checkbox2.checked = true;
+        checkbox2.checked = true; //Additionally selects the torso and tshirt
         checkbox3.checked = true;
     }
     var armImg = document.getElementById("longShirtImg");
     var upArmImg = document.getElementById("shirtImg");
     var torsoImg = document.getElementById("singletImg");
-    if (armImg.style.visibility == 'hidden'){
+    if (armImg.style.visibility == 'hidden'){ //If user selects longsleeve shirt show it, additionally hide the singlet and tshirt if they were visible
         upArmImg.style.visibility = 'hidden';
         torsoImg.style.visibility = 'hidden';
         armImg.style.visibility = 'visible';
-    } else {
+    } else { //otherwise user has deselected, hide the longsleeve shirt
         armImg.style.visibility = 'hidden';
     }
 }
+//If user clicks on hands
 function handsFunction(){
     var checkbox = document.getElementById("handsForm");
-    if (checkbox.checked == true){
+    if (checkbox.checked == true){ //User has deselected hands
         checkbox.checked = false;
-    } else {
+    } else { //user has selected hands were covered
         checkbox.checked = true;
     }
 
     var handsImg = document.getElementById("handsImg");
-    if (handsImg.style.visibility == 'hidden'){
+    if (handsImg.style.visibility == 'hidden'){ //show hands image
         handsImg.style.visibility = 'visible';
-    } else {
+    } else { //hide hands image
         handsImg.style.visibility = 'hidden';
     }
 }
+//if user clicks on legs
 function legsFunction(){
     var checkbox = document.getElementById("legsForm");
-    if (checkbox.checked == true){
+    if (checkbox.checked == true){ //user has deselected pants
         checkbox.checked = false;
-    } else {
+    } else { //user has selected pants were covered
         checkbox.checked = true;
     }
     var legsImg = document.getElementById("pantsImg");
-    if (legsImg.style.visibility == 'hidden'){
+    if (legsImg.style.visibility == 'hidden'){ //pants selected, show them
         legsImg.style.visibility = 'visible';
-    } else {
+    } else { //pants deselected, hide them
         legsImg.style.visibility = 'hidden';
     }
 }
 
-function setSessionData(){
+//Calculate body percentage which was exposed to the sun
+function setSessionData(){ 
     var totalPercentage = 0;
-
-    if (!document.getElementById("headForm").checked){
+    //! means logical not
+    if (!document.getElementById("headForm").checked){ //If the head was exposed
       totalPercentage += 5;
     }
-    if (!document.getElementById("handsForm").checked){
+    if (!document.getElementById("handsForm").checked){ //If hands were exposed
       totalPercentage += 5;
     }
-    if (!document.getElementById("lowerArmForm").checked){
+    if (!document.getElementById("lowerArmForm").checked){ //if lower arms were exposed
       totalPercentage += 5;
     }
-    if (!document.getElementById("upperArmForm").checked){
+    if (!document.getElementById("upperArmForm").checked){ //if upper arm was exposed
       totalPercentage += 5;
     }
-    if (!document.getElementById("legsForm").checked){
+    if (!document.getElementById("legsForm").checked){ //if lower legs were exposed
       totalPercentage += 15;
     }
-    if (!document.getElementById("torsoForm").checked){
+    if (!document.getElementById("torsoForm").checked){ //if torso was exposed
       totalPercentage += 25;
     }
     //Set Percentage Data
     sessionStorage.setItem("skinExposurePerc", totalPercentage);
 }
 
+//Saves data about minutes exposed to sunlight
 function setMinutesData(){
     var inputMinutes = 0;
     var inputType = sessionStorage.getItem("exposure-measurement");
-    if (chartSelect == "summerChart"){
+    if (chartSelect == "summerChart"){ //If using summer chart, take all input fields
         var morn = Number(document.getElementById("morningMinutes").value);
         var lunch = Number(document.getElementById("lunchMinutes").value);
         var afternoon = Number(document.getElementById("afternoonMinutes").value);
         inputMinutes = morn + lunch + afternoon;
 
-    } else {
+    } else { //if not summer, only use 11AM to 1PM
         inputMinutes = Number(document.getElementById("lunchMinutes").value);
     }
-    if (inputType == "weekly"){
+    if (inputType == "weekly"){ //If user selected to input data as weekly unit
         inputMinutes = Math.round(inputMinutes / 7); //Divided into daily units
     }
+    //Save data on total minutes exposed to sun
     sessionStorage.setItem("inputMinutes", inputMinutes);
-
 }

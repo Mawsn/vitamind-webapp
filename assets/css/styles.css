@@ -1437,3 +1437,22 @@ body {
   padding-bottom: 40px;
 }
 
+#result_chart_div {
+  width: 65%;
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  #result_chart_div {
+    width: 90%;
+  }
+}
+
+#done-button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
+}
+
