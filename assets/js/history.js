@@ -193,5 +193,5 @@ function updateResultBreakdown(temp_id)
     document.getElementById("historyResultLabel-5").innerHTML = user_data_array[array_index].inputMinutes;
 
     // // this is for the required sun exposure
-    document.getElementById("historyResultLabel-6").innerHTML = user_data_array[array_index].minutesRequired.slice(12);
+    document.getElementById("historyResultLabel-6").innerHTML = user_data_array[array_index].minutesRequired;
 }
