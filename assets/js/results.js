@@ -159,6 +159,7 @@ firebase.auth().onAuthStateChanged((user) =>{
                 sunGrade: sessionStorage.getItem("sunGrade"),
                 dietIntake: oralIntake.toFixed(2),
                 suppIntake: suppDose,
+                inputMinutes: Number(sessionStorage.getItem("inputMinutes")),
                 minutesRequired: document.getElementById("requiredMinutes").innerHTML
             }
         } else {

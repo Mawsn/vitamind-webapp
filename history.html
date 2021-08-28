@@ -48,15 +48,15 @@
         <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button" onclick="location.href=&#39;profile.html&#39;;">Profile</button><button class="btn btn-primary mobile-menu-button" type="button" onclick="location.href=&#39;history.html&#39;;">History</button></div>
     </div>
     <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" id="history-dropdown-button" type="button">Previous entries</button>
-        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a><a class="dropdown-item" href="#">Fourth Item</a><a class="dropdown-item" href="#">Fifth item</a><a class="dropdown-item" href="#">Sixth item</a></div>
+        <div class="dropdown-menu" id="previous_entry_dropdown_menu"></div>
     </div>
     <div id="result_chart_div"><html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 
-<script src = "history.js">
-</script>
+<!-- <script src = "history.js">
+</script> -->
 
 
 <canvas id="result_chart" style = "display:block; height: 342px; width: 685px;"  width = "1370" height = "684">
@@ -70,8 +70,7 @@
 
 
 </div>
-    <div id="result_chart" onload="setChart();"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Date_01&quot;,&quot;Date_02&quot;,&quot;Date_03&quot;,&quot;Date_04&quot;,&quot;Date_05&quot;,&quot;Date_06&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Vitamin D (ug)&quot;,&quot;backgroundColor&quot;:&quot;rgba(248,182,7,0.5)&quot;,&quot;borderColor&quot;:&quot;#1686ab&quot;,&quot;borderWidth&quot;:&quot;1.5&quot;,&quot;data&quot;:[&quot;0&quot;,&quot;10&quot;,&quot;35&quot;,&quot;50&quot;,&quot;80&quot;,&quot;150&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;bold&quot;:false,&quot;italic&quot;:false,&quot;fontColor&quot;:&quot;#ffffff&quot;,&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;,&quot;fontColor&quot;:&quot;#ffffff&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.2)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.2)&quot;},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#ffffff&quot;,&quot;fontSize&quot;:&quot;16&quot;,&quot;fontStyle&quot;:&quot;normal&quot;}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.2)&quot;,&quot;zeroLineColor&quot;:&quot;rgba(255,255,255,0.2)&quot;},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#ffffff&quot;,&quot;fontSize&quot;:&quot;16&quot;,&quot;fontStyle&quot;:&quot;normal&quot;}}]}}}"></canvas></div>
-    <div class="history-entry-container">
+    <div id="result_breakdown" class="history-entry-container">
         <h1 class="history-result-main-heading">Result Breakdown<br></h1>
         <div>
             <div class="table-responsive">
@@ -82,31 +81,31 @@
                     <tbody>
                         <tr>
                             <td class="results_format_head">Date: <br></td>
-                            <td id="dietGradeLabel" class="results_format"></td>
+                            <td id="historyResultLabel-0" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Overall Grade:<br></td>
-                            <td id="dietGradeLabel-1" class="results_format"></td>
+                            <td id="historyResultLabel-1" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Dietary Intake Grade: <br></td>
-                            <td id="dietGradeLabel" class="results_format"></td>
+                            <td id="historyResultLabel-2" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Sun Exposure Grade: <br></td>
-                            <td id="sunGradeLabel" class="results_format"></td>
+                            <td id="historyResultLabel-3" class="results_format"></td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Oral Intake:</td>
-                            <td id="oralIntakeLabel" class="results_format">ug</td>
+                            <td id="historyResultLabel-4" class="results_format">ug</td>
                         </tr>
                         <tr>
                             <td class="results_format_head">Total Time Exposed to Sun:</td>
-                            <td id="givenTime" class="results_format">0 minutes</td>
+                            <td id="historyResultLabel-5" class="results_format">0 minutes</td>
                         </tr>
                         <tr class="bottom-row">
                             <td class="results_format_head">Required Sun Exposure:</td>
-                            <td id="requiredMinutes" class="results_format">0 minutes required</td>
+                            <td id="historyResultLabel-6" class="results_format">0 minutes required</td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,7 +113,6 @@
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/color-thief.min.js"></script>
     <script src="assets/js/dietary-firestore.js"></script>
