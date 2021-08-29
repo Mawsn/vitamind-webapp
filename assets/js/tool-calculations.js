@@ -131,7 +131,7 @@ function leaveTool(pageRef){
             if (pageRef == 'home.html'){
                 deleteUser();
             }
-        } else {
+        } else { //Otherwise if user is not guest, take them to relevant page
             window.location.assign(pageRef);
         }
     }

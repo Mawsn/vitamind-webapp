@@ -359,6 +359,14 @@ body {
   margin: 10px;
 }
 
+#export_button_history_page {
+  margin-right: 15px;
+  background-color: white;
+  border-color: #f8b607;
+  border-width: 2px;
+  margin: 10px;
+}
+
 #cancel-delete-button {
   margin-right: 15px;
   background-color: white;
@@ -1121,6 +1129,12 @@ body {
   border-color: #ffeec7;
 }
 
+#export_button_history_page:hover {
+  background-color: #ffeec7;
+  color: var(--bs-dark);
+  border-color: #ffeec7;
+}
+
 .dietary-add-button:hover {
   background-color: #efaf34;
   color: #ffffff;
@@ -1340,10 +1354,6 @@ body {
   padding-bottom: 40px;
 }
 
-.dietary-intake-page-end-space {
-  margin-top: 5%;
-}
-
 #history-dropdown-button {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -1454,5 +1464,60 @@ body {
   background-color: #efaf34;
   color: #ffffff;
   border-color: #efaf34;
+}
+
+#chart_options_dropdown_div {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.dietary-intake-page-end-space {
+  margin-top: 5%;
+}
+
+.about-heading-alt {
+  margin-top: 50px;
+  /*margin-right: 50px;*/
+  color: #1686ab;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.about-heading {
+  margin-top: 50px;
+  /*margin-left: 50px;*/
+  color: #1686AB;
+  text-align: center;
+}
+
+.about-text {
+  margin-left: 50px;
+  text-align: left;
+}
+
+.about-div {
+  background-color: #1686ab;
+  color: white;
+  padding-bottom: 10px;
+}
+
+.about-sub-heading {
+  margin-left: 50px;
+}
+
+.about-sub-heading-alt {
+  margin-right: 50px;
+  text-align: right;
+}
+
+.about-text-alt {
+  margin-right: 50px;
+  text-align: right;
+}
+
+.about-video {
+  align-content: center;
 }
 

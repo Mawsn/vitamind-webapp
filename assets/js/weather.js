@@ -122,7 +122,7 @@ firebase.auth().onAuthStateChanged((user) => {
     if (user !== null){
         var userRef = db.collection("users").doc(user.uid);
         userRef.get().then((doc) => {
-           if (doc.exists){ //If previous data is found
+           if (doc.exists){ //If previous data is found, put data into table
                console.log("User doc exists");
                var userData = doc.data();
                var prevResult = userData["results"][userData["results"].length-1];
@@ -136,7 +136,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
                document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
 
-               if (prevResult["sunGrade"] == null){
+               if (prevResult["sunGrade"] == null){ //if previous result didn't include sun data, delete relevant rows
                     var resultsTable = document.getElementById("prevTable");
                     resultsTable.deleteRow(5);
                     resultsTable.deleteRow(7);
@@ -145,19 +145,15 @@ firebase.auth().onAuthStateChanged((user) => {
                    document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];
                }
 
-               //document.getElementById("prevOralIntake").innerHTML = prevResult["dietIntake"]+"ug";
-
-               //document.getElementById("prevSuppIntake").innerHTML = prevResult["suppIntake"]+"ug";
-
-           } else {
+           } else { //Otherwise if not found, user does not have previous results
                console.log("No previous history");
                document.getElementById("prevTable").remove;
                document.getElementById("homeResultContainer").innerHTML = "There is no current status for us to display.";
            }
-        }).catch((error) => {
+        }).catch((error) => { //If an error occured while trying to get the data
             console.log("Error getting document: ", error);
         });
-    } else {
+    } else { //If the user is not logged in
         console.log("Not logged in");
     }
 });

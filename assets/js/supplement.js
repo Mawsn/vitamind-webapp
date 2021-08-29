@@ -226,7 +226,8 @@ function checkSupplementForm_multivit()
     }
 }
 
-function getSeason(){
+//Gets season to determine how or if sun exposure data is collected
+function getSeason(){ 
     var date = new Date();
     var month = date.getMonth();
     
@@ -236,7 +237,7 @@ function getSeason(){
         sessionStorage.setItem("exposureChart", "summerChart");
         sessionStorage.setItem("insufficientUV", false);
         window.location.assign('tool-sun-exposure.html');
-    } else {
+    } else { //If not summer, take to tool-location to determine latitude
         window.location.assign("tool-location.html");
 
     }

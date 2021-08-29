@@ -29,8 +29,13 @@
 </head>
 
 <body onload="ReadData();">
+    <div id="popup-export-menu" class="popup-export-menu">
+        <div class="popup-export-bubble">
+            <h1 class="export-menu-heading">Export Options</h1><button class="btn btn-primary export-menu-button" type="button" onclick="exportPDF()">Export as PDF</button><button class="btn btn-primary export-menu-button" type="button" onclick="exportCSV()">Export as CSV</button><button class="btn btn-primary export-menu-button" id="export-done-button" type="button" onclick="closeExportMenu()">Done</button>
+        </div>
+    </div>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
-        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="leaveTool(&#39;home.html&#39;);">
+        <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;home.html&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
                 <li class="nav-item"><button class="btn btn-primary" type="button" onclick="leaveTool(&#39;about.html&#39;);">About Us<br></button></li>
                 <li class="nav-item"><button class="btn btn-primary" type="button" onclick="location.href=&#39;history.html&#39;;">History</button></li>
@@ -70,6 +75,11 @@
 
 
 </div>
+    <div id="chart_options_dropdown_div">
+        <div class="dropdown" id="chart_options_dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">View Chart Types</button>
+            <div class="dropdown-menu"><a class="dropdown-item" id="dropdown_item_bar_chart" onclick="setChartType(this.id);">Bar Chart</a><a class="dropdown-item" id="dropdown_item_line_chart" onclick="setChartType(this.id);">Line Chart</a></div>
+        </div>
+    </div>
     <div id="result_breakdown" class="history-entry-container">
         <h1 class="history-result-main-heading">Result Breakdown<br></h1>
         <div>
@@ -96,21 +106,34 @@
                             <td id="historyResultLabel-3" class="results_format"></td>
                         </tr>
                         <tr>
-                            <td class="results_format_head">Oral Intake:</td>
+                            <td class="results_format_head">Total vitamin D Intake:</td>
                             <td id="historyResultLabel-4" class="results_format">ug</td>
                         </tr>
                         <tr>
+                            <td>Dietary vitamin D Intake</td>
+                            <td id="historyResultLabel-5">ug</td>
+                        </tr>
+                        <tr>
+                            <td>Supplement vitamin D Intake</td>
+                            <td id="historyResultLabel-6">ug</td>
+                        </tr>
+                        <tr>
                             <td class="results_format_head">Total Time Exposed to Sun:</td>
-                            <td id="historyResultLabel-5" class="results_format">0 minutes</td>
+                            <td id="historyResultLabel-7" class="results_format">0 minutes</td>
                         </tr>
                         <tr class="bottom-row">
                             <td class="results_format_head">Required Sun Exposure:</td>
-                            <td id="historyResultLabel-6" class="results_format">0 minutes required</td>
+                            <td id="historyResultLabel-8" class="results_format">0 minutes required</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+    <div style="margin: auto;text-align: center;"><button class="btn btn-primary" id="export_button_history_page" type="button" onclick="openExportMenu()">Export</button></div>
+    <div class="dietary-intake-page-end-space"></div>
+    <div id="menu-fragment">
+        <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button" onclick="location.href=&#39;profile.html&#39;;">Profile</button><button class="btn btn-primary mobile-menu-button" type="button" onclick="location.href=&#39;history.html&#39;;">History</button></div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -119,6 +142,7 @@
     <script src="assets/js/dietary-old.js"></script>
     <script src="assets/js/dietary.js"></script>
     <script src="assets/js/export.js"></script>
+    <script src="assets/js/history-export-functionality.js"></script>
     <script src="assets/js/history.js"></script>
     <script src="assets/js/image-processing.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>

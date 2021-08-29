@@ -189,9 +189,31 @@ function updateResultBreakdown(temp_id)
     // // this is for oral intake
     document.getElementById("historyResultLabel-4").innerHTML = totalIntake_vitD_array[array_index] + " ug";
 
+    document.getElementById("historyResultLabel-5").innerHTML = user_data_array[array_index].dietIntake + " ug";
+
+    document.getElementById("historyResultLabel-6").innerHTML = user_data_array[array_index].suppIntake + " ug";
+
     // // this is for total time exposed to sun
-    document.getElementById("historyResultLabel-5").innerHTML = user_data_array[array_index].inputMinutes;
+    document.getElementById("historyResultLabel-7").innerHTML = user_data_array[array_index].inputMinutes + " minutes";
 
     // // this is for the required sun exposure
-    document.getElementById("historyResultLabel-6").innerHTML = user_data_array[array_index].minutesRequired;
+    document.getElementById("historyResultLabel-8").innerHTML = user_data_array[array_index].minutesRequired;
 }
+
+
+
+function setChartType(temp_id)
+{
+    // check the type of chart selected
+    if(temp_id == "dropdown_item_bar_chart")
+    {
+        result_chart.config.type = "bar";
+        result_chart.update();
+    }
+    else if(temp_id == "dropdown_item_line_chart")
+    {
+        result_chart.config.type = "line";
+        result_chart.update();
+    }
+}
+

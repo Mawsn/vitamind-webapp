@@ -1,32 +1,27 @@
 var grade = document.getElementById("overallGrade");
-//sessionStorage.setItem("sunGrade", "A");
-        //sessionStorage.setItem("inputMinutes", inputMinutes);
-        //sessionStorage.setItem("recommendedMinutes", minutes);
-
-//grade.innerHTML = sessionStorage.getItem("sunGrade");
 
 var insufficientUV = sessionStorage.getItem("insufficientUV");
-if (insufficientUV == 'true'){
-    console.log("If data is not being shown when it should, error could be in results.js line 9-24.")
+if (insufficientUV == 'true'){ //If location was not high enough latitude to gather UV data, sun data does not need to be shown.
     var dietGrade = sessionStorage.getItem("dietGrade");
     document.getElementById("dietGradeLabel").innerHTML = dietGrade;
     grade.innerHTML = dietGrade;
     
     var inputTime = document.getElementById("givenTime");
     inputTime.innerHTML = "You are located in an area which does not receive enough Ultra Violet exposure during winter. Sun exposure data is not required.";
-
+    
+    //Delete rows in result table that are relevant to sun data
     var recommendedTime = document.getElementById("recommendedTime").remove();
 
     var resultsTable = document.getElementById("resultsTable");
     resultsTable.deleteRow(2);
     resultsTable.deleteRow(3);
     
-} else {
+} else { //Otherwise user is in a location which used sun exposure data
     var sunGrade = sessionStorage.getItem("sunGrade");
     document.getElementById("sunGradeLabel").innerHTML = sunGrade;
     var dietGrade = sessionStorage.getItem("dietGrade");
     document.getElementById("dietGradeLabel").innerHTML = dietGrade;
-    console.log("SUN: "+ sunGrade + " DIET: "+dietGrade);
+    //Determine overall grade, Sun exposure has more weight than diet
     if (dietGrade == 'A'){
         if (sunGrade == 'A'){ //A & A
             grade.innerHTML = 'A';
@@ -61,10 +56,9 @@ if (insufficientUV == 'true'){
         }
     }
 
-
+    //Display data and calculations to user
     var inputTime = document.getElementById("givenTime");
     inputTime.innerHTML = sessionStorage.getItem("inputMinutes")+" minutes.";
-    //console.log("THIS: "+sessionStorage.getItem("inputMinutes"));
 
     var recommendedTime = document.getElementById("recommendedTime");
     recommendedTime.innerHTML = "Recommended Minimum Sun Exposure: "+sessionStorage.getItem("recommendedMinutes")+" minutes.";
@@ -73,14 +67,15 @@ if (insufficientUV == 'true'){
     var inputMin = Number(sessionStorage.getItem("inputMinutes"));
     var recommendedMin = Number(sessionStorage.getItem("recommendedMinutes"));
 
-    if (inputMin < recommendedMin){
+    if (inputMin < recommendedMin){ //If user's input minutes was less than that recommended
         var minutesRequired = recommendedMin - inputMin;
         document.getElementById("requiredMinutes").innerHTML = "Additional: "+minutesRequired + " minute/s required";
-    } else {
+    } else { //Otherwise they reached target minutes
         document.getElementById("requiredMinutes").innerHTML = "Required minutes reached";
     }
 }
 
+//Displays to user what each grade means
 var likelihood = document.getElementById("deficiencyLikelihood");
 if (grade.innerHTML == "A"){
     likelihood.innerHTML = "Unlikely to be insufficient";
@@ -92,31 +87,28 @@ if (grade.innerHTML == "A"){
 
 //Supplement Data
 var oralIntake = Number(sessionStorage.getItem("dietaryIntake_result"));
-//document.getElementById("oralIntakeLabel").innerHTML = oralIntake.toFixed(2)+"ug";
 var suppDose = Number(sessionStorage.getItem("totalSupplementDosage"));
-//document.getElementById("suppIntakeLabel").innerHTML = suppDose+"ug";
 
-
+//Displaying previous result data
 firebase.auth().onAuthStateChanged((user) =>{
-    if (user.isAnonymous){
+    if (user.isAnonymous){ //If guest user, previous result data is not relevant and button functionality needs to change
         var doneButton = document.getElementById("done-button");
         doneButton.innerHTML = "Done";
         doneButton.onclick = function(){
             guestConfirmation();
         }
-        console.log("GUEST");
+        //Removes table for previous result data
         document.getElementById("prevResultsHeading").remove();
         document.getElementById("prevResultsTable").remove();
-    } else if (user !== null){
+    } else if (user !== null){ //Otherwise show previous data 
         var userRef = db.collection("users").doc(user.uid);
-        userRef.get().then((doc) => {
-           if (doc.exists){
-               console.log("User doc exists");
+        userRef.get().then((doc) => { 
+           if (doc.exists){ //if previous data was found
                var userData = doc.data();
-               var prevResult = userData["results"][userData["results"].length-1];
-               console.log(prevResult);
+               var prevResult = userData["results"][userData["results"].length-1]; //Get previous entry
                var date = prevResult["date"].toDate();
-
+               
+               //Display data of previous result in table
                document.getElementById("prevDate").innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();;
                
                document.getElementById("prevGrade").innerHTML = prevResult["letterGrade"];
@@ -125,7 +117,7 @@ firebase.auth().onAuthStateChanged((user) =>{
                
                document.getElementById("prevDietGrade").innerHTML = prevResult["dietGrade"];
                
-               if (prevResult["sunGrade"] == null){
+               if (prevResult["sunGrade"] == null){ //if previous result didn't include sun data, delete relevant rows
                     var resultsTable = document.getElementById("prevResultContainer");
                     resultsTable.deleteRow(5);
                     resultsTable.deleteRow(7);
@@ -138,9 +130,7 @@ firebase.auth().onAuthStateChanged((user) =>{
                
                document.getElementById("prevSuppIntake").innerHTML = Number(prevResult["suppIntake"]).toFixed(2)+"ug";
                
-        
-               
-           } else {
+           } else { //Otherwise there is no previous data
                console.log("No previous history");
                document.getElementById("prevResultsHeading").remove();
                document.getElementById("prevResultsTable").remove();
@@ -149,8 +139,9 @@ firebase.auth().onAuthStateChanged((user) =>{
             console.log("Error getting document: ", error);
         });
         
+        //Saves new data to firebase
         var resultData;
-        if (insufficientUV == 'false'){
+        if (insufficientUV == 'false'){ //if sun data was included
             resultData = {
                 date: firebase.firestore.Timestamp.fromDate(new Date()),
                 letterGrade: document.getElementById("overallGrade").innerHTML,
@@ -162,7 +153,7 @@ firebase.auth().onAuthStateChanged((user) =>{
                 inputMinutes: Number(sessionStorage.getItem("inputMinutes")),
                 minutesRequired: document.getElementById("requiredMinutes").innerHTML
             }
-        } else {
+        } else { //otherwise sun data was not recorded
             resultData = {
                 date: firebase.firestore.Timestamp.fromDate(new Date()),
                 letterGrade: document.getElementById("overallGrade").innerHTML,
@@ -172,29 +163,15 @@ firebase.auth().onAuthStateChanged((user) =>{
                 suppIntake: suppDose
             }
         }
-        /*var resultData = {
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
-            letterGrade: document.getElementById("overallGrade").innerHTML,
-            deficiencyChance: likelihood.innerHTML,
-            dietGrade: sessionStorage.getItem("dietGrade"),
-            sunGrade: sessionStorage.getItem("sunGrade"),
-            dietIntake: oralIntake.toFixed(2),
-            suppIntake: suppDose,
-            minutesRequired: document.getElementById("requiredMinutes").innerHTML
-        } */
 
-        if (!user.isAnonymous){
+        if (!user.isAnonymous){ //If not guest user, save data
             userRef.get().then((doc) => {
-                if (doc.exists){
-                   console.log("User doc exists");
+                if (doc.exists){ //If user already has result data, append new data to end of result array
                    userRef.update({
                         results: firebase.firestore.FieldValue.arrayUnion(resultData)
                     });
-                } else {
-                    console.log("Creating new doc");
-                   // console.log("results.js line 167 is where default birthday is set");
+                } else { //Otherwise no previous data exists so create a new document for the user
                     db.collection("users").doc(user.uid).set({
-                        //dob: firebase.firestore.Timestamp.fromDate(new Date("December 13, 1999")),
                         results: [resultData]
                     });
                 }
@@ -207,18 +184,18 @@ firebase.auth().onAuthStateChanged((user) =>{
     }
 });
 
+//If guest user tries to leave result page, reminds them that data will be lost
 function guestConfirmation(){
     if (confirm("Are you sure you want to leave this page? All data will be lost.")){
-       // signout();
         sessionStorage.clear();
-        deleteUser();
-       // window.location.assign("index.html");
+        deleteUser(); //Deletes guest user as Firebase does not automatically do this with guest users
     } else {
         console.log("Cancel");
     }
 }
 
-function homeClicked(){
+//If signed in user leaves result page, clears any data used during use of tool
+function homeClicked(){ 
     sessionStorage.clear();
     window.location.assign("home.html");
 }
