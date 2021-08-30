@@ -151,7 +151,8 @@ firebase.auth().onAuthStateChanged((user) =>{
                 dietIntake: oralIntake.toFixed(2),
                 suppIntake: suppDose,
                 inputMinutes: Number(sessionStorage.getItem("inputMinutes")),
-                minutesRequired: document.getElementById("requiredMinutes").innerHTML
+                minutesRequired: document.getElementById("requiredMinutes").innerHTML,
+                insufficientUv: insufficientUV
             }
         } else { //otherwise sun data was not recorded
             resultData = {
@@ -160,7 +161,8 @@ firebase.auth().onAuthStateChanged((user) =>{
                 deficiencyChance: likelihood.innerHTML,
                 dietGrade: sessionStorage.getItem("dietGrade"),
                 dietIntake: oralIntake.toFixed(2),
-                suppIntake: suppDose
+                suppIntake: suppDose,
+                insufficientUv: insufficientUV
             }
         }
 
