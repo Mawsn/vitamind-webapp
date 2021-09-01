@@ -138,8 +138,8 @@ firebase.auth().onAuthStateChanged((user) => {
 
                if (prevResult["sunGrade"] == null){ //if previous result didn't include sun data, delete relevant rows
                     var resultsTable = document.getElementById("prevTable");
+                    resultsTable.deleteRow(6);
                     resultsTable.deleteRow(5);
-                    resultsTable.deleteRow(7);
                } else {
                    document.getElementById("prevSunGrade").innerHTML = prevResult["sunGrade"];
                    document.getElementById("prevRequiredMinutes").innerHTML = prevResult["minutesRequired"];

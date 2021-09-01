@@ -183,9 +183,6 @@ function updateResultBreakdown(temp_id)
     // this is for dietary intake grade
     document.getElementById("historyResultLabel-2").innerHTML = user_data_array[array_index].dietGrade;
 
-    // // this is for sun exposure grade
-    document.getElementById("historyResultLabel-3").innerHTML = user_data_array[array_index].sunGrade;
-
     // // this is for oral intake
     document.getElementById("historyResultLabel-4").innerHTML = totalIntake_vitD_array[array_index] + " ug";
 
@@ -193,11 +190,31 @@ function updateResultBreakdown(temp_id)
 
     document.getElementById("historyResultLabel-6").innerHTML = user_data_array[array_index].suppIntake + " ug";
 
-    // // this is for total time exposed to sun
-    document.getElementById("historyResultLabel-7").innerHTML = user_data_array[array_index].inputMinutes + " minutes";
+    if(user_data_array[array_index].insufficientUv == "true")
+    {
+        // this is for sun exposure grade
+        document.getElementById("historyResultLabel-3").innerHTML = "Not applicable due to insufficient UV";
 
-    // // this is for the required sun exposure
-    document.getElementById("historyResultLabel-8").innerHTML = user_data_array[array_index].minutesRequired;
+        // // this is for total time exposed to sun
+        document.getElementById("historyResultLabel-7").innerHTML = "Not applicable due to insufficient UV";
+
+        // // this is for the required sun exposure
+        document.getElementById("historyResultLabel-8").innerHTML = "Not applicable due to insufficient UV";
+    }
+    else if(user_data_array[array_index].insufficientUv == "false")
+    {
+        // this is for sun exposure grade
+        document.getElementById("historyResultLabel-3").innerHTML = user_data_array[array_index].sunGrade;
+
+        // // this is for total time exposed to sun
+        document.getElementById("historyResultLabel-7").innerHTML = user_data_array[array_index].inputMinutes + " minutes";
+
+        // // this is for the required sun exposure
+        document.getElementById("historyResultLabel-8").innerHTML = user_data_array[array_index].minutesRequired;
+    }
+
+
+    storeFirebaseData(temp_id, user_data_array[array_index].insufficientUv);
 }
 
 

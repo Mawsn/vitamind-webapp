@@ -1,3 +1,9 @@
+// variables
+var selected_menu_item_id;
+var insufficientUV;
+
+
+
 // this works, other than the if condition related to the insufficientUV part, hence that part is commented out
 function exportPDF()
 {
@@ -16,19 +22,19 @@ function exportPDF()
     // var insufficientUV = sessionStorage.getItem("insufficientUV");
 
     // To make this part functional, I think we might need to first store this value in firestore
-    // if (insufficientUV == 'true')
-    // { //Does not need to export some data if it does not exist
-    //     doc.autoTable
-    //     ({
-    //         margin: {top: 110},
-    //         head: [['Date', 'Dietary Intake Grade','Weekly Oral Intake','Supplement Intake','Total Time Exposed to Sun']],
-    //         body: 
-    //         [
-    //             [new Date().toISOString().slice(0, 10), dietGradeExport, oralLabelExport.toFixed(2)+'ug',suppDoseExport.toFixed(2)+'ug',totalSunTimeExport],
-    //         ],
-    //     })
-    // } 
-    // else 
+    if (insufficientUV == 'true')
+    { //Does not need to export some data if it does not exist
+        doc.autoTable
+        ({
+            margin: {top: 110},
+            head: [['Date', 'Dietary Intake Grade','Weekly Oral Intake','Supplement Intake','Total Time Exposed to Sun']],
+            body: 
+            [
+                [resultDate, dietGradeExport, oralLabelExport, suppDoseExport, totalSunTimeExport],
+            ],
+        })
+    } 
+    else 
     {
         let sunGradeExport = document.getElementById("historyResultLabel-3").innerHTML;
         let requiredMinutesExport = document.getElementById("historyResultLabel-8").innerHTML;
@@ -40,7 +46,7 @@ function exportPDF()
             body:
             [
 
-                [resultDate, dietGradeExport, sunGradeExport, oralLabelExport,suppDoseExport,totalSunTimeExport,requiredMinutesExport],
+                [resultDate, dietGradeExport, sunGradeExport, oralLabelExport, suppDoseExport, totalSunTimeExport, requiredMinutesExport],
             ],
         })
     }
@@ -103,6 +109,9 @@ function exportCSV(){
 
 function openExportMenu()
 {
+    // get some values that are read from firebase
+
+
     document.getElementById('popup-export-menu').style.display = 'block';
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
@@ -112,4 +121,12 @@ function openExportMenu()
 function closeExportMenu()
 {
     document.getElementById('popup-export-menu').style.display = 'none';
+}
+
+
+
+function storeFirebaseData(temp_id, insufficientUV_temp)
+{
+    selected_menu_item_id = temp_id;
+    insufficientUV = insufficientUV_temp;
 }
