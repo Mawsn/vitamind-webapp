@@ -218,6 +218,9 @@ function setSessionData(){
       totalPercentage += 25;
     }
     //Set Percentage Data
+    if (totalPercentage == 0){
+        sessionStorage.setItem("insufficientUV", true);
+    }
     sessionStorage.setItem("skinExposurePerc", totalPercentage);
 }
 

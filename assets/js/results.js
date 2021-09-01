@@ -6,8 +6,15 @@ if (insufficientUV == 'true'){ //If location was not high enough latitude to gat
     document.getElementById("dietGradeLabel").innerHTML = dietGrade;
     grade.innerHTML = dietGrade;
     
+    var exposurePerc = Number(sessionStorage.getItem("skinExposurePerc"));
+    
     var inputTime = document.getElementById("givenTime");
-    inputTime.innerHTML = "You are located in an area which does not receive enough Ultra Violet exposure during winter. Sun exposure data is not required.";
+    
+    if (exposurePerc == 0){
+        inputTime.innerHTML = "Not enough of your body was exposed to the sun to perform the calculations.";
+    } else {
+        inputTime.innerHTML = "You are located in an area which does not receive enough Ultra Violet exposure during winter. Sun exposure data is not required.";
+    }
     
     //Delete rows in result table that are relevant to sun data
     var recommendedTime = document.getElementById("recommendedTime").remove();
