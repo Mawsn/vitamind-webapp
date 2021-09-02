@@ -1,3 +1,4 @@
+let db = firebase.firestore();
 // Code for the history page
 // array
 var totalIntake_vitD_array = [];

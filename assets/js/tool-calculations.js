@@ -1,4 +1,4 @@
-db = firebase.firestore(); //let db = firebase.firestore(); //Connects the database to firestore
+let db = firebase.firestore(); //let db = firebase.firestore(); //Connects the database to firestore
 
 //Gets already entered data to perform some calculations
 let type = sessionStorage.getItem("skin-tone-value");
