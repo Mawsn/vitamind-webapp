@@ -1,3 +1,4 @@
+let db = firebase.firestore();
 //Gets user's location to get weather data
 function getLocation(){
   if (navigator.geolocation){
