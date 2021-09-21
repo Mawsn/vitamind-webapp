@@ -399,4 +399,19 @@ function checkGuest(){
   });
 }
 
+//Called if the user tries to leave the tool early to confirm if they want to leave
+function leaveTool(pageRef){
+    const user = firebase.auth().currentUser;
 
+    var leave = confirm("Are you sure you want to leave this page?\nAll progress will be lost.");
+    if (leave){
+        sessionStorage.clear();
+        if (user.isAnonymous){ //If it is a guest user, return them to the landing screen and delete their account
+            if (pageRef == 'home.html'){
+                deleteUser();
+            }
+        } else { //Otherwise if user is not guest, take them to relevant page
+            window.location.assign(pageRef);
+        }
+    }
+}
