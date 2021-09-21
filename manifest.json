@@ -5,11 +5,6 @@
     {
     "src":"/assets/img/logo-icon-192.png",
     "type":"image/png",
-    "sizes":"192x192"
-    },
-    {
-    "src":"/assets/img/logo-icon-192.png",
-    "type":"image/png",
     "sizes":"192x192",
     "purpose":"any maskable"
     },
