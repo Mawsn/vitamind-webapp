@@ -3,44 +3,41 @@ var select_tag_counter = 0;
 var input_tag_counter = 0;
 
 
-function addFood()
-{
-	var original = document.getElementById('dietary-bubble-' + dietary_bubble_counter);
+function addFood() {
+    var original = document.getElementById('dietary-bubble-' + dietary_bubble_counter);
 
-	var clone = original.cloneNode(true);
+    var clone = original.cloneNode(true);
 
-	clone.id = "dietary-bubble-" + ++dietary_bubble_counter;
+    clone.id = "dietary-bubble-" + ++dietary_bubble_counter;
 
-	clone.getElementsByTagName('select')[0].id = "dietary-top-input-" + ++select_tag_counter;
-	clone.getElementsByTagName('input')[0].id = "dietary-bottom-input-" + ++input_tag_counter;
+    clone.getElementsByTagName('select')[0].id = "dietary-top-input-" + ++select_tag_counter;
+    clone.getElementsByTagName('input')[0].id = "dietary-bottom-input-" + ++input_tag_counter;
 
-	// to reset the value of this input field
-	clone.getElementsByTagName('input')[0].value = "";
+    // to reset the value of this input field
+    clone.getElementsByTagName('input')[0].value = "";
 
-	original.parentNode.appendChild(clone);
+    original.parentNode.appendChild(clone);
 }
 
 
 
-function removeFood()
-{
-	if(dietary_bubble_counter > 0 && select_tag_counter > 0 && input_tag_counter > 0)
-	{
-		let select_removed = $("#dietary-top-input-" + select_tag_counter);
-		$(select_removed).remove();
-		--select_tag_counter;
+function removeFood() {
+    if (dietary_bubble_counter > 0 && select_tag_counter > 0 && input_tag_counter > 0) {
+        let select_removed = $("#dietary-top-input-" + select_tag_counter);
+        $(select_removed).remove();
+        --select_tag_counter;
 
-		let input_removed = $("#dietary-bottom-input-" + input_tag_counter);
-		$(input_removed).remove();
-		--input_tag_counter;
+        let input_removed = $("#dietary-bottom-input-" + input_tag_counter);
+        $(input_removed).remove();
+        --input_tag_counter;
 
-		let element_removed = $("#dietary-bubble-" + dietary_bubble_counter);
-		$(element_removed).remove();
-		--dietary_bubble_counter;
-	}
+        let element_removed = $("#dietary-bubble-" + dietary_bubble_counter);
+        $(element_removed).remove();
+        --dietary_bubble_counter;
+    }
 }
 
-function goBack(){
+function goBack() {
     window.location.assign("tool-skin-tone.html");
 }
 
@@ -102,6 +99,7 @@ function goToDetailedForm() {
                     break;
                 case "11":
                     sessionStorage.setItem("Milo_Value", document.getElementById(food_ID).value);
+                    break;
                 case "13":
                     sessionStorage.setItem("Tuna_Value", document.getElementById(food_ID).value);
                     break;
@@ -122,11 +120,13 @@ function goToDetailedForm() {
                     break;
                 case "20":
                     sessionStorage.setItem("Beef_Value", document.getElementById(food_ID).value);
+                    break;
                 case "21":
                     sessionStorage.setItem("Lamb_Value", document.getElementById(food_ID).value);
                     break;
                 case "23":
                     sessionStorage.setItem("Dark_Choc_Value", document.getElementById(food_ID).value);
+                    break;
                 default:
                     break;
             }
@@ -194,109 +194,114 @@ function loadSimpleForm() {
     var top_Value;
     var bottom_Value;
 
-    //for loop for adding in the correct amount of dietary bubbles
-    for (let i = 0; i < sessionStorage.getItem('counter'); i++) {
-        addFood();
-    }
-    //for loop for cycling through and checking whether there is stored data
-    for (let i = 0; i < 17; i++) {
-        //these variables set up the addresses that are used in the session storage
-        Value_ID = 'Value_' + i;
-        top_Value = "dietary-top-input-" + Input_ID;
-        bottom_Value = "dietary-bottom-input-" + Input_ID;
+    //If statement for checking whether there are any entries from the detailed form
+    if (sessionStorage.getItem('counter').length > 0) {
 
-        //checking whether the stored data has any entered value or is just empty
-        if ((sessionStorage.getItem(Value_ID)) != "") {
+        //for loop for adding in the correct amount of dietary bubbles
+        for (let i = 0; i < sessionStorage.getItem('counter'); i++) {
+            addFood();
+        }
+
+        //for loop for cycling through and checking whether there is stored data
+        for (let i = 0; i < 17; i++) {
+            //these variables set up the addresses that are used in the session storage
+            Value_ID = 'Value_' + i;
+            top_Value = "dietary-top-input-" + Input_ID;
+            bottom_Value = "dietary-bottom-input-" + Input_ID;
+
+            //checking whether the stored data has any entered value or is just empty
+            if (sessionStorage.getItem(Value_ID) === "" || sessionStorage.getItem(Value_ID) === null) {}
             //if it has data stored it will see which case it fits and then will enter the correct title and 
             //serving size into the bubble and then push the input bubble id counter to the next one
-            switch (i) {
-                case 0:
-                    document.getElementById(top_Value).value = "3";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 1:
-                    document.getElementById(top_Value).value = "4";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 2:
-                    document.getElementById(top_Value).value = "6";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 3:
-                    document.getElementById(top_Value).value = "8";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 4:
-                    document.getElementById(top_Value).value = "9";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 5:
-                    document.getElementById(top_Value).value = "10";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 6:
-                    document.getElementById(top_Value).value = "11";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 7:
-                    document.getElementById(top_Value).value = "13";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 8:
-                    document.getElementById(top_Value).value = "14";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 9:
-                    document.getElementById(top_Value).value = "15";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 10:
-                    document.getElementById(top_Value).value = "16";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 11:
-                    document.getElementById(top_Value).value = "18";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 12:
-                    document.getElementById(top_Value).value = "19";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 13:
-                    document.getElementById(top_Value).value = "20";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 14:
-                    document.getElementById(top_Value).value = "21";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                case 15:
-                    document.getElementById(top_Value).value = "23";
-                    document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
-                    Input_ID++;
-                    break;
-                default:
-                    break;
-            }
+            else {
+                switch (i) {
+                    case 0:
+                        document.getElementById(top_Value).value = "3";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 1:
+                        document.getElementById(top_Value).value = "4";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 2:
+                        document.getElementById(top_Value).value = "6";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 3:
+                        document.getElementById(top_Value).value = "8";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 4:
+                        document.getElementById(top_Value).value = "9";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 5:
+                        document.getElementById(top_Value).value = "10";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 6:
+                        document.getElementById(top_Value).value = "11";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 7:
+                        document.getElementById(top_Value).value = "13";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 8:
+                        document.getElementById(top_Value).value = "14";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 9:
+                        document.getElementById(top_Value).value = "15";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 10:
+                        document.getElementById(top_Value).value = "16";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 11:
+                        document.getElementById(top_Value).value = "18";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 12:
+                        document.getElementById(top_Value).value = "19";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 13:
+                        document.getElementById(top_Value).value = "20";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 14:
+                        document.getElementById(top_Value).value = "21";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    case 15:
+                        document.getElementById(top_Value).value = "23";
+                        document.getElementById(bottom_Value).value = sessionStorage.getItem(Value_ID);
+                        Input_ID++;
+                        break;
+                    default:
+                        break;
+                }
 
+            }
         }
     }
-
 }
 
 function loadDetailedForm() {
@@ -325,8 +330,7 @@ function loadDetailedForm() {
 
 
 // An array of objects for the available products and their details
-var productObj_array = [
-    {
+var productObj_array = [{
         // the group of dietary products that belong to fats start from here
         product_name: "butter",
         serving_size: 5,
@@ -451,127 +455,103 @@ var productObj_array = [
 // this function will check which dietary product the user has selected from the array of objects
 var selected_product_array_index;
 
-function checkSelectedOption(option_value)
-{
+function checkSelectedOption(option_value) {
     // for fats
-	if(option_value > 2 && option_value <= 4)
-	{
-		// check which fat product the user has selected
-		if(option_value == 3)
-		{
-			selected_product_array_index = 0;
-		}
+    if (option_value > 2 && option_value <= 4) {
+        // check which fat product the user has selected
+        if (option_value == 3) {
+            selected_product_array_index = 0;
+        }
 
-		if(option_value == 4)
-		{
-			selected_product_array_index = 1;
-		}
-	}
+        if (option_value == 4) {
+            selected_product_array_index = 1;
+        }
+    }
 
     // for eggs
-	if(option_value == 6)
-	{
-		// check which eggs product the user has selected
-		if(option_value == 6)
-		{
-			selected_product_array_index = 2;
-		}
-	}
+    if (option_value == 6) {
+        // check which eggs product the user has selected
+        if (option_value == 6) {
+            selected_product_array_index = 2;
+        }
+    }
 
     // for milk based products
-	if(option_value > 7 && option_value <= 11)
-	{
-		// check which milk based product the user has selected
-		if(option_value == 8)
-		{
-			selected_product_array_index = 3;
-		}
+    if (option_value > 7 && option_value <= 11) {
+        // check which milk based product the user has selected
+        if (option_value == 8) {
+            selected_product_array_index = 3;
+        }
 
-		if(option_value == 9)
-		{
-			selected_product_array_index = 4;
-		}
+        if (option_value == 9) {
+            selected_product_array_index = 4;
+        }
 
-		if(option_value == 10)
-		{
-			selected_product_array_index = 5;
-		}
+        if (option_value == 10) {
+            selected_product_array_index = 5;
+        }
 
-		if(option_value == 11)
-		{
-			selected_product_array_index = 6;
-		}
-	}
+        if (option_value == 11) {
+            selected_product_array_index = 6;
+        }
+    }
 
     // for sea food
-	if(option_value > 12 && option_value <= 16)
-	{
-		// check which sea food product the user has selected
-		if(option_value == 13)
-		{
-			selected_product_array_index = 7;
-		}
+    if (option_value > 12 && option_value <= 16) {
+        // check which sea food product the user has selected
+        if (option_value == 13) {
+            selected_product_array_index = 7;
+        }
 
-		if(option_value == 14)
-		{
-			selected_product_array_index = 8;
-		}
+        if (option_value == 14) {
+            selected_product_array_index = 8;
+        }
 
-		if(option_value == 15)
-		{
-			selected_product_array_index = 9;
-		}
+        if (option_value == 15) {
+            selected_product_array_index = 9;
+        }
 
-		if(option_value == 16)
-		{
-			selected_product_array_index = 10;
-		}
-	}
+        if (option_value == 16) {
+            selected_product_array_index = 10;
+        }
+    }
 
     // for meat
-	if(option_value > 17 && option_value <= 21)
-	{
-		// check which meat product the user has selected
-		if(option_value == 18)
-		{
+    if (option_value > 17 && option_value <= 21) {
+        // check which meat product the user has selected
+        if (option_value == 18) {
             selected_product_array_index = 11;
-		}
+        }
 
-		if(option_value == 19)
-		{
-			selected_product_array_index = 12;
-		}
+        if (option_value == 19) {
+            selected_product_array_index = 12;
+        }
 
-		if(option_value == 20)
-		{
-			selected_product_array_index = 13;
-		}
+        if (option_value == 20) {
+            selected_product_array_index = 13;
+        }
 
-		if(option_value == 21)
-		{
-			selected_product_array_index = 14;
-		}
-	}
+        if (option_value == 21) {
+            selected_product_array_index = 14;
+        }
+    }
 
     // for dark chocolate
-	if(option_value > 22 && option_value <= 23)
-	{
-		// check which dark chocolate product the user has selected
-		if(option_value == 23)
-		{
-			selected_product_array_index = 15;
-		}
-	}
-    
+    if (option_value > 22 && option_value <= 23) {
+        // check which dark chocolate product the user has selected
+        if (option_value == 23) {
+            selected_product_array_index = 15;
+        }
+    }
+
 }
 
 
 // this function is for the servings per week input field
 var servingsPerWeek_userInput;
 
-function checkServingsPerWeek(entered_value)
-{
-	servingsPerWeek_userInput = entered_value;
+function checkServingsPerWeek(entered_value) {
+    servingsPerWeek_userInput = entered_value;
 }
 
 
@@ -579,19 +559,17 @@ function checkServingsPerWeek(entered_value)
 var vitD_fromDietaryIntake;
 var total_vitD_calculated = 0;
 
-function dietaryCalculations()
-{
-    for(let loop_counter = 0; loop_counter <= dietary_bubble_counter; loop_counter++)
-    {
+function dietaryCalculations() {
+    for (let loop_counter = 0; loop_counter <= dietary_bubble_counter; loop_counter++) {
         checkSelectedOption(document.getElementById('dietary-top-input-' + loop_counter).value);
         checkServingsPerWeek(document.getElementById('dietary-bottom-input-' + loop_counter).value);
-        
+
         // correct formula
         vitD_fromDietaryIntake = servingsPerWeek_userInput * productObj_array[selected_product_array_index].vitaminD_per_serve;
-    
+
         total_vitD_calculated = total_vitD_calculated + vitD_fromDietaryIntake;
     }
-    
+
 
     setDietaryIntake_sessionData();
 
@@ -599,24 +577,24 @@ function dietaryCalculations()
     total_vitD_calculated = 0;
 
     console.log("Value stored in session storage: " + sessionStorage.getItem("dietaryIntake_result"))
-    
+
 }
 
 // for simplified form
-function saveData(){
+function saveData() {
     var age = document.getElementById('age_Input_Field').value;
-    if (age != ''){
+    if (age != '') {
         sessionStorage.setItem('age', age);
 
         let foodItem = document.getElementById("dietary-top-input-0").selectedIndex;
         let servingField = Number(document.getElementById("dietary-bottom-input-0").value);
-        if (foodItem == 0 && servingField != 0){
+        if (foodItem == 0 && servingField != 0) {
             alert("You have entered servings per week, but not selected a food item. Please enter a value to continue");
-        } else if (foodItem != 0 && servingField == 0){
+        } else if (foodItem != 0 && servingField == 0) {
             alert("You have selected a food item, but not entered your amount of servings. Please enter a value to continue");
-        } else if (foodItem == 0 && servingField == 0){
+        } else if (foodItem == 0 && servingField == 0) {
             var emptyDietary = confirm("You have not entered any data for your dietary consumption. Are you sure you want to continue?");
-            if (emptyDietary){
+            if (emptyDietary) {
                 sessionStorage.setItem("dietaryIntake_result", 0.0);
                 window.location.assign("tool-supplement-1.html");
             }
@@ -624,55 +602,46 @@ function saveData(){
             dietaryCalculations();
             window.location.assign("tool-supplement-1.html");
         }
-        
+
     } else {
         alert("Please enter your age");
     }
 }
 
 // for detailed form
-function saveData_detailedForm(){
+function saveData_detailedForm() {
     var age = document.getElementById('age_Input_Field').value;
 
-    if (age != '')
-    {
+    if (age != '') {
         sessionStorage.setItem('age', age);
 
-        
+
         dietaryCalculations_forDetailedForm();
         window.location.assign("tool-supplement-1.html");
-    } 
-    else 
-    {
+    } else {
         alert("Please enter your age");
     }
 }
 
 
 // for session storage for the simplified form
-function setDietaryIntake_sessionData()
-{
-	// set the result of the dietary calculations
-	sessionStorage.setItem("dietaryIntake_result", total_vitD_calculated);
+function setDietaryIntake_sessionData() {
+    // set the result of the dietary calculations
+    sessionStorage.setItem("dietaryIntake_result", total_vitD_calculated);
 }
 
 
 // for detailed form
-function dietaryCalculations_forDetailedForm()
-{
+function dietaryCalculations_forDetailedForm() {
     let temp_servings_per_week;
 
-    for(let loop_counter = 0; loop_counter <= 15; loop_counter++)
-    {
-        if((document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value) == '')
-        {
+    for (let loop_counter = 0; loop_counter <= 15; loop_counter++) {
+        if ((document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value) == '') {
             document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value = 0;
 
             temp_servings_per_week = 0;
             total_vitD_calculated = total_vitD_calculated + (temp_servings_per_week * productObj_array[loop_counter].vitaminD_per_serve);
-        }
-        else
-        {
+        } else {
             temp_servings_per_week = document.getElementById('dietary-detailed-form-servings-input-' + loop_counter).value;
             total_vitD_calculated = total_vitD_calculated + (temp_servings_per_week * productObj_array[loop_counter].vitaminD_per_serve);
         }
