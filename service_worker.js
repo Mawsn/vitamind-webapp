@@ -19,6 +19,7 @@ self.addEventListener("install", event => {
 });
 
 const ASSETS = [
+    "/history.html",
 	"/profile.html",
 	"/profile-change-pass.html",
 	"/index.html",
