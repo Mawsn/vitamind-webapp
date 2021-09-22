@@ -35,6 +35,11 @@
             <h1 class="export-menu-heading">Export Options</h1><button class="btn btn-primary export-menu-button" type="button" onclick="exportPDF()">Export as PDF</button><button class="btn btn-primary export-menu-button" type="button" onclick="exportCSV()">Export as CSV</button><button class="btn btn-primary export-menu-button" id="export-done-button" type="button" onclick="closeExportMenu()">Done</button>
         </div>
     </div>
+    <div id="popup-export-all-result-menu" class="popup-export-all-result-menu">
+        <div class="popup-export-bubble">
+            <h1 class="export-menu-heading">Export&nbsp;<br>All Result Options</h1><button class="btn btn-primary export-menu-button" type="button" onclick="exportAllResultPDF();">Export as PDF</button><button class="btn btn-primary export-menu-button" type="button" onclick="exportAllResultCSV()">Export as CSV</button><button class="btn btn-primary export-menu-button" id="export-done-button" type="button" onclick="closeExportAllResultMenu()">Done</button>
+        </div>
+    </div>
     <nav class="navbar navbar-light navbar-expand-md text-center login-signup-navbar">
         <div class="container-fluid"><img id="logo-landscape" src="assets/img/logo-landscape-white.png" onclick="location.href=&#39;home.html&#39;;">
             <ul class="navbar-nav ms-auto navbar-button-container">
@@ -131,7 +136,7 @@
             </div>
         </div>
     </div>
-    <div style="margin: auto;text-align: center;"><button class="btn btn-primary" id="export_button_history_page" type="button" onclick="openExportMenu()">Export</button></div>
+    <div style="margin: auto;text-align: center;"><button class="btn btn-primary" id="export_button_history_page" type="button" onclick="openExportMenu()">Export</button><button class="btn btn-primary" id="export_all_results_button" type="button" onclick="openExportAllResultMenu();">Export All Results</button></div>
     <div class="dietary-intake-page-end-space"></div>
     <div id="menu-fragment">
         <div id="menu-button-container"><button class="btn btn-primary mobile-menu-button" type="button" onclick="location.href=&#39;profile.html&#39;;">Profile</button><button class="btn btn-primary mobile-menu-button" type="button" onclick="location.href=&#39;history.html&#39;;">History</button></div>

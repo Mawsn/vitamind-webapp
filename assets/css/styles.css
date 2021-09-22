@@ -1479,7 +1479,6 @@ body {
 
 .about-heading-alt {
   margin-top: 50px;
-  /*margin-right: 50px;*/
   color: #1686ab;
   text-align: center;
   padding-top: 10px;
@@ -1487,7 +1486,6 @@ body {
 
 .about-heading {
   margin-top: 50px;
-  /*margin-left: 50px;*/
   color: #1686AB;
   text-align: center;
 }
@@ -1519,5 +1517,48 @@ body {
 
 .about-video {
   align-content: center;
+}
+
+.current-location-button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
+}
+
+.location-button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
+}
+
+#dropdown_item_bar_chart:hover {
+  cursor: pointer;
+}
+
+#dropdown_item_line_chart:hover {
+  cursor: pointer;
+}
+
+.text-child {
+  width: 25%;
+  margin-left: 25px;
+  text-align: center;
+  padding: 70px 0;
+  height: 100%;
+}
+
+#popup-export-all-result-menu {
+  width: 100%;
+  height: 10000px;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  z-index: 10;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #popup-export-all-result-menu {
+    max-width: 90%;
+  }
 }
 

@@ -243,3 +243,6 @@ function setMinutesData(){
     //Save data on total minutes exposed to sun
     sessionStorage.setItem("inputMinutes", inputMinutes);
 }
+
+
+
