@@ -68,7 +68,8 @@ function associateUserTone(red,green,blue){
   		}
 	});
 	//Alert is used for debugging 
-	alert("Distance of: " + distance + ", skin matches closest with Tone " + tone);
+	console.log("Distance of: " + distance + ", skin matches closest with Tone " + tone);
+    alert("Skin tone " + tone + " detected");
 	sessionStorage.setItem("skin-tone-value","Type_" + tone);
 	document.getElementById('file').value= null;
 	location.href='tool-dietary.html';

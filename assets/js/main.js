@@ -162,7 +162,7 @@ function signInWithEmailPassword() { //Function called when user signs in with e
              loadAnim.style.visibility = "hidden";
              break;
           case "auth/wrong-password": //The given password was wrong
-            errorDiv.innerHTML = "The password you entered is incorrect. <b><a onclick=\"forgotPassword()\">Forgotten Password?</a></b>";
+            errorDiv.innerHTML = "The password you entered is incorrect. <b><a style=\"cursor: pointer;\" onclick=\"forgotPassword()\"><u>Forgotten Password?</u></a></b>";
             loadAnim.style.visibility = "hidden";
             break;
           default: //A different error occured
@@ -353,7 +353,8 @@ function clickedDelete(){ //If user tries to delete their account
     var delAccount = confirm("Are you sure you want to delete your account? All data for the account will be lost.");
     if (delAccount){ //If user clicks confirm
         const user = firebase.auth().currentUser;
-        //remove firestore data then call deleteUser()
+        //remove firestore data then call deleteUser() 
+        var db = firebase.firestore();
         db.collection("users").doc(user.uid).delete().then(() => {
             deleteUser();
             console.log("Document successfully deleted!");
@@ -415,3 +416,7 @@ function leaveTool(pageRef){
         }
     }
 }
+function goBack(){ //Allows users to move back in the tool
+    window.history.back();
+}
+

@@ -1,6 +1,3 @@
-function goBack(){ //Allows usre to move back in the tool
-    window.history.back();
-}
 
 //Used to find latitude in winter months
 //Called if user chooses to use current location
@@ -234,14 +231,23 @@ function setMinutesData(){
         var afternoon = Number(document.getElementById("afternoonMinutes").value);
         inputMinutes = morn + lunch + afternoon;
 
-    } else { //if not summer, only use 11AM to 1PM
+    } 
+    else { //if not summer, only use 11AM to 1PM
         inputMinutes = Number(document.getElementById("lunchMinutes").value);
     }
     if (inputType == "weekly"){ //If user selected to input data as weekly unit
         inputMinutes = Math.round(inputMinutes / 7); //Divided into daily units
     }
+    if(parseInt(morn) < 0 || parseInt(lunch) < 0 || parseInt(afternoon) < 0 || parseInt(morn) > 120 || parseInt(lunch) > 120 || parseInt(afternoon) > 120 || parseInt(inputMinutes) < 0 || parseInt(inputMinutes) > 120){
+        alert("Invalid estimated minutes value/s ");
+    }
     //Save data on total minutes exposed to sun
-    sessionStorage.setItem("inputMinutes", inputMinutes);
+    else {
+    	sessionStorage.setItem("inputMinutes", inputMinutes);
+    	window.location.assign('result-breakdown.html');
+
+    }
+    
 }
 
 

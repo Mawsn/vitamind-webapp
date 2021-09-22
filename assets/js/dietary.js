@@ -583,7 +583,7 @@ function dietaryCalculations() {
 // for simplified form
 function saveData() {
     var age = document.getElementById('age_Input_Field').value;
-    if (age != '') {
+    if (age != '' && parseInt(age) >= 0) {
         sessionStorage.setItem('age', age);
 
         let foodItem = document.getElementById("dietary-top-input-0").selectedIndex;
@@ -604,7 +604,7 @@ function saveData() {
         }
 
     } else {
-        alert("Please enter your age");
+    	alert("Please enter a valid age");
     }
 }
 
