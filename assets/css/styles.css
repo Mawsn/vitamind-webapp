@@ -1447,6 +1447,13 @@ body {
   padding-bottom: 40px;
 }
 
+#result_chart {
+  display: block;
+  height: 342px;
+  width: 685px;
+  max-width: 99.99%;
+}
+
 #result_chart_div {
   width: 65%;
   margin: auto;
@@ -1454,7 +1461,7 @@ body {
   position: relative;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #result_chart_div {
     width: 90%;
   }
