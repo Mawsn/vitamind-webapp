@@ -1,11 +1,21 @@
 let db = firebase.firestore();
+
 // Code for the history page
+
 // array
 var totalIntake_vitD_array = [];
 var previous_recent_totalIntake_vitD_array = [];
 var result_date_array = [];
 var previous_recent_result_date_array = [];
 var user_data_array = [];
+
+// variable for storing the total number of results
+var num_of_results;
+
+// variables for changing the fontsize of labels, xAxes, and yAxes when needed
+var fontsize_label_value;
+var fontsize_xAxes_value;
+var fontsize_yAxes_value;
 
 
 Chart.defaults.color = "#ffffff";
@@ -24,20 +34,17 @@ function ReadData()
                 var userData = doc.data();
                 
                 // Loop depends on the number of results present in the user's account
-                let num_of_results = userData["results"].length;
+                num_of_results = userData["results"].length;
 
                 // testing_01 start
-                // let loop_end_counter = 0;
                 let loop_start_counter = 0;
                 if(userData["results"].length > 6)
                 {
                     loop_start_counter = userData["results"].length - 7;
-                    // loop_end_counter = userData["results"].length - 1;
                 }
                 else
                 {
                     loop_start_counter = 0;
-                    // loop_end_counter = userData["results"].length;
                 }
                 // testing_01 end
 
@@ -58,7 +65,7 @@ function ReadData()
                     totalIntake_vitD_array.push(totalIntake_vitD);
 
                     // Push the date value into the arrray
-                    // Change the date format to just year month and day
+                    // Change the date format to just year, month and day
                     result_date_array.push((userData["results"][i].date).toDate().toDateString().slice(4));
 
 
@@ -72,10 +79,18 @@ function ReadData()
                 previous_recent_totalIntake_vitD_array = totalIntake_vitD_array.slice(loop_start_counter);
                 previous_recent_result_date_array = result_date_array.slice(loop_start_counter);
                 
-                updateMenuItems(num_of_results);  // test
+                UpdateMenuItems(num_of_results);  // test
 
                 // after reading data from firebase, create chart
-                createChart();
+                fontsize_label_value = 9;
+                fontsize_xAxes_value = 9;
+                fontsize_yAxes_value = 9;
+
+                // call this function to create a chart based on the data read
+                CreateChart();
+
+                // call this function to use an appropriate font size based on the screen size of the device
+                ScreenSizeCheck();
             } 
             else
             {
@@ -91,7 +106,7 @@ function ReadData()
 
 
 // this function will create a chart based on the data read from firebase
-function createChart()
+function CreateChart()
 {
     var ctx = document.getElementById("result_chart").getContext("2d");
 
@@ -119,7 +134,7 @@ function createChart()
             {
                 labels:
                 {
-                    fontSize: 14,
+                    fontSize: fontsize_label_value,
                     fontColor: "#ffffff"
                 }
             },
@@ -129,14 +144,14 @@ function createChart()
                 xAxes:
                 [
                     {
-                        ticks: {fontSize: 14, fontColor: "#ffffff"},
+                        ticks: {fontSize: fontsize_xAxes_value, fontColor: "#ffffff"},
                         gridLines: { color: "rgba(255,255,255,0.2)"}
                     }
                 ],
                 yAxes:
                 [
                     {
-                        ticks: {fontSize: 14, fontColor: "#ffffff"},
+                        ticks: {fontSize: fontsize_yAxes_value, fontColor: "#ffffff"},
                         gridLines: { color: "rgba(255,255,255,0.2)"}
                     }
                 ]
@@ -148,7 +163,7 @@ function createChart()
 
 
 
-function updateMenuItems(num_of_results)
+function UpdateMenuItems(num_of_results)
 {
     for(let i = 0; i < num_of_results; i++)
     {
@@ -159,7 +174,7 @@ function updateMenuItems(num_of_results)
 
         menu_item.onclick = function()
         {
-            updateResultBreakdown(this.id)
+            UpdateResultBreakdown(this.id)
         };
 
         menu_item.innerText = result_date_array[i];
@@ -171,7 +186,7 @@ function updateMenuItems(num_of_results)
 
 
 
-function updateResultBreakdown(temp_id)
+function UpdateResultBreakdown(temp_id)
 {
     let array_index = parseInt(temp_id.slice(19)) - 1;
 
@@ -220,7 +235,7 @@ function updateResultBreakdown(temp_id)
 
 
 
-function setChartType(temp_id)
+function SetChartType(temp_id)
 {
     // check the type of chart selected
     if(temp_id == "dropdown_item_bar_chart")
@@ -235,3 +250,242 @@ function setChartType(temp_id)
     }
 }
 
+
+
+// this function will find the screen size of the device and then will select an appropriate font size for the labels of the legend, xAxes, and yAxes
+function ScreenSizeCheck()
+{
+    let screen_width_value = screen.width;
+    let screen_height_value = screen.height;
+
+
+    if(screen_width_value >= 1400 && screen_height_value >= 869)
+    {
+        // for screen size 1400px x 869px
+
+        fontsize_label_value = 14;
+        fontsize_xAxes_value = 14;
+        fontsize_yAxes_value = 14;
+    }
+    else if(screen_width_value >= 1200 && screen_height_value >= 869)
+    {
+        // for screen size 1200px x 869px
+
+        fontsize_label_value = 14;
+        fontsize_xAxes_value = 14;
+        fontsize_yAxes_value = 14;
+
+    }
+    else if(screen_width_value >= 992 && screen_height_value >= 869)
+    {
+        // for screen size 992px x 869px
+
+        fontsize_label_value = 12;
+        fontsize_xAxes_value = 12;
+        fontsize_yAxes_value = 12;
+    }
+    else if(screen_width_value >= 768 && screen_height_value >= 869)
+    {
+        // for screen size 768px x 869px
+
+        fontsize_label_value = 10;
+        fontsize_xAxes_value = 10;
+        fontsize_yAxes_value = 10;
+    }
+    else if(screen_width_value >= 576 && screen_height_value >= 869)
+    {
+        // for screen size 576px x 869px
+
+        fontsize_label_value = 9;
+        fontsize_xAxes_value = 9;
+        fontsize_yAxes_value = 9;
+    }
+    else if(screen_width_value >= 360 && screen_height_value >= 869)
+    {
+        // for screen size 360px x 869px
+
+        fontsize_label_value = 9;
+        fontsize_xAxes_value = 9;
+        fontsize_yAxes_value = 9;
+    }
+
+    result_chart.options.legend.labels.fontSize = fontsize_label_value;
+    result_chart.options.scales.xAxes[0].ticks.fontSize = fontsize_xAxes_value;
+    result_chart.options.scales.yAxes[0].ticks.fontSize = fontsize_yAxes_value;
+    result_chart.update(); 
+}
+
+
+// the font size of the lables in the legend, xAxes, and yAxes will change depending on the resized window's size
+window.addEventListener('resize', function(event)
+{
+    let window_width_value = window.innerWidth;
+    let window_height_value = window.innerHeight;
+
+    if(window_width_value >= 1400 && window_height_value >= 869)
+    {
+        // for screen size 1400px x 869px
+
+        fontsize_label_value = 14;
+        fontsize_xAxes_value = 14;
+        fontsize_yAxes_value = 14;
+    }
+    else if(window_width_value >= 1200 && window_height_value >= 869)
+    {
+        // for screen size 1200px x 869px
+
+        fontsize_label_value = 14;
+        fontsize_xAxes_value = 14;
+        fontsize_yAxes_value = 14;
+
+    }
+    else if(window_width_value >= 992 && window_height_value >= 869)
+    {
+        // for screen size 992px x 869px
+
+        fontsize_label_value = 12;
+        fontsize_xAxes_value = 12;
+        fontsize_yAxes_value = 12;
+    }
+    else if(window_width_value >= 768 && window_height_value >= 869)
+    {
+        // for screen size 768px x 869px
+
+        fontsize_label_value = 10;
+        fontsize_xAxes_value = 10;
+        fontsize_yAxes_value = 10;
+    }
+    else if(window_width_value >= 576 && window_height_value >= 869)
+    {
+        // for screen size 576px x 869px
+
+        fontsize_label_value = 9;
+        fontsize_xAxes_value = 9;
+        fontsize_yAxes_value = 9;
+    }
+    else if(window_width_value >= 360 && window_height_value >= 869)
+    {
+        // for screen size 360px x 869px
+
+        fontsize_label_value = 9;
+        fontsize_xAxes_value = 9;
+        fontsize_yAxes_value = 9;
+    }
+
+    result_chart.options.legend.labels.fontSize = fontsize_label_value;
+    result_chart.options.scales.xAxes[0].ticks.fontSize = fontsize_xAxes_value;
+    result_chart.options.scales.yAxes[0].ticks.fontSize = fontsize_yAxes_value;
+    result_chart.update();
+
+});
+
+
+
+
+
+// The following functions are for exporting all user result data
+
+function openExportAllResultMenu()
+{
+    // get some values that are read from firebase
+
+
+    document.getElementById('popup-export-all-result-menu').style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+
+
+function closeExportAllResultMenu()
+{
+    document.getElementById('popup-export-all-result-menu').style.display = 'none';
+}
+
+
+
+function exportAllResultPDF()
+{
+    //PDF export 
+	var doc = new jsPDF()
+	var img = new Image();
+	img.src = 'https://vitatrack.app/assets/img/logo-standard.png';
+	doc.addImage(img, 'png', 75, 10, 57.5, 75);
+	doc.text("Result Breakdown", 82, 100);
+
+
+    var temp_values;
+    var pdf_head_values = ['Date', 'Dietary Intake Grade', 'Sun Exposure Grade','Weekly Oral Intake','Supplement Intake','Total Time Exposed to Sun','Required Sun Exposure'];
+    var pdf_body_values = [];
+
+    for(let i = 0; i < num_of_results; i++)
+    {
+        if(user_data_array[i].insufficientUv == 'true')
+        {
+            temp_values = [result_date_array[i], user_data_array[i].dietGrade, "N/A", user_data_array[i].dietIntake + " ug", user_data_array[i].suppIntake + " ug", "N/A", "N/A"];
+            pdf_body_values.push(temp_values);
+        } 
+        else 
+        {
+            temp_values = [result_date_array[i], user_data_array[i].dietGrade, user_data_array[i].sunGrade, user_data_array[i].dietIntake + " ug", user_data_array[i].suppIntake + " ug", user_data_array[i].inputMinutes + " minutes", user_data_array[i].minutesRequired];
+            pdf_body_values.push(temp_values);
+        }
+    }
+
+    doc.autoTable
+    ({
+        margin: {top: 110},
+        head: [pdf_head_values],
+        body: pdf_body_values,
+    })
+	
+	doc.save('VitaTrack Tool Result.pdf');
+}
+
+
+
+function exportAllResultCSV()
+{
+    //CSV export
+    var outData = "";
+    
+    let csvHeader = ['Date', 'Dietary Intake Grade', 'Sun Exposure Grade','Weekly Oral Intake','Supplement Intake','Total Time Exposed to Sun','Required Sun Exposure'];
+    
+    csvHeader.forEach(function(row)
+    {  
+        outData += row + ","; 
+    });
+
+    outData += "\n"
+
+    for(let i = 0; i < num_of_results; i++)
+    {
+        if(user_data_array[i].insufficientUv == 'true')
+        {
+            let csvData = [result_date_array[i], user_data_array[i].dietGrade, "N/A", user_data_array[i].dietIntake + " ug", user_data_array[i].suppIntake + " ug", "N/A", "N/A"];
+
+            csvData.forEach(function(row)
+            {  
+                outData += row + ","; 
+            });
+            
+            outData += "\n"
+        }
+        else
+        {
+            let csvData = [result_date_array[i], user_data_array[i].dietGrade, user_data_array[i].sunGrade, user_data_array[i].dietIntake + " ug", user_data_array[i].suppIntake + " ug", user_data_array[i].inputMinutes + " minutes", user_data_array[i].minutesRequired];
+            
+            csvData.forEach(function(row)
+            {  
+                outData += row + ","; 
+            });
+            
+            outData += "\n"
+        }
+    }
+    
+    let hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(outData);  
+    hiddenElement.target = '_blank'; 
+    hiddenElement.download = "VitatrackData.csv";
+    hiddenElement.click();
+}
