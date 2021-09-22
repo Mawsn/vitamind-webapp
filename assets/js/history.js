@@ -263,7 +263,7 @@ function ScreenSizeCheck()
     {
         // for screen size 1400px x 869px
 
-        fontsize_label_value = 14;
+        fontsize_label_value = 15;
         fontsize_xAxes_value = 14;
         fontsize_yAxes_value = 14;
     }
@@ -271,7 +271,7 @@ function ScreenSizeCheck()
     {
         // for screen size 1200px x 869px
 
-        fontsize_label_value = 14;
+        fontsize_label_value = 15;
         fontsize_xAxes_value = 14;
         fontsize_yAxes_value = 14;
 
@@ -280,7 +280,7 @@ function ScreenSizeCheck()
     {
         // for screen size 992px x 869px
 
-        fontsize_label_value = 12;
+        fontsize_label_value = 13;
         fontsize_xAxes_value = 12;
         fontsize_yAxes_value = 12;
     }
@@ -288,7 +288,7 @@ function ScreenSizeCheck()
     {
         // for screen size 768px x 869px
 
-        fontsize_label_value = 10;
+        fontsize_label_value = 11;
         fontsize_xAxes_value = 10;
         fontsize_yAxes_value = 10;
     }
@@ -296,7 +296,7 @@ function ScreenSizeCheck()
     {
         // for screen size 576px x 869px
 
-        fontsize_label_value = 9;
+        fontsize_label_value = 10;
         fontsize_xAxes_value = 9;
         fontsize_yAxes_value = 9;
     }
@@ -305,8 +305,8 @@ function ScreenSizeCheck()
         // for screen size 360px x 869px
 
         fontsize_label_value = 9;
-        fontsize_xAxes_value = 9;
-        fontsize_yAxes_value = 9;
+        fontsize_xAxes_value = 8;
+        fontsize_yAxes_value = 8;
     }
 
     result_chart.options.legend.labels.fontSize = fontsize_label_value;
@@ -326,7 +326,7 @@ window.addEventListener('resize', function(event)
     {
         // for screen size 1400px x 869px
 
-        fontsize_label_value = 14;
+        fontsize_label_value = 15;
         fontsize_xAxes_value = 14;
         fontsize_yAxes_value = 14;
     }
@@ -334,7 +334,7 @@ window.addEventListener('resize', function(event)
     {
         // for screen size 1200px x 869px
 
-        fontsize_label_value = 14;
+        fontsize_label_value = 15;
         fontsize_xAxes_value = 14;
         fontsize_yAxes_value = 14;
 
@@ -343,7 +343,7 @@ window.addEventListener('resize', function(event)
     {
         // for screen size 992px x 869px
 
-        fontsize_label_value = 12;
+        fontsize_label_value = 13;
         fontsize_xAxes_value = 12;
         fontsize_yAxes_value = 12;
     }
@@ -351,7 +351,7 @@ window.addEventListener('resize', function(event)
     {
         // for screen size 768px x 869px
 
-        fontsize_label_value = 10;
+        fontsize_label_value = 11;
         fontsize_xAxes_value = 10;
         fontsize_yAxes_value = 10;
     }
@@ -359,7 +359,7 @@ window.addEventListener('resize', function(event)
     {
         // for screen size 576px x 869px
 
-        fontsize_label_value = 9;
+        fontsize_label_value = 10;
         fontsize_xAxes_value = 9;
         fontsize_yAxes_value = 9;
     }
@@ -368,8 +368,8 @@ window.addEventListener('resize', function(event)
         // for screen size 360px x 869px
 
         fontsize_label_value = 9;
-        fontsize_xAxes_value = 9;
-        fontsize_yAxes_value = 9;
+        fontsize_xAxes_value = 8;
+        fontsize_yAxes_value = 8;
     }
 
     result_chart.options.legend.labels.fontSize = fontsize_label_value;
