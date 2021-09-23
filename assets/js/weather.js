@@ -124,7 +124,6 @@ firebase.auth().onAuthStateChanged((user) => {
         var userRef = db.collection("users").doc(user.uid);
         userRef.get().then((doc) => {
            if (doc.exists){ //If previous data is found, put data into table
-               console.log("User doc exists");
                var userData = doc.data();
                var prevResult = userData["results"][userData["results"].length-1];
                var date = prevResult["date"].toDate();
@@ -147,7 +146,6 @@ firebase.auth().onAuthStateChanged((user) => {
                }
 
            } else { //Otherwise if not found, user does not have previous results
-               console.log("No previous history");
                document.getElementById("prevTable").remove;
                document.getElementById("homeResultContainer").innerHTML = "There is no current status for us to display.";
            }

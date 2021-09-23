@@ -1,5 +1,5 @@
 
-const firebaseConfig = {
+var firebaseConfig = {
 	apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
 	authDomain: "vitatrack-75bda.firebaseapp.com",
 	projectId: "vitatrack-75bda",
@@ -15,18 +15,11 @@ firebase.auth().onAuthStateChanged((user) => {
     if(user){ //if logged in
         
         if(!user.isAnonymous){//If it is not the guest user
-            console.log(user.email);
             if ( window.location.pathname == '/' || window.location.pathname == '/index.html'){ //if on landing page and logged in, redirect to homepage
                 // Index (home) page
                 window.location.assign("home.html");
-            } else {
-                // Other page
-                console.log(window.location.pathname);
             }
-        } /*else {
-            console.log("GUEST USER");
-            console.log("Will need to delete anonymous users afterward");
-        } */
+        }
     } else {
         //User is signed out, check if they are allowed on a page
         var path = window.location.pathname;
@@ -89,27 +82,29 @@ function guestSignIn(){ //Function called when user logs in as a guest
       });
 }
 
-//Allows the user to user the enter button on the login or signup page to continue
-var eInput = document.getElementById("emailField");
-eInput.addEventListener("keyup", function(event){
-    if (event.keyCode === 13){
-        if (window.location.pathname == '/login.html'){
-            document.getElementById("loginForm").click(); //clicks login button
-        } else if (window.location.pathname == '/signup.html'){
-            document.getElementById("loginForm").click(); //clicks login button
+/*if (window.location.pathname == '/login.html' || window.location.pathname == '/signup.html'){
+    //Allows the user to user the enter button on the login or signup page to continue
+    var eInput = document.getElementById("emailField");
+    eInput.addEventListener("keyup", function(event){
+        if (event.keyCode === 13){
+            if (window.location.pathname == '/login.html'){
+                document.getElementById("loginForm").click(); //clicks login button
+            } else if (window.location.pathname == '/signup.html'){
+                document.getElementById("loginForm").click(); //clicks login button
+            }
         }
-    }
-}); 
-var pInput = document.getElementById("passField");
-pInput.addEventListener("keyup", function(event){
-    if (event.keyCode === 13){
-        if (window.location.pathname == '/login.html'){
-            document.getElementById("loginForm").click(); //clicks login button
-        } else if (window.location.pathname == '/signup.html'){
-            document.getElementById("loginForm").click(); //clicks login button
+    }); 
+    var pInput = document.getElementById("passField");
+    pInput.addEventListener("keyup", function(event){
+        if (event.keyCode === 13){
+            if (window.location.pathname == '/login.html'){
+                document.getElementById("loginForm").click(); //clicks login button
+            } else if (window.location.pathname == '/signup.html'){
+                document.getElementById("loginForm").click(); //clicks login button
+            }
         }
-    }
-}); 
+    });
+}  */
 
 
 function signInWithEmailPassword() { //Function called when user signs in with email and password 

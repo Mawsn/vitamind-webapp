@@ -1,26 +1,3 @@
-// for tool-supplement-1.html pages
-/*$(document).ready(function()
-{
-    $("#vitD_supplement-yes").hover(function()
-    {
-        $(this).css("background", "#61AB0E");
-    }, function()
-    {
-        $(this).css("background", "#DDDD");
-    })
-});
-
-$(document).ready(function()
-{
-    $("#vitD_supplement-no").hover(function()
-    {
-        $(this).css("background", "#FF0000");
-    }, function()
-    {
-        $(this).css("background", "#DDDD");
-    })
-}); */
-
 var vitaminD_supplement_bool = false;
 
 var boneSupplement_bool = false;
@@ -39,10 +16,8 @@ function nextPage(pageno){
         
 
 		if(dosageOne == '' || dosageOne == ' ' || dosageOne == null) {
-			//alert("Invalid dosage amount.");
             dosageOne = 0;
 		}
-		//else {
         var freq = document.getElementById("vitd-supplement-frequency");
         var freqVal = freq.options[freq.selectedIndex].value;
         sessionStorage.setItem("vitDFrequency", freqVal);
@@ -53,17 +28,13 @@ function nextPage(pageno){
         } else {
             location.href='tool-supplement-2.html';
         }
-        
-		//} 
 		
 	} 
 	else if (pageno == 2) {
 		dosageTwo = document.getElementById("supplement-input-fields-two").value;
 		if(dosageTwo == '' || dosageTwo == ' ' || dosageOne == null) {
-			//alert("Invalid dosage amount.");
             dosageOne = 0;
 		}
-		//else {
         var freq = document.getElementById("bone-supplement-frequency");
         var freqVal = freq.options[freq.selectedIndex].value;
         sessionStorage.setItem("boneFrequency", freqVal);
@@ -74,16 +45,12 @@ function nextPage(pageno){
         } else {
             location.href='tool-supplement-3.html';
         }
-			
-		//}
 	}
 	else if (pageno == 3) {
 		dosageThree = document.getElementById("supplement-input-fields-three").value;
 		if(dosageThree == '' || dosageThree == ' ' || dosageOne == null) {
-			//alert("Invalid dosage amount.");
             dosageOne = 0;
 		}
-		//else {
         var freq = document.getElementById("multiVit-supplement-frequency");
         var freqVal = freq.options[freq.selectedIndex].value;
         sessionStorage.setItem("multiVitFrequency", freqVal);
@@ -93,10 +60,7 @@ function nextPage(pageno){
             alert("Please select the Yes or No button to continue");
         } else {
             getSeason();
-            //location.href='tool-sun-exposure.html';
         }
-        
-		//}
 	}
 }
 
@@ -122,7 +86,6 @@ function getBone(){
 
 function getMultiVit(){
     var multiVitSupplement = sessionStorage.getItem("multiVitSupplement");
-    console.log("multiVitSupplement");
     if (multiVitSupplement === 'true'){
         multiVitaminYes();
     } else if (multiVitSupplement === 'false'){
@@ -134,7 +97,6 @@ function getMultiVit(){
 function vitaminYes(){
     document.getElementById("vitD_supplement-yes").style.background = "#61AB0E";
     document.getElementById("vitD_supplement-no").style.background = "#DDDD";
-    console.log("vit yes");
 
     vitaminD_supplement_bool = true;
     
@@ -144,8 +106,6 @@ function vitaminYes(){
 function vitaminNo(){
     document.getElementById("vitD_supplement-no").style.background = "#FF0000";
     document.getElementById("vitD_supplement-yes").style.background = "#DDDD";
-    console.log("vit no");
-
     vitaminD_supplement_bool = false;
 
     sessionStorage.setItem("vitDSupplement", false);
@@ -154,7 +114,6 @@ function vitaminNo(){
 function boneYes(){
     document.getElementById("bone_supplement-yes").style.background = "#61AB0E";
     document.getElementById("bone_supplement-no").style.background = "#DDDD";
-    console.log("bone yes");
 
     boneSupplement_bool = true;
 
@@ -163,7 +122,6 @@ function boneYes(){
 function boneNo(){
     document.getElementById("bone_supplement-no").style.background = "#FF0000";
     document.getElementById("bone_supplement-yes").style.background = "#DDDD";
-    console.log("mult no");
 
     boneSupplement_bool = false;
 
@@ -173,7 +131,6 @@ function boneNo(){
 function multiVitaminYes(){
     document.getElementById("multVit_supplement-yes").style.background = "#61AB0E";
     document.getElementById("multVit_supplement-no").style.background = "#DDDD";
-    console.log("mult yes");
 
     multivitamin_supplement_bool = true;
 
@@ -182,7 +139,6 @@ function multiVitaminYes(){
 function multiVitaminNo(){
     document.getElementById("multVit_supplement-no").style.background = "#FF0000";
     document.getElementById("multVit_supplement-yes").style.background = "#DDDD";
-    console.log("mult no");
 
     multivitamin_supplement_bool = false;
 

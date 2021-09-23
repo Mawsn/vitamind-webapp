@@ -138,7 +138,6 @@ firebase.auth().onAuthStateChanged((user) =>{
                document.getElementById("prevSuppIntake").innerHTML = Number(prevResult["suppIntake"]).toFixed(2)+"ug";
                
            } else { //Otherwise there is no previous data
-               console.log("No previous history");
                document.getElementById("prevResultsHeading").remove();
                document.getElementById("prevResultsTable").remove();
            }
