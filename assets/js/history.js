@@ -116,11 +116,11 @@ function CreateChart()
         type: "bar",
         data:
         {
-            labels: result_date_array,
+            labels: previous_recent_result_date_array,
             datasets:
             [{
                 label: 'Total vitamin D(ug) intake',
-                data: totalIntake_vitD_array,
+                data: previous_recent_totalIntake_vitD_array,
                 backgroundColor: "rgba(248,182,7,0.65)",
                 borderColor: "#f8b607",
                 borderWidth: 1.5,
