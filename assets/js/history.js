@@ -21,6 +21,7 @@ var fontsize_yAxes_value;
 Chart.defaults.color = "#ffffff";
 
 
+
 function ReadData()
 {
     firebase.auth().onAuthStateChanged((user) =>
@@ -115,11 +116,11 @@ function CreateChart()
         type: "bar",
         data:
         {
-            labels: previous_recent_result_date_array,
+            labels: result_date_array,
             datasets:
             [{
                 label: 'Total vitamin D(ug) intake',
-                data: previous_recent_totalIntake_vitD_array,
+                data: totalIntake_vitD_array,
                 backgroundColor: "rgba(248,182,7,0.65)",
                 borderColor: "#f8b607",
                 borderWidth: 1.5,
