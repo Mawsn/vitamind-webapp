@@ -41,7 +41,7 @@ function ReadData()
                 let loop_start_counter = 0;
                 if(userData["results"].length > 6)
                 {
-                    loop_start_counter = userData["results"].length - 7;
+                    loop_start_counter = userData["results"].length - 6;
                 }
                 else
                 {
