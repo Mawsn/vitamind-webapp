@@ -19,6 +19,7 @@ self.addEventListener("install", event => {
 });
 
 const ASSETS = [
+	"/about.html",
     "/history.html",
 	"/profile.html",
 	"/profile-change-pass.html",
@@ -56,6 +57,12 @@ const ASSETS = [
     "/assets/js/supplement.js",
     "/assets/js/tool-calculations.js",
     "/assets/js/weather.js",
+    "/assets/js/bt-init.js",
+    "/assets/js/Chart.js",
+    "/assets/js/dietary-firestore.js",
+    "/assets/js/history-export-functionality.js",
+    "/assets/js/jspdf.min.js",
+    "/assets/js/jspdf.plugin.autotable.min.js",
     "/assets/img/logo-standard-white.png",
     "/assets/img/Skin Types/tone-1.png",
     "/assets/img/Skin Types/tone-2.png",
