@@ -1,10 +1,10 @@
 var firebaseConfig = {
-	apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
-	authDomain: "vitatrack-75bda.firebaseapp.com",
-	projectId: "vitatrack-75bda",
-	storageBucket: "vitatrack-75bda.appspot.com",
-	messagingSenderId: "252880004411",
-	appId: "1:252880004411:web:671a716ffcb35a2e58431e",
+  apiKey: "AIzaSyBeoZwZGa6f1aHzLIrUU66MgQlvrssLAkA",
+  authDomain: "vitatrack-75bda.firebaseapp.com",
+  projectId: "vitatrack-75bda",
+  storageBucket: "vitatrack-75bda.appspot.com",
+  messagingSenderId: "252880004411",
+  appId: "1:252880004411:web:671a716ffcb35a2e58431e",
     measurementId: "G-SZZ8S3SJDS" //used in firebase analytics
 };
 
@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 // Index (home) page
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
-            } else {
+            } /*else {
                 firebase.firestore().enablePersistence().then(() => { 
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
@@ -41,7 +41,7 @@ firebase.auth().onAuthStateChanged((user) => {
                         sessionStorage.setItem("alertCount", 1);
                     }
                 });
-            }
+            }*/
         }
     } else {
         //User is signed out, check if they are allowed on a page
@@ -137,20 +137,20 @@ function signInWithEmailPassword() { //Function called when user signs in with e
     loadAnim.style.visibility = "visible";
     
     
-	var email = document.getElementById("emailField").value;
-	var password = document.getElementById("passField").value;
-	var errorDiv = document.getElementById("loginErrorDiv");
+  var email = document.getElementById("emailField").value;
+  var password = document.getElementById("passField").value;
+  var errorDiv = document.getElementById("loginErrorDiv");
 
-	if (email == ""){ //check user entered an email
+  if (email == ""){ //check user entered an email
         loadAnim.style.visibility = "hidden"; //stop animation
-	    errorDiv.innerHTML = "Please enter an email address"; //show error
-	    return; //exits function
-	}
-	if (password == ""){ //check user entered a password
+      errorDiv.innerHTML = "Please enter an email address"; //show error
+      return; //exits function
+  }
+  if (password == ""){ //check user entered a password
         loadAnim.style.visibility = "hidden"; //stop animation
-	    errorDiv.innerHTML = "Please enter a password"; //show error
-	    return; //exits function
-	}
+      errorDiv.innerHTML = "Please enter a password"; //show error
+      return; //exits function
+  }
 
   //Attempts to sign in with firebase using provided details
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -161,12 +161,12 @@ function signInWithEmailPassword() { //Function called when user signs in with e
       window.location.assign("home.html"); //Redirect to home screen
   })
   .catch((error) => { //an error occured while trying to sign in
-  	var errorCode = error.code;
-  	var errorMessage = error.message;
+    var errorCode = error.code;
+    var errorMessage = error.message;
 
-  	//errorDiv.innerHTML = errorMessage;
-  	console.log("Error "+errorCode +": "+errorMessage);
-  	switch(errorCode){
+    //errorDiv.innerHTML = errorMessage;
+    console.log("Error "+errorCode +": "+errorMessage);
+    switch(errorCode){
         case "auth/user-not-found": //user doesn't exist
             errorDiv.innerHTML = "User not found";
             errorDiv.innerHTML = "User not found. <b><a onclick=\"location.href='signup-options.html';\">Signup?</a></b>";
@@ -255,11 +255,11 @@ function forgotPassword(){ //If user has clicked forgot password sends password 
   var emailAddress = document.getElementById("emailField").value;
 
   firebase.auth().sendPasswordResetEmail(emailAddress).then(function() { //If email sent
-  	var dis = document.getElementById("loginErrorDiv");
-  	dis.style.color = "blue";
-  	dis.innerHTML = "Email Sent";
+    var dis = document.getElementById("loginErrorDiv");
+    dis.style.color = "blue";
+    dis.innerHTML = "Email Sent";
   }).catch(function(error){ 
-  	console.log("error sending email");
+    console.log("error sending email");
   })
 }
 
@@ -267,87 +267,87 @@ function createUser() { //Called when user tries to sign up with new email
     var loadAnim = document.getElementById("loadAnim");
     loadAnim.style.visibility = "visible";
     
-	var dis = document.getElementById("signupErrorDiv");
-	var email = document.getElementById("emailField").value;
-	var password = document.getElementById("passField").value;
+  var dis = document.getElementById("signupErrorDiv");
+  var email = document.getElementById("emailField").value;
+  var password = document.getElementById("passField").value;
 
-	if (email == ""){ //If the user didn't provide an email 
-		dis.innerHTML = "No email was entered";
+  if (email == ""){ //If the user didn't provide an email 
+    dis.innerHTML = "No email was entered";
         loadAnim.style.visibility = "hidden";
-		return;
-	}
-	if (password == ""){ //If the user didn't provide an password
-		dis.innerHTML = "No password was entered";
+    return;
+  }
+  if (password == ""){ //If the user didn't provide an password
+    dis.innerHTML = "No password was entered";
         loadAnim.style.visibility = "hidden";
-		return;
-	}
+    return;
+  }
 
     //Uses firebase to create new account
-	firebase.auth().createUserWithEmailAndPassword(email, password)
-	.then((userCredential) => { //Account successfully created
-		var user = userCredential.user;
-		console.log("Signed up:" + user);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => { //Account successfully created
+    var user = userCredential.user;
+    console.log("Signed up:" + user);
         loadAnim.style.visibility = "hidden";
-		window.location.assign("home.html");
-	})
-	.catch((error) => { //Error in creating the new account
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		console.log("Error "+errorCode +": "+errorMessage);
+    window.location.assign("home.html");
+  })
+  .catch((error) => { //Error in creating the new account
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log("Error "+errorCode +": "+errorMessage);
         loadAnim.style.visibility = "hidden";
-		dis.innerHTML = errorMessage;
+    dis.innerHTML = errorMessage;
 
-	});
+  });
 }
 function signinWithGoogle(){ //If user wants to sign in with Google
-	var provider = new firebase.auth.GoogleAuthProvider();
-	
-	firebase.auth().signInWithPopup(provider)
-  	.then((result) => { //Signed in with Google
-	    var credential = result.credential;
-	    var token = credential.accessToken;
-	    var user = result.user;
-	    window.location.assign("home.html");
+  var provider = new firebase.auth.GoogleAuthProvider();
+  
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => { //Signed in with Google
+      var credential = result.credential;
+      var token = credential.accessToken;
+      var user = result.user;
+      window.location.assign("home.html");
 
-  	}).catch((error) => { //Error while tring to sign in
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
-	    var email = error.email;
-	    var credential = error.credential;
-  	});
+    }).catch((error) => { //Error while tring to sign in
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    });
 }
 
 function signinWithMicrosoft(){ //If user wants to sign in with Microsoft
-	var provider = new firebase.auth.OAuthProvider('microsoft.com');
-	firebase.auth().signInWithPopup(provider)
- 	.then((result) => { //Signed in
-    	var credential = result.credential;
-    	var accessToken = credential.accessToken;
-    	var idToken = credential.idToken;
-    	//alert(JSON.stringify(result, null, 4));
-    	window.location.assign("home.html");
-  	})
-  	.catch((error) => { //Error while tring to sign in
-    	alert(error.message);
-  	});
+  var provider = new firebase.auth.OAuthProvider('microsoft.com');
+  firebase.auth().signInWithPopup(provider)
+  .then((result) => { //Signed in
+      var credential = result.credential;
+      var accessToken = credential.accessToken;
+      var idToken = credential.idToken;
+      //alert(JSON.stringify(result, null, 4));
+      window.location.assign("home.html");
+    })
+    .catch((error) => { //Error while tring to sign in
+      alert(error.message);
+    });
 }
 
 function signinWithFacebook(){ //If user wants to sign in with Facebook
-	var provider = new firebase.auth.FacebookAuthProvider();
-	firebase.auth().signInWithPopup(provider)
- 	.then((result) => { //Signed in
-    	var credential = result.credential;
-    	var user = result.user;
-    	var accessToken = credential.accessToken;
-    	window.location.assign("home.html");
-  	})
-  	.catch((error) => { //Error while tring to sign in
-    	var errorCode = error.code;
-	    var errorMessage = error.message;
-	    var email = error.email;
-	    var credential = error.credential;
-	    alert(errorMessage);
-  	});
+  var provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+  .then((result) => { //Signed in
+      var credential = result.credential;
+      var user = result.user;
+      var accessToken = credential.accessToken;
+      window.location.assign("home.html");
+    })
+    .catch((error) => { //Error while tring to sign in
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      alert(errorMessage);
+    });
 }
 
 
@@ -412,10 +412,10 @@ function confirmDelete(){
 
 //Used to determine whether the logged in user is a guest, if so, the history and profile button will be hidden
 function checkGuest(){
-	firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if(user.isAnonymous) {
-    	//alert("Guest?: "+ user.isAnonymous);
-    	document.getElementsByClassName("navbar-button-container")[0].style.display = "none"; 	
+      //alert("Guest?: "+ user.isAnonymous);
+      document.getElementsByClassName("navbar-button-container")[0].style.display = "none";   
     } 
   });
 }
