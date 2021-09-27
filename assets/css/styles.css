@@ -907,7 +907,6 @@ body {
   margin: auto;
   margin-bottom: 20px;
   margin-top: 30px;
-  text-align: center;
   padding-bottom: 40px;
 }
 
@@ -923,14 +922,11 @@ body {
   font-size: 20px;
   color: white;
   display: inline-block;
-  width: 60%;
-  text-align: left;
 }
 
 @media (max-width: 767px) {
   .supplement-sub-heading {
     margin-left: 5%;
-    width: 100%;
   }
 }
 
@@ -1617,3 +1613,4 @@ body {
     opacity: 0;
   }
 }
+
