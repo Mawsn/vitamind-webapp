@@ -154,5 +154,6 @@ firebase.auth().onAuthStateChanged((user) => {
         });
     } else { //If the user is not logged in
         console.log("Not logged in");
+        window.location.assign("index.html");
     }
 });

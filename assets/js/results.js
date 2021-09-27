@@ -204,7 +204,9 @@ function guestConfirmation(){
 
 //If signed in user leaves result page, clears any data used during use of tool
 function homeClicked(){ 
+    let alertCount = Number(sessionStorage.getItem("alertCount"));
     sessionStorage.clear();
+    sessionStorage.setItem("alertCount", alertCount);
     window.location.assign("home.html");
 }
 
