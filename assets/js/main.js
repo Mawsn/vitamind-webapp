@@ -60,6 +60,17 @@ firebase.auth().onAuthStateChanged((user) => {
             case '/signup-options.html':
                 break;
             case '/about.html':
+                console.log("AYO");
+                document.getElementById("profile-image").remove(); 
+                document.getElementById("logo-landscape").setAttribute('onclick', "location.href='index.html'");
+
+                var tButton = document.getElementById("tool-button");
+                tButton.innerHTML = "Login";
+                tButton.setAttribute('onclick', "location.href='login-options.html'");
+
+                var hButton = document.getElementById("history-button");
+                hButton.innerHTML = "Signup";
+                hButton.setAttribute('onclick', "location.href='signup-options.html'");
                 break;
             default:
                 console.log("User not signed in: Access to page denied.");
