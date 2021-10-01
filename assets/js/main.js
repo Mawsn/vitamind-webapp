@@ -20,11 +20,8 @@ firebase.auth().onAuthStateChanged((user) => {
                 // Index (home) page
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
-                //Enable persistence 
-                
-            } 
-            /*else {
-                firebase.firestore().enablePersistence(({synchronizeTabs: true})).then(() => { 
+            } else {
+                firebase.firestore().enablePersistence().then(() => { 
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
                     if (err.code == 'failed-precondition'){
@@ -44,7 +41,7 @@ firebase.auth().onAuthStateChanged((user) => {
                         sessionStorage.setItem("alertCount", 1);
                     }
                 });
-            }*/
+            }
         }
     } else {
         //User is signed out, check if they are allowed on a page
@@ -63,7 +60,6 @@ firebase.auth().onAuthStateChanged((user) => {
             case '/signup-options.html':
                 break;
             case '/about.html':
-                console.log("AYO");
                 document.getElementById("profile-image").remove(); 
                 document.getElementById("logo-landscape").setAttribute('onclick', "location.href='index.html'");
 
@@ -76,15 +72,28 @@ firebase.auth().onAuthStateChanged((user) => {
                 hButton.setAttribute('onclick', "location.href='signup-options.html'");
                 break;
             default:
-                console.log("User not signed in: Access to page denied.");
-                window.location.assign("index.html");
+                var toolPages = ['/tool-skin-tone.html','/tool-dietary.html', '/tool-dietary-detailed-form.html', '/tool-exposure-minutes.html', '/tool-location.html', '/tool-sun-exposure.html','/tool-sun-exposure-2.html','/tool-supplement-1.html','/tool-supplement-2.html','/tool-supplement-3.html', '/result-breakdown.html']
+                if (!toolPages.includes(path)){
+                    console.log("User not signed in: Access to page denied.");
+                    window.location.assign("index.html");
+                } else {
+                    document.getElementsByClassName("navbar-button-container")[0].style.display = "none"; 	
+                }
+                break;
         }
     }
-});
+});/*.catch((err) => {
+    var toolPages = ['/tool-skin-tone.html','/tool-dietary.html', '/tool-dietary-detailed-form.html', '/tool-exposure-minutes.html', '/tool-location.html', '/tool-sun-exposure.html','/tool-sun-exposure-2.html','/tool-supplement-1.html','/tool-supplement-2.html','/tool-supplement-3.html', '/result-breakdown.html']
+    if (!toolPages.includes()){
+        console.log("User not signed in: Access to page denied.");
+        window.location.assign("index.html");
+    } 
+});*/
 
 //Turns on offline data for firebase
-firebase.firestore().enablePersistence().then(() => { 
+/*firebase.firestore().enablePersistence().then(() => { 
     console.log("Firestore: Offline Data Enabled");
+    alert("XXX");
 }).catch((err) => {
     alert("HERE");
     if (err.code == 'failed-precondition'){
@@ -97,7 +106,7 @@ firebase.firestore().enablePersistence().then(() => {
     } else {
         console.log(err.code);
     }
-}); 
+}); */
 
 //Gets the user's data for the profile page
 function getProfile(){
@@ -108,15 +117,18 @@ function getProfile(){
     });
 }
 
-function guestSignIn(){ //Function called when user logs in as a gues
+function guestSignIn(){ //Function called when user logs in as a guest
     firebase.auth().signInAnonymously()
       .then(() => { //User successfully logged in
         window.location.assign("tool-skin-tone.html"); //Takes guest user directly to the tool
       })
       .catch((error) => { //Error happened while trying to sign in as a guest
+        
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode +": " + errorMessage);
+        console.log("Running in offline");
+        window.location.assign("tool-skin-tone.html");
       });
 }
 
@@ -425,12 +437,12 @@ function confirmDelete(){
 
 //Used to determine whether the logged in user is a guest, if so, the history and profile button will be hidden
 function checkGuest(){
-	firebase.auth().onAuthStateChanged((user) => {
-    if(user.isAnonymous) {
-    	//alert("Guest?: "+ user.isAnonymous);
-    	document.getElementsByClassName("navbar-button-container")[0].style.display = "none"; 	
-    } 
-  });
+    firebase.auth().onAuthStateChanged((user) => {
+        if(user.isAnonymous) {
+            //alert("Guest?: "+ user.isAnonymous);
+            document.getElementsByClassName("navbar-button-container")[0].style.display = "none"; 	
+        } 
+    });
 }
 
 //Called if the user tries to leave the tool early to confirm if they want to leave
