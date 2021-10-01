@@ -9,24 +9,6 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-//Turns on offline data for firebase
-firebase.firestore().enablePersistence().then(() => { 
-    console.log("Firestore: Offline Data Enabled");
-    alert("XXX");
-}).catch((err) => {
-    alert("HERE");
-    if (err.code == 'failed-precondition'){
-        //Multiple tabs open, persistence can only be enabled
-        // in one tab at a a time.
-        console.log("Session open in multiple tabs. Offline data cannot be enabled");
-    } else if (err.code == 'unimplemented'){
-        //Current Browser does not support all features required to enable persistence
-        alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
-    } else {
-        console.log(err.code);
-    }
-}); 
 //State change detector, helps to track which user is logged in 
 let alertCount = Number(sessionStorage.getItem("alertCount"));
 
@@ -39,7 +21,26 @@ firebase.auth().onAuthStateChanged((user) => {
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
                 //Enable persistence 
-                
+                firebase.firestore().enablePersistence(({synchronizeTabs: true})).then(() => { 
+                    console.log("Firestore: Offline Data Enabled");
+                }).catch((err) => {
+                    if (err.code == 'failed-precondition'){
+                        //Multiple tabs open, persistence can only be enabled
+                        // in one tab at a a time.
+                        console.log("Session open in multiple tabs. Offline data cannot be enabled");
+                    } else if (err.code == 'unimplemented'){
+                        //Current Browser does not support all features required to enable persistence
+                        if (alertCount == 0){
+                            alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
+                        }
+                        sessionStorage.setItem("alertCount", 1);
+                    } else {
+                        if (alertCount == 0){
+                            alert("Please note: An error occured while trying to activate offline capabilities. You will not be able to use all functionalities of this application offline.");
+                        }
+                        sessionStorage.setItem("alertCount", 1);
+                    }
+                });
             } 
             /*else {
                 firebase.firestore().enablePersistence(({synchronizeTabs: true})).then(() => { 
@@ -99,7 +100,24 @@ firebase.auth().onAuthStateChanged((user) => {
         }
     }
 });
-
+/*
+//Turns on offline data for firebase
+firebase.firestore().enablePersistence().then(() => { 
+    console.log("Firestore: Offline Data Enabled");
+    alert("XXX");
+}).catch((err) => {
+    alert("HERE");
+    if (err.code == 'failed-precondition'){
+        //Multiple tabs open, persistence can only be enabled
+        // in one tab at a a time.
+        console.log("Session open in multiple tabs. Offline data cannot be enabled");
+    } else if (err.code == 'unimplemented'){
+        //Current Browser does not support all features required to enable persistence
+        alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
+    } else {
+        console.log(err.code);
+    }
+}); */
 
 //Gets the user's data for the profile page
 function getProfile(){
