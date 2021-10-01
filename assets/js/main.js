@@ -128,10 +128,7 @@ function getProfile(){
     });
 }
 
-function guestSignIn(){ //Function called when user logs in as a guest
-	window.location.assign("tool-skin-tone.html");
-	user.isAnonymous = true;
-	/*
+function guestSignIn(){ //Function called when user logs in as a gues
     firebase.auth().signInAnonymously()
       .then(() => { //User successfully logged in
         window.location.assign("tool-skin-tone.html"); //Takes guest user directly to the tool
@@ -140,7 +137,7 @@ function guestSignIn(){ //Function called when user logs in as a guest
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode +": " + errorMessage);
-      });*/
+      });
 }
 
 /*if (window.location.pathname == '/login.html' || window.location.pathname == '/signup.html'){
