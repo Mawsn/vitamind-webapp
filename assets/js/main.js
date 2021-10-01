@@ -85,7 +85,6 @@ firebase.auth().onAuthStateChanged((user) => {
 //Turns on offline data for firebase
 firebase.firestore().enablePersistence().then(() => { 
     console.log("Firestore: Offline Data Enabled");
-    alert("XXX");
 }).catch((err) => {
     alert("HERE");
     if (err.code == 'failed-precondition'){
