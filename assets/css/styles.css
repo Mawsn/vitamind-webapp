@@ -1560,12 +1560,12 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
   z-index: 10;
-  display: none;
+  /*display: none;*/
 }
 
 @media (max-width: 767px) {
   #popup-export-all-result-menu {
-    max-width: 90%;
+    max-width: 100%;
   }
 }
 
