@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
             } else {
-                firebase.firestore().enablePersistence().then(() => { 
+                firebase.firestore().enablePersistence(({synchronizeTabs: true})).then(() => { 
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
                     if (err.code == 'failed-precondition'){
