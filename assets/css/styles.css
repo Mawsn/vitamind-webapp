@@ -1623,5 +1623,6 @@ body {
 .about-image {
   margin: auto;
   display: block;
+  max-width: 95%;
 }
 
