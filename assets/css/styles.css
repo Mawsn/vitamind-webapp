@@ -582,6 +582,12 @@ body {
   font-size: 11px;
 }
 
+@media (max-width: 360px) {
+  #weather_display {
+    width: 95%;
+  }
+}
+
 #weather_display {
   border-collapse: collapse;
   margin-left: auto;
