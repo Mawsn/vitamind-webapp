@@ -674,7 +674,7 @@ body {
 }
 
 .profile-bubble {
-  background-color: #DDDD;
+  background-color: rgba(221,221,221,0.8);
   opacity: 80%;
   border-radius: 20px;
   width: 40%;
@@ -740,6 +740,13 @@ body {
   margin-top: 20px;
   height: 40px;
   width: 175px !important;
+  background-color: #f8b607;
+}
+
+.profile-buttons:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
 }
 
 .delete-button {
@@ -750,6 +757,12 @@ body {
   border-color: #ff0000 !important;
   border-width: 2px;
   color: #ff0000 !important;
+}
+
+.delete-button:hover {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
 }
 
 #account-settings-button {
