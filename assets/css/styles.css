@@ -1485,7 +1485,6 @@ body {
 }
 
 .about-heading-alt {
-  margin-top: 50px;
   color: #1686ab;
   text-align: center;
   padding-top: 10px;
@@ -1498,8 +1497,15 @@ body {
 }
 
 .about-text {
-  margin-left: 50px;
+  margin: auto;
   text-align: left;
+  display: block;
+  max-width: 80%;
+  background-color: lightgray;
+  border-radius: 30px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .about-div {
@@ -1612,5 +1618,10 @@ body {
     bottom: 0;
     opacity: 0;
   }
+}
+
+.about-image {
+  margin: auto;
+  display: block;
 }
 
