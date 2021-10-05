@@ -33,6 +33,7 @@ body {
 #logo-landscape {
   max-width: 220px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .nav-item {
@@ -105,6 +106,12 @@ body {
   box-shadow: 0px 8px 10px rgb(0,94,198);
 }
 
+#guest-button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
+}
+
 @media (max-width: 767px) {
   #guest-button {
     display: none;
@@ -131,7 +138,6 @@ body {
   width: 60%;
   height: 600px;
   background-color: #DDDD;
-  opacity: 80%;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -1642,5 +1648,27 @@ body {
   margin: auto;
   display: block;
   max-width: 95%;
+}
+
+#googleButton:hover {
+  background-color: #2471ef;
+}
+
+#facebookButton:hover {
+  background-color: #1d469d;
+}
+
+#microsoftButton:hover {
+  background-color: #820cf7;
+}
+
+#emailButton:hover {
+  background-color: rgb(105,104,104);
+}
+
+#export_all_results_button:hover {
+  background-color: #efaf34;
+  color: #ffffff;
+  border-color: #efaf34;
 }
 
