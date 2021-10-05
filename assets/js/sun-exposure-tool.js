@@ -41,7 +41,7 @@ function detectLocation(){
 }
 
 //If user selects a general location
-function generalLocation(lat){ 
+function generalLocation(lat){
     if (lat <= -12 && lat >= -30.0888){ //Sets weather chart to Brisbane
         sessionStorage.setItem("exposureChart", "winterBrisbaneChart");
         sessionStorage.setItem("insufficientUV", false);
@@ -68,7 +68,7 @@ function displayedTimes(){
     }
 }
 
-//Called if the head on the figure is clicked 
+//Called if the head on the figure is clicked
 function headFunction(){
     var checkbox = document.getElementById("headForm");
     if (checkbox.checked == true){ //If user unselects the head
@@ -84,7 +84,7 @@ function headFunction(){
         headImg.style.visibility = 'hidden';
     }
 }
-//Called if the head on the figure is clicked 
+//Called if the head on the figure is clicked
 function torsoFunction(){
     var armImg = document.getElementById("longShirtImg");
     var upArmImg = document.getElementById("shirtImg");
@@ -92,7 +92,7 @@ function torsoFunction(){
         armFunction();
         return;
     } else if (upArmImg.style.visibility == 'visible'){ //Unselects the tshirt if user deselects it
-        upArmFunction(); 
+        upArmFunction();
         return;
     }
 
@@ -109,9 +109,9 @@ function torsoFunction(){
         torsoImg.style.visibility = 'hidden';
     }
 }
-//Called if the tshirt on the figure is clicked 
+//Called if the tshirt on the figure is clicked
 function upArmFunction(){
-    var armImg = document.getElementById("longShirtImg"); 
+    var armImg = document.getElementById("longShirtImg");
     if (armImg.style.visibility == 'visible'){ //Unselects the longsleeve shirt if user deselects it
         armFunction();
         return;
@@ -120,7 +120,7 @@ function upArmFunction(){
     var checkbox = document.getElementById("upperArmForm");
     var checkbox2 = document.getElementById("torsoForm");
     if (checkbox.checked == true){ //If user unselects the tshirt
-        checkbox.checked = false; 
+        checkbox.checked = false;
         checkbox2.checked = false; //Additionally deselects the torso
     } else { //If user selects the tshirt
         checkbox.checked = true;
@@ -135,7 +135,7 @@ function upArmFunction(){
         upArmImg.style.visibility = 'hidden';
     }
 }
-//Called if the longsleeve shirt on the figure is clicked 
+//Called if the longsleeve shirt on the figure is clicked
 function armFunction(){
     var checkbox = document.getElementById("lowerArmForm");
     var checkbox2 = document.getElementById("upperArmForm");
@@ -193,7 +193,7 @@ function legsFunction(){
 }
 
 //Calculate body percentage which was exposed to the sun
-function setSessionData(){ 
+function setSessionData(){
     var totalPercentage = 0;
     //! means logical not
     if (!document.getElementById("headForm").checked){ //If the head was exposed
@@ -225,30 +225,37 @@ function setSessionData(){
 function setMinutesData(){
     var inputMinutes = 0;
     var inputType = sessionStorage.getItem("exposure-measurement");
+    var validInput = true;
     if (chartSelect == "summerChart"){ //If using summer chart, take all input fields
         var morn = Number(document.getElementById("morningMinutes").value);
         var lunch = Number(document.getElementById("lunchMinutes").value);
         var afternoon = Number(document.getElementById("afternoonMinutes").value);
+        if (inputType != "weekly"){
+          if(morn < 0 || lunch < 0 || afternoon < 0 || morn > 120 || lunch > 120 || afternoon > 120){
+              alert("Invalid estimated minutes value/s. Ensure all inputs are greater than or equal to 0 and each time slot does not exceed 120 minutes.");
+              validInput = false;
+          }
+        }
         inputMinutes = morn + lunch + afternoon;
 
-    } 
+    }
     else { //if not summer, only use 11AM to 1PM
         inputMinutes = Number(document.getElementById("lunchMinutes").value);
+        if (inputType != "weekly"){
+          if(inputMinutes < 0 ||inputMinutes > 120){
+              alert("Invalid estimated minutes value/s. Ensure all inputs are greater than or equal to 0 and each time slot does not exceed 120 minutes.");
+              validInput = false;
+          }
+        }
     }
     if (inputType == "weekly"){ //If user selected to input data as weekly unit
         inputMinutes = Math.round(inputMinutes / 7); //Divided into daily units
     }
-    if(parseInt(morn) < 0 || parseInt(lunch) < 0 || parseInt(afternoon) < 0 || parseInt(morn) > 120 || parseInt(lunch) > 120 || parseInt(afternoon) > 120 || parseInt(inputMinutes) < 0 || parseInt(inputMinutes) > 120){
-        alert("Invalid estimated minutes value/s ");
-    }
     //Save data on total minutes exposed to sun
-    else {
+    if (validInput){
     	sessionStorage.setItem("inputMinutes", inputMinutes);
     	window.location.assign('result-breakdown.html');
 
     }
-    
+
 }
-
-
-
