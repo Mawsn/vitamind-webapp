@@ -68,26 +68,26 @@
 <div onload="getSeason()"> <!-- style="text-align: center;" -->
     <!-- Form needs to be implemented into this -->
     <!-- <canvas class="center" id="myCanvas" height="650"></canvas> -->
-    <img src="assets/img/tool-figure/figure.png" usemap="#figureMap" draggable="false" class="tool-figure" id="figure"> 
-    
-    <img src="assets/img/tool-figure/figure_hat.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="headImg" usemap="#figureMap"> 
+    <img src="assets/img/tool-figure/figure.png" usemap="#figureMap" draggable="false" class="tool-figure" id="figure">
+
+    <img src="assets/img/tool-figure/figure_hat.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="headImg" usemap="#figureMap">
     <img src="assets/img/tool-figure/figure_long_sleeve.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="longShirtImg" usemap="#figureMap">
     <img src="assets/img/tool-figure/figure_shirt.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="shirtImg" usemap="#figureMap">
-    <img src="assets/img/tool-figure/figure_singlet.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="singletImg" usemap="#figureMap"> 
-    <img src="assets/img/tool-figure/figure_pants.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="pantsImg" usemap="#figureMap"> 
-    <img src="assets/img/tool-figure/figure_hands.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="handsImg" usemap="#figureMap"> 
-    
+    <img src="assets/img/tool-figure/figure_singlet.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="singletImg" usemap="#figureMap">
+    <img src="assets/img/tool-figure/figure_pants.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="pantsImg" usemap="#figureMap">
+    <img src="assets/img/tool-figure/figure_hands.png" draggable="false" class="tool-figure-layer" style="visibility:hidden;" id="handsImg" usemap="#figureMap">
+
     <map name="figureMap"> <!-- This makes the figure interactive -->
         <area shape="poly" coords="103,117, 103,110, 100,105, 97,93, 93,87, 91,81, 91,76, 95,76, 95,63, 102,51, 114,45, 125,45, 138,51, 144,63, 144,76, 148,76, 148,81, 146,87, 143,93, 139,105, 136,110, 136,117" onclick="headFunction()" type="button">
 
         <area shape="poly" coords="103,118, 136,118, 142,129, 162,136, 162,215, 161,250, 166,295, 73,295, 78,250, 76,215, 76,136, 98,128" onclick="torsoFunction()" type="button">
-        
+
         <area shape="poly" coords="76,215, 74,224, 50,224, 55,163, 64,143, 76,136" onclick="upArmFunction()" type="button">
         <area shape="poly" coords="162,215, 164,224, 189,224, 183,163, 176,143, 162,136" onclick="upArmFunction()" type="button">
-        
+
         <area shape="poly" coords="74,225, 53,317, 31,317, 50,225" onclick="armFunction()" type="button">
         <area shape="poly" coords="165,225, 186,317, 207,317, 190,225" onclick="armFunction()" type="button">
-        
+
         <area shape="poly" coords="32,317, 53,317, 53,331, 49,360, 40,367, 32,369, 28,369, 21,363, 12,342, 12,339, 24,323" onclick="handsFunction()" type="button">
         <area shape="poly" coords="208,317, 186,317, 186,331, 189,360, 197,367, 206,369, 210,369, 218,363, 226,342, 226,339, 215,323" onclick="handsFunction()" type="button">
 
@@ -107,16 +107,9 @@
     <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="setSessionData();location.href=&#39;tool-sun-exposure-2.html&#39;;">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/Chart.js"></script>
-    <script src="assets/js/color-thief.min.js"></script>
-    <script src="assets/js/image-processing.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/jspdf.min.js"></script>
-    <script src="assets/js/jspdf.plugin.autotable.min.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
     <script src="assets/js/sun-exposure-tool.js"></script>
-    <script src="assets/js/supplement.js"></script>
-    <script src="assets/js/tool-calculations.js"></script>
 </body>
 
 </html>
