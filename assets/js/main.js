@@ -14,8 +14,8 @@ async function main(){
 }
 
 if(firebase.apps.length == 0){
-	main();
 	alert(firebase.apps.length);
+	main();
 
 	//State change detector, helps to track which user is logged in 
 	let alertCount = Number(sessionStorage.getItem("alertCount"));
