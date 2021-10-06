@@ -8,7 +8,7 @@ var firebaseConfig = {
     measurementId: "G-SZZ8S3SJDS" //used in firebase analytics
 };
 
-firebase.initializeApp(firebaseConfig);
+await firebase.initializeApp(firebaseConfig);
 //State change detector, helps to track which user is logged in 
 let alertCount = Number(sessionStorage.getItem("alertCount"));
 
