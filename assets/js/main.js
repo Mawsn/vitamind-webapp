@@ -9,7 +9,7 @@ var firebaseConfig = {
 };
 
 main();
-void main async(){
+async function main(){
 	await firebase.initializeApp(firebaseConfig);
 }
 //State change detector, helps to track which user is logged in 
