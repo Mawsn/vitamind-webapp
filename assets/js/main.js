@@ -9,6 +9,7 @@ var firebaseConfig = {
 };
 
 main();
+alert(firebase.apps.length);
 async function main(){
 	await firebase.initializeApp(firebaseConfig);
 }
