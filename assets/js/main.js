@@ -96,11 +96,10 @@ firebase.auth().onAuthStateChanged((user) => {
 });*/
 
 //Turns on offline data for firebase
-/*firebase.firestore().enablePersistence().then(() => { 
-    console.log("Firestore: Offline Data Enabled");
-    alert("XXX");
+firebase.firestore().enablePersistence().then(() => { 
+    alert("Firestore: Offline Data Enabled");
 }).catch((err) => {
-    alert("HERE");
+    alert("ERROR: " + err.code);
     if (err.code == 'failed-precondition'){
         //Multiple tabs open, persistence can only be enabled
         // in one tab at a a time.
@@ -111,7 +110,7 @@ firebase.auth().onAuthStateChanged((user) => {
     } else {
         console.log(err.code);
     }
-}); */
+}); 
 
 //Gets the user's data for the profile page
 function getProfile() {
