@@ -12,7 +12,6 @@ async function main(){
 	await firebase.initializeApp(firebaseConfig);
 }
 main();
-
 //State change detector, helps to track which user is logged in 
 let alertCount = Number(sessionStorage.getItem("alertCount"));
 
@@ -25,29 +24,30 @@ firebase.auth().onAuthStateChanged((user) => {
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
             } 
-            	/*
-                firebase.firestore().enablePersistence().then(() => {
-                    console.log("Firestore: Offline Data Enabled");
-                }).catch((err) => {
-                	alert(err.code); 
-                    if (err.code == 'failed-precondition') {
-                        //Multiple tabs open, persistence can only be enabled
-                        // in one tab at a a time.
-                        console.log("Session open in multiple tabs. Offline data cannot be enabled");
-                    } else if (err.code == 'unimplemented') {
-                        //Current Browser does not support all features required to enable persistence
-                        if (alertCount == 0) {
-                            alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
-                        }
-                        sessionStorage.setItem("alertCount", 1);
-                    } else {
-                        if (alertCount == 0) {
-                            alert("Please note: An error occured while trying to activate offline capabilities. You will not be able to use all functionalities of this application offline.");
-                        }
-                        sessionStorage.setItem("alertCount", 1);
-                    }
-                });*/
-            
+            if(iOSversion()[0] < 15){
+	            	firebase.firestore().enablePersistence().then(() => {
+	                    console.log("Firestore: Offline Data Enabled");
+	                }).catch((err) => {
+	                	alert(err.code); 
+	                    if (err.code == 'failed-precondition') {
+	                        //Multiple tabs open, persistence can only be enabled
+	                        // in one tab at a a time.
+	                        console.log("Session open in multiple tabs. Offline data cannot be enabled");
+	                    } else if (err.code == 'unimplemented') {
+	                        //Current Browser does not support all features required to enable persistence
+	                        if (alertCount == 0) {
+	                            alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
+	                        }
+	                        sessionStorage.setItem("alertCount", 1);
+	                    } else {
+	                        if (alertCount == 0) {
+	                            alert("Please note: An error occured while trying to activate offline capabilities. You will not be able to use all functionalities of this application offline.");
+	                        }
+	                        sessionStorage.setItem("alertCount", 1);
+	                    }
+	                });
+            }
+            //else alert("iOS 15 not supported yet");
         }
     } else {
         //User is signed out, check if they are allowed on a page
@@ -472,4 +472,10 @@ function leaveTool(pageRef) {
 
 function goBack() { //Allows users to move back in the tool
     window.history.back();
+}
+function iOSversion() {
+	if (/iP(hone|od|ad)/.test(navigator.platform)) {
+		var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+		return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+	}
 }
