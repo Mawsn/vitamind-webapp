@@ -26,10 +26,11 @@ firebase.auth().onAuthStateChanged((user) => {
                 // Index (home) page
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
-            } /*else {
+            } else {
                 firebase.firestore().enablePersistence().then(() => {
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
+                	alert(err.code); 
                     if (err.code == 'failed-precondition') {
                         //Multiple tabs open, persistence can only be enabled
                         // in one tab at a a time.
@@ -47,7 +48,7 @@ firebase.auth().onAuthStateChanged((user) => {
                         sessionStorage.setItem("alertCount", 1);
                     }
                 });
-            }*/
+            }
         }
     } else {
         //User is signed out, check if they are allowed on a page
@@ -96,7 +97,7 @@ firebase.auth().onAuthStateChanged((user) => {
         window.location.assign("index.html");
     } 
 });*/
-
+/*
 //Turns on offline data for firebase
 firebase.firestore().enablePersistence().then(() => { 
     alert("Firestore: Offline Data Enabled");
@@ -113,7 +114,7 @@ firebase.firestore().enablePersistence().then(() => {
         console.log(err.code);
     }
 }); 
-
+*/
 //Gets the user's data for the profile page
 function getProfile() {
     //const user = firebase.auth().currentUser;
