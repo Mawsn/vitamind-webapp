@@ -22,11 +22,13 @@ firebase.auth().onAuthStateChanged((user) => {
     if (user) { //if logged in
 
         if (!user.isAnonymous) { //If it is not the guest user
+        	alert("User is not anonymous");
             if (window.location.pathname == '/' || window.location.pathname == '/index.html') { //if on landing page and logged in, redirect to homepage
                 // Index (home) page
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
             } else {
+            	alert("User is anonymous");
                 firebase.firestore().enablePersistence().then(() => {
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
