@@ -8,96 +8,110 @@ var firebaseConfig = {
     measurementId: "G-SZZ8S3SJDS" //used in firebase analytics
 };
 
-
 async function main(){
-	alert("initializeApp");
 	await firebase.initializeApp(firebaseConfig);
 }
+main();
 
-if(firebase.apps.length === 0){
-	main();
-	//State change detector, helps to track which user is logged in 
-	let alertCount = Number(sessionStorage.getItem("alertCount"));
+//State change detector, helps to track which user is logged in 
+let alertCount = Number(sessionStorage.getItem("alertCount"));
 
-	firebase.auth().onAuthStateChanged((user) => {
-	    if (user) { //if logged in
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) { //if logged in
 
-	        if (!user.isAnonymous) { //If it is not the guest user
-	            if (window.location.pathname == '/' || window.location.pathname == '/index.html') { //if on landing page and logged in, redirect to homepage
-	                // Index (home) page
-	                window.location.assign("home.html");
-	                sessionStorage.setItem("alertCount", 0);
-	            } 
-	        }
-	    } else {
-	        //User is signed out, check if they are allowed on a page
-	        var path = window.location.pathname;
-	        switch (path) {
-	            case '/':
-	                break;
-	            case '/index.html':
-	                break;
-	            case '/login.html':
-	                break;
-	            case '/login-options.html':
-	                break;
-	            case '/signup.html':
-	                break;
-	            case '/signup-options.html':
-	                break;
-	            case '/about.html':
-	                document.getElementById("profile-image").remove();
-	                document.getElementById("logo-landscape").setAttribute('onclick', "location.href='index.html'");
+        if (!user.isAnonymous) { //If it is not the guest user
+            if (window.location.pathname == '/' || window.location.pathname == '/index.html') { //if on landing page and logged in, redirect to homepage
+                // Index (home) page
+                window.location.assign("home.html");
+                sessionStorage.setItem("alertCount", 0);
+            } /*else {
+                firebase.firestore().enablePersistence().then(() => {
+                    console.log("Firestore: Offline Data Enabled");
+                }).catch((err) => {
+                    if (err.code == 'failed-precondition') {
+                        //Multiple tabs open, persistence can only be enabled
+                        // in one tab at a a time.
+                        console.log("Session open in multiple tabs. Offline data cannot be enabled");
+                    } else if (err.code == 'unimplemented') {
+                        //Current Browser does not support all features required to enable persistence
+                        if (alertCount == 0) {
+                            alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
+                        }
+                        sessionStorage.setItem("alertCount", 1);
+                    } else {
+                        if (alertCount == 0) {
+                            alert("Please note: An error occured while trying to activate offline capabilities. You will not be able to use all functionalities of this application offline.");
+                        }
+                        sessionStorage.setItem("alertCount", 1);
+                    }
+                });
+            }*/
+        }
+    } else {
+        //User is signed out, check if they are allowed on a page
+        var path = window.location.pathname;
+        switch (path) {
+            case '/':
+                break;
+            case '/index.html':
+                break;
+            case '/login.html':
+                break;
+            case '/login-options.html':
+                break;
+            case '/signup.html':
+                break;
+            case '/signup-options.html':
+                break;
+            case '/about.html':
+                document.getElementById("profile-image").remove();
+                document.getElementById("logo-landscape").setAttribute('onclick', "location.href='index.html'");
 
-	                var tButton = document.getElementById("tool-button");
-	                tButton.innerHTML = "Login";
-	                tButton.setAttribute('onclick', "location.href='login-options.html'");
+                var tButton = document.getElementById("tool-button");
+                tButton.innerHTML = "Login";
+                tButton.setAttribute('onclick', "location.href='login-options.html'");
 
-	                var hButton = document.getElementById("history-button");
-	                hButton.innerHTML = "Signup";
-	                hButton.setAttribute('onclick', "location.href='signup-options.html'");
-	                break;
-	            default:
-	                var toolPages = ['/tool-skin-tone.html', '/tool-dietary.html', '/tool-dietary-detailed-form.html', '/tool-exposure-minutes.html', '/tool-location.html', '/tool-sun-exposure.html', '/tool-sun-exposure-2.html', '/tool-supplement-1.html', '/tool-supplement-2.html', '/tool-supplement-3.html', '/result-breakdown.html']
-	                if (!toolPages.includes(path)) {
-	                    console.log("User not signed in: Access to page denied.");
-	                    window.location.assign("index.html");
-	                } else {
-	                    document.getElementsByClassName("navbar-button-container")[0].style.display = "none";
-	                }
-	                break;
-	        }
-	    }
-	});
-	/*.catch((err) => {
-	    var toolPages = ['/tool-skin-tone.html','/tool-dietary.html', '/tool-dietary-detailed-form.html', '/tool-exposure-minutes.html', '/tool-location.html', '/tool-sun-exposure.html','/tool-sun-exposure-2.html','/tool-supplement-1.html','/tool-supplement-2.html','/tool-supplement-3.html', '/result-breakdown.html']
-	    if (!toolPages.includes()){
-	        console.log("User not signed in: Access to page denied.");
-	        window.location.assign("index.html");
-	    } 
-	});*/
+                var hButton = document.getElementById("history-button");
+                hButton.innerHTML = "Signup";
+                hButton.setAttribute('onclick', "location.href='signup-options.html'");
+                break;
+            default:
+                var toolPages = ['/tool-skin-tone.html', '/tool-dietary.html', '/tool-dietary-detailed-form.html', '/tool-exposure-minutes.html', '/tool-location.html', '/tool-sun-exposure.html', '/tool-sun-exposure-2.html', '/tool-supplement-1.html', '/tool-supplement-2.html', '/tool-supplement-3.html', '/result-breakdown.html']
+                if (!toolPages.includes(path)) {
+                    console.log("User not signed in: Access to page denied.");
+                    window.location.assign("index.html");
+                } else {
+                    document.getElementsByClassName("navbar-button-container")[0].style.display = "none";
+                }
+                break;
+        }
+    }
+});
+/*.catch((err) => {
+    var toolPages = ['/tool-skin-tone.html','/tool-dietary.html', '/tool-dietary-detailed-form.html', '/tool-exposure-minutes.html', '/tool-location.html', '/tool-sun-exposure.html','/tool-sun-exposure-2.html','/tool-supplement-1.html','/tool-supplement-2.html','/tool-supplement-3.html', '/result-breakdown.html']
+    if (!toolPages.includes()){
+        console.log("User not signed in: Access to page denied.");
+        window.location.assign("index.html");
+    } 
+});*/
 
-	//Turns on offline data for firebase
-	firebase.firestore().enablePersistence().then(() => { 
-	    console.log("Firestore: Offline Data Enabled");
-	}).catch((err) => {
-	    alert("HERE");
-	    if (err.code == 'failed-precondition'){
-	        //Multiple tabs open, persistence can only be enabled
-	        // in one tab at a a time.
-	        console.log("Session open in multiple tabs. Offline data cannot be enabled");
-	    } else if (err.code == 'unimplemented'){
-	        //Current Browser does not support all features required to enable persistence
-	        alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
-	    } else {
-	        console.log(err.code);
-	    }
-	}); 
-}
-
-
-
-
+//Turns on offline data for firebase
+/*firebase.firestore().enablePersistence().then(() => { 
+    console.log("Firestore: Offline Data Enabled");
+    alert("XXX");
+}).catch((err) => {
+    alert("HERE");
+    if (err.code == 'failed-precondition'){
+        //Multiple tabs open, persistence can only be enabled
+        // in one tab at a a time.
+        console.log("Session open in multiple tabs. Offline data cannot be enabled");
+    } else if (err.code == 'unimplemented'){
+        //Current Browser does not support all features required to enable persistence
+        alert("Please note: Your Internet Browser does not support offline data for this application. You will not be able to use this application offline");
+    } else {
+        console.log(err.code);
+    }
+}); */
 
 //Gets the user's data for the profile page
 function getProfile() {
