@@ -14,7 +14,7 @@ async function main(){
 	await firebase.initializeApp(firebaseConfig);
 	firebase.firestore().enablePersistence()
 }
-main();
+if(firebase.apps.length === 0) main();
 
 //State change detector, helps to track which user is logged in 
 let alertCount = Number(sessionStorage.getItem("alertCount"));
