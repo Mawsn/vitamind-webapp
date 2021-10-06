@@ -12,6 +12,7 @@ alert("main.js");
 
 async function main(){
 	await firebase.initializeApp(firebaseConfig);
+	firebase.firestore().enablePersistence()
 }
 main();
 
@@ -27,7 +28,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
             } 
-
+            	/*
                 firebase.firestore().enablePersistence().then(() => {
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
@@ -48,7 +49,7 @@ firebase.auth().onAuthStateChanged((user) => {
                         }
                         sessionStorage.setItem("alertCount", 1);
                     }
-                });
+                });*/
             
         }
     } else {
