@@ -21,7 +21,6 @@ firebase.auth().onAuthStateChanged((user) => {
                 window.location.assign("home.html");
                 sessionStorage.setItem("alertCount", 0);
             } else {
-            	document.getElementsByClassName("navbar-button-container")[0].style.display = "none";
                 firebase.firestore().enablePersistence().then(() => {
                     console.log("Firestore: Offline Data Enabled");
                 }).catch((err) => {
@@ -438,7 +437,7 @@ function confirmDelete() {
         console.log(error.message)
     });
 }
-/*
+
 //Used to determine whether the logged in user is a guest, if so, the history and profile button will be hidden
 function checkGuest() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -447,7 +446,7 @@ function checkGuest() {
             document.getElementsByClassName("navbar-button-container")[0].style.display = "none";
         }
     });
-}*/
+}
 
 //Called if the user tries to leave the tool early to confirm if they want to leave
 function leaveTool(pageRef) {
