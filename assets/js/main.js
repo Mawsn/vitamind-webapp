@@ -8,8 +8,6 @@ var firebaseConfig = {
     measurementId: "G-SZZ8S3SJDS" //used in firebase analytics
 };
 
-alert("main.js");
-
 async function main(){
 	await firebase.initializeApp(firebaseConfig);
 }
