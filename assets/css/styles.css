@@ -944,6 +944,7 @@ body {
   margin-left: 20%;
   padding-top: 20px;
   font-size: 20px;
+  margin-right: 20%;
   color: white;
   display: inline-block;
 }
@@ -951,6 +952,7 @@ body {
 @media (max-width: 767px) {
   .supplement-sub-heading {
     margin-left: 5%;
+    margin-right: 5%;
   }
 }
 
@@ -1670,5 +1672,16 @@ body {
   background-color: #efaf34;
   color: #ffffff;
   border-color: #efaf34;
+}
+
+.supp-button-r {
+  margin-left: 20px;
+}
+
+@media (max-width: 385px) {
+  .supp-button-r {
+    margin-left: 0px;
+    margin-top: 5px;
+  }
 }
 

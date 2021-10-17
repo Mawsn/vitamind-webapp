@@ -81,15 +81,21 @@
         </select>
         <p class="supplement-sub-heading">Brand and Dose (if known)</p><input type="text" class="supplement-input-fields" placeholder="Brand"><input type="number" id="supplement-input-fields-one" class="supplement-input-fields" placeholder="Dosage">
         <p class="supplement-sub-heading">If you are unsure about the information above, include a photo of any supplement you take below:&nbsp; &nbsp; &nbsp;</p>
-        <div style="text-align:center;"><button class="btn btn-primary" type="button" onclick="suppFile.click();">Front Photo</button><button class="btn btn-primary" type="button" onclick="suppFileBack.click();" style="margin-left: 20px;">Back Photo</button><input type="file" id="suppFile" accept="image/*" name="image" onchange="setSuppPic(1)" capture="camera" style="display: none;"><input type="file" id="suppFileBack" accept="image/*" name="image" onchange="setSuppPic(2)" capture="camera" style="display: none;"></div>
+        <div style="text-align:center;"><button class="btn btn-primary" type="button" onclick="suppFile.click();">Front Photo</button><button class="btn btn-primary supp-button-r" type="button" onclick="suppFileBack.click();">Back Photo</button><input type="file" id="suppFile" accept="image/*" name="image" onchange="setSuppPic(1)" capture="camera" style="display: none;"><input type="file" id="suppFileBack" accept="image/*" name="image" onchange="setSuppPic(2)" capture="camera" style="display: none;"></div>
     </div>
     <div id="uploadedSnackbar"></div>
     <div class="navigation-buttons-container"><button class="btn btn-primary" id="previous-button" type="button" onclick="goBack();">Previous</button><button class="btn btn-primary" id="next-button" type="button" onclick="nextPage(1);">Next</button></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Chart.js"></script>
+    <script src="assets/js/color-thief.min.js"></script>
+    <script src="assets/js/image-processing.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jspdf.min.js"></script>
+    <script src="assets/js/jspdf.plugin.autotable.min.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
     <script src="assets/js/supplement.js"></script>
+    <script src="assets/js/tool-calculations.js"></script>
 </body>
 
 </html>
