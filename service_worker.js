@@ -81,7 +81,6 @@ const ASSETS = [
 ];
 self.addEventListener("fetch", event => {
     if (event.request.url === "https://www.vitatrack.app/") {
-        // or whatever your app's URL is
         event.respondWith(
             fetch(event.request).catch(err =>
                 self.cache.open(cache_name).then(cache => cache.match("/offline.html"))
